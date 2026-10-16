@@ -444,6 +444,16 @@ img {
 }
 
 .hero-banner-frame {
+  aspect-ratio: auto;
+}
+
+.hero-banner-img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.hero-banner-frame {
   position: relative;
   width: 100%;
   min-width: 0;
@@ -509,6 +519,10 @@ img {
 @media (max-width: 768px) {
   .hero-container {
     grid-template-columns: minmax(0, 1fr);
+  }
+  .hero-visual-col {
+    grid-column: 1;
+    grid-row: 2;
   }
   .hero-copy-col {
     grid-column: 1;
