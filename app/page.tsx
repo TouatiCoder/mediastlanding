@@ -13,6 +13,7 @@ import product5 from "./imgprodu/5.png";
 import product6 from "./imgprodu/6.png";
 import product7 from "./imgprodu/7.png";
 import product8 from "./imgprodu/8.png";
+import offerBanner from "./imgprodu/image.png";
 
 type IconProps = { size?: number; className?: string; "aria-hidden"?: boolean | "true" | "false" };
 type IconName = "ArrowRight" | "Check" | "Gift" | "Heart" | "Menu" | "Sparkles" | "X" | "ShieldCheck" | "Truck" | "RefreshCw";
@@ -370,14 +371,11 @@ export default function LandingPage1() {
               fetchPriority="high"
             />
           </div>
-          <div className="hero-cta-bar" aria-label="Commander le pack Vinillia">
-            <div className="container hero-cta-inner">
-              <div className="hero-cta-price">
-                <strong>1 400 DH</strong>
-                <span className="hero-cta-offer"><Gift size={15} aria-hidden="true" /> {tr("8 produits dans un pack")} · {tr("2 PRODUITS OFFERTS")}</span>
-              </div>
-              <a href="#commande" className="btn btn-gold">{tr("Je commande mon pack")} <ArrowRight size={17} aria-hidden="true" /></a>
-            </div>
+          <div className="hero-banner-offer-overlay" aria-label="Offre pack Vinillia">
+            <span className="hero-overlay-eyebrow"><Gift size={15} aria-hidden="true" /> {tr("OFFRE PACK VINILLIA")}</span>
+            <div className="hero-overlay-price">1 400 <span>DH</span></div>
+            <p className="hero-overlay-details">{tr("8 produits dans un pack")} <span aria-hidden="true">·</span> {tr("2 PRODUITS OFFERTS")}</p>
+            <a href="#commande" className="btn btn-gold">{tr("Je commande mon pack")} <ArrowRight size={17} aria-hidden="true" /></a>
           </div>
         </section>
 
@@ -419,7 +417,7 @@ export default function LandingPage1() {
         </section>
 
         <section className="offer" id="offre"><div className="container offer-grid">
-          <div className="offer-art">{/* eslint-disable-next-line @next/next/no-img-element */}<img src=".\app\imgprodu\image.png" alt="Ambiance beauté et skincare Vinillia" loading="lazy" /><span className="offer-art-badge">{tr("OFFRE PACK VINILLIA")}</span></div>
+          <div className="offer-art">{/* eslint-disable-next-line @next/next/no-img-element */}<img src={offerBanner.src} alt="Les huit produits du pack beauté Vinillia" loading="lazy" /><span className="offer-art-badge">{tr("OFFRE PACK VINILLIA")}</span></div>
           <div className="offer-copy"><span className="eyebrow offer-eyebrow">{tr("Une offre pensée pour vous")}</span><h2>{tr("Huit essentiels.")}<br />{tr("Un seul rituel.")}</h2><p>{tr("Retrouvez les huit produits de votre sélection Vinillia dans un pack au prix unique de 1 400 DH.")}</p><div className="offer-points"><span>{tr("8 produits inclus")}</span><span>{tr("2 produits offerts")}</span><span>{tr("Commande facile")}</span><span>{tr("Routine à personnaliser")}</span></div><div className="offer-final"><strong>1 400 DH</strong><small>{tr("Prix du pack complet")}</small></div><a href="#commande" className="btn btn-gold">{tr("Commander maintenant")} <ArrowRight size={17} aria-hidden="true" /></a></div>
         </div></section>
 
