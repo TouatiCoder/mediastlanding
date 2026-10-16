@@ -259,6 +259,16 @@ const slides = [
   { src: bannerImage.src, alt: "Campagne beauté Vinillia avec modèle et produits du pack" },
 ];
 
+Object.assign(translations, {
+  "BEAUTÉ & SOIN DE LA PEAU": "الجمال والعناية بالبشرة",
+  "Votre beauté,": "جمالكِ،",
+  "notre priorité.": "أولويتنا.",
+  "Le rituel skincare qui vous ressemble": "روتين العناية الذي يشبهكِ",
+  "Sélection de qualité": "منتجات مختارة بعناية",
+  "Soin au quotidien": "عناية يومية",
+  "Commande en confiance": "تسوّقي بكل ثقة"
+});
+
 function normalizePhone(value: string) {
   return value.replace(/[\s().-]/g, "");
 }
