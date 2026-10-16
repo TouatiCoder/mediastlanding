@@ -1223,3 +1223,87 @@ button:disabled { cursor: wait; opacity: .7; }
   .arabic .slider-controls { left: 50%; right: auto; transform: translateX(-50%); }
   .value-strip { margin-top: -18px; }
 }
+
+
+/* Show the entire campaign artwork: full model + every product, without cropping */
+@media (min-width: 701px) {
+  .hero, .hero-grid {
+    min-height: clamp(680px, 54vw, 940px);
+  }
+  .hero-grid { padding-top: 38px; padding-bottom: 48px; }
+  .hero-copy {
+    width: min(390px, 36%);
+    max-width: 390px;
+    padding: 20px 0;
+  }
+  .hero h1 {
+    font-size: clamp(2.25rem, 3.4vw, 3.45rem);
+    max-width: 390px;
+  }
+  .hero-copy > p { max-width: 350px; font-size: .92rem; }
+  .hero-price { margin: 16px 0 14px; }
+  .hero-notes { max-width: 380px; margin-top: 14px; }
+  .hero-visual > img {
+    object-fit: contain;
+    object-position: center;
+  }
+  .hero-visual:after {
+    background: linear-gradient(90deg,
+      rgba(255,248,249,.98) 0%,
+      rgba(255,248,249,.93) 18%,
+      rgba(255,248,249,.78) 27%,
+      rgba(255,248,249,.34) 36%,
+      rgba(255,248,249,0) 48%);
+  }
+  .arabic .hero-visual:after {
+    background: linear-gradient(270deg,
+      rgba(255,248,249,.98) 0%,
+      rgba(255,248,249,.93) 18%,
+      rgba(255,248,249,.78) 27%,
+      rgba(255,248,249,.34) 36%,
+      rgba(255,248,249,0) 48%);
+  }
+}
+@media (max-width: 700px) {
+  .hero, .hero-grid { min-height: 0; }
+  .hero { display: block; padding: 0; overflow: hidden; }
+  .hero-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+    padding: 24px 15px 0;
+  }
+  .hero-copy {
+    width: 100%;
+    max-width: 540px;
+    margin-inline: auto;
+    padding: 0;
+  }
+  .hero h1 { font-size: clamp(2.15rem, 8vw, 2.8rem); }
+  .hero-visual {
+    position: relative;
+    inset: auto;
+    left: auto;
+    transform: none;
+    width: 100vw;
+    height: auto;
+    min-height: 0;
+    aspect-ratio: 16 / 9;
+    margin-left: -15px;
+    border-radius: 0;
+    overflow: hidden;
+  }
+  .hero-visual > img {
+    object-fit: contain;
+    object-position: center;
+  }
+  .hero-visual:after { display: none; content: none; }
+  .hero-stamp { top: 8px; right: 8px; bottom: auto; width: 60px; height: 60px; font-size: .38rem; }
+  .hero-stamp strong { font-size: .7rem; }
+  .slider-controls { bottom: 8px; }
+  .arabic .hero-grid { direction: rtl; }
+  .arabic .hero-copy { text-align: right; }
+  .arabic .hero-visual { margin-left: -15px; }
+  .arabic .hero-stamp { left: 8px; right: auto; }
+}
