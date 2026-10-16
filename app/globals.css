@@ -219,3 +219,15 @@ button:disabled { cursor: wait; opacity: .7; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; animation: none !important; }
 }
+
+
+/* Additional responsive and interaction styles for the Next.js page */
+.gift-pill { display: inline-flex; align-items: center; gap: 6px; }
+.value-icon { flex: 0 0 auto; }
+.offer-eyebrow { color: #d7b77f; }
+.mobile-nav-order { display: none; }
+.submit-btn:disabled { transform: none; }
+
+@media (max-width: 700px) {
+  .nav-links .mobile-nav-order { display: block; color: var(--rose); font-weight: 700; }
+}
