@@ -4,6 +4,7 @@ import { useEffect, useState, type FormEvent } from "react";
 import { ArrowRight, Check, Gift, Heart, Menu, Sparkles, X, ShieldCheck, Truck, RefreshCw } from "lucide-react";
 import franceFlag from "./france.png";
 import arabicFlag from "./flag.png";
+import bannerImage from "./banner.png";
 
 const PRICE = 1400;
 
@@ -198,8 +199,9 @@ Object.assign(translations, {
 });
 
 const slides = [
-  { src: "\\app\\banner.png", alt: "Portrait beauté et soin de la peau" },
-
+  { src: bannerImage.src, alt: "Campagne beauté Vinillia avec modèle et produits du pack" },
+  { src: "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&w=1800&q=90", alt: "Collection de soins beauté" },
+  { src: "https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?auto=format&fit=crop&w=1800&q=90", alt: "Produits de soin premium" },
 ];
 
 function normalizePhone(value: string) {
