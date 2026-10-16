@@ -357,25 +357,41 @@ export default function LandingPage1() {
       </header>
 
       <main>
-        <section className="hero hero-banner-only" id="accueil" aria-label="Bannière beauté Vinillia">
-          <div
-            className="hero-visual hero-banner-visual"
-            aria-label="Bannière Vinillia : produits AXIS-Y et deux cadeaux Vaseline"
-          >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              key={slides[slideIndex].src}
-              id="heroImage"
-              src={slides[slideIndex].src}
-              alt={slides[slideIndex].alt}
-              fetchPriority="high"
-            />
+        <section className="hero hero-banner-only vinillia-editorial-hero" id="accueil" aria-label="Bannière beauté Vinillia">
+          <div className="vinillia-hero-copy">
+            <span className="vinillia-hero-kicker"><Sparkles size={16} aria-hidden="true" /> {tr("BEAUTÉ & SOIN DE LA PEAU")}</span>
+            <h1>{tr("Votre beauté,")}<br /><em>{tr("notre priorité.")}</em></h1>
+            <p className="vinillia-hero-tagline">{tr("Le rituel skincare qui vous ressemble")}</p>
+            <div className="vinillia-hero-benefits">
+              <div><span className="vinillia-benefit-icon"><Heart size={21} aria-hidden="true" /></span><span>{tr("Sélection de qualité")}</span></div>
+              <div><span className="vinillia-benefit-icon"><Sparkles size={21} aria-hidden="true" /></span><span>{tr("Soin au quotidien")}</span></div>
+              <div><span className="vinillia-benefit-icon"><Gift size={21} aria-hidden="true" /></span><span>{tr("2 produits offerts")}</span></div>
+              <div><span className="vinillia-benefit-icon"><ShieldCheck size={21} aria-hidden="true" /></span><span>{tr("Commande en confiance")}</span></div>
+            </div>
+            <div className="vinillia-hero-bottom">
+              <div className="vinillia-hero-price"><small>{tr("OFFRE PACK VINILLIA")}</small><strong>1 400 <span>DH</span></strong><span className="vinillia-hero-pack-note">{tr("8 produits dans un pack")} · {tr("2 PRODUITS OFFERTS")}</span></div>
+              <a href="#commande" className="btn btn-gold">{tr("Je commande mon pack")} <ArrowRight size={17} aria-hidden="true" /></a>
+            </div>
           </div>
-          <div className="hero-banner-offer-overlay" aria-label="Offre pack Vinillia">
-            <span className="hero-overlay-eyebrow"><Gift size={15} aria-hidden="true" /> {tr("OFFRE PACK VINILLIA")}</span>
-            <div className="hero-overlay-price">1 400 <span>DH</span></div>
-            <p className="hero-overlay-details">{tr("8 produits dans un pack")} <span aria-hidden="true">·</span> {tr("2 PRODUITS OFFERTS")}</p>
-            <a href="#commande" className="btn btn-gold">{tr("Je commande mon pack")} <ArrowRight size={17} aria-hidden="true" /></a>
+          <div className="vinillia-hero-products" aria-label="Les produits du pack Vinillia">
+            <div className="vinillia-hero-flower" aria-hidden="true">✿</div>
+            <div className="vinillia-product-spotlight vinillia-product-spotlight-main">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={product7.src} alt="Vaseline Gluta-Hya Serum Burst Lotion offert" fetchPriority="high" />
+            </div>
+            <div className="vinillia-product-spotlight vinillia-product-spotlight-one">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={product1.src} alt="AXIS-Y Sunday Morning Refreshing Cleansing Foam" />
+            </div>
+            <div className="vinillia-product-spotlight vinillia-product-spotlight-two">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={product4.src} alt="AXIS-Y Artichoke Intensive Skin Barrier Ampoule" />
+            </div>
+            <div className="vinillia-product-spotlight vinillia-product-spotlight-three">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={product8.src} alt="Vaseline Lip Therapy Rosy Lips offert" />
+            </div>
+            <div className="vinillia-hero-roundel"><span>VINILLIA</span><strong>BEAUTY<br />RITUAL</strong><small>8 ESSENTIELS</small></div>
           </div>
         </section>
 
