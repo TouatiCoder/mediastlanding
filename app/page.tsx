@@ -254,6 +254,7 @@ export default function LandingPage1() {
   const tr = (value: string) => (isEnglish ? englishTranslations[value] ?? value : value);
   const [menuOpen, setMenuOpen] = useState(false);
   const [slideIndex, setSlideIndex] = useState(0);
+  const [comparisonPosition, setComparisonPosition] = useState(50);
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
@@ -389,7 +390,17 @@ export default function LandingPage1() {
 
         <section className="section before-after" id="resultats">
           <div className="container"><div className="section-heading"><span className="eyebrow">{tr("L’univers Vinillia")}</span><h2>{tr("Votre peau, votre histoire")}</h2><p>{tr("Un espace dédié aux visuels avant et après authentiques que vous ajouterez à la page.")}</p></div>
-            <div className="ba-grid"><div className="ba-card">{/* eslint-disable-next-line @next/next/no-img-element */}<img src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?auto=format&fit=crop&w=900&q=80" alt="Visuel skincare à remplacer par une photo avant authentique" loading="lazy" /><span>{tr("AVANT")}</span></div><div className="ba-card">{/* eslint-disable-next-line @next/next/no-img-element */}<img src="https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?auto=format&fit=crop&w=900&q=80" alt="Visuel skincare à remplacer par une photo après authentique" loading="lazy" /><span>{tr("APRÈS")}</span></div></div>
+            <div className="ba-comparison" onPointerMove={(event) => { if (event.buttons === 1 || event.pointerType === "touch") { const rect = event.currentTarget.getBoundingClientRect(); setComparisonPosition(Math.max(0, Math.min(100, ((event.clientX - rect.left) / rect.width) * 100))); } }} onPointerDown={(event) => { event.currentTarget.setPointerCapture(event.pointerId); const rect = event.currentTarget.getBoundingClientRect(); setComparisonPosition(Math.max(0, Math.min(100, ((event.clientX - rect.left) / rect.width) * 100))); }} role="group" aria-label={isEnglish ? "Before and after comparison. Drag the slider." : "Before et après. Faites glisser le curseur."}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img className="ba-image ba-image-after" src="https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?auto=format&fit=crop&w=1400&q=85" alt={isEnglish ? "After image — replace with an authentic result" : "Image après — à remplacer par un résultat authentique"} loading="lazy" />
+              <div className="ba-before-layer" style={{ clipPath: `inset(0 ${100 - comparisonPosition}% 0 0)` }}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img className="ba-image" src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?auto=format&fit=crop&w=1400&q=85" alt={isEnglish ? "Before image — replace with an authentic result" : "Image avant — à remplacer par un résultat authentique"} loading="lazy" />
+              </div>
+              <span className="ba-label ba-label-before">{tr("AVANT")}</span><span className="ba-label ba-label-after">{tr("APRÈS")}</span>
+              <div className="ba-divider" style={{ left: `${comparisonPosition}%` }} aria-hidden="true"><span><i></i><i></i></span></div>
+              <input className="ba-range" type="range" min="0" max="100" value={comparisonPosition} onChange={(event) => setComparisonPosition(Number(event.target.value))} aria-label={isEnglish ? "Compare before and after images" : "Comparer les images avant et après"} />
+            </div>
             <p className="ba-note">{tr("Visuels d’ambiance provisoires — remplacez-les par des photos authentiques et autorisées avant de présenter des résultats clients.")}</p>
           </div>
         </section>
