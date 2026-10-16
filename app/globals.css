@@ -2000,3 +2000,29 @@ button:disabled { cursor: wait; opacity: .7; }
   .hero-banner-only:hover .hero-banner-visual img,
   .hero-cta-inner .btn:hover { transform: none; }
 }
+
+
+/* Center the primary navigation between the brand and language selector */
+@media (min-width: 901px) {
+  .site-header .nav {
+    position: relative;
+    justify-content: space-between;
+  }
+  .site-header .nav-links {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(16px, 2vw, 29px);
+    white-space: nowrap;
+  }
+  .site-header .nav-links .mobile-nav-order { display: none; }
+}
+@media (min-width: 761px) and (max-width: 1100px) {
+  .site-header .nav-links { gap: 13px; font-size: .73rem; }
+  .site-header .brand-name { font-size: 1.48rem; }
+  .site-header .brand-sub { font-size: .46rem; }
+}
