@@ -338,24 +338,24 @@ export default function LandingPage1() {
             <div className="section-heading category-heading"><span className="eyebrow">{tr("La sélection Vinillia")}</span><h2>{tr("Le pack beauté qui vous ressemble")}</h2></div>
             <div className="product-grid pack-eight-grid">
               {[
-                { name: "Produit 01", type: "Soin du visage", image: "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&w=650&q=85", alt: "Produit de soin du visage", gift: false },
-                { name: "Produit 02", type: "Soin hydratant", image: "https://images.unsplash.com/photo-1601049541289-9b1b7bbbfe19?auto=format&fit=crop&w=650&q=85", alt: "Produit de soin hydratant", gift: false },
-                { name: "Produit 03", type: "Soin du corps", image: "https://images.unsplash.com/photo-1556229010-6c3f2c9ca5f8?auto=format&fit=crop&w=650&q=85", alt: "Produit de soin du corps", gift: false },
-                { name: "Produit 04", type: "Soin beauté", image: "https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&w=650&q=85", alt: "Produit beauté", gift: false },
-                { name: "Produit 05", type: "Soin quotidien", image: "https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?auto=format&fit=crop&w=650&q=85", alt: "Produit de soin quotidien", gift: false },
-                { name: "Produit 06", type: "Soin essentiel", image: "https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?auto=format&fit=crop&w=650&q=85", alt: "Produit essentiel de soin", gift: false },
+                { name: "Dark Spot Correcting Glow Toner", type: "Soin du visage", image: "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&w=650&q=85", alt: "AXIS-Y Dark Spot Correcting Glow Toner", gift: false },
+                { name: "Sunday Morning Refreshing Cleansing Foam", type: "Nettoyant visage", image: "https://images.unsplash.com/photo-1601049541289-9b1b7bbbfe19?auto=format&fit=crop&w=650&q=85", alt: "AXIS-Y Sunday Morning Refreshing Cleansing Foam", gift: false },
+                { name: "Complete No-Stress Physical Sunscreen", type: "Protection solaire", image: "https://images.unsplash.com/photo-1556229010-6c3f2c9ca5f8?auto=format&fit=crop&w=650&q=85", alt: "AXIS-Y Complete No-Stress Physical Sunscreen", gift: false },
+                { name: "New Skin Resolution Gel Mask", type: "Masque visage", image: "https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&w=650&q=85", alt: "AXIS-Y New Skin Resolution Gel Mask", gift: false },
+                { name: "Dark Spot Correcting Glow Cream", type: "Crème visage", image: "https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?auto=format&fit=crop&w=650&q=85", alt: "AXIS-Y Dark Spot Correcting Glow Cream", gift: false },
+                { name: "Artichoke Intensive Skin Barrier Ampoule", type: "Sérum visage", image: "https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?auto=format&fit=crop&w=650&q=85", alt: "AXIS-Y Artichoke Intensive Skin Barrier Ampoule", gift: false },
                 { name: "Vaseline Gluta-Hya Serum Burst Lotion", type: "Produit offert", image: "https://images.unsplash.com/photo-1571781926291-c477ebfd024b?auto=format&fit=crop&w=650&q=85", alt: "Vaseline Gluta-Hya Serum Burst Lotion — cadeau offert dans le pack", gift: true },
                 { name: "Vaseline Lip Therapy Rosy Lips", type: "Produit offert", image: "https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?auto=format&fit=crop&w=650&q=85", alt: "Vaseline Lip Therapy Rosy Lips — deuxième cadeau offert dans le pack", gift: true }
               ].map((product) => <article className="product-card pack-product-card" key={product.name}>
-                <a className="pack-product-link" href="#commande" aria-label={tr(product.name) + " — " + tr("Commander mon pack")}>
+                <a className="pack-product-link" href="#commande" aria-label={product.name + " — " + tr("Commander mon pack")}>
                   <div className="product-image">
                     {product.gift && <span className="gift-label">{tr("OFFERT")}</span>}
                     {/* eslint-disable-next-line @next/next/no-img-element */}
-                    {product.image ? <img src={product.image} alt={product.alt} loading="lazy" /> : <div className="product-image-fallback" role="img" aria-label={product.alt}><Sparkles size={32} aria-hidden="true" /></div>}
+                    <img src={product.image} alt={product.alt} loading="lazy" />
                   </div>
                   <div className="product-info">
                     <small>{tr(product.type)}</small>
-                    <h3>{tr(product.name)}</h3>
+                    <h3>{product.name}</h3>
                     <p>{product.gift ? tr("Un cadeau inclus dans votre pack beauté.") : tr("Produit inclus dans le pack beauté.")}</p>
                   </div>
                 </a>
