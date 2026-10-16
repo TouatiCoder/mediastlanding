@@ -160,6 +160,36 @@ Object.assign(translations, {
   "Produit inclus dans le pack beauté.": "منتج ضمن باقة الجمال."
 });
 
+
+Object.assign(translations, {
+  "Découvrez l’univers Vinillia avec un pack beauté exclusif : 8 produits, dont 2 offerts, pour accompagner votre routine skincare au quotidien.": "اكتشفي عالم Vinillia مع باقة جمال مميزة تضم 8 منتجات، منها منتجان مجانًا، لترافق روتين العناية اليومي ببشرتكِ.",
+  "8 produits dans un pack": "8 منتجات في باقة واحدة",
+  "Paiement à la livraison au Maroc": "الدفع عند الاستلام في المغرب",
+  "Huit essentiels.": "ثمانية منتجات أساسية.",
+  "8 produits inclus": "8 منتجات في الباقة",
+  "8 produits, dont 2 offerts": "8 منتجات، منها منتجان مجانًا",
+  "8 produits · 2 offerts · Quantité : 1": "8 منتجات · منتجان مجانًا · الكمية: 1",
+  "Votre routine en 3 étapes": "روتينك في 3 خطوات",
+  "Simple &amp; agréable": "ببساطة ومتعة",
+  "Découvrez les étapes d’utilisation en suivant les instructions propres à chaque produit.": "اتبعي خطوات الاستخدام وفق التعليمات الخاصة بكل منتج.",
+  "Produit 01 — Première étape": "المنتج 01 — الخطوة الأولى",
+  "Produit 02 — Deuxième étape": "المنتج 02 — الخطوة الثانية",
+  "Produit 03 — Troisième étape": "المنتج 03 — الخطوة الثالثة",
+  "Utilisez le produit 01 selon les indications figurant sur son emballage.": "استخدمي المنتج 01 حسب الإرشادات الموجودة على العبوة.",
+  "Poursuivez avec le produit 02 en respectant les conseils d’utilisation.": "واصلي بالمنتج 02 مع احترام إرشادات الاستخدام.",
+  "Terminez avec le produit 03 si l’ordre indiqué sur les emballages le recommande.": "أنهي بالمنتج 03 إذا كان ترتيب الاستخدام على العبوات يوصي بذلك.",
+  "Commande COD au Maroc": "الطلب والدفع عند الاستلام في المغرب",
+  "Votre commande, en 3 étapes simples": "طلبك في 3 خطوات بسيطة",
+  "Livraison et paiement à la réception": "التوصيل والأداء عند الاستلام",
+  "Confirmez vos coordonnées": "أكدي معلوماتك",
+  "Notre équipe vous appelle pour confirmer la commande.": "سيتصل بك فريقنا لتأكيد الطلب.",
+  "Recevez votre pack": "توصلي بالباقة",
+  "Votre pack est livré à l’adresse indiquée.": "سيتم توصيل الباقة إلى العنوان الذي أدخلته.",
+  "Payez à la livraison": "أدي عند الاستلام",
+  "Réglez votre commande à la réception du colis.": "أدي ثمن الطلب عند استلام الطرد.",
+  "Commande avec paiement à la livraison": "الطلب مع الدفع عند الاستلام"
+});
+
 const slides = [
   { src: "https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?auto=format&fit=crop&w=1800&q=90", alt: "Portrait beauté et soin de la peau" },
   { src: "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&w=1800&q=90", alt: "Collection de soins beauté" },
@@ -344,16 +374,16 @@ export default function LandingPage1() {
           </div>
         </section>
 
-        <section className="section" id="routine"><div className="container"><div className="section-heading"><span className="eyebrow">{tr("Commande COD au Maroc")}</span><h2>{tr("Votre commande, en 3 étapes simples")}</h2><p>{tr("Livraison et paiement à la réception")}</p></div><div className="steps-grid"><article className="step"><div className="step-number">01</div><h3>{tr("Confirmez vos coordonnées")}</h3><p>{tr("Notre équipe vous appelle pour confirmer la commande.")}</p></article><article className="step"><div className="step-number">02</div><h3>{tr("Recevez votre pack")}</h3><p>{tr("Votre pack est livré à l’adresse indiquée.")}</p></article><article className="step"><div className="step-number">03</div><h3>{tr("Payez à la livraison")}</h3><p>{tr("Réglez votre commande à la réception du colis.")}</p></article></div></div></section>
+        <section className="section" id="routine"><div className="container"><div className="section-heading"><span className="eyebrow">{tr("Simple &amp; agréable")}</span><h2>{tr("Votre routine en 3 étapes")}</h2><p>{tr("Découvrez les étapes d’utilisation en suivant les instructions propres à chaque produit.")}</p></div><div className="steps-grid"><article className="step"><div className="step-number">01</div><h3>{tr("Produit 01 — Première étape")}</h3><p>{tr("Utilisez le produit 01 selon les indications figurant sur son emballage.")}</p></article><article className="step"><div className="step-number">02</div><h3>{tr("Produit 02 — Deuxième étape")}</h3><p>{tr("Poursuivez avec le produit 02 en respectant les conseils d’utilisation.")}</p></article><article className="step"><div className="step-number">03</div><h3>{tr("Produit 03 — Troisième étape")}</h3><p>{tr("Terminez avec le produit 03 si l’ordre indiqué sur les emballages le recommande.")}</p></article></div></div></section>
 
         <section className="section order-section" id="commande"><div className="container order-grid">
           <div className="order-intro"><span className="eyebrow">{tr("Votre pack vous attend")}</span><h2>{tr("Prête à découvrir Vinillia ?")}</h2><p>{tr("Remplissez le formulaire avec vos coordonnées. Votre commande sera prête à être confirmée par l’équipe Vinillia.")}</p><div className="order-trust"><div><b><Check size={16} /></b><span>{tr("Un formulaire simple et rapide")}</span></div><div><b><Heart size={16} /></b><span>{tr("8 produits, dont 2 offerts")}</span></div><div><b><ArrowRight size={16} /></b><span>{tr("Pack au prix de 1 400 DH")}</span></div></div></div>
           <form className="order-card" onSubmit={handleSubmit} noValidate>
-            <h3>{tr("Commander mon pack")}</h3><p className="form-sub">{tr("Renseignez vos informations pour préparer votre commande.")}</p>
+            <h3>{tr("Commander mon pack")}</h3><p className="form-sub">{tr("Renseignez vos informations pour préparer votre commande.")}</p><div className="cod-badge"><Truck size={18} aria-hidden="true" /><span>{tr("Commande avec paiement à la livraison")}</span></div>
             <div className="order-summary"><div><strong>{tr("Pack Vinillia")}</strong><small>{tr("8 produits · 2 offerts · Quantité : 1")}</small></div><strong>{PRICE.toLocaleString("fr-FR")} DH</strong></div>
             <div className={`field ${errors.name ? "invalid" : ""}`}><label htmlFor="fullName">{tr("Nom complet *")}</label><input id="fullName" name="fullName" autoComplete="name" placeholder={tr("Ex. Salma El Amrani")} value={name} onChange={(event) => setName(event.target.value)} aria-invalid={Boolean(errors.name)} aria-describedby={errors.name ? "name-error" : undefined} required /><small className="error" id="name-error">{errors.name}</small></div>
-            <div className={`field ${errors.phone ? "invalid" : ""}`}><label htmlFor="phone">{tr("Numéro de téléphone *")}</label><input id="phone" name="phone" type="tel" autoComplete="tel" inputMode="tel" placeholder={tr("Ex. 06 12 34 56 78")} value={phone} onChange={(event) => setPhone(event.target.value)} aria-invalid={Boolean(errors.phone)} aria-describedby={errors.phone ? "phone-error" : undefined} required /><small className="error" id="phone-error">{errors.phone}</small></div>
             <div className={`field ${errors.address ? "invalid" : ""}`}><label htmlFor="address">{tr("Adresse de livraison *")}</label><textarea id="address" name="address" autoComplete="street-address" placeholder={tr("Ville, quartier, rue et détails de l’adresse")} value={address} onChange={(event) => setAddress(event.target.value)} aria-invalid={Boolean(errors.address)} aria-describedby={errors.address ? "address-error" : undefined} required /><small className="error" id="address-error">{errors.address}</small></div>
+            <div className={`field ${errors.phone ? "invalid" : ""}`}><label htmlFor="phone">{tr("Numéro de téléphone *")}</label><input id="phone" name="phone" type="tel" autoComplete="tel" inputMode="tel" placeholder={tr("Ex. 06 12 34 56 78")} value={phone} onChange={(event) => setPhone(event.target.value)} aria-invalid={Boolean(errors.phone)} aria-describedby={errors.phone ? "phone-error" : undefined} required /><small className="error" id="phone-error">{errors.phone}</small></div>
             <p className="form-privacy">{tr("Vos informations sont destinées au traitement de votre commande. En envoyant ce formulaire, vous acceptez d’être contacté pour sa confirmation.")}</p>
             <button className="btn btn-gold submit-btn" type="submit" disabled={formState === "loading"}>{formState === "loading" ? "PRÉPARATION…" : "CONFIRMER MA COMMANDE"} <ArrowRight size={17} aria-hidden="true" /></button>
             {formMessage && <div className={`form-message ${formState === "success" ? "success" : "error-msg"}`} role="status" aria-live="polite">{formMessage}</div>}
