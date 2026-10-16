@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState, type FormEvent } from "react";
-import { ArrowRight, Check, Gift, Heart, Menu, Sparkles, X, ShieldCheck, Truck, RefreshCw } from "lucide-react";
+
 import franceFlag from "./france.png";
 import arabicFlag from "./flag.png";
 import bannerImage from "./banner.png";
@@ -13,6 +13,38 @@ import product5 from "./imgprodu/5.png";
 import product6 from "./imgprodu/6.png";
 import product7 from "./imgprodu/7.png";
 import product8 from "./imgprodu/8.png";
+
+type IconProps = { size?: number; className?: string; "aria-hidden"?: boolean };
+type IconName = "ArrowRight" | "Check" | "Gift" | "Heart" | "Menu" | "Sparkles" | "X" | "ShieldCheck" | "Truck" | "RefreshCw";
+
+function IconGlyph({ name, size = 20, className, ...props }: IconProps & { name: IconName }) {
+  const common = { fill: "none", stroke: "currentColor", strokeWidth: 1.8, strokeLinecap: "round" as const, strokeLinejoin: "round" as const };
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" className={className} aria-hidden={props["aria-hidden"] ?? true} focusable="false">
+      {name === "ArrowRight" && <><path {...common} d="M5 12h14" /><path {...common} d="m12 5 7 7-7 7" /></>}
+      {name === "Check" && <path {...common} d="m5 12 4 4L19 6" />}
+      {name === "Gift" && <><rect {...common} x="3" y="8" width="18" height="13" rx="2" /><path {...common} d="M12 8v13M2 12h20M12 8H7.5a2.5 2.5 0 1 1 2.4-3.2L12 8Zm0 0h4.5a2.5 2.5 0 1 0-2.4-3.2L12 8Z" /></>}
+      {name === "Heart" && <path {...common} d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1.1L12 21l7.8-7.5 1.1-1.1a5.5 5.5 0 0 0-.1-7.8Z" />}
+      {name === "Menu" && <><path {...common} d="M4 6h16" /><path {...common} d="M4 12h16" /><path {...common} d="M4 18h16" /></>}
+      {name === "Sparkles" && <><path {...common} d="m12 3 1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8L12 3Z" /><path {...common} d="m19 14 1.1 2.9L23 18l-2.9 1.1L19 22l-1.1-2.9L15 18l2.9-1.1L19 14Z" /><path {...common} d="m5 2 .8 2.2L8 5l-2.2.8L5 8l-.8-2.2L2 5l2.2-.8L5 2Z" /></>}
+      {name === "X" && <><path {...common} d="m18 6-12 12" /><path {...common} d="m6 6 12 12" /></>}
+      {name === "ShieldCheck" && <><path {...common} d="M12 22s8-4 8-11V5l-8-3-8 3v6c0 7 8 11 8 11Z" /><path {...common} d="m9 12 2 2 4-4" /></>}
+      {name === "Truck" && <><path {...common} d="M3 6h11v12H3z" /><path {...common} d="M14 10h4l3 3v5h-7z" /><circle {...common} cx="7.5" cy="19" r="2" /><circle {...common} cx="17.5" cy="19" r="2" /></>}
+      {name === "RefreshCw" && <><path {...common} d="M20 7v5h-5" /><path {...common} d="M4 17v-5h5" /><path {...common} d="M5.6 9A7 7 0 0 1 17.5 6L20 12M4 12l2.5 6A7 7 0 0 0 18.4 15" /></>}
+    </svg>
+  );
+}
+const ArrowRight = (props: IconProps) => <IconGlyph name="ArrowRight" {...props} />;
+const Check = (props: IconProps) => <IconGlyph name="Check" {...props} />;
+const Gift = (props: IconProps) => <IconGlyph name="Gift" {...props} />;
+const Heart = (props: IconProps) => <IconGlyph name="Heart" {...props} />;
+const Menu = (props: IconProps) => <IconGlyph name="Menu" {...props} />;
+const Sparkles = (props: IconProps) => <IconGlyph name="Sparkles" {...props} />;
+const X = (props: IconProps) => <IconGlyph name="X" {...props} />;
+const ShieldCheck = (props: IconProps) => <IconGlyph name="ShieldCheck" {...props} />;
+const Truck = (props: IconProps) => <IconGlyph name="Truck" {...props} />;
+const RefreshCw = (props: IconProps) => <IconGlyph name="RefreshCw" {...props} />;
+
 
 const PRICE = 1400;
 
