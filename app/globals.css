@@ -2819,3 +2819,43 @@ button:disabled { cursor: wait; opacity: .7; }
     object-fit: contain;
   }
 }
+
+
+/* Force the hero to break out of any centered page/container and span the viewport */
+main > section.hero.vinillia-editorial-hero {
+  position: relative !important;
+  display: grid !important;
+  width: 100vw !important;
+  max-width: none !important;
+  margin-left: calc(50% - 50vw) !important;
+  margin-right: calc(50% - 50vw) !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  box-sizing: border-box !important;
+}
+main > section.hero.vinillia-editorial-hero .vinillia-hero-image-wrap {
+  width: 100%;
+  min-width: 0;
+}
+main > section.hero.vinillia-editorial-hero .vinillia-language-banner {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  max-height: none;
+  object-fit: contain;
+}
+@media (max-width: 760px) {
+  main > section.hero.vinillia-editorial-hero {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+  main > section.hero.vinillia-editorial-hero .vinillia-hero-image-wrap {
+    width: 100%;
+    min-height: 0;
+  }
+  main > section.hero.vinillia-editorial-hero .vinillia-language-banner {
+    height: auto;
+    object-fit: contain;
+  }
+}
