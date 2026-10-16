@@ -14,7 +14,7 @@ import product6 from "./imgprodu/6.png";
 import product7 from "./imgprodu/7.png";
 import product8 from "./imgprodu/8.png";
 
-type IconProps = { size?: number; className?: string; "aria-hidden"?: boolean };
+type IconProps = { size?: number; className?: string; "aria-hidden"?: boolean | "true" | "false" };
 type IconName = "ArrowRight" | "Check" | "Gift" | "Heart" | "Menu" | "Sparkles" | "X" | "ShieldCheck" | "Truck" | "RefreshCw";
 
 function IconGlyph({ name, size = 20, className, ...props }: IconProps & { name: IconName }) {
@@ -108,7 +108,6 @@ const translations: Record<string, string> = {
   "Notre équipe vous recontacte": "سيتواصل معكِ فريقنا",
   "La sélection Vinillia": "اختيارات Vinillia",
   "Le pack beauté qui vous ressemble": "باقة جمال تناسبكِ",
-  "Six essentiels réunis dans une offre exclusive, avec deux produits offerts.": "ستة منتجات أساسية ضمن عرض حصري، مع منتجين مجانًا.",
   "OFFERT": "هدية",
   "Votre cadeau": "هديتكِ",
   "Le pack Vinillia — 6 produits": "باقة Vinillia — 6 منتجات",
