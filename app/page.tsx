@@ -291,9 +291,6 @@ export default function LandingPage1() {
 
   useEffect(() => {
     setYear(new Date().getFullYear());
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    const interval = window.setInterval(() => setSlideIndex((current) => (current + 1) % slides.length), 6000);
-    return () => window.clearInterval(interval);
   }, []);
 
   useEffect(() => {
@@ -363,7 +360,7 @@ export default function LandingPage1() {
       </header>
 
       <main>
-        <section className="hero hero-banner-only vinillia-editorial-hero" id="accueil" aria-label="Bannière beauté Vinillia"        <section className={`hero hero-banner-only vinillia-editorial-hero ${isArabic ? "hero-banner-ar" : "hero-banner-fr"}`} id="accueil" aria-label={isArabic ? "بانر فينيليا للجمال والعناية بالبشرة" : "Bannière beauté Vinillia"}>
+        <section className={`hero hero-banner-only vinillia-editorial-hero ${isArabic ? "hero-banner-ar" : "hero-banner-fr"}`} id="accueil" aria-label={isArabic ? "بانر فينيليا للجمال والعناية بالبشرة" : "Bannière beauté Vinillia"}>
           {/* The banner artwork contains the complete language-specific design. */}
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
@@ -374,7 +371,7 @@ export default function LandingPage1() {
           />
         </section>
 
-sName="value-item"><ShieldCheck className="value-icon" size={25} aria-hidden="true" /><span><strong>{tr("Sélection beauté")}</strong><small>{tr("Un pack pensé pour vous")}</small></span></div><div className="value-item"><Gift className="value-icon" size={25} aria-hidden="true" /><span><strong>{tr("2 produits offerts")}</strong><small>{tr("Un cadeau dans votre pack")}</small></span></div><div className="value-item"><Truck className="value-icon" size={25} aria-hidden="true" /><span><strong>{tr("Commande facile")}</strong><small>{tr("Coordonnées en quelques étapes")}</small></span></div><div className="value-item"><RefreshCw className="value-icon" size={25} aria-hidden="true" /><span><strong>{tr("Confirmation rapide")}</strong><small>{tr("Notre équipe vous recontacte")}</small></span></div></div></section>
+        <section className="value-strip" aria-label="Les points forts du pack"><div className="container value-row"><div className="value-item"><ShieldCheck className="value-icon" size={25} aria-hidden="true" /><span><strong>{tr("Sélection beauté")}</strong><small>{tr("Un pack pensé pour vous")}</small></span></div><div className="value-item"><Gift className="value-icon" size={25} aria-hidden="true" /><span><strong>{tr("2 produits offerts")}</strong><small>{tr("Un cadeau dans votre pack")}</small></span></div><div className="value-item"><Truck className="value-icon" size={25} aria-hidden="true" /><span><strong>{tr("Commande facile")}</strong><small>{tr("Coordonnées en quelques étapes")}</small></span></div><div className="value-item"><RefreshCw className="value-icon" size={25} aria-hidden="true" /><span><strong>{tr("Confirmation rapide")}</strong><small>{tr("Notre équipe vous recontacte")}</small></span></div></div></section>
 
         <section className="section products-section" id="pack">
           <div className="container">
