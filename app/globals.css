@@ -2781,3 +2781,41 @@ button:disabled { cursor: wait; opacity: .7; }
   .vinillia-hero-image-badge { right: 22px; bottom: 18px; font-size: .65rem; }
   .hero-banner-ar .vinillia-hero-image-badge { right: auto; left: 22px; }
 }
+
+
+/* Full-width hero: keep the banner artwork completely visible */
+.hero.vinillia-editorial-hero {
+  width: 100%;
+  max-width: none;
+  min-height: 0;
+  margin: 0;
+  border-radius: 0;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+}
+.vinillia-hero-image-wrap {
+  align-self: stretch;
+  min-height: 100%;
+  padding: 0;
+  overflow: hidden;
+}
+.vinillia-language-banner {
+  width: 100%;
+  height: 100%;
+  max-height: none;
+  object-fit: contain;
+}
+@media (max-width: 760px) {
+  .hero.vinillia-editorial-hero {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .vinillia-hero-image-wrap {
+    min-height: 0;
+    padding: 0;
+  }
+  .vinillia-language-banner {
+    width: 100%;
+    height: auto;
+    max-height: none;
+    object-fit: contain;
+  }
+}
