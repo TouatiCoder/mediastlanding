@@ -6,6 +6,18 @@ import { ArrowRight, Check, Gift, Heart, Menu, Sparkles, X, ShieldCheck, Truck, 
 const PRICE = 1400;
 
 const englishTranslations: Record<string, string> = {
+"Skin Care": "Skin Care",
+"Hair Care": "Hair Care",
+"Body Care": "Body Care",
+"Makeup": "Makeup",
+"Health & Wellness": "Health & Wellness",
+"120+ Produits": "120+ Products",
+"95+ Produits": "95+ Products",
+"80+ Produits": "80+ Products",
+"150+ Produits": "150+ Products",
+"90+ Produits": "90+ Products",
+"Six essentiels réunis dans une offre exclusive, avec deux produits offerts.": "Explorez les catégories beauté et découvrez le pack Vinillia avec deux produits offerts.",
+
   "VOTRE RITUEL BEAUTÉ, EN UN SEUL PACK · 2 PRODUITS OFFERTS": "YOUR BEAUTY RITUAL IN ONE PACK · 2 FREE PRODUCTS",
   "Accueil": "Home",
   "Le pack": "The Pack",
@@ -112,6 +124,18 @@ const englishTranslations: Record<string, string> = {
   "La réception des commandes n'est pas encore configurée.": "Order reception has not been configured yet."
 };
 const translations: Record<string, string> = {
+"Skin Care": "Soin de la peau",
+"Hair Care": "Soin des cheveux",
+"Body Care": "Soin du corps",
+"Makeup": "Maquillage",
+"Health & Wellness": "Santé & bien-être",
+"120+ Produits": "120+ produits",
+"95+ Produits": "95+ produits",
+"80+ Produits": "80+ produits",
+"150+ Produits": "150+ produits",
+"90+ Produits": "90+ produits",
+"Six essentiels réunis dans une offre exclusive, avec deux produits offerts.": "Explorez nos univers beauté et découvrez le pack Vinillia avec deux produits offerts.",
+
   "VOTRE RITUEL BEAUTÉ, EN UN SEUL PACK · 2 PRODUITS OFFERTS": "روتين جمالك في باقة واحدة · منتجان مجانًا",
   "Accueil": "الرئيسية",
   "Le pack": "الباقة",
@@ -351,9 +375,19 @@ export default function LandingPage1() {
 
         <section className="section products-section" id="pack">
           <div className="container">
-            <div className="section-heading"><span className="eyebrow">{tr("La sélection Vinillia")}</span><h2>{tr("Le pack beauté qui vous ressemble")}</h2><p>{tr("Six essentiels réunis dans une offre exclusive, avec deux produits offerts.")}</p></div>
-            <div className="product-grid">{products.map((product) => <article className="product-card" key={product.number}><div className="product-image">{product.gift && <span className="gift-label">{tr("OFFERT")}</span>}{/* eslint-disable-next-line @next/next/no-img-element */}<img src={product.image} alt={product.alt} loading="lazy" /></div><div className="product-info"><small>{product.gift ? "Votre cadeau" : "Le pack"} · {product.number}</small><h3>{tr(product.name)}</h3><p>{tr(product.description)}</p></div></article>)}</div>
-            <div className="bundle-summary"><div><strong>{tr("Le pack Vinillia — 6 produits")}</strong><p>{tr("4 produits sélectionnés + 2 produits offerts, selon la composition finale du pack.")}</p></div><div className="bundle-price">1 400 DH</div><a className="btn btn-gold" href="#commande">{tr("Je profite du pack")} <ArrowRight size={16} aria-hidden="true" /></a></div>
+            <div className="section-heading category-heading"><span className="eyebrow">{tr("La sélection Vinillia")}</span><h2>{tr("Le pack beauté qui vous ressemble")}</h2></div>
+            <div className="category-grid">
+              {[
+                { name: "Skin Care", count: "120+ Produits", image: "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&w=520&q=85", alt: "Produits de soin de la peau" },
+                { name: "Hair Care", count: "95+ Produits", image: "https://images.unsplash.com/photo-1601049541289-9b1b7bbbfe19?auto=format&fit=crop&w=520&q=85", alt: "Produits de soin des cheveux" },
+                { name: "Body Care", count: "80+ Produits", image: "https://images.unsplash.com/photo-1556229010-6c3f2c9ca5f8?auto=format&fit=crop&w=520&q=85", alt: "Produits de soin du corps" },
+                { name: "Makeup", count: "150+ Produits", image: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=520&q=85", alt: "Produits de maquillage" },
+                { name: "Health & Wellness", count: "90+ Produits", image: "https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&w=520&q=85", alt: "Produits santé et bien-être" }
+              ].map((category) => <a className="category-card" href="#commande" key={category.name} aria-label={tr(category.name) + " — " + tr("Découvrir le pack")}>
+                <div className="category-image">{/* eslint-disable-next-line @next/next/no-img-element */}<img src={category.image} alt={category.alt} loading="lazy" /></div>
+                <div className="category-info"><h3>{tr(category.name)}</h3><p>{tr(category.count)}</p></div>
+              </a>)}
+            </div>
           </div>
         </section>
 
