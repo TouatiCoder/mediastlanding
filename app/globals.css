@@ -2225,3 +2225,75 @@ button:disabled { cursor: wait; opacity: .7; }
     border-radius: 15px;
   }
 }
+
+
+/* Hero campaign: premium glass offer card integrated into the banner */
+.hero.hero-banner-only {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  background: #f8e8ed;
+}
+.hero-banner-only .hero-banner-visual { height: clamp(400px, 47vw, 650px); }
+.hero-banner-only .hero-banner-visual img { object-position: center 48%; }
+.hero-banner-offer-overlay {
+  position: absolute;
+  z-index: 4;
+  top: 50%;
+  right: clamp(22px, 6.2vw, 104px);
+  transform: translateY(-50%);
+  width: clamp(270px, 30vw, 430px);
+  padding: clamp(20px, 2.5vw, 34px);
+  border: 1px solid rgba(255,255,255,.72);
+  border-radius: 26px;
+  color: #5c1830;
+  text-align: left;
+  background: linear-gradient(135deg, rgba(255,255,255,.80), rgba(255,246,249,.62));
+  box-shadow: 0 20px 60px rgba(87, 36, 53, .16), inset 0 1px 0 rgba(255,255,255,.85);
+  backdrop-filter: blur(18px) saturate(1.15);
+  -webkit-backdrop-filter: blur(18px) saturate(1.15);
+}
+.hero-overlay-eyebrow {
+  display: inline-flex; align-items: center; gap: 8px; padding: 7px 12px;
+  border-radius: 999px; color: #fff;
+  background: linear-gradient(110deg, #a32f50, #74172f);
+  font-size: .71rem; font-weight: 800; letter-spacing: .065em;
+}
+.hero-overlay-price {
+  margin-top: 18px; color: #6d1934; font-size: clamp(2.45rem, 4.2vw, 4.15rem);
+  font-weight: 850; line-height: .98; letter-spacing: -.065em; white-space: nowrap;
+}
+.hero-overlay-price span { font-size: .53em; letter-spacing: -.025em; }
+.hero-overlay-details {
+  margin: 12px 0 20px; color: #7c4254; font-size: clamp(.76rem, 1vw, .9rem);
+  line-height: 1.55; font-weight: 750;
+}
+.hero-banner-offer-overlay .btn {
+  display: inline-flex; width: 100%; min-height: 52px; align-items: center; justify-content: center;
+  gap: 10px; border-radius: 13px; color: #541629;
+  background: linear-gradient(135deg, #fae3a1, #eab74f); border: 1px solid #e3b24c;
+  box-shadow: 0 9px 22px rgba(151, 96, 20, .17); transition: transform .2s ease, box-shadow .2s ease;
+}
+.hero-banner-offer-overlay .btn:hover { transform: translateY(-2px); box-shadow: 0 13px 28px rgba(151, 96, 20, .22); }
+.hero-banner-offer-overlay .btn:focus-visible { outline: 3px solid rgba(200, 78, 115, .35); outline-offset: 3px; }
+.arabic .hero-banner-offer-overlay { right: auto; left: clamp(22px, 6.2vw, 104px); text-align: right; }
+.arabic .hero-overlay-eyebrow { flex-direction: row-reverse; }
+@media (max-width: 760px) {
+  .hero-banner-only .hero-banner-visual { height: auto; aspect-ratio: 1.04 / 1; }
+  .hero-banner-only .hero-banner-visual img { object-position: 39% center; }
+  .hero-banner-offer-overlay {
+    top: auto; right: 12px; bottom: 12px; transform: none;
+    width: min(64%, 300px); padding: 13px 14px; border-radius: 18px;
+  }
+  .hero-overlay-eyebrow { gap: 5px; padding: 5px 8px; font-size: .56rem; }
+  .hero-overlay-price { margin-top: 10px; font-size: clamp(1.9rem, 8vw, 2.5rem); }
+  .hero-overlay-details { margin: 7px 0 11px; font-size: .61rem; line-height: 1.35; }
+  .hero-banner-offer-overlay .btn { min-height: 42px; padding: 0 8px; font-size: .72rem; gap: 5px; }
+  .hero-banner-offer-overlay .btn svg { width: 15px; height: 15px; }
+  .arabic .hero-banner-offer-overlay { left: 12px; right: auto; }
+}
+@media (max-width: 390px) {
+  .hero-banner-only .hero-banner-visual { aspect-ratio: .96 / 1; }
+  .hero-banner-offer-overlay { width: 67%; padding: 11px; }
+  .hero-overlay-details { font-size: .56rem; }
+}
