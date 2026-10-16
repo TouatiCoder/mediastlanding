@@ -5,6 +5,14 @@ import { ArrowRight, Check, Gift, Heart, Menu, Sparkles, X, ShieldCheck, Truck, 
 import franceFlag from "./france.png";
 import arabicFlag from "./flag.png";
 import bannerImage from "./banner.png";
+import product1 from "./imgprodu/1.png";
+import product2 from "./imgprodu/2.png";
+import product3 from "./imgprodu/3.png";
+import product4 from "./imgprodu/4.png";
+import product5 from "./imgprodu/5.png";
+import product6 from "./imgprodu/6.png";
+import product7 from "./imgprodu/7.png";
+import product8 from "./imgprodu/8.png";
 
 const PRICE = 1400;
 
@@ -338,20 +346,20 @@ export default function LandingPage1() {
             <div className="section-heading category-heading"><span className="eyebrow">{tr("La sélection Vinillia")}</span><h2>{tr("Le pack beauté qui vous ressemble")}</h2></div>
             <div className="product-grid pack-eight-grid">
               {[
-                { name: "Dark Spot Correcting Glow Toner", type: "Soin du visage", image: "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&w=650&q=85", alt: "AXIS-Y Dark Spot Correcting Glow Toner", gift: false },
-                { name: "Sunday Morning Refreshing Cleansing Foam", type: "Nettoyant visage", image: "https://images.unsplash.com/photo-1601049541289-9b1b7bbbfe19?auto=format&fit=crop&w=650&q=85", alt: "AXIS-Y Sunday Morning Refreshing Cleansing Foam", gift: false },
-                { name: "Complete No-Stress Physical Sunscreen", type: "Protection solaire", image: "https://images.unsplash.com/photo-1556229010-6c3f2c9ca5f8?auto=format&fit=crop&w=650&q=85", alt: "AXIS-Y Complete No-Stress Physical Sunscreen", gift: false },
-                { name: "New Skin Resolution Gel Mask", type: "Masque visage", image: "https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&w=650&q=85", alt: "AXIS-Y New Skin Resolution Gel Mask", gift: false },
-                { name: "Dark Spot Correcting Glow Cream", type: "Crème visage", image: "https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?auto=format&fit=crop&w=650&q=85", alt: "AXIS-Y Dark Spot Correcting Glow Cream", gift: false },
-                { name: "Artichoke Intensive Skin Barrier Ampoule", type: "Sérum visage", image: "https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?auto=format&fit=crop&w=650&q=85", alt: "AXIS-Y Artichoke Intensive Skin Barrier Ampoule", gift: false },
-                { name: "Vaseline Gluta-Hya Serum Burst Lotion", type: "Produit offert", image: "https://images.unsplash.com/photo-1571781926291-c477ebfd024b?auto=format&fit=crop&w=650&q=85", alt: "Vaseline Gluta-Hya Serum Burst Lotion — cadeau offert dans le pack", gift: true },
-                { name: "Vaseline Lip Therapy Rosy Lips", type: "Produit offert", image: "https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?auto=format&fit=crop&w=650&q=85", alt: "Vaseline Lip Therapy Rosy Lips — deuxième cadeau offert dans le pack", gift: true }
+                { name: "Dark Spot Correcting Glow Toner", type: "Soin du visage", image: product1, alt: "AXIS-Y Dark Spot Correcting Glow Toner", gift: false },
+                { name: "Sunday Morning Refreshing Cleansing Foam", type: "Nettoyant visage", image: product2, alt: "AXIS-Y Sunday Morning Refreshing Cleansing Foam", gift: false },
+                { name: "Complete No-Stress Physical Sunscreen", type: "Protection solaire", image: product3, alt: "AXIS-Y Complete No-Stress Physical Sunscreen", gift: false },
+                { name: "New Skin Resolution Gel Mask", type: "Masque visage", image: product4, alt: "AXIS-Y New Skin Resolution Gel Mask", gift: false },
+                { name: "Dark Spot Correcting Glow Cream", type: "Crème visage", image: product5, alt: "AXIS-Y Dark Spot Correcting Glow Cream", gift: false },
+                { name: "Artichoke Intensive Skin Barrier Ampoule", type: "Sérum visage", image: product6, alt: "AXIS-Y Artichoke Intensive Skin Barrier Ampoule", gift: false },
+                { name: "Vaseline Gluta-Hya Serum Burst Lotion", type: "Produit offert", image: product7, alt: "Vaseline Gluta-Hya Serum Burst Lotion — cadeau offert dans le pack", gift: true },
+                { name: "Vaseline Lip Therapy Rosy Lips", type: "Produit offert", image: product8, alt: "Vaseline Lip Therapy Rosy Lips — deuxième cadeau offert dans le pack", gift: true }
               ].map((product) => <article className="product-card pack-product-card" key={product.name}>
                 <a className="pack-product-link" href="#commande" aria-label={product.name + " — " + tr("Commander mon pack")}>
                   <div className="product-image">
                     {product.gift && <span className="gift-label">{tr("OFFERT")}</span>}
                     {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={product.image} alt={product.alt} loading="lazy" />
+                    <img src={product.image.src} alt={product.alt} loading="lazy" />
                   </div>
                   <div className="product-info">
                     <small>{tr(product.type)}</small>
