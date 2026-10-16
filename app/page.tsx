@@ -361,14 +361,32 @@ export default function LandingPage1() {
 
       <main>
         <section className={`hero hero-banner-only vinillia-editorial-hero ${isArabic ? "hero-banner-ar" : "hero-banner-fr"}`} id="accueil" aria-label={isArabic ? "بانر فينيليا للجمال والعناية بالبشرة" : "Bannière beauté Vinillia"}>
-          {/* The banner artwork contains the complete language-specific design. */}
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            className="vinillia-language-banner"
-            src={(isArabic ? bannerAr : bannerFr).src}
-            alt={isArabic ? "عرض فينيليا للعناية بالبشرة" : "Offre beauté Vinillia"}
-            fetchPriority="high"
-          />
+          <div className="vinillia-hero-copy">
+            <span className="vinillia-hero-kicker"><Gift size={17} aria-hidden="true" /> {isArabic ? "عرض باقة VINILLIA" : "OFFRE PACK VINILLIA"}</span>
+            <p className="vinillia-hero-tagline">{isArabic ? "جمالكِ، أولويتنا" : "Votre beauté, notre priorité."}</p>
+            <h1>{isArabic ? <>باقة الجمال<br /><em>من Vinillia</em></> : <>Huit essentiels.<br /><em>Un seul rituel.</em></>}</h1>
+            <p className="vinillia-hero-description">{isArabic ? "8 منتجات للعناية بجمالكِ في باقة واحدة، مع منتجين هدية." : "Retrouvez 8 essentiels skincare dans un seul pack, avec 2 produits offerts."}</p>
+            <div className="vinillia-hero-perks">
+              <span><Heart size={17} aria-hidden="true" />{isArabic ? "اختيار مميز" : "Sélection beauté"}</span>
+              <span><Sparkles size={17} aria-hidden="true" />{isArabic ? "منتجان مجانًا" : "2 produits offerts"}</span>
+              <span><Truck size={17} aria-hidden="true" />{isArabic ? "طلب سهل" : "Commande facile"}</span>
+            </div>
+            <div className="vinillia-hero-price-row">
+              <div className="vinillia-hero-price"><strong>1 400</strong><span>DH</span></div>
+              <a href="#commande" className="vinillia-hero-button">{isArabic ? "أطلب الباقة" : "Commander le pack"} <ArrowRight size={18} aria-hidden="true" /></a>
+            </div>
+          </div>
+          <div className="vinillia-hero-image-wrap">
+            <div className="vinillia-hero-image-glow" />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              className="vinillia-language-banner"
+              src={(isArabic ? bannerAr : bannerFr).src}
+              alt={isArabic ? "منتجات باقة فينيليا للعناية بالبشرة" : "Produits du pack beauté Vinillia"}
+              fetchPriority="high"
+            />
+            <span className="vinillia-hero-image-badge">{isArabic ? "8 منتجات · 2 هدية" : "8 PRODUITS · 2 OFFERTS"}</span>
+          </div>
         </section>
 
         <section className="value-strip" aria-label="Les points forts du pack"><div className="container value-row"><div className="value-item"><ShieldCheck className="value-icon" size={25} aria-hidden="true" /><span><strong>{tr("Sélection beauté")}</strong><small>{tr("Un pack pensé pour vous")}</small></span></div><div className="value-item"><Gift className="value-icon" size={25} aria-hidden="true" /><span><strong>{tr("2 produits offerts")}</strong><small>{tr("Un cadeau dans votre pack")}</small></span></div><div className="value-item"><Truck className="value-icon" size={25} aria-hidden="true" /><span><strong>{tr("Commande facile")}</strong><small>{tr("Coordonnées en quelques étapes")}</small></span></div><div className="value-item"><RefreshCw className="value-icon" size={25} aria-hidden="true" /><span><strong>{tr("Confirmation rapide")}</strong><small>{tr("Notre équipe vous recontacte")}</small></span></div></div></section>
