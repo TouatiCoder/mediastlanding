@@ -3096,3 +3096,225 @@ button,
   }
 }
 
+/* Header visibility and navigation reliability on phones, including RTL Arabic */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  width: 100%;
+  overflow: visible;
+}
+
+.site-header > .container.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 70px;
+  position: relative;
+}
+
+.site-header .brand {
+  display: flex !important;
+  flex: 0 0 auto;
+  align-items: center;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+.site-header .brand-logo {
+  display: block !important;
+  width: 154px;
+  max-width: min(154px, 32vw);
+  height: auto;
+  max-height: 42px;
+  object-fit: contain;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+.site-header .header-actions {
+  display: flex !important;
+  align-items: center;
+  gap: 8px;
+  flex: 0 0 auto;
+  visibility: visible !important;
+}
+
+.site-header .menu-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 40px;
+  width: 40px;
+  height: 40px;
+  color: var(--color-burgundy);
+  background: #fff;
+  border: 1px solid var(--color-border);
+  position: relative;
+  z-index: 220;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .site-header > .container.nav {
+    width: calc(100% - 24px);
+    min-height: 64px;
+    gap: 8px;
+  }
+
+  .site-header .brand-logo {
+    width: 132px;
+    max-width: 34vw;
+    max-height: 38px;
+  }
+
+  .site-header .header-actions {
+    margin-inline-start: auto;
+    gap: 6px;
+  }
+
+  .site-header .language-switch {
+    padding: 3px 4px;
+    gap: 3px;
+  }
+
+  .site-header .language-switch button {
+    padding: 4px;
+    gap: 3px;
+    font-size: .7rem;
+  }
+
+  .site-header .language-switch button img {
+    width: 16px;
+    height: 11px;
+  }
+
+  .site-header .nav-cta {
+    display: none !important;
+  }
+
+  .site-header .menu-toggle {
+    display: inline-flex !important;
+  }
+
+  .site-header .nav-links {
+    display: none;
+    position: absolute;
+    top: calc(100% + 1px);
+    inset-inline: 0;
+    z-index: 210;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    max-height: calc(100dvh - 72px);
+    overflow-y: auto;
+    padding: 10px 18px 18px;
+    margin: 0;
+    background: #fff;
+    border: 1px solid var(--color-border);
+    border-top: 0;
+    border-radius: 0 0 14px 14px;
+    box-shadow: 0 12px 28px rgba(45, 25, 32, .14);
+  }
+
+  .site-header .nav-links.open {
+    display: flex !important;
+  }
+
+  .site-header .nav-links a {
+    display: block;
+    width: 100%;
+    padding: 14px 2px;
+    border-bottom: 1px solid var(--color-blush);
+    text-align: start;
+  }
+
+  .site-header .nav-links .mobile-nav-order {
+    display: block !important;
+    color: var(--color-burgundy);
+    font-weight: 800;
+  }
+
+  .site-header .nav-links a:last-child {
+    border-bottom: 0;
+  }
+
+  [dir="rtl"] .site-header > .container.nav {
+    direction: rtl;
+  }
+
+  [dir="rtl"] .site-header .nav-links {
+    text-align: right;
+  }
+}
+
+@media (max-width: 360px) {
+  .site-header .brand-logo {
+    max-width: 29vw;
+  }
+
+  .site-header .language-switch button span {
+    display: none;
+  }
+
+  .site-header .menu-toggle {
+    flex-basis: 36px;
+    width: 36px;
+    height: 36px;
+  }
+}
+
+/* Arabic layout: ensure the page and every major content block use RTL
+   without forcing flex/grid children off-screen. */
+.page-shell.arabic {
+  direction: rtl;
+  text-align: right;
+}
+
+.page-shell.arabic .container,
+.page-shell.arabic .section-header,
+.page-shell.arabic .product-content,
+.page-shell.arabic .promo-content,
+.page-shell.arabic .order-intro-col,
+.page-shell.arabic .order-form-card,
+.page-shell.arabic .footer-col {
+  min-width: 0;
+}
+
+.page-shell.arabic .hero-copy-col {
+  left: auto;
+  right: clamp(12px, 5vw, 72px);
+  text-align: right;
+}
+
+.page-shell.arabic .hero-badges,
+.page-shell.arabic .hero-action-row,
+.page-shell.arabic .hero-trust-note {
+  direction: rtl;
+}
+
+.page-shell.arabic .form-group label {
+  justify-content: flex-start;
+}
+
+.page-shell.arabic input,
+.page-shell.arabic textarea {
+  text-align: right;
+  direction: rtl;
+}
+
+@media (max-width: 768px) {
+  .page-shell.arabic .hero-copy-col {
+    left: 12px;
+    right: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .page-shell.arabic .hero-copy-col {
+    left: 8px;
+    right: 8px;
+  }
+}
+
