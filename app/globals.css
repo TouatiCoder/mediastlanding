@@ -2026,3 +2026,137 @@ button:disabled { cursor: wait; opacity: .7; }
   .site-header .brand-name { font-size: 1.48rem; }
   .site-header .brand-sub { font-size: .46rem; }
 }
+
+
+/* Six numbered product steps — image-led routine cards */
+.routine-section {
+  padding: clamp(44px, 5vw, 72px) 0;
+  background: linear-gradient(180deg, #fff9fa 0%, #fff 42%, #fffdfd 100%);
+}
+.routine-section .section-heading {
+  max-width: 760px;
+  margin: 0 auto 30px;
+  text-align: center;
+}
+.routine-section .section-heading .eyebrow {
+  display: inline-flex;
+  align-items: center;
+  padding: 7px 13px;
+  border: 1px solid #f0d5de;
+  border-radius: 999px;
+  background: #fff0f4;
+  color: #b85472;
+  font-size: .72rem;
+  font-weight: 750;
+  letter-spacing: .06em;
+}
+.routine-section .section-heading h2 {
+  margin: 13px 0 8px;
+  color: #2b2025;
+  font-size: clamp(1.8rem, 3vw, 2.35rem);
+  line-height: 1.16;
+  letter-spacing: -.04em;
+}
+.routine-section .section-heading p {
+  max-width: 590px;
+  margin: 0 auto;
+  color: #817279;
+  font-size: .92rem;
+  line-height: 1.65;
+}
+.routine-products-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+.routine-product-step {
+  min-width: 0;
+  overflow: hidden;
+  padding: 10px;
+  border: 1px solid #f0e3e7;
+  border-radius: 17px;
+  background: #fff;
+  box-shadow: 0 8px 24px rgba(58, 31, 41, .045);
+  transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+}
+.routine-product-step:hover {
+  transform: translateY(-4px);
+  border-color: #e8c5d0;
+  box-shadow: 0 15px 32px rgba(58, 31, 41, .09);
+}
+.routine-product-image {
+  position: relative;
+  display: grid;
+  place-items: center;
+  aspect-ratio: 1.2 / 1;
+  overflow: hidden;
+  border-radius: 11px;
+  background: linear-gradient(145deg, #fff8f9 0%, #f7e9ed 100%);
+}
+.routine-product-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 8px;
+  object-fit: contain;
+  mix-blend-mode: multiply;
+  transition: transform .3s ease;
+}
+.routine-product-step:hover .routine-product-image img { transform: scale(1.035); }
+.routine-product-image .step-number {
+  position: absolute;
+  top: 11px;
+  left: 11px;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  margin: 0;
+  border: 1px solid rgba(255,255,255,.85);
+  border-radius: 50%;
+  color: #fff;
+  background: #bd6e84;
+  box-shadow: 0 4px 12px rgba(112, 51, 70, .2);
+  font-size: .82rem;
+  font-weight: 800;
+}
+.routine-product-info { padding: 15px 9px 9px; }
+.routine-step-label {
+  color: #b45b75;
+  font-size: .68rem;
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+.routine-product-info h3 {
+  margin: 7px 0 0;
+  color: #302229;
+  font-size: .98rem;
+  font-weight: 750;
+  line-height: 1.45;
+}
+.arabic .routine-product-info { text-align: right; }
+.arabic .routine-product-image .step-number { left: auto; right: 11px; }
+@media (max-width: 900px) {
+  .routine-products-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+}
+@media (max-width: 520px) {
+  .routine-section { padding: 38px 0 46px; }
+  .routine-section .container { width: min(100% - 30px, 540px); }
+  .routine-section .section-heading { margin-bottom: 22px; }
+  .routine-section .section-heading h2 { font-size: 1.65rem; }
+  .routine-section .section-heading p { font-size: .82rem; }
+  .routine-products-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .routine-product-step { padding: 6px; border-radius: 12px; }
+  .routine-product-image { aspect-ratio: 1 / 1.08; border-radius: 8px; }
+  .routine-product-image img { padding: 4px; }
+  .routine-product-image .step-number { top: 7px; left: 7px; width: 32px; height: 32px; font-size: .7rem; }
+  .routine-product-info { padding: 10px 5px 6px; }
+  .routine-step-label { font-size: .58rem; }
+  .routine-product-info h3 { font-size: .78rem; line-height: 1.4; }
+  .arabic .routine-product-image .step-number { left: auto; right: 7px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .routine-product-step, .routine-product-image img { transition: none; }
+}
