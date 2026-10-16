@@ -346,7 +346,7 @@ export default function LandingPage1() {
       <div className="announcement">{tr("VOTRE RITUEL BEAUTÉ, EN UN SEUL PACK · 2 PRODUITS OFFERTS")}</div>
       <header className="site-header">
         <div className="container nav">
-          <a href="#accueil" className="brand" aria-label="Vinillia, accueil" onClick={() => setMenuOpen(false)}><span className="brand-mark"><Sparkles size={23} aria-hidden="true" /></span><span className="brand-copy"><span className="brand-name">Vinillia</span><span className="brand-sub">BEAUTY &amp; SKINCARE</span></span></a>
+          <a href="#accueil" className="brand" aria-label="Vinillia, accueil" onClick={() => setMenuOpen(false)}><img className="brand-logo" src="/vinillia-logo.svg" alt="Vinillia Beauty &amp; Skincare" /></a>
           
           <nav className={`nav-links ${menuOpen ? "open" : ""}`} id="navLinks" aria-label="Navigation principale">
             <a href="#accueil" onClick={() => setMenuOpen(false)}>{tr("Accueil")}</a><a href="#pack" onClick={() => setMenuOpen(false)}>{tr("Le pack")}</a><a href="#offre" onClick={() => setMenuOpen(false)}>{tr("Offre spéciale")}</a><a href="#resultats" onClick={() => setMenuOpen(false)}>{tr("Résultats")}</a><a href="#routine" onClick={() => setMenuOpen(false)}>{tr("La routine")}</a><a className="mobile-nav-order" href="#commande" onClick={() => setMenuOpen(false)}>{tr("Commander le pack")}</a>
@@ -489,7 +489,7 @@ export default function LandingPage1() {
       </main>
 
       <footer className="footer"><div className="container"><div className="footer-top">
-        <div className="footer-intro"><a href="#accueil" className="brand"><span className="brand-name">Vinillia</span><span className="brand-sub">{tr("✦ BEAUTY &amp; SKINCARE ✦")}</span></a><p>{tr("Une parenthèse beauté, imaginée autour de votre rituel skincare.")}</p></div>
+        <div className="footer-intro"><a href="#accueil" className="brand footer-brand-logo" aria-label="Vinillia, accueil"><img className="brand-logo" src="/vinillia-logo.svg" alt="Vinillia Beauty &amp; Skincare" /></a><p>{tr("Une parenthèse beauté, imaginée autour de votre rituel skincare.")}</p></div>
         <div><h4>{tr("Navigation")}</h4><div className="footer-links"><a href="#pack">{tr("Le pack")}</a><a href="#resultats">{tr("Avant / Après")}</a><a href="#routine">{tr("La routine")}</a><a href="#commande">{tr("Commander")}</a></div></div>
         <div><h4>{tr("Informations")}</h4><div className="footer-links"><a href="#confidentialite">{tr("Politique de confidentialité")}</a><a href="#conditions">{tr("Conditions générales")}</a><a href="mailto:contact@vinillia.example">{tr("Contact à configurer")}</a></div></div>
       </div><div className="footer-bottom"><span>© {year ?? "2026"} Vinillia Beauty &amp; Skincare. Tous droits réservés.</span><span>{tr("Beauty, with a signature.")}</span></div></div></footer>
