@@ -30,7 +30,7 @@ const translations: Record<string, string> = {
   "Votre beauté, notre signature": "جمالكِ هو بصمتنا",
   "Le rituel qui révèle": "روتين يكشف عن",
   "votre éclat.": "إشراقتكِ.",
-  "Découvrez l’univers Vinillia avec un pack beauté exclusif : 6 produits réunis pour accompagner votre routine skincare au quotidien.": "اكتشفي عالم Vinillia مع باقة جمال مميزة تضم 6 منتجات لترافق روتين العناية اليومي ببشرتكِ.",
+  "Découvrez l’univers Vinillia avec un pack beauté exclusif : 8 produits, dont 2 offerts, pour accompagner votre routine skincare au quotidien.": "اكتشفي عالم Vinillia مع باقة جمال مميزة تضم 6 منتجات لترافق روتين العناية اليومي ببشرتكِ.",
   "2 PRODUITS OFFERTS": "منتجان مجانًا",
   "Je commande mon pack": "أطلب الباقة",
   "Découvrir le pack": "اكتشفي الباقة",
@@ -129,8 +129,41 @@ Object.assign(translations, {
   "La réception des commandes n\u0027est pas encore configurée.": "لم يتم إعداد نظام استقبال الطلبات بعد."
 });
 
+
+Object.assign(translations, {
+  "VOTRE RITUEL BEAUTÉ, EN UN SEUL PACK · 2 PRODUITS OFFERTS": "روتين جمالك في باقة واحدة · منتجان مجانًا",
+  "8 produits dans un pack": "8 منتجات في باقة واحدة",
+  "Paiement à la livraison au Maroc": "الدفع عند الاستلام في المغرب",
+  "Paiement à la livraison": "الدفع عند الاستلام",
+  "8 produits, dont 2 offerts": "8 منتجات، منها منتجان مجانًا",
+  "8 produits · 2 offerts · Quantité : 1": "8 منتجات · منتجان مجانًا · الكمية: 1",
+  "8 produits inclus": "8 منتجات في الباقة",
+  "Retrouvez les huit produits de votre sélection Vinillia dans un pack au prix unique de 1 400 DH.": "احصلي على منتجات Vinillia الثمانية ضمن باقة بسعر 1,400 درهم.",
+  "Huit essentiels.": "ثمانية منتجات أساسية.",
+  "Le pack complet": "الباقة كاملة",
+  "Étape 1 — Préparez": "الخطوة 1 — حضّري",
+  "Étape 2 — Appliquez": "الخطوة 2 — طبّقي",
+  "Étape 3 — Continuez": "الخطوة 3 — واصلي",
+  "Suivez les instructions indiquées sur vos produits et respectez l’ordre d’utilisation recommandé.": "اتبعي تعليمات المنتجات واحترمي ترتيب الاستخدام الموصى به.",
+  "Commande COD au Maroc": "طلب بالدفع عند الاستلام في المغرب",
+  "Livraison et paiement à la réception": "التوصيل والأداء عند الاستلام",
+  "Votre commande, en 3 étapes simples": "طلبك في 3 خطوات بسيطة",
+  "Confirmez vos coordonnées": "أكدي معلوماتك",
+  "Notre équipe vous appelle pour confirmer la commande.": "سيتصل بك فريقنا لتأكيد الطلب.",
+  "Recevez votre pack": "توصلي بالباقة",
+  "Votre pack est livré à l’adresse indiquée.": "سيتم توصيل الباقة إلى العنوان الذي أدخلته.",
+  "Payez à la livraison": "أدي عند الاستلام",
+  "Réglez votre commande à la réception du colis.": "أدي ثمن الطلب عند استلام الطرد.",
+  "Nom complet *": "الاسم الكامل *",
+  "Numéro de téléphone *": "رقم الهاتف *",
+  "Adresse de livraison *": "عنوان التوصيل *",
+  "Produit inclus dans le pack beauté.": "منتج ضمن باقة الجمال."
+});
+
 const slides = [
   { src: "https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?auto=format&fit=crop&w=1800&q=90", alt: "Portrait beauté et soin de la peau" },
+  { src: "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&w=1800&q=90", alt: "Collection de soins beauté" },
+  { src: "https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?auto=format&fit=crop&w=1800&q=90", alt: "Produits de soin premium" },
 ];
 
 function normalizePhone(value: string) {
@@ -239,7 +272,7 @@ export default function LandingPage1() {
               <p>{tr("Découvrez l’univers Vinillia avec un pack beauté exclusif : 6 produits réunis pour accompagner votre routine skincare au quotidien.")}</p>
               <div className="hero-price"><strong>1 400 DH</strong><span className="gift-pill"><Gift size={14} aria-hidden="true" /> {tr("2 PRODUITS OFFERTS")}</span></div>
               <div className="hero-actions"><a href="#commande" className="btn btn-gold">{tr("Je commande mon pack")} <ArrowRight size={17} aria-hidden="true" /></a><a href="#pack" className="btn btn-outline">{tr("Découvrir le pack")}</a></div>
-              <div className="hero-notes"><span>{tr("6 produits dans un pack")}</span><span>{tr("Commande simple")}</span><span>{tr("Paiement à la livraison si disponible")}</span></div>
+              <div className="hero-notes"><span>{tr("8 produits dans un pack")}</span><span>{tr("Commande simple")}</span><span>{tr("Paiement à la livraison au Maroc")}</span></div>
             </div>
             <div className="hero-visual" aria-label="Visuel de campagne Vinillia">
               {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -291,7 +324,7 @@ export default function LandingPage1() {
 
         <section className="offer" id="offre"><div className="container offer-grid">
           <div className="offer-art">{/* eslint-disable-next-line @next/next/no-img-element */}<img src="https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?auto=format&fit=crop&w=1000&q=85" alt="Ambiance beauté et skincare Vinillia" loading="lazy" /><span className="offer-art-badge">{tr("OFFRE PACK VINILLIA")}</span></div>
-          <div className="offer-copy"><span className="eyebrow offer-eyebrow">{tr("Une offre pensée pour vous")}</span><h2>{tr("Six essentiels.")}<br />{tr("Un seul rituel.")}</h2><p>{tr("Retrouvez les six produits de votre sélection Vinillia dans un pack au prix unique de 1 400 DH.")}</p><div className="offer-points"><span>{tr("6 produits inclus")}</span><span>{tr("2 produits offerts")}</span><span>{tr("Commande facile")}</span><span>{tr("Routine à personnaliser")}</span></div><div className="offer-final"><strong>1 400 DH</strong><small>{tr("Prix du pack complet")}</small></div><a href="#commande" className="btn btn-gold">{tr("Commander maintenant")} <ArrowRight size={17} aria-hidden="true" /></a></div>
+          <div className="offer-copy"><span className="eyebrow offer-eyebrow">{tr("Une offre pensée pour vous")}</span><h2>{tr("Huit essentiels.")}<br />{tr("Un seul rituel.")}</h2><p>{tr("Retrouvez les huit produits de votre sélection Vinillia dans un pack au prix unique de 1 400 DH.")}</p><div className="offer-points"><span>{tr("8 produits inclus")}</span><span>{tr("2 produits offerts")}</span><span>{tr("Commande facile")}</span><span>{tr("Routine à personnaliser")}</span></div><div className="offer-final"><strong>1 400 DH</strong><small>{tr("Prix du pack complet")}</small></div><a href="#commande" className="btn btn-gold">{tr("Commander maintenant")} <ArrowRight size={17} aria-hidden="true" /></a></div>
         </div></section>
 
         <section className="section before-after" id="resultats">
@@ -311,13 +344,13 @@ export default function LandingPage1() {
           </div>
         </section>
 
-        <section className="section" id="routine"><div className="container"><div className="section-heading"><span className="eyebrow">{tr("Simple &amp; agréable")}</span><h2>{tr("Votre routine en 3 étapes")}</h2><p>{tr("Une présentation claire, à adapter aux instructions réelles de vos produits.")}</p></div><div className="steps-grid"><article className="step"><div className="step-number">01</div><h3>{tr("Préparez")}</h3><p>{tr("Commencez avec le produit de préparation adapté à votre routine.")}</p></article><article className="step"><div className="step-number">02</div><h3>{tr("Appliquez")}</h3><p>{tr("Suivez l’ordre d’application et les conseils indiqués sur chaque produit.")}</p></article><article className="step"><div className="step-number">03</div><h3>{tr("Prenez soin de vous")}</h3><p>{tr("Adoptez une routine régulière en respectant les recommandations d’utilisation.")}</p></article></div></div></section>
+        <section className="section" id="routine"><div className="container"><div className="section-heading"><span className="eyebrow">{tr("Commande COD au Maroc")}</span><h2>{tr("Votre commande, en 3 étapes simples")}</h2><p>{tr("Livraison et paiement à la réception")}</p></div><div className="steps-grid"><article className="step"><div className="step-number">01</div><h3>{tr("Confirmez vos coordonnées")}</h3><p>{tr("Notre équipe vous appelle pour confirmer la commande.")}</p></article><article className="step"><div className="step-number">02</div><h3>{tr("Recevez votre pack")}</h3><p>{tr("Votre pack est livré à l’adresse indiquée.")}</p></article><article className="step"><div className="step-number">03</div><h3>{tr("Payez à la livraison")}</h3><p>{tr("Réglez votre commande à la réception du colis.")}</p></article></div></div></section>
 
         <section className="section order-section" id="commande"><div className="container order-grid">
-          <div className="order-intro"><span className="eyebrow">{tr("Votre pack vous attend")}</span><h2>{tr("Prête à découvrir Vinillia ?")}</h2><p>{tr("Remplissez le formulaire avec vos coordonnées. Votre commande sera prête à être confirmée par l’équipe Vinillia.")}</p><div className="order-trust"><div><b><Check size={16} /></b><span>{tr("Un formulaire simple et rapide")}</span></div><div><b><Heart size={16} /></b><span>{tr("6 produits, dont 2 offerts")}</span></div><div><b><ArrowRight size={16} /></b><span>{tr("Pack au prix de 1 400 DH")}</span></div></div></div>
+          <div className="order-intro"><span className="eyebrow">{tr("Votre pack vous attend")}</span><h2>{tr("Prête à découvrir Vinillia ?")}</h2><p>{tr("Remplissez le formulaire avec vos coordonnées. Votre commande sera prête à être confirmée par l’équipe Vinillia.")}</p><div className="order-trust"><div><b><Check size={16} /></b><span>{tr("Un formulaire simple et rapide")}</span></div><div><b><Heart size={16} /></b><span>{tr("8 produits, dont 2 offerts")}</span></div><div><b><ArrowRight size={16} /></b><span>{tr("Pack au prix de 1 400 DH")}</span></div></div></div>
           <form className="order-card" onSubmit={handleSubmit} noValidate>
             <h3>{tr("Commander mon pack")}</h3><p className="form-sub">{tr("Renseignez vos informations pour préparer votre commande.")}</p>
-            <div className="order-summary"><div><strong>{tr("Pack Vinillia")}</strong><small>{tr("6 produits · 2 offerts · Quantité : 1")}</small></div><strong>{PRICE.toLocaleString("fr-FR")} DH</strong></div>
+            <div className="order-summary"><div><strong>{tr("Pack Vinillia")}</strong><small>{tr("8 produits · 2 offerts · Quantité : 1")}</small></div><strong>{PRICE.toLocaleString("fr-FR")} DH</strong></div>
             <div className={`field ${errors.name ? "invalid" : ""}`}><label htmlFor="fullName">{tr("Nom complet *")}</label><input id="fullName" name="fullName" autoComplete="name" placeholder={tr("Ex. Salma El Amrani")} value={name} onChange={(event) => setName(event.target.value)} aria-invalid={Boolean(errors.name)} aria-describedby={errors.name ? "name-error" : undefined} required /><small className="error" id="name-error">{errors.name}</small></div>
             <div className={`field ${errors.phone ? "invalid" : ""}`}><label htmlFor="phone">{tr("Numéro de téléphone *")}</label><input id="phone" name="phone" type="tel" autoComplete="tel" inputMode="tel" placeholder={tr("Ex. 06 12 34 56 78")} value={phone} onChange={(event) => setPhone(event.target.value)} aria-invalid={Boolean(errors.phone)} aria-describedby={errors.phone ? "phone-error" : undefined} required /><small className="error" id="phone-error">{errors.phone}</small></div>
             <div className={`field ${errors.address ? "invalid" : ""}`}><label htmlFor="address">{tr("Adresse de livraison *")}</label><textarea id="address" name="address" autoComplete="street-address" placeholder={tr("Ville, quartier, rue et détails de l’adresse")} value={address} onChange={(event) => setAddress(event.target.value)} aria-invalid={Boolean(errors.address)} aria-describedby={errors.address ? "address-error" : undefined} required /><small className="error" id="address-error">{errors.address}</small></div>
