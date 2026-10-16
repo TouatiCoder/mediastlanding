@@ -198,6 +198,13 @@ Object.assign(translations, {
   "Commande avec paiement à la livraison": "الطلب مع الدفع عند الاستلام"
 });
 
+
+Object.assign(translations, {
+  "Vaseline Gluta-Hya Serum Burst Lotion": "لوشن فازلين Gluta-Hya",
+  "Vaseline Lip Therapy Rosy Lips": "فازلين Lip Therapy Rosy Lips",
+  "Les 2 produits Vaseline sont offerts": "منتجا فازلين هدية مجانًا"
+});
+
 const slides = [
   { src: bannerImage.src, alt: "Campagne beauté Vinillia avec modèle et produits du pack" },
 ];
@@ -334,8 +341,8 @@ export default function LandingPage1() {
                 { name: "Produit 04", type: "Soin beauté", image: "https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&w=650&q=85", alt: "Produit beauté", gift: false },
                 { name: "Produit 05", type: "Soin quotidien", image: "https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?auto=format&fit=crop&w=650&q=85", alt: "Produit de soin quotidien", gift: false },
                 { name: "Produit 06", type: "Soin essentiel", image: "https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?auto=format&fit=crop&w=650&q=85", alt: "Produit essentiel de soin", gift: false },
-                { name: "Produit 07", type: "Produit offert", image: "https://images.unsplash.com/photo-1571781926291-c477ebfd024b?auto=format&fit=crop&w=650&q=85", alt: "Produit cadeau beauté", gift: true },
-                { name: "Produit 08", type: "Produit offert", image: "https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?auto=format&fit=crop&w=650&q=85", alt: "Deuxième produit cadeau beauté", gift: true }
+                { name: "Vaseline Gluta-Hya Serum Burst Lotion", type: "Produit offert", image: "https://images.unsplash.com/photo-1571781926291-c477ebfd024b?auto=format&fit=crop&w=650&q=85", alt: "Vaseline Gluta-Hya Serum Burst Lotion — cadeau offert dans le pack", gift: true },
+                { name: "Vaseline Lip Therapy Rosy Lips", type: "Produit offert", image: "https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?auto=format&fit=crop&w=650&q=85", alt: "Vaseline Lip Therapy Rosy Lips — deuxième cadeau offert dans le pack", gift: true }
               ].map((product) => <article className="product-card pack-product-card" key={product.name}>
                 <a className="pack-product-link" href="#commande" aria-label={tr(product.name) + " — " + tr("Commander mon pack")}>
                   <div className="product-image">
@@ -352,7 +359,7 @@ export default function LandingPage1() {
               </article>)}
             </div>
             <div className="pack-eight-summary">
-              <div><strong>{tr("8 produits dans votre pack")}</strong><p>{tr("6 produits sélectionnés + 2 produits offerts.")}</p></div>
+              <div><strong>{tr("8 produits dans votre pack")}</strong><p>{tr("6 produits sélectionnés + 2 produits offerts.")}</p><small className="gift-note">{tr("Les 2 produits Vaseline sont offerts")}</small></div>
               <a href="#commande" className="btn btn-gold">{tr("Commander mon pack")} <ArrowRight size={16} aria-hidden="true" /></a>
             </div>
           </div>
