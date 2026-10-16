@@ -699,3 +699,38 @@ button:disabled { cursor: wait; opacity: .7; }
 @media (prefers-reduced-motion: reduce) {
   .ba-before-layer, .ba-divider { transition: none; }
 }
+
+
+/* Local PNG flags for the French / Arabic language selector */
+.nav-language {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin-left: auto;
+}
+.nav-language button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-width: 48px;
+}
+.nav-language button img {
+  display: block;
+  width: 22px;
+  height: 16px;
+  object-fit: cover;
+  border-radius: 2px;
+  box-shadow: 0 0 0 1px rgba(30, 20, 25, .08);
+}
+.arabic .nav-language {
+  margin-left: 0;
+  margin-right: auto;
+}
+.arabic .nav-language button { font-family: var(--sans); }
+@media (max-width: 700px) {
+  .nav-language { margin-left: auto; margin-right: 0; }
+  .arabic .nav-language { margin-left: 0; margin-right: auto; }
+  .nav-language button { min-width: 43px; padding: 5px; }
+  .nav-language button img { width: 20px; height: 15px; }
+}
