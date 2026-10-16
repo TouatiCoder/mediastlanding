@@ -4,6 +4,113 @@ import { useEffect, useState, type FormEvent } from "react";
 import { ArrowRight, Check, Gift, Heart, Menu, Sparkles, X, ShieldCheck, Truck, RefreshCw } from "lucide-react";
 
 const PRICE = 1400;
+
+const englishTranslations: Record<string, string> = {
+  "VOTRE RITUEL BEAUTÉ, EN UN SEUL PACK · 2 PRODUITS OFFERTS": "YOUR BEAUTY RITUAL IN ONE PACK · 2 FREE PRODUCTS",
+  "Accueil": "Home",
+  "Le pack": "The Pack",
+  "Offre spéciale": "Special Offer",
+  "Résultats": "Results",
+  "La routine": "The Routine",
+  "Commander le pack": "Order the Pack",
+  "Votre beauté, notre signature": "Your Beauty, Our Signature",
+  "Le rituel qui révèle": "The ritual that reveals",
+  "votre éclat.": "your glow.",
+  "Découvrez l’univers Vinillia avec un pack beauté exclusif : 6 produits réunis pour accompagner votre routine skincare au quotidien.": "Discover Vinillia with an exclusive beauty pack: 6 products to complement your daily skincare routine.",
+  "2 PRODUITS OFFERTS": "2 FREE PRODUCTS",
+  "Je commande mon pack": "Order My Pack",
+  "Découvrir le pack": "Discover the Pack",
+  "6 produits dans un pack": "6 products in one pack",
+  "Commande simple": "Easy ordering",
+  "Paiement à la livraison si disponible": "Cash on delivery where available",
+  "LE PACK": "THE PACK",
+  "BEAUTY RITUAL": "BEAUTY RITUAL",
+  "Sélection beauté": "Beauty selection",
+  "Un pack pensé pour vous": "A pack made for you",
+  "2 produits offerts": "2 free products",
+  "Un cadeau dans votre pack": "A gift in your pack",
+  "Commande facile": "Easy ordering",
+  "Coordonnées en quelques étapes": "Your details in a few steps",
+  "Confirmation rapide": "Quick confirmation",
+  "Notre équipe vous recontacte": "Our team will contact you",
+  "La sélection Vinillia": "The Vinillia Selection",
+  "Le pack beauté qui vous ressemble": "A beauty pack that suits you",
+  "Six essentiels réunis dans une offre exclusive, avec deux produits offerts.": "Six essentials in one exclusive offer, with two products free.",
+  "OFFERT": "FREE",
+  "Votre cadeau": "Your gift",
+  "Le pack Vinillia — 6 produits": "Vinillia Pack — 6 Products",
+  "4 produits sélectionnés + 2 produits offerts, selon la composition finale du pack.": "4 selected products + 2 free products, depending on the final pack contents.",
+  "Je profite du pack": "Get the Pack",
+  "OFFRE PACK VINILLIA": "VINILLIA PACK OFFER",
+  "Une offre pensée pour vous": "An offer made for you",
+  "Six essentiels.": "Six essentials.",
+  "Un seul rituel.": "One ritual.",
+  "Retrouvez les six produits de votre sélection Vinillia dans un pack au prix unique de 1 400 DH.": "Get all six products in your Vinillia selection for a single price of 1,400 DH.",
+  "6 produits inclus": "6 products included",
+  "Routine à personnaliser": "A routine tailored to you",
+  "Prix du pack complet": "Full pack price",
+  "Commander maintenant": "Order Now",
+  "L’univers Vinillia": "The Vinillia World",
+  "Votre peau, votre histoire": "Your Skin, Your Story",
+  "Un espace dédié aux visuels avant et après authentiques que vous ajouterez à la page.": "A dedicated space for authentic before-and-after images you will add to the page.",
+  "AVANT": "BEFORE",
+  "APRÈS": "AFTER",
+  "Visuels d’ambiance provisoires — remplacez-les par des photos authentiques et autorisées avant de présenter des résultats clients.": "Temporary visuals — replace them with authentic, authorized photos before presenting customer results.",
+  "Simple &amp; agréable": "Simple &amp; enjoyable",
+  "Votre routine en 3 étapes": "Your Routine in 3 Steps",
+  "Une présentation claire, à adapter aux instructions réelles de vos produits.": "A clear guide to adapt to the actual instructions for your products.",
+  "Préparez": "Prepare",
+  "Commencez avec le produit de préparation adapté à votre routine.": "Start with the preparation product suited to your routine.",
+  "Appliquez": "Apply",
+  "Suivez l’ordre d’application et les conseils indiqués sur chaque produit.": "Follow the application order and instructions provided with each product.",
+  "Prenez soin de vous": "Care for Yourself",
+  "Adoptez une routine régulière en respectant les recommandations d’utilisation.": "Follow a regular routine and respect the usage recommendations.",
+  "Votre pack vous attend": "Your Pack Is Waiting",
+  "Prête à découvrir Vinillia ?": "Ready to discover Vinillia?",
+  "Remplissez le formulaire avec vos coordonnées. Votre commande sera prête à être confirmée par l’équipe Vinillia.": "Fill in your details and the Vinillia team will contact you to confirm your order.",
+  "Un formulaire simple et rapide": "A quick and easy form",
+  "6 produits, dont 2 offerts": "6 products, 2 of them free",
+  "Pack au prix de 1 400 DH": "Pack priced at 1,400 DH",
+  "Commander mon pack": "Order My Pack",
+  "Renseignez vos informations pour préparer votre commande.": "Enter your details to prepare your order.",
+  "Pack Vinillia": "Vinillia Pack",
+  "6 produits · 2 offerts · Quantité : 1": "6 products · 2 free · Quantity: 1",
+  "Nom complet *": "Full Name *",
+  "Numéro de téléphone *": "Phone Number *",
+  "Adresse de livraison *": "Delivery Address *",
+  "Vos informations sont destinées au traitement de votre commande. En envoyant ce formulaire, vous acceptez d’être contacté pour sa confirmation.": "Your information will be used to process your order. By submitting this form, you agree to be contacted for confirmation.",
+  "PRÉPARATION…": "PREPARING…",
+  "CONFIRMER MA COMMANDE": "CONFIRM MY ORDER",
+  "✦ BEAUTY &amp; SKINCARE ✦": "✦ BEAUTY &amp; SKINCARE ✦",
+  "Une parenthèse beauté, imaginée autour de votre rituel skincare.": "A beauty moment designed around your skincare ritual.",
+  "Navigation": "Navigation",
+  "Avant / Après": "Before / After",
+  "Commander": "Order",
+  "Informations": "Information",
+  "Politique de confidentialité": "Privacy Policy",
+  "Conditions générales": "Terms & Conditions",
+  "Contact à configurer": "Contact details to be configured",
+  "Beauty, with a signature.": "Beauty, with a signature.",
+  "Le pack Vinillia": "The Vinillia Pack",
+  "Veuillez saisir votre nom complet.": "Please enter your full name.",
+  "Saisissez un numéro marocain valide.": "Please enter a valid Moroccan phone number.",
+  "Veuillez saisir votre adresse de livraison.": "Please enter your delivery address.",
+  "Veuillez vérifier les champs signalés, puis réessayez.": "Please check the highlighted fields and try again.",
+  "Merci ! Votre demande a été transmise. Notre équipe vous contactera pour confirmer les détails.": "Thank you! Your request has been submitted. Our team will contact you to confirm the details.",
+  "Le formulaire est prêt, mais le système de réception des commandes n’est pas encore configuré. Connectez la route /api/orders avant la mise en ligne.": "The form is ready, but order reception is not configured yet. Connect the /api/orders route before launch.",
+  "Ex. Salma El Amrani": "e.g. Salma El Amrani",
+  "Ex. 06 12 34 56 78": "e.g. 06 12 34 56 78",
+  "Ville, quartier, rue et détails de l’adresse": "City, district, street and address details",
+  "Produit 01": "Product 01",
+  "Produit 02": "Product 02",
+  "Produit 03": "Product 03",
+  "Produit 04": "Product 04",
+  "Produit 05": "Product 05",
+  "Produit 06": "Product 06",
+  "Ajoutez ici le nom et la description réelle du produit.": "Add the real product name and description here.",
+  "Un cadeau inclus dans votre pack beauté.": "A gift included in your beauty pack.",
+  "La réception des commandes n'est pas encore configurée.": "Order reception has not been configured yet."
+};
 const translations: Record<string, string> = {
   "VOTRE RITUEL BEAUTÉ, EN UN SEUL PACK · 2 PRODUITS OFFERTS": "روتين جمالك في باقة واحدة · منتجان مجانًا",
   "Accueil": "الرئيسية",
@@ -127,9 +234,9 @@ function normalizePhone(value: string) {
 }
 
 export default function LandingPage1() {
-  const [language, setLanguage] = useState<"fr" | "ar">("fr");
-  const isArabic = language === "ar";
-  const tr = (value: string) => (isArabic ? translations[value] ?? value : value);
+  const [language, setLanguage] = useState<"fr" | "en">("fr");
+  const isEnglish = language === "en";
+  const tr = (value: string) => (isEnglish ? englishTranslations[value] ?? value : value);
   const [menuOpen, setMenuOpen] = useState(false);
   const [slideIndex, setSlideIndex] = useState(0);
   const [name, setName] = useState("");
@@ -142,7 +249,7 @@ export default function LandingPage1() {
 
   useEffect(() => {
     document.documentElement.lang = language;
-    document.documentElement.dir = language === "ar" ? "rtl" : "ltr";
+    document.documentElement.dir = "ltr";
   }, [language]);
 
   useEffect(() => {
@@ -204,16 +311,16 @@ export default function LandingPage1() {
   }
 
   return (
-    <div className={`page-shell ${isArabic ? "arabic" : ""}`} lang={language} dir={isArabic ? "rtl" : "ltr"}>
+    <div className="page-shell" lang={language} dir="ltr">
       <div className="announcement">{tr("VOTRE RITUEL BEAUTÉ, EN UN SEUL PACK · 2 PRODUITS OFFERTS")}</div>
       <header className="site-header">
         <div className="container nav">
           <a href="#accueil" className="brand" aria-label="Vinillia, accueil" onClick={() => setMenuOpen(false)}><span className="brand-mark"><Sparkles size={23} aria-hidden="true" /></span><span className="brand-copy"><span className="brand-name">Vinillia</span><span className="brand-sub">BEAUTY &amp; SKINCARE</span></span></a>
-          <div className="language-switch" role="group" aria-label="Language selector"><button type="button" className={!isArabic ? "active" : ""} aria-pressed={!isArabic} onClick={() => setLanguage("fr")}>FR</button><span aria-hidden="true">|</span><button type="button" className={isArabic ? "active" : ""} aria-pressed={isArabic} onClick={() => setLanguage("ar")}>العربية</button></div>
+          
           <nav className={`nav-links ${menuOpen ? "open" : ""}`} id="navLinks" aria-label="Navigation principale">
             <a href="#accueil" onClick={() => setMenuOpen(false)}>{tr("Accueil")}</a><a href="#pack" onClick={() => setMenuOpen(false)}>{tr("Le pack")}</a><a href="#offre" onClick={() => setMenuOpen(false)}>{tr("Offre spéciale")}</a><a href="#resultats" onClick={() => setMenuOpen(false)}>{tr("Résultats")}</a><a href="#routine" onClick={() => setMenuOpen(false)}>{tr("La routine")}</a><a className="mobile-nav-order" href="#commande" onClick={() => setMenuOpen(false)}>{tr("Commander le pack")}</a>
           </nav>
-          <a className="btn btn-gold nav-cta" href="#commande">{tr("Commander le pack")} <ArrowRight size={16} aria-hidden="true" /></a>
+          <div className="language-switch nav-language" role="group" aria-label="Choose language"><button type="button" className={!isEnglish ? "active" : ""} aria-pressed={!isEnglish} onClick={() => setLanguage("fr")}><span aria-hidden="true">🇫🇷</span> FR</button><span aria-hidden="true">|</span><button type="button" className={isEnglish ? "active" : ""} aria-pressed={isEnglish} onClick={() => setLanguage("en")}><span aria-hidden="true">🇬🇧</span> EN</button></div>
           <button className="menu-toggle" type="button" aria-label={menuOpen ? "Fermer le menu" : "Ouvrir le menu"} aria-expanded={menuOpen} onClick={() => setMenuOpen((open) => !open)}>{menuOpen ? <X size={24} /> : <Menu size={24} />}</button>
         </div>
       </header>
