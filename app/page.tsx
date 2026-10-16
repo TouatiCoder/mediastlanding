@@ -310,7 +310,6 @@ export default function LandingPage1() {
           <div
             className="hero-visual hero-banner-visual"
             aria-label="Bannière Vinillia : produits AXIS-Y et deux cadeaux Vaseline"
-            style={{ backgroundImage: `url("${slides[slideIndex].src}")` }}
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
@@ -339,7 +338,7 @@ export default function LandingPage1() {
             <div className="section-heading category-heading"><span className="eyebrow">{tr("La sélection Vinillia")}</span><h2>{tr("Le pack beauté qui vous ressemble")}</h2></div>
             <div className="product-grid pack-eight-grid">
               {[
-                { name: "Produit 01", type: "Soin du visage", image: "", alt: "Produit de soin du visage", gift: false },
+                { name: "Produit 01", type: "Soin du visage", image: "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&w=650&q=85", alt: "Produit de soin du visage", gift: false },
                 { name: "Produit 02", type: "Soin hydratant", image: "https://images.unsplash.com/photo-1601049541289-9b1b7bbbfe19?auto=format&fit=crop&w=650&q=85", alt: "Produit de soin hydratant", gift: false },
                 { name: "Produit 03", type: "Soin du corps", image: "https://images.unsplash.com/photo-1556229010-6c3f2c9ca5f8?auto=format&fit=crop&w=650&q=85", alt: "Produit de soin du corps", gift: false },
                 { name: "Produit 04", type: "Soin beauté", image: "https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&w=650&q=85", alt: "Produit beauté", gift: false },
@@ -352,7 +351,7 @@ export default function LandingPage1() {
                   <div className="product-image">
                     {product.gift && <span className="gift-label">{tr("OFFERT")}</span>}
                     {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={product.image} alt={product.alt} loading="lazy" />
+                    {product.image ? <img src={product.image} alt={product.alt} loading="lazy" /> : <div className="product-image-fallback" role="img" aria-label={product.alt}><Sparkles size={32} aria-hidden="true" /></div>}
                   </div>
                   <div className="product-info">
                     <small>{tr(product.type)}</small>
