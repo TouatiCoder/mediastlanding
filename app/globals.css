@@ -2546,3 +2546,41 @@ button:disabled { cursor: wait; opacity: .7; }
   .vinillia-product-spotlight-three { width: 25%; height: 34%; right: 3%; }
   .arabic .vinillia-hero-copy { text-align: right; }
 }
+
+
+/* Final polish for the bilingual editorial campaign */
+.vinillia-editorial-hero {
+  border-bottom: 1px solid rgba(180, 103, 122, .16);
+  background:
+    radial-gradient(ellipse at 14% 16%, rgba(255,255,255,.95), transparent 42%),
+    linear-gradient(115deg, #fff5f5 0%, #f9e3e7 48%, #f4d2da 100%);
+}
+.vinillia-hero-copy {
+  position: relative;
+  z-index: 2;
+}
+.vinillia-hero-copy::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 5% -2% 5% -8%;
+  border-radius: 42% 58% 55% 45% / 36% 38% 62% 64%;
+  background: radial-gradient(ellipse at center, rgba(255,250,250,.76), rgba(255,247,248,.22) 72%, transparent);
+  pointer-events: none;
+}
+.vinillia-hero-products {
+  background:
+    radial-gradient(ellipse at 64% 68%, rgba(255,255,255,.98) 0, rgba(255,255,255,.52) 27%, transparent 58%),
+    radial-gradient(ellipse at 87% 12%, rgba(228,151,167,.32), transparent 34%),
+    linear-gradient(135deg, #f9e4e8 0%, #f2ccd5 100%);
+}
+.vinillia-hero-flower {
+  color: rgba(255,255,255,.84);
+  text-shadow: 0 8px 26px rgba(169,78,101,.17);
+}
+.vinillia-hero-price > strong {
+  letter-spacing: -.035em;
+}
+@media (max-width: 620px) {
+  .vinillia-hero-copy::before { inset: 0 -3% 0 -3%; }
+}
