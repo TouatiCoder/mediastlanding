@@ -205,21 +205,7 @@ const translations: Record<string, string> = {
   "Tous droits réservés.": "جميع الحقوق محفوظة.",
   "Le pack Vinillia": "باقة Vinillia",
 
-  "VOTRE RITUEL BEAUTÉ, EN UN SEUL PACK · 2 PRODUITS OFFERTS": "روتين جمالكِ في باقة واحدة · منتجان هدية",
-  "Accueil": "الرئيسية",
-  "Le pack": "الباقة",
-  "La routine": "روتين العناية",
-  "Avant / Après": "قبل / بعد",
-  "Commander le pack": "اطلبي الباقة",
-  "OFFRE PACK VINILLIA": "عرض باقة فينيليا",
-  "Huit essentiels.": "ثمانية مستحضرات.",
-  "Un seul rituel.": "روتين واحد متكامل.",
-  "Retrouvez 8 essentiels skincare dans un seul pack, avec 2 produits offerts.": "اكتشفي 8 مستحضرات للعناية بالبشرة في باقة واحدة، مع منتجين هدية.",
-  "Sélection beauté": "اختيارات جمالية",
-  "2 produits offerts": "منتجان هدية",
-  "Commande facile": "طلب سهل",
-  "Commander le pack": "اطلبي الباقة الآن",
-  "Paiement à la livraison · Livraison soignée & confirmation rapide": "الدفع عند الاستلام · توصيل آمن وتأكيد سريع",
+
 };
 
 export default function LandingPage() {
