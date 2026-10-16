@@ -252,17 +252,34 @@ export default function LandingPage1() {
         <section className="section products-section" id="pack">
           <div className="container">
             <div className="section-heading category-heading"><span className="eyebrow">{tr("La sélection Vinillia")}</span><h2>{tr("Le pack beauté qui vous ressemble")}</h2></div>
-            <div className="category-grid">
+            <div className="product-grid pack-eight-grid">
               {[
-                { name: "Skin Care", count: "120+ Produits", image: "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&w=520&q=85", alt: "Produits de soin de la peau" },
-                { name: "Hair Care", count: "95+ Produits", image: "https://images.unsplash.com/photo-1601049541289-9b1b7bbbfe19?auto=format&fit=crop&w=520&q=85", alt: "Produits de soin des cheveux" },
-                { name: "Body Care", count: "80+ Produits", image: "https://images.unsplash.com/photo-1556229010-6c3f2c9ca5f8?auto=format&fit=crop&w=520&q=85", alt: "Produits de soin du corps" },
-                { name: "Makeup", count: "150+ Produits", image: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=520&q=85", alt: "Produits de maquillage" },
-                { name: "Health & Wellness", count: "90+ Produits", image: "https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&w=520&q=85", alt: "Produits santé et bien-être" }
-              ].map((category) => <a className="category-card" href="#commande" key={category.name} aria-label={tr(category.name) + " — " + tr("Découvrir le pack")}>
-                <div className="category-image">{/* eslint-disable-next-line @next/next/no-img-element */}<img src={category.image} alt={category.alt} loading="lazy" /></div>
-                <div className="category-info"><h3>{tr(category.name)}</h3><p>{tr(category.count)}</p></div>
-              </a>)}
+                { name: "Produit 01", type: "Soin du visage", image: "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&w=650&q=85", alt: "Produit de soin du visage", gift: false },
+                { name: "Produit 02", type: "Soin hydratant", image: "https://images.unsplash.com/photo-1601049541289-9b1b7bbbfe19?auto=format&fit=crop&w=650&q=85", alt: "Produit de soin hydratant", gift: false },
+                { name: "Produit 03", type: "Soin du corps", image: "https://images.unsplash.com/photo-1556229010-6c3f2c9ca5f8?auto=format&fit=crop&w=650&q=85", alt: "Produit de soin du corps", gift: false },
+                { name: "Produit 04", type: "Soin beauté", image: "https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&w=650&q=85", alt: "Produit beauté", gift: false },
+                { name: "Produit 05", type: "Soin quotidien", image: "https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?auto=format&fit=crop&w=650&q=85", alt: "Produit de soin quotidien", gift: false },
+                { name: "Produit 06", type: "Soin essentiel", image: "https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?auto=format&fit=crop&w=650&q=85", alt: "Produit essentiel de soin", gift: false },
+                { name: "Produit 07", type: "Produit offert", image: "https://images.unsplash.com/photo-1571781926291-c477ebfd024b?auto=format&fit=crop&w=650&q=85", alt: "Produit cadeau beauté", gift: true },
+                { name: "Produit 08", type: "Produit offert", image: "https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?auto=format&fit=crop&w=650&q=85", alt: "Deuxième produit cadeau beauté", gift: true }
+              ].map((product) => <article className="product-card pack-product-card" key={product.name}>
+                <a className="pack-product-link" href="#commande" aria-label={tr(product.name) + " — " + tr("Commander mon pack")}>
+                  <div className="product-image">
+                    {product.gift && <span className="gift-label">{tr("OFFERT")}</span>}
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={product.image} alt={product.alt} loading="lazy" />
+                  </div>
+                  <div className="product-info">
+                    <small>{tr(product.type)}</small>
+                    <h3>{tr(product.name)}</h3>
+                    <p>{product.gift ? tr("Un cadeau inclus dans votre pack beauté.") : tr("Produit inclus dans le pack beauté.")}</p>
+                  </div>
+                </a>
+              </article>)}
+            </div>
+            <div className="pack-eight-summary">
+              <div><strong>{tr("8 produits dans votre pack")}</strong><p>{tr("6 produits sélectionnés + 2 produits offerts.")}</p></div>
+              <a href="#commande" className="btn btn-gold">{tr("Commander mon pack")} <ArrowRight size={16} aria-hidden="true" /></a>
             </div>
           </div>
         </section>
