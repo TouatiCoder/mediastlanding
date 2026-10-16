@@ -422,14 +422,13 @@ export default function LandingPage() {
       </header>
 
       <main>
-        {/* HERO SECTION — CRITICAL PRIORITY (Full-width, coherent 2-column composition) */}
+        {/* FULL-WIDTH HERO: keep editable copy and complete image in a unified composition */}
         <section
           className={`hero-section ${isArabic ? "hero-ar" : "hero-fr"}`}
           id="accueil"
           aria-label={isArabic ? "عرض باقة فينيليا للعناية بالبشرة" : "Offre pack beauté Vinillia"}
         >
           <div className="hero-container">
-            {/* Column 1: Marketing Copy */}
             <div className="hero-copy-col">
               <span className="hero-eyebrow">
                 <Gift size={16} aria-hidden="true" />
@@ -468,7 +467,6 @@ export default function LandingPage() {
                   <span className="hero-price-value">{isArabic ? "1,400" : "1 400"}</span>
                   <span className="hero-price-currency">{isArabic ? "درهم" : "DH"}</span>
                 </div>
-
                 <a href="#commande" className="btn btn-gold hero-cta-btn">
                   <span>{isArabic ? "اطلبي الباقة الآن" : "Commander le pack"}</span>
                   {isArabic ? <ArrowLeft size={18} aria-hidden="true" /> : <ArrowRight size={18} aria-hidden="true" />}
@@ -481,7 +479,6 @@ export default function LandingPage() {
               </div>
             </div>
 
-            {/* Column 2: Complete Visual Banner (Integrates model, mirror, and 8 products) */}
             <div className="hero-visual-col">
               <div className="hero-banner-frame">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -489,6 +486,8 @@ export default function LandingPage() {
                   className="hero-banner-img"
                   src={(isArabic ? bannerAr : bannerFr).src}
                   alt={tr("Bannière de la sélection Vinillia")}
+                  width={(isArabic ? bannerAr : bannerFr).width}
+                  height={(isArabic ? bannerAr : bannerFr).height}
                   fetchPriority="high"
                   loading="eager"
                 />
@@ -500,6 +499,7 @@ export default function LandingPage() {
             </div>
           </div>
         </section>
+
 
         {/* VALUE REASSURANCE STRIP */}
         <section className="reassurance-strip" aria-label="Garanties et avantages du pack">
