@@ -357,12 +357,12 @@ export default function LandingPage1() {
             <div className="section-heading category-heading"><span className="eyebrow">{tr("La sélection Vinillia")}</span><h2>{tr("Le pack beauté qui vous ressemble")}</h2></div>
             <div className="product-grid pack-eight-grid">
               {[
-                { name: "Dark Spot Correcting Glow Toner", type: "Soin du visage", image: product1, alt: "AXIS-Y Dark Spot Correcting Glow Toner", gift: false },
-                { name: "Sunday Morning Refreshing Cleansing Foam", type: "Nettoyant visage", image: product2, alt: "AXIS-Y Sunday Morning Refreshing Cleansing Foam", gift: false },
-                { name: "Complete No-Stress Physical Sunscreen", type: "Protection solaire", image: product3, alt: "AXIS-Y Complete No-Stress Physical Sunscreen", gift: false },
-                { name: "New Skin Resolution Gel Mask", type: "Masque visage", image: product4, alt: "AXIS-Y New Skin Resolution Gel Mask", gift: false },
+                { name: "Sunday Morning Refreshing Cleansing Foam", type: "Nettoyant visage", image: product1, alt: "AXIS-Y Sunday Morning Refreshing Cleansing Foam", gift: false },
+                { name: "Dark Spot Correcting Glow Toner", type: "Soin du visage", image: product2, alt: "AXIS-Y Dark Spot Correcting Glow Toner", gift: false },
+                { name: "New Skin Resolution Gel Mask", type: "Masque visage", image: product3, alt: "AXIS-Y New Skin Resolution Gel Mask", gift: false },
+                { name: "Artichoke Intensive Skin Barrier Ampoule", type: "Sérum visage", image: product4, alt: "AXIS-Y Artichoke Intensive Skin Barrier Ampoule", gift: false },
                 { name: "Dark Spot Correcting Glow Cream", type: "Crème visage", image: product5, alt: "AXIS-Y Dark Spot Correcting Glow Cream", gift: false },
-                { name: "Artichoke Intensive Skin Barrier Ampoule", type: "Sérum visage", image: product6, alt: "AXIS-Y Artichoke Intensive Skin Barrier Ampoule", gift: false },
+                { name: "Complete No-Stress Physical Sunscreen", type: "Protection solaire", image: product6, alt: "AXIS-Y Complete No-Stress Physical Sunscreen", gift: false },
                 { name: "Vaseline Gluta-Hya Serum Burst Lotion", type: "Produit offert", image: product7, alt: "Vaseline Gluta-Hya Serum Burst Lotion — cadeau offert dans le pack", gift: true },
                 { name: "Vaseline Lip Therapy Rosy Lips", type: "Produit offert", image: product8, alt: "Vaseline Lip Therapy Rosy Lips — deuxième cadeau offert dans le pack", gift: true }
               ].map((product) => <article className="product-card pack-product-card" key={product.name}>
@@ -418,12 +418,12 @@ export default function LandingPage1() {
             </div>
             <div className="steps-grid routine-products-grid">
               {[
-                { number: "01", image: product1, name: "Dark Spot Correcting Glow Toner" },
-                { number: "02", image: product2, name: "Sunday Morning Refreshing Cleansing Foam" },
-                { number: "03", image: product3, name: "Complete No-Stress Physical Sunscreen" },
-                { number: "04", image: product4, name: "New Skin Resolution Gel Mask" },
+                { number: "01", image: product1, name: "Sunday Morning Refreshing Cleansing Foam" },
+                { number: "02", image: product2, name: "Dark Spot Correcting Glow Toner" },
+                { number: "03", image: product3, name: "New Skin Resolution Gel Mask" },
+                { number: "04", image: product4, name: "Artichoke Intensive Skin Barrier Ampoule" },
                 { number: "05", image: product5, name: "Dark Spot Correcting Glow Cream" },
-                { number: "06", image: product6, name: "Artichoke Intensive Skin Barrier Ampoule" }
+                { number: "06", image: product6, name: "Complete No-Stress Physical Sunscreen" }
               ].map((step) => (
                 <article className="step routine-product-step" key={step.number}>
                   <div className="routine-product-image">
