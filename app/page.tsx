@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState, type FormEvent } from "react";
-import { ArrowRight, Check, Gift, Heart, Menu, Sparkles, X } from "lucide-react";
+import { ArrowRight, Check, Gift, Heart, Menu, Sparkles, X, ShieldCheck, Truck, RefreshCw } from "lucide-react";
 
 const PRICE = 1400;
 const slides = [
@@ -97,9 +97,9 @@ export default function LandingPage1() {
       <div className="announcement">VOTRE RITUEL BEAUTÉ, EN UN SEUL PACK · 2 PRODUITS OFFERTS</div>
       <header className="site-header">
         <div className="container nav">
-          <a href="#accueil" className="brand" aria-label="Vinillia, accueil" onClick={() => setMenuOpen(false)}><span className="brand-name">Vinillia</span><span className="brand-sub">✦ BEAUTY &amp; SKINCARE ✦</span></a>
+          <a href="#accueil" className="brand" aria-label="Vinillia, accueil" onClick={() => setMenuOpen(false)}><span className="brand-mark"><Sparkles size={23} aria-hidden="true" /></span><span className="brand-copy"><span className="brand-name">Vinillia</span><span className="brand-sub">BEAUTY &amp; SKINCARE</span></span></a>
           <nav className={`nav-links ${menuOpen ? "open" : ""}`} id="navLinks" aria-label="Navigation principale">
-            <a href="#accueil" onClick={() => setMenuOpen(false)}>Accueil</a><a href="#pack" onClick={() => setMenuOpen(false)}>Le pack</a><a href="#resultats" onClick={() => setMenuOpen(false)}>Avant / Après</a><a href="#routine" onClick={() => setMenuOpen(false)}>La routine</a><a className="mobile-nav-order" href="#commande" onClick={() => setMenuOpen(false)}>Commander le pack</a>
+            <a href="#accueil" onClick={() => setMenuOpen(false)}>Accueil</a><a href="#pack" onClick={() => setMenuOpen(false)}>Le pack</a><a href="#offre" onClick={() => setMenuOpen(false)}>Offre spéciale</a><a href="#resultats" onClick={() => setMenuOpen(false)}>Résultats</a><a href="#routine" onClick={() => setMenuOpen(false)}>La routine</a><a className="mobile-nav-order" href="#commande" onClick={() => setMenuOpen(false)}>Commander le pack</a>
           </nav>
           <a className="btn btn-gold nav-cta" href="#commande">Commander le pack <ArrowRight size={16} aria-hidden="true" /></a>
           <button className="menu-toggle" type="button" aria-label={menuOpen ? "Fermer le menu" : "Ouvrir le menu"} aria-expanded={menuOpen} onClick={() => setMenuOpen((open) => !open)}>{menuOpen ? <X size={24} /> : <Menu size={24} />}</button>
@@ -128,17 +128,17 @@ export default function LandingPage1() {
           </div>
         </section>
 
-        <section className="value-strip" aria-label="Les points forts du pack"><div className="container value-row"><div className="value-item"><Sparkles className="value-icon" size={21} aria-hidden="true" /> Une sélection beauté en un pack</div><div className="value-item"><Heart className="value-icon" size={21} aria-hidden="true" /> Un cadeau beauté inclus</div><div className="value-item"><Check className="value-icon" size={21} aria-hidden="true" /> Une commande en quelques étapes</div></div></section>
+        <section className="value-strip" aria-label="Les points forts du pack"><div className="container value-row"><div className="value-item"><ShieldCheck className="value-icon" size={25} aria-hidden="true" /><span><strong>Sélection beauté</strong><small>Un pack pensé pour vous</small></span></div><div className="value-item"><Gift className="value-icon" size={25} aria-hidden="true" /><span><strong>2 produits offerts</strong><small>Un cadeau dans votre pack</small></span></div><div className="value-item"><Truck className="value-icon" size={25} aria-hidden="true" /><span><strong>Commande facile</strong><small>Coordonnées en quelques étapes</small></span></div><div className="value-item"><RefreshCw className="value-icon" size={25} aria-hidden="true" /><span><strong>Confirmation rapide</strong><small>Notre équipe vous recontacte</small></span></div></div></section>
 
         <section className="section products-section" id="pack">
           <div className="container">
-            <div className="section-heading"><span className="eyebrow">La sélection Vinillia</span><h2>Votre rituel beauté complet</h2><p>Six essentiels réunis dans une offre exclusive, avec deux produits offerts.</p></div>
+            <div className="section-heading"><span className="eyebrow">La sélection Vinillia</span><h2>Le pack beauté qui vous ressemble</h2><p>Six essentiels réunis dans une offre exclusive, avec deux produits offerts.</p></div>
             <div className="product-grid">{products.map((product) => <article className="product-card" key={product.number}><div className="product-image">{product.gift && <span className="gift-label">OFFERT</span>}{/* eslint-disable-next-line @next/next/no-img-element */}<img src={product.image} alt={product.alt} loading="lazy" /></div><div className="product-info"><small>{product.gift ? "Votre cadeau" : "Le pack"} · {product.number}</small><h3>{product.name}</h3><p>{product.description}</p></div></article>)}</div>
             <div className="bundle-summary"><div><strong>Le pack Vinillia — 6 produits</strong><p>4 produits sélectionnés + 2 produits offerts, selon la composition finale du pack.</p></div><div className="bundle-price">1 400 DH</div><a className="btn btn-gold" href="#commande">Je profite du pack <ArrowRight size={16} aria-hidden="true" /></a></div>
           </div>
         </section>
 
-        <section className="offer"><div className="container offer-grid">
+        <section className="offer" id="offre"><div className="container offer-grid">
           <div className="offer-art">{/* eslint-disable-next-line @next/next/no-img-element */}<img src="https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?auto=format&fit=crop&w=1000&q=85" alt="Ambiance beauté et skincare Vinillia" loading="lazy" /><span className="offer-art-badge">OFFRE PACK VINILLIA</span></div>
           <div className="offer-copy"><span className="eyebrow offer-eyebrow">Une offre pensée pour vous</span><h2>Six essentiels.<br />Un seul rituel.</h2><p>Retrouvez les six produits de votre sélection Vinillia dans un pack au prix unique de 1 400 DH.</p><div className="offer-points"><span>6 produits inclus</span><span>2 produits offerts</span><span>Commande facile</span><span>Routine à personnaliser</span></div><div className="offer-final"><strong>1 400 DH</strong><small>Prix du pack complet</small></div><a href="#commande" className="btn btn-gold">Commander maintenant <ArrowRight size={17} aria-hidden="true" /></a></div>
         </div></section>
