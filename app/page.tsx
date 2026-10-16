@@ -105,7 +105,8 @@ const translations: Record<string, string> = {
 Object.assign(translations, {
   "Produit 01": "المنتج 01", "Produit 02": "المنتج 02", "Produit 03": "المنتج 03", "Produit 04": "المنتج 04", "Produit 05": "المنتج 05", "Produit 06": "المنتج 06",
   "Ajoutez ici le nom et la description réelle du produit.": "أضيفي هنا الاسم والوصف الحقيقي للمنتج.",
-  "Un cadeau inclus dans votre pack beauté.": "هدية ضمن باقة الجمال الخاصة بكِ."
+  "Un cadeau inclus dans votre pack beauté.": "هدية ضمن باقة الجمال الخاصة بكِ.",
+  "La réception des commandes n\u0027est pas encore configurée.": "لم يتم إعداد نظام استقبال الطلبات بعد."
 });
 
 const slides = [
