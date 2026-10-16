@@ -4,12 +4,12 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Vinillia Beauty & Skincare — Pack Beauté",
   description:
-    "Découvrez le pack Vinillia Beauty & Skincare : 6 produits, dont 2 offerts, à 1 400 DH.",
+    "Découvrez le pack Vinillia Beauty & Skincare : 8 produits, dont 2 offerts, à 1 400 DH. Paiement à la livraison au Maroc.",
   applicationName: "Vinillia Beauty & Skincare",
   openGraph: {
     title: "Vinillia Beauty & Skincare — Pack Beauté",
     description:
-      "Six essentiels beauté réunis dans un pack exclusif à 1 400 DH, dont deux produits offerts.",
+      "Huit produits beauté réunis dans un pack exclusif à 1 400 DH, dont deux produits offerts. Paiement à la livraison au Maroc.",
     type: "website",
     locale: "fr_MA",
   },
