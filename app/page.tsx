@@ -101,6 +101,13 @@ const translations: Record<string, string> = {
   "Ex. 06 12 34 56 78": "مثال: 06 12 34 56 78",
   "Ville, quartier, rue et détails de l’adresse": "المدينة، الحي، الشارع وتفاصيل العنوان"
 };
+
+Object.assign(translations, {
+  "Produit 01": "المنتج 01", "Produit 02": "المنتج 02", "Produit 03": "المنتج 03", "Produit 04": "المنتج 04", "Produit 05": "المنتج 05", "Produit 06": "المنتج 06",
+  "Ajoutez ici le nom et la description réelle du produit.": "أضيفي هنا الاسم والوصف الحقيقي للمنتج.",
+  "Un cadeau inclus dans votre pack beauté.": "هدية ضمن باقة الجمال الخاصة بكِ."
+});
+
 const slides = [
   { src: "https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?auto=format&fit=crop&w=1800&q=90", alt: "Portrait beauté et soin de la peau" },
   { src: "https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?auto=format&fit=crop&w=1800&q=90", alt: "Collection de soins beauté" },
