@@ -370,14 +370,14 @@ export default function LandingPage1() {
               fetchPriority="high"
             />
           </div>
-        </section>
-        <section className="hero-cta-bar" aria-label="Commander le pack Vinillia">
-          <div className="container hero-cta-inner">
-            <div className="hero-cta-price">
-              <strong>1 400 DH</strong>
-              <span className="hero-cta-offer"><Gift size={15} aria-hidden="true" /> {tr("8 produits dans un pack")} · {tr("2 PRODUITS OFFERTS")}</span>
+          <div className="hero-cta-bar" aria-label="Commander le pack Vinillia">
+            <div className="container hero-cta-inner">
+              <div className="hero-cta-price">
+                <strong>1 400 DH</strong>
+                <span className="hero-cta-offer"><Gift size={15} aria-hidden="true" /> {tr("8 produits dans un pack")} · {tr("2 PRODUITS OFFERTS")}</span>
+              </div>
+              <a href="#commande" className="btn btn-gold">{tr("Je commande mon pack")} <ArrowRight size={17} aria-hidden="true" /></a>
             </div>
-            <a href="#commande" className="btn btn-gold">{tr("Je commande mon pack")} <ArrowRight size={17} aria-hidden="true" /></a>
           </div>
         </section>
 

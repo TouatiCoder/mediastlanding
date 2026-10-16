@@ -2170,3 +2170,58 @@ button:disabled { cursor: wait; opacity: .7; }
   .site-header .brand-logo { width: 132px; max-height: 54px; }
   .footer .brand-logo { width: 148px; }
 }
+
+
+/* Integrate the live HTML purchase bar into the hero campaign */
+.hero.hero-banner-only {
+  position: relative;
+  isolation: isolate;
+}
+.hero-banner-only .hero-banner-visual {
+  height: clamp(330px, 46vw, 650px);
+}
+.hero-banner-only .hero-cta-bar {
+  position: relative;
+  z-index: 3;
+  margin: -1px 0 0;
+  padding: 16px 24px 20px;
+  background: linear-gradient(180deg, rgba(255, 248, 250, .96), #fffafb);
+  border-top: 1px solid rgba(255,255,255,.85);
+  border-bottom: 1px solid #f0dce3;
+  backdrop-filter: blur(14px);
+}
+.hero-banner-only .hero-cta-inner {
+  width: min(100%, 1160px);
+  min-height: 76px;
+  padding: 14px 22px;
+  border: 1px solid rgba(234, 199, 211, .85);
+  border-radius: 18px;
+  background: rgba(255,255,255,.9);
+  box-shadow: 0 10px 30px rgba(104, 57, 72, .09);
+}
+.hero-banner-only .hero-cta-price strong { color: #6d1934; }
+.hero-banner-only .hero-cta-offer {
+  color: #842d49;
+  background: #fff0f4;
+  border-color: #f0d2dc;
+}
+.hero-banner-only .hero-cta-inner .btn {
+  color: #541629;
+  background: linear-gradient(135deg, #f9df9c, #eab64e);
+  border: 1px solid #e3b24c;
+  box-shadow: 0 7px 18px rgba(151, 96, 20, .16);
+}
+@media (max-width: 760px) {
+  .hero-banner-only .hero-banner-visual {
+    height: auto;
+    aspect-ratio: 1.15 / 1;
+  }
+  .hero-banner-only .hero-cta-bar {
+    padding: 10px 12px 14px;
+  }
+  .hero-banner-only .hero-cta-inner {
+    gap: 12px;
+    padding: 15px 13px;
+    border-radius: 15px;
+  }
+}
