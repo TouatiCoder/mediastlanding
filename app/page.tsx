@@ -244,15 +244,6 @@ const slides = [
   { src: "https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?auto=format&fit=crop&w=1800&q=90", alt: "Portrait beauté et soin de la peau" },
 ];
 
-const products = [
-  { number: "01", name: "Produit 01", description: "Ajoutez ici le nom et la description réelle du produit.", image: "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&w=650&q=80", alt: "Visuel provisoire du produit 1" },
-  { number: "02", name: "Produit 02", description: "Ajoutez ici le nom et la description réelle du produit.", image: "https://images.unsplash.com/photo-1601049541289-9b1b7bbbfe19?auto=format&fit=crop&w=650&q=80", alt: "Visuel provisoire du produit 2" },
-  { number: "03", name: "Produit 03", description: "Ajoutez ici le nom et la description réelle du produit.", image: "https://images.unsplash.com/photo-1556229010-6c3f2c9ca5f8?auto=format&fit=crop&w=650&q=80", alt: "Visuel provisoire du produit 3" },
-  { number: "04", name: "Produit 04", description: "Un cadeau inclus dans votre pack beauté.", image: "https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&w=650&q=80", alt: "Visuel provisoire du produit offert 4", gift: true },
-  { number: "05", name: "Produit 05", description: "Un cadeau inclus dans votre pack beauté.", image: "https://images.unsplash.com/photo-1571781926291-c477ebfd024b?auto=format&fit=crop&w=650&q=80", alt: "Visuel provisoire du produit offert 5", gift: true },
-  { number: "06", name: "Produit 06", description: "Ajoutez ici le nom et la description réelle du produit.", image: "https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?auto=format&fit=crop&w=650&q=80", alt: "Visuel provisoire du produit 6" },
-];
-
 function normalizePhone(value: string) {
   return value.replace(/[\s().-]/g, "");
 }
