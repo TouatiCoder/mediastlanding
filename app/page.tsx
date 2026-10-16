@@ -192,7 +192,7 @@ export default function LandingPage1() {
         body: JSON.stringify({ fullName: name.trim(), phone: phone.trim(), address: address.trim(), productBundleId: "vinillia-beauty-pack", quantity: 1 }),
       });
       const result = await response.json().catch(() => null);
-      if (!response.ok) throw new Error(result?.error || "La réception des commandes n'est pas encore configurée.");
+      if (!response.ok) throw new Error(tr(result?.error || "La réception des commandes n\u0027est pas encore configurée."));
       setFormState("success");
       setFormMessage(tr("Merci ! Votre demande a été transmise. Notre équipe vous contactera pour confirmer les détails."));
       setName("");
