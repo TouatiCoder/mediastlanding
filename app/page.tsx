@@ -35,6 +35,17 @@ const translations: Record<string, string> = {
   "Offre spéciale": "عرض خاص",
   "Résultats": "النتائج",
   "La routine": "الروتين",
+  "La routine Vinillia": "روتين Vinillia",
+  "Les 6 étapes de votre routine": "الخطوات الست لروتين العناية",
+  "Retrouvez les six produits de votre pack, numérotés pour les repérer facilement.": "تعرّفي على منتجات باقتكِ الستة، مرقمة لتسهيل التعرّف عليها.",
+  "Étape": "الخطوة",
+  "Dark Spot Correcting Glow Toner": "تونر تصحيح البقع والإشراقة",
+  "Sunday Morning Refreshing Cleansing Foam": "رغوة تنظيف منعشة",
+  "Complete No-Stress Physical Sunscreen": "واقي الشمس",
+  "New Skin Resolution Gel Mask": "قناع جل للبشرة",
+  "Dark Spot Correcting Glow Cream": "كريم الإشراقة وتصحيح البقع",
+  "Artichoke Intensive Skin Barrier Ampoule": "أمبول العناية بحاجز البشرة",
+
   "Commander le pack": "اطلبي الباقة",
   "Votre beauté, notre signature": "جمالكِ هو بصمتنا",
   "Le rituel qui révèle": "روتين يكشف عن",
@@ -398,7 +409,37 @@ export default function LandingPage1() {
           </div>
         </section>
 
-        <section className="section" id="routine"><div className="container"><div className="section-heading"><span className="eyebrow">{tr("Simple &amp; agréable")}</span><h2>{tr("Votre routine en 3 étapes")}</h2><p>{tr("Découvrez les étapes d’utilisation en suivant les instructions propres à chaque produit.")}</p></div><div className="steps-grid"><article className="step"><div className="step-number">01</div><h3>{tr("Produit 01 — Première étape")}</h3><p>{tr("Utilisez le produit 01 selon les indications figurant sur son emballage.")}</p></article><article className="step"><div className="step-number">02</div><h3>{tr("Produit 02 — Deuxième étape")}</h3><p>{tr("Poursuivez avec le produit 02 en respectant les conseils d’utilisation.")}</p></article><article className="step"><div className="step-number">03</div><h3>{tr("Produit 03 — Troisième étape")}</h3><p>{tr("Terminez avec le produit 03 si l’ordre indiqué sur les emballages le recommande.")}</p></article></div></div></section>
+        <section className="section routine-section" id="routine">
+          <div className="container">
+            <div className="section-heading">
+              <span className="eyebrow">{tr("La routine Vinillia")}</span>
+              <h2>{tr("Les 6 étapes de votre routine")}</h2>
+              <p>{tr("Retrouvez les six produits de votre pack, numérotés pour les repérer facilement.")}</p>
+            </div>
+            <div className="steps-grid routine-products-grid">
+              {[
+                { number: "01", image: product1, name: "Dark Spot Correcting Glow Toner" },
+                { number: "02", image: product2, name: "Sunday Morning Refreshing Cleansing Foam" },
+                { number: "03", image: product3, name: "Complete No-Stress Physical Sunscreen" },
+                { number: "04", image: product4, name: "New Skin Resolution Gel Mask" },
+                { number: "05", image: product5, name: "Dark Spot Correcting Glow Cream" },
+                { number: "06", image: product6, name: "Artichoke Intensive Skin Barrier Ampoule" }
+              ].map((step) => (
+                <article className="step routine-product-step" key={step.number}>
+                  <div className="routine-product-image">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={step.image.src} alt={tr(step.name)} loading="lazy" />
+                    <span className="step-number">{step.number}</span>
+                  </div>
+                  <div className="routine-product-info">
+                    <span className="routine-step-label">{tr("Étape")} {step.number}</span>
+                    <h3>{tr(step.name)}</h3>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
 
         <section className="section order-section" id="commande"><div className="container order-grid">
           <div className="order-intro"><span className="eyebrow">{tr("Votre pack vous attend")}</span><h2>{tr("Prête à découvrir Vinillia ?")}</h2><p>{tr("Remplissez le formulaire avec vos coordonnées. Votre commande sera prête à être confirmée par l’équipe Vinillia.")}</p><div className="order-trust"><div><b><Check size={16} /></b><span>{tr("Un formulaire simple et rapide")}</span></div><div><b><Heart size={16} /></b><span>{tr("8 produits, dont 2 offerts")}</span></div><div><b><ArrowRight size={16} /></b><span>{tr("Pack au prix de 1 400 DH")}</span></div></div></div>
