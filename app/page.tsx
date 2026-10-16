@@ -98,7 +98,7 @@ export default function LandingPage1() {
       <header className="site-header">
         <div className="container nav">
           <a href="#accueil" className="brand" aria-label="Vinillia, accueil" onClick={() => setMenuOpen(false)}><span className="brand-name">Vinillia</span><span className="brand-sub">✦ BEAUTY &amp; SKINCARE ✦</span></a>
-          <nav className={\`nav-links \${menuOpen ? "open" : ""}\`} id="navLinks" aria-label="Navigation principale">
+          <nav className={`nav-links ${menuOpen ? "open" : ""}`} id="navLinks" aria-label="Navigation principale">
             <a href="#accueil" onClick={() => setMenuOpen(false)}>Accueil</a><a href="#pack" onClick={() => setMenuOpen(false)}>Le pack</a><a href="#resultats" onClick={() => setMenuOpen(false)}>Avant / Après</a><a href="#routine" onClick={() => setMenuOpen(false)}>La routine</a><a className="mobile-nav-order" href="#commande" onClick={() => setMenuOpen(false)}>Commander le pack</a>
           </nav>
           <a className="btn btn-gold nav-cta" href="#commande">Commander le pack <ArrowRight size={16} aria-hidden="true" /></a>
@@ -122,7 +122,7 @@ export default function LandingPage1() {
               <img key={slides[slideIndex].src} id="heroImage" src={slides[slideIndex].src} alt={slides[slideIndex].alt} fetchPriority="high" />
               <div className="hero-stamp">LE PACK<br /><strong>VINILLIA</strong><br />BEAUTY RITUAL</div>
               <div className="slider-controls" aria-label="Choisir le visuel du hero">
-                {slides.map((slide, index) => <button key={slide.src} className={\`slider-dot \${slideIndex === index ? "active" : ""}\`} type="button" aria-label={\`Visuel \${index + 1}\`} aria-pressed={slideIndex === index} onClick={() => setSlideIndex(index)} />)}
+                {slides.map((slide, index) => <button key={slide.src} className={`slider-dot ${slideIndex === index ? "active" : ""}`} type="button" aria-label={`Visuel ${index + 1}`} aria-pressed={slideIndex === index} onClick={() => setSlideIndex(index)} />)}
               </div>
             </div>
           </div>
@@ -157,12 +157,12 @@ export default function LandingPage1() {
           <form className="order-card" onSubmit={handleSubmit} noValidate>
             <h3>Commander mon pack</h3><p className="form-sub">Renseignez vos informations pour préparer votre commande.</p>
             <div className="order-summary"><div><strong>Pack Vinillia</strong><small>6 produits · 2 offerts · Quantité : 1</small></div><strong>{PRICE.toLocaleString("fr-FR")} DH</strong></div>
-            <div className={\`field \${errors.name ? "invalid" : ""}\`}><label htmlFor="fullName">Nom complet *</label><input id="fullName" name="fullName" autoComplete="name" placeholder="Ex. Salma El Amrani" value={name} onChange={(event) => setName(event.target.value)} aria-invalid={Boolean(errors.name)} aria-describedby={errors.name ? "name-error" : undefined} required /><small className="error" id="name-error">{errors.name}</small></div>
-            <div className={\`field \${errors.phone ? "invalid" : ""}\`}><label htmlFor="phone">Numéro de téléphone *</label><input id="phone" name="phone" type="tel" autoComplete="tel" inputMode="tel" placeholder="Ex. 06 12 34 56 78" value={phone} onChange={(event) => setPhone(event.target.value)} aria-invalid={Boolean(errors.phone)} aria-describedby={errors.phone ? "phone-error" : undefined} required /><small className="error" id="phone-error">{errors.phone}</small></div>
-            <div className={\`field \${errors.address ? "invalid" : ""}\`}><label htmlFor="address">Adresse de livraison *</label><textarea id="address" name="address" autoComplete="street-address" placeholder="Ville, quartier, rue et détails de l’adresse" value={address} onChange={(event) => setAddress(event.target.value)} aria-invalid={Boolean(errors.address)} aria-describedby={errors.address ? "address-error" : undefined} required /><small className="error" id="address-error">{errors.address}</small></div>
+            <div className={`field ${errors.name ? "invalid" : ""}`}><label htmlFor="fullName">Nom complet *</label><input id="fullName" name="fullName" autoComplete="name" placeholder="Ex. Salma El Amrani" value={name} onChange={(event) => setName(event.target.value)} aria-invalid={Boolean(errors.name)} aria-describedby={errors.name ? "name-error" : undefined} required /><small className="error" id="name-error">{errors.name}</small></div>
+            <div className={`field ${errors.phone ? "invalid" : ""}`}><label htmlFor="phone">Numéro de téléphone *</label><input id="phone" name="phone" type="tel" autoComplete="tel" inputMode="tel" placeholder="Ex. 06 12 34 56 78" value={phone} onChange={(event) => setPhone(event.target.value)} aria-invalid={Boolean(errors.phone)} aria-describedby={errors.phone ? "phone-error" : undefined} required /><small className="error" id="phone-error">{errors.phone}</small></div>
+            <div className={`field ${errors.address ? "invalid" : ""}`}><label htmlFor="address">Adresse de livraison *</label><textarea id="address" name="address" autoComplete="street-address" placeholder="Ville, quartier, rue et détails de l’adresse" value={address} onChange={(event) => setAddress(event.target.value)} aria-invalid={Boolean(errors.address)} aria-describedby={errors.address ? "address-error" : undefined} required /><small className="error" id="address-error">{errors.address}</small></div>
             <p className="form-privacy">Vos informations sont destinées au traitement de votre commande. En envoyant ce formulaire, vous acceptez d’être contacté pour sa confirmation.</p>
             <button className="btn btn-gold submit-btn" type="submit" disabled={formState === "loading"}>{formState === "loading" ? "PRÉPARATION…" : "CONFIRMER MA COMMANDE"} <ArrowRight size={17} aria-hidden="true" /></button>
-            {formMessage && <div className={\`form-message \${formState === "success" ? "success" : "error-msg"}\`} role="status" aria-live="polite">{formMessage}</div>}
+            {formMessage && <div className={`form-message ${formState === "success" ? "success" : "error-msg"}`} role="status" aria-live="polite">{formMessage}</div>}
           </form>
         </div></section>
       </main>
