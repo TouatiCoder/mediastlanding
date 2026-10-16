@@ -275,7 +275,9 @@ img {
    ================================================================ */
 .hero-section {
   width: 100%;
-  margin: 0;
+  max-width: none;
+  margin-inline: calc(50% - 50vw);
+  width: 100vw;
   padding: 0;
   position: relative;
   overflow: hidden;
@@ -328,6 +330,9 @@ img {
   box-shadow: var(--shadow-sm);
 }
 
+[dir="rtl"] .hero-container { direction: rtl; }
+[dir="rtl"] .hero-copy-col { grid-column: 2; text-align: right; }
+[dir="rtl"] .hero-visual-col { grid-column: 1; }
 [dir="rtl"] .hero-eyebrow { letter-spacing: 0; }
 
 .hero-title {
