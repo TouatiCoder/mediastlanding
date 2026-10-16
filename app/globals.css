@@ -1828,3 +1828,175 @@ button:disabled { cursor: wait; opacity: .7; }
 @media (prefers-reduced-motion: reduce) {
   .pack-product-card, .pack-product-card .product-image img { transition: none; }
 }
+
+
+/* Vinillia hero — full-width campaign banner + refined purchase bar */
+.hero.hero-banner-only {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background: #f8e8eb;
+  border: 0;
+  border-radius: 0;
+}
+.hero-banner-only .hero-banner-visual {
+  position: relative;
+  width: 100%;
+  height: clamp(300px, 43vw, 590px);
+  min-height: 0;
+  margin: 0;
+  overflow: hidden;
+  display: block;
+  border-radius: 0;
+  background: linear-gradient(110deg, #f8e8eb 0%, #f4dfe3 48%, #fbeef0 100%);
+  box-shadow: none;
+}
+.hero-banner-only .hero-banner-visual img {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+  object-position: center 48%;
+  padding: 0;
+  filter: none;
+  transform: scale(1.001);
+  transition: transform 700ms cubic-bezier(.2,.7,.2,1);
+}
+.hero-banner-only:hover .hero-banner-visual img { transform: scale(1.018); }
+.hero-banner-only .hero-banner-visual:after {
+  display: block;
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  height: 14%;
+  background: linear-gradient(0deg, rgba(76, 35, 48, .09), transparent);
+  pointer-events: none;
+}
+.hero-cta-bar {
+  position: relative;
+  z-index: 2;
+  padding: 18px 24px;
+  background: linear-gradient(180deg, #fff9fa 0%, #fff 100%);
+  border-bottom: 1px solid #f2e5e9;
+}
+.hero-cta-inner {
+  width: min(100%, 1240px);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 18px 24px;
+  border: 1px solid #f0dce3;
+  border-radius: 20px;
+  background: rgba(255,255,255,.96);
+  box-shadow: 0 12px 34px rgba(104, 57, 72, .075);
+}
+.hero-cta-price {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+.hero-cta-price strong {
+  color: #251820;
+  font-size: clamp(1.65rem, 2.6vw, 2.15rem);
+  font-weight: 850;
+  line-height: 1;
+  letter-spacing: -.055em;
+  white-space: nowrap;
+}
+.hero-cta-offer {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 38px;
+  padding: 8px 13px;
+  color: #a83f60;
+  background: #fff0f4;
+  border: 1px solid #f3d4df;
+  border-radius: 999px;
+  font-size: .76rem;
+  line-height: 1.3;
+  font-weight: 750;
+}
+.hero-cta-offer svg { flex: 0 0 auto; color: #c84e73; }
+.hero-cta-inner .btn {
+  min-height: 50px;
+  padding: 0 23px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 11px;
+  flex: 0 0 auto;
+  border-radius: 13px;
+  box-shadow: 0 7px 17px rgba(181, 86, 111, .17);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.hero-cta-inner .btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 11px 23px rgba(181, 86, 111, .23);
+}
+.hero-cta-inner .btn:focus-visible {
+  outline: 3px solid rgba(200, 78, 115, .35);
+  outline-offset: 3px;
+}
+.arabic .hero-cta-inner { direction: rtl; }
+.arabic .hero-cta-price { direction: rtl; }
+@media (min-width: 1600px) {
+  .hero-banner-only .hero-banner-visual { height: min(42vw, 640px); }
+}
+@media (max-width: 760px) {
+  .hero-banner-only .hero-banner-visual {
+    height: auto;
+    aspect-ratio: 1.36 / 1;
+    min-height: 0;
+  }
+  .hero-banner-only .hero-banner-visual img {
+    object-fit: cover;
+    object-position: center center;
+  }
+  .hero-cta-bar { padding: 12px 14px 16px; }
+  .hero-cta-inner {
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 13px;
+    padding: 17px;
+    border-radius: 17px;
+  }
+  .hero-cta-price {
+    justify-content: center;
+    gap: 10px;
+  }
+  .hero-cta-price strong { font-size: 1.8rem; }
+  .hero-cta-offer {
+    min-height: 34px;
+    padding: 7px 10px;
+    font-size: .7rem;
+    text-align: center;
+  }
+  .hero-cta-inner .btn {
+    width: 100%;
+    min-height: 48px;
+    border-radius: 12px;
+  }
+}
+@media (max-width: 390px) {
+  .hero-banner-only .hero-banner-visual { aspect-ratio: 1.12 / 1; }
+  .hero-cta-inner { padding: 14px 12px; }
+  .hero-cta-price { flex-direction: column; }
+  .hero-cta-offer { max-width: 100%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-banner-only .hero-banner-visual img,
+  .hero-cta-inner .btn { transition: none; }
+  .hero-banner-only:hover .hero-banner-visual img,
+  .hero-cta-inner .btn:hover { transform: none; }
+}
