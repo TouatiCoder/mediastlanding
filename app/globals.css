@@ -734,3 +734,56 @@ button:disabled { cursor: wait; opacity: .7; }
   .nav-language button { min-width: 43px; padding: 5px; }
   .nav-language button img { width: 20px; height: 15px; }
 }
+
+
+/* Eight products in the Vinillia pack: 6 included + 2 gifts */
+.pack-eight-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+}
+.pack-product-card { padding: 8px 8px 14px; }
+.pack-product-link { display: block; height: 100%; color: inherit; }
+.pack-product-link:hover { color: inherit; }
+.pack-product-card .product-image { aspect-ratio: 1 / 1; }
+.pack-product-card .product-info { padding: 12px 8px 0; }
+.pack-product-card .product-info h3 { font-size: .95rem; }
+.pack-product-card .product-info p { font-size: .72rem; min-height: 2.8em; }
+.pack-eight-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  max-width: 100%;
+  margin: 24px 0 0;
+  padding: 18px 20px;
+  border: 1px solid #f0dfe4;
+  border-radius: 14px;
+  background: linear-gradient(105deg, #fff8f8, #fcf0f3);
+}
+.pack-eight-summary strong {
+  display: block;
+  color: var(--ink);
+  font-size: 1rem;
+  font-weight: 700;
+}
+.pack-eight-summary p {
+  margin: 4px 0 0;
+  color: var(--muted);
+  font-size: .8rem;
+}
+@media (max-width: 980px) {
+  .pack-eight-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+  .pack-product-card { padding: 6px 6px 11px; }
+  .pack-product-card .product-info { padding: 10px 5px 0; }
+  .pack-product-card .product-info h3 { font-size: .85rem; }
+  .pack-product-card .product-info p { font-size: .67rem; }
+}
+@media (max-width: 700px) {
+  .pack-eight-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 11px; }
+  .pack-product-card { padding: 6px 6px 11px; }
+  .pack-product-card .product-image { aspect-ratio: 1 / 1.08; }
+  .pack-product-card .product-info h3 { font-size: .9rem; }
+  .pack-product-card .product-info p { font-size: .69rem; min-height: 0; }
+  .pack-eight-summary { align-items: stretch; flex-direction: column; padding: 16px; gap: 12px; }
+  .pack-eight-summary .btn { width: 100%; }
+}
