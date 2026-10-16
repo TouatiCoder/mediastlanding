@@ -306,24 +306,29 @@ export default function LandingPage1() {
       </header>
 
       <main>
-        <section className="hero" id="accueil">
-          <div className="container hero-grid">
-            <div className="hero-copy">
-              <span className="eyebrow">{tr("Votre beauté, notre signature")}</span>
-              <h1>{tr("Le rituel qui révèle")} <em>{tr("votre éclat.")}</em></h1>
-              <p>{tr("Découvrez l’univers Vinillia avec un pack beauté exclusif : 8 produits, dont 2 offerts, pour accompagner votre routine skincare au quotidien.")}</p>
-              <div className="hero-price"><strong>1 400 DH</strong><span className="gift-pill"><Gift size={14} aria-hidden="true" /> {tr("2 PRODUITS OFFERTS")}</span></div>
-              <div className="hero-actions"><a href="#commande" className="btn btn-gold">{tr("Je commande mon pack")} <ArrowRight size={17} aria-hidden="true" /></a><a href="#pack" className="btn btn-outline">{tr("Découvrir le pack")}</a></div>
-              <div className="hero-notes"><span>{tr("8 produits dans un pack")}</span><span>{tr("Commande simple")}</span><span>{tr("Paiement à la livraison au Maroc")}</span></div>
+        <section className="hero hero-banner-only" id="accueil" aria-label="Bannière beauté Vinillia">
+          <div
+            className="hero-visual hero-banner-visual"
+            aria-label="Bannière Vinillia : produits AXIS-Y et deux cadeaux Vaseline"
+            style={{ backgroundImage: `url("${slides[slideIndex].src}")` }}
+          >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              key={slides[slideIndex].src}
+              id="heroImage"
+              src={slides[slideIndex].src}
+              alt={slides[slideIndex].alt}
+              fetchPriority="high"
+            />
+          </div>
+        </section>
+        <section className="hero-cta-bar" aria-label="Commander le pack Vinillia">
+          <div className="container hero-cta-inner">
+            <div className="hero-cta-price">
+              <strong>1 400 DH</strong>
+              <span>{tr("8 produits dans un pack")} · {tr("2 PRODUITS OFFERTS")}</span>
             </div>
-            <div className="hero-visual" aria-label="Visuel de campagne Vinillia">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img key={slides[slideIndex].src} id="heroImage" src={slides[slideIndex].src} alt={slides[slideIndex].alt} fetchPriority="high" />
-              <div className="hero-stamp">{tr("LE PACK")}<br /><strong>VINILLIA</strong><br />{tr("BEAUTY RITUAL")}</div>
-              <div className="slider-controls" aria-label="Choisir le visuel du hero">
-                {slides.map((slide, index) => <button key={slide.src} className={`slider-dot ${slideIndex === index ? "active" : ""}`} type="button" aria-label={`Visuel ${index + 1}`} aria-pressed={slideIndex === index} onClick={() => setSlideIndex(index)} />)}
-              </div>
-            </div>
+            <a href="#commande" className="btn btn-gold">{tr("Je commande mon pack")} <ArrowRight size={17} aria-hidden="true" /></a>
           </div>
         </section>
 
