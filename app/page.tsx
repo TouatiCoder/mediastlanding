@@ -35,6 +35,13 @@ const translations: Record<string, string> = {
   "Je commande mon pack": "أطلب الباقة",
   "Découvrir le pack": "اكتشفي الباقة",
   "6 produits dans un pack": "6 منتجات في باقة واحدة",
+  "8 produits dans un pack": "8 منتجات في باقة واحدة",
+  "8 produits dans votre pack": "8 منتجات في باقتكِ",
+  "8 produits, dont 2 offerts": "8 منتجات، منها منتجان مجانًا",
+  "8 produits · 2 offerts · Quantité : 1": "8 منتجات · منتجان مجانًا · الكمية: 1",
+  "8 produits inclus": "8 منتجات في الباقة",
+  "Le pack Vinillia — 8 produits": "باقة Vinillia — 8 منتجات",
+  "8 produits, dont 2 offerts, pour accompagner votre routine skincare au quotidien.": "8 منتجات، منها منتجان مجانًا، لترافق روتين العناية اليومي ببشرتكِ.",
   "Commande simple": "طلب سهل",
   "Paiement à la livraison si disponible": "الدفع عند الاستلام حسب التوفر",
   "LE PACK": "الباقة",
@@ -299,7 +306,7 @@ export default function LandingPage1() {
             <div className="hero-copy">
               <span className="eyebrow">{tr("Votre beauté, notre signature")}</span>
               <h1>{tr("Le rituel qui révèle")} <em>{tr("votre éclat.")}</em></h1>
-              <p>{tr("Découvrez l’univers Vinillia avec un pack beauté exclusif : 6 produits réunis pour accompagner votre routine skincare au quotidien.")}</p>
+              <p>{tr("Découvrez l’univers Vinillia avec un pack beauté exclusif : 8 produits, dont 2 offerts, pour accompagner votre routine skincare au quotidien.")}</p>
               <div className="hero-price"><strong>1 400 DH</strong><span className="gift-pill"><Gift size={14} aria-hidden="true" /> {tr("2 PRODUITS OFFERTS")}</span></div>
               <div className="hero-actions"><a href="#commande" className="btn btn-gold">{tr("Je commande mon pack")} <ArrowRight size={17} aria-hidden="true" /></a><a href="#pack" className="btn btn-outline">{tr("Découvrir le pack")}</a></div>
               <div className="hero-notes"><span>{tr("8 produits dans un pack")}</span><span>{tr("Commande simple")}</span><span>{tr("Paiement à la livraison au Maroc")}</span></div>
