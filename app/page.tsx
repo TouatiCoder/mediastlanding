@@ -119,6 +119,11 @@ const translations: Record<string, string> = {
 
 Object.assign(translations, {
   "Produit 01": "المنتج 01", "Produit 02": "المنتج 02", "Produit 03": "المنتج 03", "Produit 04": "المنتج 04", "Produit 05": "المنتج 05", "Produit 06": "المنتج 06",
+  "Produit 07": "المنتج 07", "Produit 08": "المنتج 08",
+  "Soin du visage": "العناية بالوجه", "Soin hydratant": "العناية بالترطيب", "Soin du corps": "العناية بالجسم", "Soin beauté": "العناية بالجمال", "Soin quotidien": "العناية اليومية", "Soin essentiel": "العناية الأساسية", "Produit offert": "منتج مجاني",
+  "Produit inclus dans le pack beauté.": "منتج ضمن باقة الجمال.",
+  "8 produits dans votre pack": "8 منتجات في باقتكِ",
+  "6 produits sélectionnés + 2 produits offerts.": "6 منتجات مختارة + منتجان مجانًا.",
   "Ajoutez ici le nom et la description réelle du produit.": "أضيفي هنا الاسم والوصف الحقيقي للمنتج.",
   "Un cadeau inclus dans votre pack beauté.": "هدية ضمن باقة الجمال الخاصة بكِ.",
   "La réception des commandes n\u0027est pas encore configurée.": "لم يتم إعداد نظام استقبال الطلبات بعد."
