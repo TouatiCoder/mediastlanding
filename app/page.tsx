@@ -6,8 +6,6 @@ import { ArrowRight, Check, Gift, Heart, Menu, Sparkles, X, ShieldCheck, Truck, 
 const PRICE = 1400;
 const slides = [
   { src: "https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?auto=format&fit=crop&w=1800&q=90", alt: "Portrait beauté et soin de la peau" },
-  { src: "https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?auto=format&fit=crop&w=1800&q=90", alt: "Collection de soins beauté" },
-  { src: "https://images.unsplash.com/photo-1601049541289-9b1b7bbbfe19?auto=format&fit=crop&w=1800&q=90", alt: "Ambiance premium skincare" },
 ];
 
 const products = [
