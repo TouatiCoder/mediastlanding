@@ -2160,3 +2160,13 @@ button:disabled { cursor: wait; opacity: .7; }
 @media (prefers-reduced-motion: reduce) {
   .routine-product-step, .routine-product-image img { transition: none; }
 }
+
+
+/* Official Vinillia SVG wordmark */
+.brand { gap: 0; }
+.brand-logo { display: block; width: 154px; height: auto; max-height: 64px; object-fit: contain; }
+.footer .brand-logo { width: 166px; }
+@media (max-width: 640px) {
+  .site-header .brand-logo { width: 132px; max-height: 54px; }
+  .footer .brand-logo { width: 148px; }
+}
