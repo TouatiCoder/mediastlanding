@@ -2,6 +2,8 @@
 
 import { useEffect, useState, type FormEvent } from "react";
 import { ArrowRight, Check, Gift, Heart, Menu, Sparkles, X, ShieldCheck, Truck, RefreshCw } from "lucide-react";
+import franceFlag from "./france.png";
+import arabicFlag from "./flag.png";
 
 const PRICE = 1400;
 
@@ -249,9 +251,9 @@ function normalizePhone(value: string) {
 }
 
 export default function LandingPage1() {
-  const [language, setLanguage] = useState<"fr" | "en">("fr");
-  const isEnglish = language === "en";
-  const tr = (value: string) => (isEnglish ? englishTranslations[value] ?? value : value);
+  const [language, setLanguage] = useState<"fr" | "ar">("fr");
+  const isArabic = language === "ar";
+  const tr = (value: string) => (isArabic ? translations[value] ?? value : value);
   const [menuOpen, setMenuOpen] = useState(false);
   const [slideIndex, setSlideIndex] = useState(0);
   const [comparisonPosition, setComparisonPosition] = useState(50);
@@ -265,8 +267,8 @@ export default function LandingPage1() {
 
   useEffect(() => {
     document.documentElement.lang = language;
-    document.documentElement.dir = "ltr";
-  }, [language]);
+    document.documentElement.dir = isArabic ? "rtl" : "ltr";
+  }, [language, isArabic]);
 
   useEffect(() => {
     setYear(new Date().getFullYear());
@@ -327,7 +329,7 @@ export default function LandingPage1() {
   }
 
   return (
-    <div className="page-shell" lang={language} dir="ltr">
+    <div className={`page-shell ${isArabic ? "arabic" : ""}`} lang={language} dir={isArabic ? "rtl" : "ltr"}>
       <div className="announcement">{tr("VOTRE RITUEL BEAUTÉ, EN UN SEUL PACK · 2 PRODUITS OFFERTS")}</div>
       <header className="site-header">
         <div className="container nav">
@@ -336,7 +338,7 @@ export default function LandingPage1() {
           <nav className={`nav-links ${menuOpen ? "open" : ""}`} id="navLinks" aria-label="Navigation principale">
             <a href="#accueil" onClick={() => setMenuOpen(false)}>{tr("Accueil")}</a><a href="#pack" onClick={() => setMenuOpen(false)}>{tr("Le pack")}</a><a href="#offre" onClick={() => setMenuOpen(false)}>{tr("Offre spéciale")}</a><a href="#resultats" onClick={() => setMenuOpen(false)}>{tr("Résultats")}</a><a href="#routine" onClick={() => setMenuOpen(false)}>{tr("La routine")}</a><a className="mobile-nav-order" href="#commande" onClick={() => setMenuOpen(false)}>{tr("Commander le pack")}</a>
           </nav>
-          <div className="language-switch nav-language" role="group" aria-label="Choose language"><button type="button" className={!isEnglish ? "active" : ""} aria-pressed={!isEnglish} onClick={() => setLanguage("fr")}><span aria-hidden="true">🇫🇷</span> FR</button><span aria-hidden="true">|</span><button type="button" className={isEnglish ? "active" : ""} aria-pressed={isEnglish} onClick={() => setLanguage("en")}><span aria-hidden="true">🇬🇧</span> EN</button></div>
+          <div className="language-switch nav-language" role="group" aria-label="Choisir la langue"><button type="button" className={!isArabic ? "active" : ""} aria-pressed={!isArabic} onClick={() => setLanguage("fr")}><img src={franceFlag.src} alt="" aria-hidden="true" /> <span>FR</span></button><span aria-hidden="true">|</span><button type="button" className={isArabic ? "active" : ""} aria-pressed={isArabic} onClick={() => setLanguage("ar")}><img src={arabicFlag.src} alt="" aria-hidden="true" /> <span>AR</span></button></div>
           <button className="menu-toggle" type="button" aria-label={menuOpen ? "Fermer le menu" : "Ouvrir le menu"} aria-expanded={menuOpen} onClick={() => setMenuOpen((open) => !open)}>{menuOpen ? <X size={24} /> : <Menu size={24} />}</button>
         </div>
       </header>
@@ -390,16 +392,16 @@ export default function LandingPage1() {
 
         <section className="section before-after" id="resultats">
           <div className="container"><div className="section-heading"><span className="eyebrow">{tr("L’univers Vinillia")}</span><h2>{tr("Votre peau, votre histoire")}</h2><p>{tr("Un espace dédié aux visuels avant et après authentiques que vous ajouterez à la page.")}</p></div>
-            <div className="ba-comparison" onPointerMove={(event) => { if (event.buttons === 1 || event.pointerType === "touch") { const rect = event.currentTarget.getBoundingClientRect(); setComparisonPosition(Math.max(0, Math.min(100, ((event.clientX - rect.left) / rect.width) * 100))); } }} onPointerDown={(event) => { event.currentTarget.setPointerCapture(event.pointerId); const rect = event.currentTarget.getBoundingClientRect(); setComparisonPosition(Math.max(0, Math.min(100, ((event.clientX - rect.left) / rect.width) * 100))); }} role="group" aria-label={isEnglish ? "Before and after comparison. Drag the slider." : "Before et après. Faites glisser le curseur."}>
+            <div className="ba-comparison" onPointerMove={(event) => { if (event.buttons === 1 || event.pointerType === "touch") { const rect = event.currentTarget.getBoundingClientRect(); setComparisonPosition(Math.max(0, Math.min(100, ((event.clientX - rect.left) / rect.width) * 100))); } }} onPointerDown={(event) => { event.currentTarget.setPointerCapture(event.pointerId); const rect = event.currentTarget.getBoundingClientRect(); setComparisonPosition(Math.max(0, Math.min(100, ((event.clientX - rect.left) / rect.width) * 100))); }} role="group" aria-label={isArabic ? "مقارنة قبل وبعد. حرّك المؤشر." : "Avant et après. Faites glisser le curseur."}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img className="ba-image ba-image-after" src="https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?auto=format&fit=crop&w=1400&q=85" alt={isEnglish ? "After image — replace with an authentic result" : "Image après — à remplacer par un résultat authentique"} loading="lazy" />
+              <img className="ba-image ba-image-after" src="https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?auto=format&fit=crop&w=1400&q=85" alt={isArabic ? "صورة بعد — استبدلها بنتيجة حقيقية" : "Image après — à remplacer par un résultat authentique"} loading="lazy" />
               <div className="ba-before-layer" style={{ clipPath: `inset(0 ${100 - comparisonPosition}% 0 0)` }}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img className="ba-image" src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?auto=format&fit=crop&w=1400&q=85" alt={isEnglish ? "Before image — replace with an authentic result" : "Image avant — à remplacer par un résultat authentique"} loading="lazy" />
+                <img className="ba-image" src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?auto=format&fit=crop&w=1400&q=85" alt={isArabic ? "صورة قبل — استبدلها بنتيجة حقيقية" : "Image avant — à remplacer par un résultat authentique"} loading="lazy" />
               </div>
               <span className="ba-label ba-label-before">{tr("AVANT")}</span><span className="ba-label ba-label-after">{tr("APRÈS")}</span>
               <div className="ba-divider" style={{ left: `${comparisonPosition}%` }} aria-hidden="true"><span><i></i><i></i></span></div>
-              <input className="ba-range" type="range" min="0" max="100" value={comparisonPosition} onChange={(event) => setComparisonPosition(Number(event.target.value))} aria-label={isEnglish ? "Compare before and after images" : "Comparer les images avant et après"} />
+              <input className="ba-range" type="range" min="0" max="100" value={comparisonPosition} onChange={(event) => setComparisonPosition(Number(event.target.value))} aria-label={isArabic ? "قارن بين صور قبل وبعد" : "Comparer les images avant et après"} />
             </div>
             <p className="ba-note">{tr("Visuels d’ambiance provisoires — remplacez-les par des photos authentiques et autorisées avant de présenter des résultats clients.")}</p>
           </div>
