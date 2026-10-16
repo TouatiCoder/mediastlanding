@@ -949,3 +949,12 @@ button:disabled { cursor: wait; opacity: .7; }
 @media (prefers-reduced-motion: reduce) {
   .hero-visual > img { animation: none; }
 }
+
+
+.gift-note {
+  display: inline-block;
+  margin-top: 7px;
+  color: #b5265c;
+  font-size: .76rem;
+  font-weight: 700;
+}
