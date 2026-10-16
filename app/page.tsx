@@ -113,7 +113,6 @@ const translations: Record<string, string> = {
   "Conditions générales": "الشروط العامة",
   "Contact à configurer": "بيانات التواصل قيد الإعداد",
   "Beauty, with a signature.": "الجمال، ببصمة خاصة.",
-  "Le pack Vinillia": "باقة Vinillia",
   "Veuillez saisir votre nom complet.": "يرجى إدخال الاسم الكامل.",
   "Saisissez un numéro marocain valide.": "يرجى إدخال رقم هاتف مغربي صحيح.",
   "Veuillez saisir votre adresse de livraison.": "يرجى إدخال عنوان التوصيل.",
