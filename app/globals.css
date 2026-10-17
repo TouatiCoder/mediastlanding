@@ -4236,3 +4236,171 @@ button,
     line-height: 1.7;
   }
 }
+
+
+/* SIX-STEP ROUTINE: one horizontal row on desktop with sequential 1→6 animation */
+.routine-stages-six {
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: clamp(10px, 1.1vw, 18px);
+  align-items: stretch;
+}
+
+.routine-stages-six .routine-stage-card {
+  min-width: 0;
+  padding: clamp(12px, 1.15vw, 20px);
+  border-radius: 16px;
+  animation: routine-card-enter .65s both;
+}
+
+.routine-stages-six .routine-stage-card:nth-child(1) { animation-delay: .05s; }
+.routine-stages-six .routine-stage-card:nth-child(2) { animation-delay: .16s; }
+.routine-stages-six .routine-stage-card:nth-child(3) { animation-delay: .27s; }
+.routine-stages-six .routine-stage-card:nth-child(4) { animation-delay: .38s; }
+.routine-stages-six .routine-stage-card:nth-child(5) { animation-delay: .49s; }
+.routine-stages-six .routine-stage-card:nth-child(6) { animation-delay: .60s; }
+
+.routine-stages-six .stage-header {
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.routine-stages-six .stage-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 38px;
+  width: 38px;
+  height: 38px;
+  border: 1px solid rgba(118, 28, 51, .15);
+  border-radius: 50%;
+  background: var(--color-ivory);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  color: var(--color-burgundy);
+  animation: routine-number-pulse 4.2s ease-in-out infinite;
+}
+
+.routine-stages-six .routine-stage-card:nth-child(1) .stage-number { animation-delay: 0s; }
+.routine-stages-six .routine-stage-card:nth-child(2) .stage-number { animation-delay: .7s; }
+.routine-stages-six .routine-stage-card:nth-child(3) .stage-number { animation-delay: 1.4s; }
+.routine-stages-six .routine-stage-card:nth-child(4) .stage-number { animation-delay: 2.1s; }
+.routine-stages-six .routine-stage-card:nth-child(5) .stage-number { animation-delay: 2.8s; }
+.routine-stages-six .routine-stage-card:nth-child(6) .stage-number { animation-delay: 3.5s; }
+
+.routine-stages-six .stage-eyebrow {
+  font-size: clamp(.62rem, .7vw, .75rem);
+  line-height: 1.4;
+  letter-spacing: 0;
+}
+
+.routine-stages-six .stage-visual {
+  aspect-ratio: 1 / 1;
+  margin-bottom: 14px;
+  padding: clamp(8px, .8vw, 14px);
+}
+
+.routine-stages-six .stage-visual img {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.routine-stages-six .stage-title {
+  font-size: clamp(.92rem, .95vw, 1.12rem);
+  line-height: 1.55;
+  margin-bottom: 8px;
+  overflow-wrap: anywhere;
+  text-wrap: balance;
+}
+
+.routine-stages-six .stage-desc {
+  font-size: clamp(.75rem, .78vw, .88rem);
+  line-height: 1.75;
+  overflow-wrap: break-word;
+}
+
+[dir="rtl"] .routine-stages-six .stage-header {
+  direction: rtl;
+}
+
+[dir="rtl"] .routine-stages-six .stage-title,
+[dir="rtl"] .routine-stages-six .stage-desc {
+  text-align: right;
+  letter-spacing: 0;
+  word-break: normal;
+}
+
+@keyframes routine-card-enter {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes routine-number-pulse {
+  0%, 13%, 100% { transform: scale(1); background: var(--color-ivory); color: var(--color-burgundy); box-shadow: 0 0 0 0 rgba(118, 28, 51, 0); }
+  5% { transform: scale(1.12); background: var(--color-burgundy); color: #fff; box-shadow: 0 0 0 5px rgba(118, 28, 51, .12); }
+}
+
+@media (min-width: 769px) and (max-width: 1199px) {
+  .routine-stages-six {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .routine-stages-six .stage-title { font-size: 1rem; }
+  .routine-stages-six .stage-desc { font-size: .84rem; }
+}
+
+@media (max-width: 768px) {
+  .routine-stages-six {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .routine-stages-six .routine-stage-card {
+    padding: 14px;
+  }
+
+  .routine-stages-six .stage-number {
+    flex-basis: 32px;
+    width: 32px;
+    height: 32px;
+    font-size: .9rem;
+  }
+
+  .routine-stages-six .stage-visual {
+    margin-bottom: 12px;
+  }
+
+  .routine-stages-six .stage-title {
+    font-size: .95rem;
+  }
+
+  .routine-stages-six .stage-desc {
+    font-size: .8rem;
+    line-height: 1.7;
+  }
+}
+
+@media (max-width: 420px) {
+  .routine-stages-six {
+    gap: 9px;
+  }
+
+  .routine-stages-six .routine-stage-card {
+    padding: 10px;
+  }
+
+  .routine-stages-six .stage-eyebrow {
+    font-size: .62rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .routine-stages-six .routine-stage-card,
+  .routine-stages-six .stage-number {
+    animation: none !important;
+    transition: none !important;
+  }
+}
