@@ -5506,3 +5506,62 @@ button,
 @media (prefers-reduced-motion: reduce) {
   .routine-stages-six .routine-stage-card::after { animation: none !important; }
 }
+
+
+/* Chart-like routine timeline: the active card, step number and connector advance together. */
+@media (max-width: 768px) {
+  .routine-stages-six .routine-stage-card {
+    animation: none !important;
+    transition: border-color .35s ease, box-shadow .35s ease, transform .35s ease;
+  }
+
+  .routine-stages-six .routine-stage-card.is-routine-active {
+    transform: translateY(-4px);
+    border-color: var(--color-gold) !important;
+    box-shadow: 0 12px 28px rgba(112, 43, 67, .17), 0 0 0 2px rgba(190, 152, 94, .22);
+  }
+
+  .routine-stages-six .stage-number {
+    position: relative;
+    z-index: 3;
+    transition: background .3s ease, color .3s ease, box-shadow .3s ease, transform .3s ease;
+  }
+
+  .routine-stages-six .stage-number.is-routine-active {
+    color: #fff !important;
+    background: var(--color-burgundy) !important;
+    box-shadow: 0 0 0 4px rgba(190, 152, 94, .22), 0 0 18px rgba(112, 43, 67, .25);
+    transform: scale(1.12);
+  }
+
+  .routine-stages-six .routine-stage-card:not(:last-child)::after {
+    top: 27px;
+    inset-inline-end: -12px;
+    width: 12px;
+    height: 3px;
+    opacity: .22;
+    background: var(--color-gold);
+    animation: none;
+  }
+
+  .routine-stages-six .routine-stage-card.is-routine-active:not(:last-child)::after {
+    opacity: 1;
+    background: linear-gradient(90deg, var(--color-burgundy), var(--color-gold));
+    box-shadow: 0 0 8px rgba(190, 152, 94, .75);
+    animation: routine-chart-line 1s ease-in-out infinite;
+  }
+}
+
+@keyframes routine-chart-line {
+  0%, 100% { opacity: .55; filter: brightness(1); }
+  50% { opacity: 1; filter: brightness(1.35); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .routine-stages-six .routine-stage-card,
+  .routine-stages-six .stage-number,
+  .routine-stages-six .routine-stage-card::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
