@@ -1105,7 +1105,7 @@ export default function LandingPage() {
 
       {/* Floating WhatsApp customer support button */}
       <a
-        className="whatsapp-float"
+        className={`whatsapp-float ${isArabic ? "whatsapp-float-rtl" : "whatsapp-float-ltr"}`}
         href={`https://wa.me/212612345678?text=${encodeURIComponent(isArabic ? "السلام عليكم، بغيت نطلب باقة Vinillia بثمن 1400 درهم. عافاكم عطوني معلومات أكثر." : "Bonjour, je souhaite commander le pack Vinillia à 1 400 DH. Pouvez-vous me donner plus d’informations ?")}`}
         target="_blank"
         rel="noopener noreferrer"
