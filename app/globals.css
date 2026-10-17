@@ -6925,3 +6925,34 @@ button,
     right: auto;
   }
 }
+
+
+/* Arabic keeps the current left-side placement; French moves to the opposite side. */
+.whatsapp-float.whatsapp-float-rtl {
+  left: max(22px, env(safe-area-inset-left));
+  right: auto;
+}
+.whatsapp-float.whatsapp-float-ltr {
+  right: max(22px, env(safe-area-inset-right));
+  left: auto;
+}
+@media (max-width: 768px) {
+  .whatsapp-float.whatsapp-float-rtl {
+    left: 14px;
+    right: auto;
+  }
+  .whatsapp-float.whatsapp-float-ltr {
+    right: 14px;
+    left: auto;
+  }
+}
+@media (max-width: 380px) {
+  .whatsapp-float.whatsapp-float-rtl {
+    left: 10px;
+    right: auto;
+  }
+  .whatsapp-float.whatsapp-float-ltr {
+    right: 10px;
+    left: auto;
+  }
+}
