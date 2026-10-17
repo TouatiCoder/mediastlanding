@@ -5651,3 +5651,270 @@ button,
     background: linear-gradient(90deg, var(--color-burgundy), var(--color-gold));
   }
 }
+
+
+/* Premium, clean routine section: balanced cards and a restrained snake journey. */
+.routine-section {
+  padding-block: clamp(48px, 5.5vw, 76px);
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(248, 232, 234, .55), transparent 58%),
+    var(--color-ivory);
+}
+
+.routine-section .section-header {
+  max-width: 720px;
+  margin: 0 auto clamp(28px, 3.5vw, 42px);
+  padding-inline: 12px;
+}
+
+.routine-section .section-eyebrow {
+  margin-bottom: 10px;
+  color: var(--color-gold-hover);
+  letter-spacing: .14em;
+}
+
+.routine-section .section-header > .section-title {
+  width: auto;
+  max-width: 100%;
+  white-space: normal !important;
+  text-wrap: balance;
+  overflow-wrap: normal;
+  font-size: clamp(1.65rem, 3vw, 2.5rem);
+  line-height: 1.25;
+  letter-spacing: -.025em;
+  margin-bottom: 12px;
+}
+
+.routine-section .section-subtitle {
+  max-width: 590px;
+  font-size: clamp(.92rem, 1.2vw, 1rem);
+  line-height: 1.75;
+  color: #75696D;
+}
+
+.routine-stages-six {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 34px 30px;
+  align-items: stretch;
+  overflow: visible;
+  position: relative;
+}
+
+.routine-stages-six .routine-stage-card {
+  min-width: 0;
+  height: 100%;
+  padding: clamp(16px, 1.8vw, 24px);
+  border: 1px solid rgba(234, 217, 217, .9);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, .96);
+  box-shadow: 0 5px 18px rgba(112, 43, 67, .045);
+  overflow: visible;
+  animation: none;
+  transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+}
+
+.routine-stages-six .routine-stage-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(190, 152, 94, .65);
+  box-shadow: 0 12px 26px rgba(112, 43, 67, .085);
+}
+
+.routine-stages-six .stage-header {
+  min-height: 34px;
+  margin-bottom: 14px;
+  gap: 10px;
+}
+
+.routine-stages-six .stage-number {
+  display: inline-grid;
+  place-items: center;
+  min-width: 38px;
+  min-height: 38px;
+  padding: 4px;
+  border-radius: 50%;
+  background: var(--color-gold-light);
+  color: var(--color-burgundy);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 800;
+  line-height: 1;
+  transition: background .25s ease, color .25s ease, box-shadow .25s ease;
+}
+
+.routine-stages-six .stage-eyebrow {
+  font-size: .7rem;
+  letter-spacing: .08em;
+  color: var(--color-rose);
+}
+
+.routine-stages-six .stage-visual {
+  aspect-ratio: 1.15 / 1;
+  margin-bottom: 16px;
+  border-radius: 12px;
+  background: linear-gradient(145deg, #FFF9F6, #F8E8EA);
+  overflow: hidden;
+}
+
+.routine-stages-six .stage-visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 10px;
+  transition: transform .35s ease;
+}
+
+.routine-stages-six .routine-stage-card:hover .stage-visual img {
+  transform: scale(1.035);
+}
+
+.routine-stages-six .stage-title {
+  margin: 0 0 8px;
+  color: var(--color-burgundy);
+  font-size: clamp(.98rem, 1.15vw, 1.12rem);
+  line-height: 1.4;
+  text-wrap: balance;
+}
+
+.routine-stages-six .stage-desc {
+  margin: 0;
+  color: #75696D;
+  font-size: .86rem;
+  line-height: 1.7;
+}
+
+/* Snake path across the first row, down, then back across the second row. */
+@media (min-width: 769px) {
+  .routine-stages-six .routine-stage-card:not(:nth-child(3n))::after {
+    top: 38px;
+    inset-inline-end: -31px;
+    width: 30px;
+    height: 3px;
+    border-radius: 99px;
+    opacity: .9;
+    background: linear-gradient(90deg, var(--color-gold), rgba(190, 152, 94, .42));
+    animation: none;
+  }
+
+  .routine-stages-six .routine-stage-card:nth-child(3)::before {
+    content: "";
+    position: absolute;
+    z-index: 4;
+    top: 38px;
+    inset-inline-end: -2px;
+    width: 3px;
+    height: calc(100% + 34px);
+    border-radius: 99px;
+    background: linear-gradient(180deg, var(--color-gold), rgba(190, 152, 94, .42));
+    pointer-events: none;
+  }
+
+  .routine-stages-six .routine-stage-card:nth-child(3)::after {
+    display: none;
+  }
+
+  .routine-stages-six .routine-stage-card.is-routine-active {
+    border-color: rgba(190, 152, 94, .8);
+    box-shadow: 0 8px 24px rgba(112, 43, 67, .09);
+  }
+
+  .routine-stages-six .routine-stage-card.is-routine-active .stage-number {
+    color: #fff;
+    background: var(--color-burgundy);
+    box-shadow: 0 0 0 4px rgba(190, 152, 94, .16);
+  }
+}
+
+@media (max-width: 768px) {
+  .routine-section {
+    padding-block: 42px;
+  }
+
+  .routine-section .section-header {
+    margin-bottom: 24px;
+  }
+
+  .routine-section .section-header > .section-title {
+    font-size: clamp(1.35rem, 5.5vw, 1.8rem);
+    letter-spacing: -.02em;
+  }
+
+  .routine-section .section-subtitle {
+    font-size: .9rem;
+    line-height: 1.75;
+  }
+
+  .routine-stages-six {
+    grid-template-columns: none !important;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(0, 78%);
+    gap: 14px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 8px 3px 18px;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: 3px;
+    overscroll-behavior-inline: contain;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-gold) var(--color-gold-light);
+  }
+
+  .routine-stages-six .routine-stage-card {
+    scroll-snap-align: start;
+    padding: 18px;
+    border-radius: 16px;
+  }
+
+  .routine-stages-six .stage-visual {
+    aspect-ratio: 1.25 / 1;
+  }
+
+  .routine-stages-six .stage-title {
+    font-size: 1rem;
+  }
+
+  .routine-stages-six .stage-desc {
+    font-size: .85rem;
+  }
+
+  .routine-stages-six .routine-stage-card:not(:last-child)::after {
+    top: 36px;
+    inset-inline-end: -14px;
+    width: 14px;
+    height: 3px;
+    border-radius: 99px;
+    opacity: .7;
+    background: linear-gradient(90deg, var(--color-burgundy), var(--color-gold));
+    animation: none;
+  }
+
+  .routine-stages-six .routine-stage-card.is-routine-active {
+    transform: translateY(-3px);
+    border-color: var(--color-gold);
+    box-shadow: 0 8px 22px rgba(112, 43, 67, .11);
+  }
+
+  .routine-stages-six .stage-number.is-routine-active {
+    color: #fff !important;
+    background: var(--color-burgundy) !important;
+    box-shadow: 0 0 0 4px rgba(190, 152, 94, .18);
+  }
+}
+
+@media (max-width: 420px) {
+  .routine-stages-six {
+    grid-auto-columns: 84%;
+    gap: 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .routine-stages-six .routine-stage-card,
+  .routine-stages-six .stage-visual img,
+  .routine-stages-six .routine-stage-card::before,
+  .routine-stages-six .routine-stage-card::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
