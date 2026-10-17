@@ -257,22 +257,34 @@ export default function LandingPage() {
     let index = 0;
 
     const cards = () => Array.from(track.querySelectorAll<HTMLElement>(".routine-stage-card"));
+    const syncActiveStep = (items: HTMLElement[], activeIndex: number) => {
+      items.forEach((card, i) => {
+        card.classList.toggle("is-routine-active", i === activeIndex);
+        card.querySelector(".stage-number")?.classList.toggle("is-routine-active", i === activeIndex);
+      });
+    };
     const stop = () => {
       if (timer) clearInterval(timer);
       timer = undefined;
     };
+    const moveTo = (nextIndex: number, smooth = true) => {
+      const items = cards();
+      if (!items.length) return;
+      index = (nextIndex + items.length) % items.length;
+      syncActiveStep(items, index);
+      const trackLeft = track.getBoundingClientRect().left;
+      const cardLeft = items[index].getBoundingClientRect().left;
+      const targetLeft = Math.max(0, track.scrollLeft + cardLeft - trackLeft);
+      track.scrollTo({ left: targetLeft, behavior: smooth ? "smooth" : "auto" });
+    };
     const start = () => {
       stop();
       if (!mobileQuery.matches || paused) return;
+      const items = cards();
+      if (items.length) syncActiveStep(items, index);
       timer = setInterval(() => {
-        const items = cards();
-        if (items.length < 2) return;
-        index = (index + 1) % items.length;
-        if (index === 0) {
-          track.scrollTo({ left: 0, behavior: "smooth" });
-        } else {
-          track.scrollTo({ left: items[index].offsetLeft - items[0].offsetLeft, behavior: "smooth" });
-        }
+        if (cards().length < 2) return;
+        moveTo(index + 1);
       }, 2800);
     };
     const pauseBriefly = () => {
@@ -282,9 +294,13 @@ export default function LandingPage() {
       resumeTimer = setTimeout(() => {
         paused = false;
         const items = cards();
-        const nearest = items.reduce((best, card, i) =>
-          Math.abs(card.offsetLeft - track.scrollLeft) < Math.abs(items[best].offsetLeft - track.scrollLeft) ? i : best, 0);
-        index = nearest;
+        if (items.length) {
+          const trackLeft = track.getBoundingClientRect().left;
+          index = items.reduce((best, card, i) =>
+            Math.abs(card.getBoundingClientRect().left - trackLeft) <
+            Math.abs(items[best].getBoundingClientRect().left - trackLeft) ? i : best, 0);
+          syncActiveStep(items, index);
+        }
         start();
       }, 5000);
     };
