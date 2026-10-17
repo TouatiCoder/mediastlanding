@@ -928,10 +928,7 @@ export default function LandingPage() {
                   </div>
                 </div>
               </div>
-            </div>
 
-            {/* Right form card column */}
-            <div className="order-form-card">
               <div className="order-pack-visual" aria-label={isArabic ? "صورة توضيحية لمحتويات باقة فينيليا" : "Aperçu visuel du pack Vinillia"}>
                 <img
                   src={offerBanner.src}
@@ -942,6 +939,10 @@ export default function LandingPage() {
                   {isArabic ? "شوفي شنو داخل الباقة قبل تأكيد الطلب" : "Visualisez le contenu de votre pack avant de commander"}
                 </span>
               </div>
+            </div>
+
+            {/* Right form card column */}
+            <div className="order-form-card">
               <div className="form-card-header">
                 <h3>{tr("Pack Vinillia Beauty & Skincare")}</h3>
                 <span className="form-pack-subtitle">{tr("8 produits (dont 2 offerts)")}</span>
