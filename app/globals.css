@@ -5375,3 +5375,28 @@ button,
 @media (prefers-reduced-motion: reduce) {
   .product-card-link .product-card { transition: none; }
 }
+
+
+/* Keep the six-step routine heading on a single line, including on phones */
+.routine-section .section-title {
+  white-space: nowrap;
+  max-width: 100%;
+  width: 100%;
+  font-size: clamp(1.05rem, 3.2vw, var(--section-title-size, 2.5rem));
+  letter-spacing: -.02em;
+  text-wrap: nowrap;
+}
+
+@media (max-width: 600px) {
+  .routine-section .section-title {
+    font-size: clamp(.95rem, 4.6vw, 1.35rem);
+    letter-spacing: -.035em;
+  }
+}
+
+@media (max-width: 360px) {
+  .routine-section .section-title {
+    font-size: .88rem;
+    letter-spacing: -.045em;
+  }
+}
