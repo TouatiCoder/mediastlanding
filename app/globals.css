@@ -5314,3 +5314,33 @@ button,
     line-height: 1.75;
   }
 }
+
+
+/* Make the beauty-pack heading a clear, accessible shortcut to the order form */
+.pack-title-order-link {
+  color: inherit;
+  text-decoration: none;
+  text-decoration-color: transparent;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 6px;
+  cursor: pointer;
+  transition: color .2s ease, text-decoration-color .2s ease;
+}
+
+.pack-title-order-link:hover {
+  color: var(--color-sage);
+  text-decoration: underline;
+  text-decoration-color: currentColor;
+}
+
+.pack-title-order-link:focus-visible {
+  outline: 2px solid var(--color-sage);
+  outline-offset: 5px;
+  border-radius: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pack-title-order-link {
+    transition: none;
+  }
+}
