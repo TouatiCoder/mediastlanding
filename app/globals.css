@@ -4404,3 +4404,66 @@ button,
     transition: none !important;
   }
 }
+
+
+/* Minimal footer: only the brand logo and the two requested lines */
+.minimal-footer .minimal-footer-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  padding-block: 28px;
+  text-align: center;
+}
+
+.minimal-footer .footer-logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+}
+
+.minimal-footer .footer-logo img {
+  display: block;
+  width: 160px;
+  max-width: 42vw;
+  height: auto;
+  object-fit: contain;
+}
+
+.minimal-footer .minimal-footer-bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+.minimal-footer .minimal-footer-bottom p {
+  margin: 0;
+  line-height: 1.6;
+}
+
+.minimal-footer .footer-signature {
+  opacity: .85;
+}
+
+@media (max-width: 600px) {
+  .minimal-footer .minimal-footer-inner {
+    gap: 14px;
+    padding-block: 22px;
+  }
+
+  .minimal-footer .minimal-footer-bottom {
+    font-size: .82rem;
+    overflow-wrap: anywhere;
+  }
+}
+
+[dir="rtl"] .minimal-footer .minimal-footer-bottom {
+  direction: ltr;
+}
