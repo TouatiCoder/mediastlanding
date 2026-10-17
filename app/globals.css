@@ -6816,3 +6816,35 @@ button,
   .order-pack-visual img { max-height: 190px; }
   .order-pack-visual-caption { font-size: .76rem; }
 }
+
+
+/* Larger pack image directly below the order reassurance benefits. */
+.order-intro-col > .order-pack-visual {
+  width: 100%;
+  margin: 24px 0 0;
+  padding: clamp(8px, 1.5vw, 16px);
+  border: 1px solid rgba(125,16,42,.12);
+  border-radius: 22px;
+  background: linear-gradient(145deg, #fffaf7 0%, #fff 55%, #fdf0ed 100%);
+  box-shadow: 0 14px 36px rgba(125,16,42,.08);
+}
+.order-intro-col > .order-pack-visual img {
+  width: 100%;
+  max-height: none;
+  height: auto;
+  object-fit: contain;
+}
+.order-intro-col > .order-pack-visual .order-pack-visual-caption {
+  padding: 4px 8px 2px;
+  font-size: clamp(.8rem, 1.2vw, .95rem);
+}
+@media (max-width: 768px) {
+  .order-intro-col > .order-pack-visual {
+    margin-top: 18px;
+    padding: 8px;
+    border-radius: 16px;
+  }
+  .order-intro-col > .order-pack-visual img {
+    max-height: none;
+  }
+}
