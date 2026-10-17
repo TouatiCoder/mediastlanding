@@ -138,7 +138,7 @@ const translations: Record<string, string> = {
 
   // Routine Section (3 STAGES)
   "LA ROUTINE VINILLIA": "روتين VINILLIA",
-  "Votre rituel en 3 étapes": "روتينكِ في 3 خطوات بسيطة",
+  "Votre rituel en 3 étapes": "Votre rituel en 6 étapes",
   "Une méthode simple et intuitive pour intégrer les soins de votre pack dans votre quotidien.": "طريقة عملية وسلسة لتطبيق منتجات باقتكِ والاستفادة الكاملة منها.",
   "Étape 01": "الخطوة 01",
   "Nettoyer & Préparer": "تنظيف وتهيئة البشرة",
@@ -695,59 +695,42 @@ export default function LandingPage() {
               </p>
             </div>
 
-            <div className="routine-stages-grid">
-              {/* Stage 1 */}
+            <div className="routine-stages-grid routine-stages-six">
               <div className="routine-stage-card">
-                <div className="stage-header">
-                  <span className="stage-number">01</span>
-                  <span className="stage-eyebrow">{tr("Étape 01")}</span>
-                </div>
-                <div className="stage-visual">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={product1.src} alt="Étape 1 : Nettoyer & Préparer" loading="lazy" />
-                </div>
-                <h3 className="stage-title">{tr("Nettoyer & Préparer")}</h3>
-                <p className="stage-desc">
-                  {isArabic
-                    ? "ابدئي روتينكِ الصباحي والمسائي بتنظيف بشرتكِ برغوة التنظيف المنعشة، ثم طبقي التونر لإعادة توازن حموضة البشرة وتجهيزها لامتصاص السيروم."
-                    : "Démarrez votre routine en éliminant les impuretés avec la mousse nettoyante, puis appliquez le toner pour rééquilibrer le pH et parfaire la peau."}
-                </p>
+                <div className="stage-header"><span className="stage-number">01</span><span className="stage-eyebrow">{isArabic ? "الخطوة 1" : "Étape 1"}</span></div>
+                <div className="stage-visual"><img src={product1.src} alt={isArabic ? "الخطوة 1: تنظيف الوجه" : "Étape 1 : Nettoyer le visage"} loading="lazy" /></div>
+                <h3 className="stage-title">{isArabic ? "تنظيف الوجه" : "Nettoyer le visage"}</h3>
+                <p className="stage-desc">{isArabic ? "نظفي بشرتكِ بلطف لإزالة الشوائب وتحضيرها لباقي الروتين." : "Nettoyez délicatement votre peau pour éliminer les impuretés et la préparer aux soins."}</p>
               </div>
-
-              {/* Stage 2 */}
               <div className="routine-stage-card">
-                <div className="stage-header">
-                  <span className="stage-number">02</span>
-                  <span className="stage-eyebrow">{tr("Étape 02")}</span>
-                </div>
-                <div className="stage-visual">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={product4.src} alt="Étape 2 : Traiter & Hydrater" loading="lazy" />
-                </div>
-                <h3 className="stage-title">{tr("Traiter & Hydrater")}</h3>
-                <p className="stage-desc">
-                  {isArabic
-                    ? "طبقي قطرات من سيروم الأمبول لتقوية حاجز البشرة، واستمتعي بقناع الجل عند الحاجة، ثم ثبّتي الترطيب بالكامل بكريم الإشراقة الغني."
-                    : "Appliquez l'ampoule concentrée pour fortifier la barrière cutanée, profitez du masque gel pour apaiser, puis scellez l'hydratation avec la crème éclat."}
-                </p>
+                <div className="stage-header"><span className="stage-number">02</span><span className="stage-eyebrow">{isArabic ? "الخطوة 2" : "Étape 2"}</span></div>
+                <div className="stage-visual"><img src={product2.src} alt={isArabic ? "الخطوة 2: التونر" : "Étape 2 : Tonifier"} loading="lazy" /></div>
+                <h3 className="stage-title">{isArabic ? "توازن وإشراقة" : "Tonifier & illuminer"}</h3>
+                <p className="stage-desc">{isArabic ? "طبقي التونر للمساعدة على إنعاش البشرة وتحضيرها لامتصاص المنتجات التالية." : "Appliquez le tonique pour rafraîchir la peau et la préparer aux soins suivants."}</p>
               </div>
-
-              {/* Stage 3 */}
               <div className="routine-stage-card">
-                <div className="stage-header">
-                  <span className="stage-number">03</span>
-                  <span className="stage-eyebrow">{tr("Étape 03")}</span>
-                </div>
-                <div className="stage-visual">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={product6.src} alt="Étape 3 : Protéger & Sublimer" loading="lazy" />
-                </div>
-                <h3 className="stage-title">{tr("Protéger & Sublimer")}</h3>
-                <p className="stage-desc">
-                  {isArabic
-                    ? "احمي بشرتكِ يومياً بواقي الشمس المعدني SPF 50+ للوقاية من التصبغات، واختتمي روتينكِ بلوشن Gluta-Hya ومرطب الشفاه Rosy Lips المهدى مع الباقة."
-                    : "Protégez votre visage chaque matin avec l'écran solaire minéral SPF 50+, et sublimez vos lèvres et votre corps avec les deux soins Vaseline offerts."}
-                </p>
+                <div className="stage-header"><span className="stage-number">03</span><span className="stage-eyebrow">{isArabic ? "الخطوة 3" : "Étape 3"}</span></div>
+                <div className="stage-visual"><img src={product3.src} alt={isArabic ? "الخطوة 3: قناع الجل" : "Étape 3 : Masque gel" } loading="lazy" /></div>
+                <h3 className="stage-title">{isArabic ? "تهدئة البشرة" : "Apaiser la peau"}</h3>
+                <p className="stage-desc">{isArabic ? "استخدمي قناع الجل عند الحاجة لمنح بشرتكِ إحساساً بالراحة والانتعاش." : "Utilisez le masque gel lorsque nécessaire pour apporter confort et fraîcheur à la peau."}</p>
+              </div>
+              <div className="routine-stage-card">
+                <div className="stage-header"><span className="stage-number">04</span><span className="stage-eyebrow">{isArabic ? "الخطوة 4" : "Étape 4"}</span></div>
+                <div className="stage-visual"><img src={product4.src} alt={isArabic ? "الخطوة 4: السيروم" : "Étape 4 : Sérum" } loading="lazy" /></div>
+                <h3 className="stage-title">{isArabic ? "تقوية الحاجز" : "Renforcer la barrière"}</h3>
+                <p className="stage-desc">{isArabic ? "ضعي الأمبول للمساعدة على دعم حاجز البشرة والحفاظ على ترطيبها." : "Appliquez l’ampoule pour aider à soutenir la barrière cutanée et préserver l’hydratation."}</p>
+              </div>
+              <div className="routine-stage-card">
+                <div className="stage-header"><span className="stage-number">05</span><span className="stage-eyebrow">{isArabic ? "الخطوة 5" : "Étape 5"}</span></div>
+                <div className="stage-visual"><img src={product5.src} alt={isArabic ? "الخطوة 5: كريم الترطيب" : "Étape 5 : Crème hydratante" } loading="lazy" /></div>
+                <h3 className="stage-title">{isArabic ? "ترطيب عميق" : "Hydrater en profondeur"}</h3>
+                <p className="stage-desc">{isArabic ? "أنهي العناية بكريم الترطيب للمساعدة على إبقاء البشرة ناعمة ومريحة." : "Terminez avec la crème hydratante pour garder une peau souple et confortable."}</p>
+              </div>
+              <div className="routine-stage-card">
+                <div className="stage-header"><span className="stage-number">06</span><span className="stage-eyebrow">{isArabic ? "الخطوة 6" : "Étape 6"}</span></div>
+                <div className="stage-visual"><img src={product6.src} alt={isArabic ? "الخطوة 6: الحماية الشمسية" : "Étape 6 : Protection solaire" } loading="lazy" /></div>
+                <h3 className="stage-title">{isArabic ? "حماية ولمسة نهائية" : "Protéger & sublimer"}</h3>
+                <p className="stage-desc">{isArabic ? "في الصباح، استخدمي واقي الشمس، وأضيفي هديتي فازلين للعناية بالشفاه والجسم." : "Le matin, appliquez la protection solaire. Complétez votre rituel avec les deux cadeaux Vaseline pour les lèvres et le corps."}</p>
               </div>
             </div>
           </div>
