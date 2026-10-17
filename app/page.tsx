@@ -4,16 +4,16 @@ import { useEffect, useState, type FormEvent, type ReactNode } from "react";
 
 import franceFlag from "./france.png";
 import arabicFlag from "./flag.png";
-import bannerFr from "./banner fr.webp";
-import bannerAr from "./banner ar.webp";
-import product1 from "./imgprodu/1.webp";
-import product2 from "./imgprodu/2.webp";
-import product3 from "./imgprodu/3.webp";
-import product4 from "./imgprodu/4.webp";
-import product5 from "./imgprodu/5.webp";
-import product6 from "./imgprodu/6.webp";
-import product7 from "./imgprodu/7.webp";
-import product8 from "./imgprodu/8.webp";
+import bannerFr from "./banner fr.jpg";
+import bannerAr from "./banner ar.jpg";
+import product1 from "./imgprodu/1.jpg";
+import product2 from "./imgprodu/2.jpg";
+import product3 from "./imgprodu/3.jpg";
+import product4 from "./imgprodu/4.jpg";
+import product5 from "./imgprodu/5.jpg";
+import product6 from "./imgprodu/6.jpg";
+import product7 from "./imgprodu/7.jpg";
+import product8 from "./imgprodu/8.jpg";
 import offerBanner from "./imgprodu/image.png";
 
 type IconProps = { size?: number; className?: string; "aria-hidden"?: boolean | "true" | "false" };
