@@ -3949,3 +3949,127 @@ button,
     margin-bottom: 0;
   }
 }
+
+
+/* ARABIC DESKTOP/TABLET RESPONSIVENESS — tested layout targets: 769px–1920px.
+   Keep the Arabic hero readable on PC without overflowing its banner. */
+@media (min-width: 769px) {
+  [dir="rtl"] .page-shell,
+  .page-shell.arabic {
+    max-width: 100%;
+    overflow-x: clip;
+  }
+
+  [dir="rtl"] .hero-copy-col,
+  .page-shell.arabic .hero-copy-col {
+    width: clamp(360px, 42%, 620px) !important;
+    max-width: 46% !important;
+    padding: clamp(14px, 2vw, 30px);
+    right: clamp(18px, 4.5vw, 72px);
+    left: auto;
+    align-items: flex-end;
+    text-align: right;
+  }
+
+  [dir="rtl"] .hero-title,
+  .page-shell.arabic .hero-title {
+    font-size: clamp(1.55rem, 2.65vw, 3rem);
+    line-height: 1.5;
+    max-width: 100%;
+    overflow-wrap: anywhere;
+    word-break: normal;
+  }
+
+  [dir="rtl"] .hero-eyebrow,
+  .page-shell.arabic .hero-eyebrow {
+    max-width: 100%;
+    font-size: clamp(.68rem, .9vw, .9rem);
+    line-height: 1.5;
+    letter-spacing: 0;
+  }
+
+  [dir="rtl"] .hero-description,
+  .page-shell.arabic .hero-description {
+    max-width: 100%;
+    font-size: clamp(.8rem, 1.1vw, 1.05rem);
+    line-height: 1.8;
+    overflow-wrap: anywhere;
+  }
+
+  [dir="rtl"] .hero-badges,
+  [dir="rtl"] .hero-action-row,
+  .page-shell.arabic .hero-badges,
+  .page-shell.arabic .hero-action-row {
+    max-width: 100%;
+    flex-wrap: wrap;
+    gap: clamp(6px, .8vw, 12px);
+  }
+
+  [dir="rtl"] .hero-badge,
+  .page-shell.arabic .hero-badge {
+    max-width: 100%;
+    font-size: clamp(.68rem, .85vw, .85rem);
+    line-height: 1.5;
+    white-space: normal;
+  }
+
+  [dir="rtl"] .hero-cta-btn,
+  .page-shell.arabic .hero-cta-btn {
+    max-width: 100%;
+    font-size: clamp(.75rem, .95vw, .95rem);
+    line-height: 1.5;
+    white-space: normal;
+  }
+
+  [dir="rtl"] .hero-trust-note,
+  .page-shell.arabic .hero-trust-note {
+    max-width: 100%;
+    font-size: clamp(.68rem, .82vw, .82rem);
+    line-height: 1.65;
+  }
+
+  .page-shell.arabic .container,
+  .page-shell.arabic .product-grid,
+  .page-shell.arabic .routine-grid,
+  .page-shell.arabic .promo-grid,
+  .page-shell.arabic .order-layout,
+  .page-shell.arabic .footer-main {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .page-shell.arabic img,
+  .page-shell.arabic video,
+  .page-shell.arabic input,
+  .page-shell.arabic textarea,
+  .page-shell.arabic button {
+    max-width: 100%;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1100px) {
+  [dir="rtl"] .hero-copy-col,
+  .page-shell.arabic .hero-copy-col {
+    width: 44% !important;
+    max-width: 48% !important;
+    right: 3% !important;
+    padding: 12px;
+  }
+
+  [dir="rtl"] .hero-title,
+  .page-shell.arabic .hero-title {
+    font-size: clamp(1.35rem, 2.7vw, 1.9rem);
+    line-height: 1.45;
+  }
+
+  [dir="rtl"] .hero-description,
+  .page-shell.arabic .hero-description {
+    font-size: clamp(.72rem, 1.15vw, .85rem);
+    line-height: 1.6;
+  }
+
+  [dir="rtl"] .hero-trust-note,
+  .page-shell.arabic .hero-trust-note {
+    font-size: .68rem;
+  }
+}
