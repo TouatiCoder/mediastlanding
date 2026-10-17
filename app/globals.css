@@ -6637,3 +6637,61 @@ button,
   .routine-stages-six .stage-title { font-size: 1.1rem; }
   .routine-stages-six .stage-desc { font-size: .88rem; }
 }
+
+
+/* Premium animated journey connector: a moving gold light travels along the routine path. */
+@keyframes vinillia-line-flow {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+@keyframes vinillia-line-glow {
+  0%, 100% { opacity: .72; filter: drop-shadow(0 0 1px rgba(212,175,55,.2)); }
+  50% { opacity: 1; filter: drop-shadow(0 0 5px rgba(212,175,55,.9)); }
+}
+@keyframes vinillia-line-dot {
+  0% { transform: scale(.78); box-shadow: 0 0 0 0 rgba(212,175,55,.48), 0 0 7px rgba(212,175,55,.6); }
+  65% { transform: scale(1.12); box-shadow: 0 0 0 7px rgba(212,175,55,0), 0 0 14px rgba(212,175,55,.95); }
+  100% { transform: scale(.78); box-shadow: 0 0 0 0 rgba(212,175,55,0), 0 0 7px rgba(212,175,55,.6); }
+}
+@keyframes vinillia-line-sweep {
+  0% { background-position: 0 0; }
+  100% { background-position: 0 180%; }
+}
+
+/* Desktop horizontal connectors: subtle moving burgundy-to-gold sheen. */
+@media (min-width: 901px) {
+  .routine-stages-six .routine-stage-card:nth-child(1)::after,
+  .routine-stages-six .routine-stage-card:nth-child(2)::after,
+  .routine-stages-six .routine-stage-card:nth-child(4)::after,
+  .routine-stages-six .routine-stage-card:nth-child(5)::after {
+    height: 4px;
+    background: linear-gradient(90deg,#7D102A 0%,#7D102A 30%,#D4AF37 50%,#7D102A 70%,#7D102A 100%);
+    background-size: 220% 100%;
+    animation: vinillia-line-flow 2.6s linear infinite, vinillia-line-glow 2.4s ease-in-out infinite;
+  }
+  .routine-stages-six .routine-stage-card:nth-child(3)::before {
+    background: linear-gradient(180deg,#7D102A 0%,#7D102A 30%,#D4AF37 50%,#7D102A 70%,#7D102A 100%);
+    background-size: 100% 220%;
+    animation: vinillia-line-sweep 2.8s linear infinite, vinillia-line-glow 2.4s ease-in-out infinite;
+  }
+  .routine-stages-six .routine-stage-card:nth-child(1)::before,
+  .routine-stages-six .routine-stage-card:nth-child(2)::before {
+    animation: vinillia-line-dot 1.8s ease-in-out infinite;
+  }
+}
+
+/* Mobile vertical connectors pulse gently without distracting from product text. */
+@media (max-width: 900px) {
+  .routine-stages-six .routine-stage-card:not(:last-child)::after {
+    background: linear-gradient(180deg,#7D102A 0%,#D4AF37 45%,#7D102A 100%);
+    background-size: 100% 220%;
+    animation: vinillia-line-sweep 2.8s linear infinite, vinillia-line-glow 2.4s ease-in-out infinite;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .routine-stages-six .routine-stage-card::before,
+  .routine-stages-six .routine-stage-card::after {
+    animation: none !important;
+  }
+}
