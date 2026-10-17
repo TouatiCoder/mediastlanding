@@ -1074,48 +1074,15 @@ export default function LandingPage() {
         </section>
       </main>
 
-      {/* FOOTER */}
-      <footer className="site-footer">
-        <div className="container">
-          <div className="footer-main">
-            <div className="footer-col footer-brand-col">
-              <a href="#accueil" className="brand footer-logo" aria-label="Vinillia Beauty & Skincare">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/vinillia-logo.svg" alt="Vinillia Beauty & Skincare" width={160} height={44} />
-              </a>
-              <p className="footer-tagline">
-                {tr("Une sélection skincare premium pensée pour sublimer votre éclat naturel au quotidien.")}
-              </p>
-              <div className="footer-badges">
-                <span>{tr("Paiement à la livraison au Maroc")}</span>
-                <span>{tr("8 produits complets")}</span>
-              </div>
-            </div>
-
-            <div className="footer-col">
-              <h4>{tr("Navigation")}</h4>
-              <ul className="footer-links">
-                <li><a href="#accueil">{tr("Accueil")}</a></li>
-                <li><a href="#pack">{tr("Le pack")}</a></li>
-                <li><a href="#routine">{tr("La routine")}</a></li>
-                <li><a href="#resultats">{tr("Avant / Après")}</a></li>
-                <li><a href="#commande">{tr("Commander")}</a></li>
-              </ul>
-            </div>
-
-            <div className="footer-col">
-              <h4>{tr("Garanties")}</h4>
-              <ul className="footer-links">
-                <li><span>{tr("Paiement à la livraison (COD)")}</span></li>
-                <li><span>{tr("Livraison soignée & confirmation rapide")}</span></li>
-                <li><span>{tr("6 soins AXIS-Y + 2 cadeaux Vaseline")}</span></li>
-                <li><span>{tr("Service client Maroc")}</span></li>
-              </ul>
-            </div>
-          </div>
-
-          <div className="footer-bottom">
-            <p>© {year ?? 2026} Vinillia Beauty &amp; Skincare. {tr("Tous droits réservés.")}</p>
+      {/* MINIMAL FOOTER: logo + legal line + brand signature */}
+      <footer className="site-footer minimal-footer">
+        <div className="container minimal-footer-inner">
+          <a href="#accueil" className="brand footer-logo" aria-label="Vinillia Beauty & Skincare">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/vinillia-logo.svg" alt="Vinillia Beauty & Skincare" width={160} height={44} />
+          </a>
+          <div className="minimal-footer-bottom">
+            <p>© {year ?? 2026} Vinillia Beauty &amp; Skincare. Tous droits réservés.</p>
             <p className="footer-signature">Vinillia · Moroccan Skincare Experience</p>
           </div>
         </div>
