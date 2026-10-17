@@ -1105,7 +1105,7 @@ export default function LandingPage() {
 
       {/* Floating WhatsApp customer support button */}
       <a
-        className="whatsapp-float"
+        className={`whatsapp-float ${isArabic ? "whatsapp-float-rtl" : ""}`}
         href={`https://wa.me/212612345678?text=${encodeURIComponent(isArabic ? "السلام عليكم، بغيت نطلب باقة Vinillia بثمن 1400 درهم. عافاكم عطوني معلومات أكثر." : "Bonjour, je souhaite commander le pack Vinillia à 1 400 DH. Pouvez-vous me donner plus d’informations ?")}`}
         target="_blank"
         rel="noopener noreferrer"
@@ -1114,7 +1114,7 @@ export default function LandingPage() {
         <svg viewBox="0 0 32 32" width="27" height="27" aria-hidden="true" focusable="false">
           <path fill="currentColor" d="M16.04 3.2A12.65 12.65 0 0 0 5.2 22.38L3.5 28.6l6.37-1.67A12.7 12.7 0 1 0 16.04 3.2Zm0 22.95c-1.92 0-3.8-.52-5.43-1.5l-.39-.23-3.78.99 1.01-3.68-.25-.4a10.22 10.22 0 1 1 8.84 4.82Zm5.61-7.66c-.31-.16-1.83-.9-2.11-1-.28-.1-.49-.16-.7.16-.21.31-.8 1-.98 1.2-.18.21-.36.23-.67.08-.31-.16-1.31-.48-2.5-1.53-.92-.82-1.54-1.83-1.72-2.14-.18-.31-.02-.48.14-.63.14-.14.31-.36.47-.54.16-.18.21-.31.31-.52.1-.21.05-.39-.03-.55-.08-.16-.7-1.68-.96-2.3-.25-.6-.51-.52-.7-.53h-.6c-.21 0-.55.08-.83.39-.28.31-1.09 1.06-1.09 2.58s1.12 2.99 1.27 3.2c.16.21 2.2 3.36 5.33 4.71.74.32 1.32.51 1.77.65.74.24 1.41.2 1.94.12.59-.09 1.83-.75 2.09-1.48.26-.73.26-1.36.18-1.49-.08-.13-.28-.21-.59-.37Z" />
         </svg>
-        
+        <span className="whatsapp-float-label">{isArabic ? "تواصل معنا" : "Besoin d’aide ?"}</span>
       </a>
 
       {/* FLOATING MOBILE CTA BAR */}
