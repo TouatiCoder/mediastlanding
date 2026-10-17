@@ -5615,3 +5615,39 @@ button,
     box-shadow: 0 0 12px rgba(190, 152, 94, .85);
   }
 }
+
+
+/* Snake path: steps 1 → 2 → 3, down to 6, then back across 5 → 4. */
+@media (min-width: 769px) {
+  .routine-stages-six .routine-stage-card:nth-child(3)::before {
+    content: "";
+    position: absolute;
+    z-index: 4;
+    inset-inline-end: -2px;
+    top: 40px;
+    width: 4px;
+    height: calc(100% + 30px);
+    border-radius: 999px;
+    background: linear-gradient(180deg, var(--color-gold), rgba(190, 152, 94, .28));
+    pointer-events: none;
+  }
+
+  .routine-stages-six .routine-stage-card:nth-child(3).is-routine-active::before {
+    background: linear-gradient(180deg, var(--color-burgundy), var(--color-gold));
+    box-shadow: 0 0 12px rgba(190, 152, 94, .75);
+    animation: routine-chart-line 1s ease-in-out infinite;
+  }
+
+  .routine-stages-six .routine-stage-card:nth-child(3)::after {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .routine-stages-six .routine-stage-card:not(:last-child)::after {
+    width: 14px;
+    height: 4px;
+    opacity: .8;
+    background: linear-gradient(90deg, var(--color-burgundy), var(--color-gold));
+  }
+}
