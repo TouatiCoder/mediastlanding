@@ -5403,3 +5403,33 @@ button,
     letter-spacing: -.06em;
   }
 }
+
+/* Mobile: keep all six routine cards on one horizontal row */
+@media (max-width: 768px) {
+  .routine-stages-six {
+    display: grid;
+    grid-template-columns: none !important;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(150px, 42vw);
+    gap: 12px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 4px 2px 16px;
+    scroll-snap-type: x mandatory;
+    overscroll-behavior-inline: contain;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .routine-stages-six .routine-stage-card {
+    min-width: 0;
+    height: 100%;
+    scroll-snap-align: start;
+  }
+}
+
+@media (max-width: 420px) {
+  .routine-stages-six {
+    grid-auto-columns: minmax(145px, 68vw);
+    gap: 10px;
+  }
+}
