@@ -4073,3 +4073,166 @@ button,
     font-size: .68rem;
   }
 }
+
+
+/* DESKTOP ARABIC TYPOGRAPHY POLISH — readable, balanced RTL text across the full page */
+@media (min-width: 769px) {
+  .page-shell.arabic,
+  .page-shell.arabic p,
+  .page-shell.arabic span,
+  .page-shell.arabic li,
+  .page-shell.arabic label,
+  .page-shell.arabic input,
+  .page-shell.arabic textarea,
+  .page-shell.arabic button {
+    font-family: var(--font-arabic), var(--font-sans), sans-serif;
+    letter-spacing: 0;
+  }
+
+  .page-shell.arabic {
+    font-size: 16px;
+    line-height: 1.8;
+    text-rendering: optimizeLegibility;
+  }
+
+  .page-shell.arabic .section-header {
+    max-width: 900px;
+    margin-inline: auto;
+    text-align: center;
+  }
+
+  .page-shell.arabic .section-title,
+  .page-shell.arabic .promo-title,
+  .page-shell.arabic .order-intro-col .section-title {
+    font-size: clamp(1.8rem, 2.4vw, 2.65rem);
+    line-height: 1.5;
+    letter-spacing: 0;
+    overflow-wrap: normal;
+    word-break: normal;
+    text-wrap: balance;
+  }
+
+  .page-shell.arabic .section-subtitle,
+  .page-shell.arabic .promo-description,
+  .page-shell.arabic .order-intro-text {
+    max-width: 760px;
+    margin-inline: auto;
+    font-size: clamp(1rem, 1.15vw, 1.125rem);
+    line-height: 1.9;
+    overflow-wrap: break-word;
+    word-break: normal;
+  }
+
+  .page-shell.arabic .product-content,
+  .page-shell.arabic .promo-content,
+  .page-shell.arabic .order-intro-col,
+  .page-shell.arabic .order-form-card,
+  .page-shell.arabic .footer-col {
+    text-align: right;
+  }
+
+  .page-shell.arabic .product-content h3,
+  .page-shell.arabic .product-content h4,
+  .page-shell.arabic .promo-feature-item strong,
+  .page-shell.arabic .reassurance-row strong,
+  .page-shell.arabic .form-card-header h3 {
+    line-height: 1.65;
+    letter-spacing: 0;
+    overflow-wrap: break-word;
+    word-break: normal;
+  }
+
+  .page-shell.arabic .product-content p,
+  .page-shell.arabic .promo-feature-item p,
+  .page-shell.arabic .reassurance-row p,
+  .page-shell.arabic .form-pack-subtitle,
+  .page-shell.arabic .summary-left span,
+  .page-shell.arabic .summary-right small,
+  .page-shell.arabic .footer-tagline,
+  .page-shell.arabic .footer-links {
+    font-size: .98rem;
+    line-height: 1.85;
+    overflow-wrap: break-word;
+    word-break: normal;
+  }
+
+  .page-shell.arabic .section-eyebrow,
+  .page-shell.arabic .promo-eyebrow {
+    letter-spacing: 0;
+    line-height: 1.7;
+  }
+
+  .page-shell.arabic .form-group label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-align: right;
+    line-height: 1.7;
+  }
+
+  .page-shell.arabic .form-group input,
+  .page-shell.arabic .form-group textarea {
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+
+  .page-shell.arabic .hero-copy-col {
+    gap: clamp(8px, .8vw, 14px);
+  }
+
+  .page-shell.arabic .hero-title {
+    font-size: clamp(1.8rem, 2.7vw, 3.15rem);
+    line-height: 1.55;
+    margin-block: 0;
+    letter-spacing: 0;
+    text-wrap: balance;
+  }
+
+  .page-shell.arabic .hero-description {
+    font-size: clamp(.95rem, 1.12vw, 1.1rem);
+    line-height: 1.9;
+    margin-block: 0;
+  }
+
+  .page-shell.arabic .hero-badges {
+    align-items: center;
+  }
+
+  .page-shell.arabic .hero-price-value {
+    font-size: clamp(1.4rem, 1.9vw, 2rem);
+    line-height: 1.4;
+  }
+
+  .page-shell.arabic .hero-price-currency {
+    font-size: .9rem;
+    line-height: 1.5;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1100px) {
+  .page-shell.arabic .section-title,
+  .page-shell.arabic .promo-title {
+    font-size: clamp(1.55rem, 2.5vw, 2rem);
+  }
+
+  .page-shell.arabic .section-subtitle,
+  .page-shell.arabic .promo-description,
+  .page-shell.arabic .order-intro-text {
+    font-size: .95rem;
+    line-height: 1.8;
+  }
+
+  .page-shell.arabic .hero-copy-col {
+    gap: 6px;
+  }
+
+  .page-shell.arabic .hero-title {
+    font-size: clamp(1.35rem, 2.25vw, 1.85rem);
+    line-height: 1.5;
+  }
+
+  .page-shell.arabic .hero-description {
+    font-size: .82rem;
+    line-height: 1.7;
+  }
+}
