@@ -6695,3 +6695,89 @@ button,
     animation: none !important;
   }
 }
+
+
+/* Force the same 3 × 2 routine card layout on desktop and mobile as requested. */
+.routine-stages-six {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  grid-auto-flow: row !important;
+  gap: clamp(12px, 2vw, 28px) !important;
+  overflow: visible !important;
+}
+.routine-stages-six .routine-stage-card {
+  min-width: 0 !important;
+  width: auto !important;
+  height: 100%;
+}
+@media (max-width: 900px) {
+  .routine-section { padding: 38px 12px; }
+  .routine-section .container { width: 100%; }
+  .routine-section .section-header { margin-bottom: 26px; }
+  .routine-section .section-header > .section-title {
+    font-size: clamp(1.45rem, 4.5vw, 2.1rem);
+    line-height: 1.2;
+  }
+  .routine-section .section-subtitle {
+    font-size: .82rem;
+    line-height: 1.5;
+  }
+  .routine-stages-six {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 12px 8px !important;
+  }
+  .routine-stages-six .routine-stage-card {
+    padding: 12px 8px;
+    border-radius: 16px;
+    overflow-wrap: anywhere;
+  }
+  .routine-stages-six .stage-header {
+    min-height: 27px;
+    margin-bottom: 7px;
+  }
+  .routine-stages-six .stage-number {
+    position: static;
+    transform: none;
+    width: 30px;
+    height: 30px;
+    flex-basis: 30px;
+    font-size: .85rem;
+    border-width: 2px;
+  }
+  .routine-stages-six .stage-eyebrow { display: none; }
+  .routine-stages-six .stage-visual {
+    height: auto;
+    aspect-ratio: 1 / 1;
+    margin-bottom: 8px;
+    border-radius: 10px;
+  }
+  .routine-stages-six .stage-title {
+    font-size: clamp(.68rem, 2.4vw, .9rem);
+    line-height: 1.25;
+    margin-bottom: 5px;
+    overflow-wrap: anywhere;
+  }
+  .routine-stages-six .stage-desc {
+    font-size: clamp(.58rem, 2vw, .74rem);
+    line-height: 1.35;
+    overflow-wrap: anywhere;
+  }
+  /* With 3 cards per row, avoid false vertical snake lines between grid rows. */
+  .routine-stages-six .routine-stage-card::after,
+  .routine-stages-six .routine-stage-card::before {
+    display: none !important;
+  }
+}
+@media (max-width: 390px) {
+  .routine-section { padding-inline: 8px; }
+  .routine-stages-six { gap: 9px 6px !important; }
+  .routine-stages-six .routine-stage-card { padding: 9px 6px; }
+  .routine-stages-six .stage-number {
+    width: 26px;
+    height: 26px;
+    flex-basis: 26px;
+    font-size: .76rem;
+  }
+  .routine-stages-six .stage-title { font-size: .65rem; }
+  .routine-stages-six .stage-desc { font-size: .56rem; }
+}
