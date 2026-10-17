@@ -457,7 +457,7 @@ export default function LandingPage() {
             <a href="#accueil" onClick={() => setMenuOpen(false)}>{tr("Accueil")}</a>
             <a href="#pack" onClick={() => setMenuOpen(false)}>{tr("Le pack")}</a>
             <a href="#routine" onClick={() => setMenuOpen(false)}>{tr("La routine")}</a>
-            <a href="#resultats" onClick={() => setMenuOpen(false)}>{tr("Avant / Après")}</a>
+            {/* <a href="#resultats" onClick={() => setMenuOpen(false)}>{tr("Avant / Après")}</a> */}
             <a className="mobile-nav-order" href="#commande" onClick={() => setMenuOpen(false)}>
               {tr("Commander le pack")}
             </a>
