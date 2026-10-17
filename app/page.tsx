@@ -98,7 +98,7 @@ const translations: Record<string, string> = {
   "Sélection beauté": "اختيار مميز للعناية",
   "2 produits offerts": "منتجان هدية",
   "Commande facile": "طلب سهل",
-  "1 400 DH": "1,400 درهم",
+  "1 400 DH": "1400 درهم",
 
   // Hero badge & visuals
   "8 PRODUITS · 2 OFFERTS": "8 منتجات · منتجان هدية",
@@ -213,6 +213,7 @@ export default function LandingPage() {
   const isArabic = language === "ar";
   // Keep Western/Latin digits (0-9) for the Moroccan Arabic storefront.
   const tr = (key: string): string => (isArabic ? translations[key] ?? key : key);
+  const formattedPrice = isArabic ? String(PRICE_MAD) : PRICE_MAD.toLocaleString("fr-FR");
 
   const [menuOpen, setMenuOpen] = useState(false);
   const [sliderPosition, setSliderPosition] = useState(50);
@@ -671,7 +672,7 @@ export default function LandingPage() {
 
               <div className="pack-summary-cta">
                 <div className="pack-summary-price">
-                  <strong>{PRICE_MAD.toLocaleString(isArabic ? "ar-MA" : "fr-FR")}</strong>
+                  <strong>{formattedPrice}</strong>
                   <span>{isArabic ? "درهم" : "DH"}</span>
                 </div>
                 <a href="#commande" className="btn btn-gold">
@@ -891,7 +892,7 @@ export default function LandingPage() {
                 <div className="promo-price-block">
                   <span className="promo-price-label">{isArabic ? "السعر الإجمالي للباقة" : "Prix du pack complet"}</span>
                   <strong className="promo-price-amount">
-                    {PRICE_MAD.toLocaleString(isArabic ? "ar-MA" : "fr-FR")} {isArabic ? "درهم" : "DH"}
+                    {formattedPrice} {isArabic ? "درهم" : "DH"}
                   </strong>
                 </div>
 
@@ -936,7 +937,7 @@ export default function LandingPage() {
                   <div className="row-icon"><ShieldCheck size={20} /></div>
                   <div>
                     <strong>{tr("Pack 8 produits complets")}</strong>
-                    <p>{isArabic ? "6 منتجات أساسية بالإضافة إلى منتجين مجاناً من فازلين بسعر 1,400 درهم." : "6 soins visage indispensables + 2 soins Vaseline offerts au prix de 1 400 DH."}</p>
+                    <p>{isArabic ? "6 منتجات أساسية بالإضافة إلى منتجين مجاناً من فازلين بسعر 1400 درهم." : "6 soins visage indispensables + 2 soins Vaseline offerts au prix de 1 400 DH."}</p>
                   </div>
                 </div>
               </div>
@@ -956,7 +957,7 @@ export default function LandingPage() {
                   <span>{isArabic ? "الكمية: 1 باقة كاملة (8 منتجات)" : "Quantité : 1 pack complet (8 soins)"}</span>
                 </div>
                 <div className="summary-right">
-                  <strong>{PRICE_MAD.toLocaleString(isArabic ? "ar-MA" : "fr-FR")} {isArabic ? "درهم" : "DH"}</strong>
+                  <strong>{formattedPrice} {isArabic ? "درهم" : "DH"}</strong>
                   <small>{tr("Paiement à la livraison")}</small>
                 </div>
               </div>
@@ -1141,7 +1142,7 @@ export default function LandingPage() {
       <div className="mobile-sticky-cta" id="mobileCta" aria-hidden="true">
         <div className="mobile-cta-info">
           <span className="mobile-pack-title">{tr("Le pack Vinillia")}</span>
-          <span className="mobile-pack-price">{isArabic ? "1 400 درهم" : "1 400 DH"}</span>
+          <span className="mobile-pack-price">{isArabic ? "1400 درهم" : "1 400 DH"}</span>
         </div>
         <a href="#commande" className="btn btn-gold mobile-cta-btn">
           <span>{tr("Commander")}</span>
