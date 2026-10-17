@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState, type FormEvent, type ReactNode } from "react";
+import Image from "next/image";
 
 import franceFlag from "./france.png";
 import arabicFlag from "./flag.png";
@@ -570,14 +571,12 @@ export default function LandingPage() {
             <div className="hero-visual-col">
               <div className="hero-banner-frame">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
+                <Image
                   className="hero-banner-img"
-                  src={(isArabic ? bannerAr : bannerFr).src}
+                  src={isArabic ? bannerAr : bannerFr}
                   alt={tr("Bannière de la sélection Vinillia")}
-                  width={(isArabic ? bannerAr : bannerFr).width}
-                  height={(isArabic ? bannerAr : bannerFr).height}
-                  fetchPriority="high"
-                  loading="eager"
+                  sizes="100vw"
+                  priority
                 />
                 <div className="hero-banner-stamp">
                   <Sparkles size={14} aria-hidden="true" />
@@ -733,7 +732,7 @@ export default function LandingPage() {
                   <div className="product-image-container">
                     {item.gift && <span className="gift-badge">{tr("OFFERT")}</span>}
                     {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={item.image.src} alt={item.name} loading="lazy" />
+                    <Image src={item.image} alt={item.name} sizes="(max-width: 600px) 45vw, (max-width: 900px) 30vw, 22vw" />
                   </div>
                   <div className="product-content">
                     <span className="product-category">{tr(item.type)}</span>
@@ -784,37 +783,37 @@ export default function LandingPage() {
             <div className="routine-stages-grid routine-stages-six">
               <div className="routine-stage-card">
                 <div className="stage-header"><span className="stage-number">01</span><span className="stage-eyebrow">{isArabic ? "الخطوة 1" : "Étape 1"}</span></div>
-                <div className="stage-visual"><img src={product1.src} alt={isArabic ? "الخطوة 1: تنظيف الوجه" : "Étape 1 : Nettoyer le visage"} loading="lazy" /></div>
+                <div className="stage-visual"><Image src={product1} alt={isArabic ? "الخطوة 1: تنظيف الوجه" : "Étape 1 : Nettoyer le visage"} sizes="(max-width: 560px) 40vw, (max-width: 900px) 45vw, 30vw" /></div>
                 <h3 className="stage-title">{isArabic ? "تنظيف الوجه" : "Nettoyer le visage"}</h3>
                 <p className="stage-desc">{isArabic ? "نظفي بشرتكِ بلطف لإزالة الشوائب وتحضيرها لباقي الروتين." : "Nettoyez délicatement votre peau pour éliminer les impuretés et la préparer aux soins."}</p>
               </div>
               <div className="routine-stage-card">
                 <div className="stage-header"><span className="stage-number">02</span><span className="stage-eyebrow">{isArabic ? "الخطوة 2" : "Étape 2"}</span></div>
-                <div className="stage-visual"><img src={product2.src} alt={isArabic ? "الخطوة 2: التونر" : "Étape 2 : Tonifier"} loading="lazy" /></div>
+                <div className="stage-visual"><Image src={product2} alt={isArabic ? "الخطوة 2: التونر" : "Étape 2 : Tonifier"} sizes="(max-width: 560px) 40vw, (max-width: 900px) 45vw, 30vw" /></div>
                 <h3 className="stage-title">{isArabic ? "توازن وإشراقة" : "Tonifier & illuminer"}</h3>
                 <p className="stage-desc">{isArabic ? "طبقي التونر للمساعدة على إنعاش البشرة وتحضيرها لامتصاص المنتجات التالية." : "Appliquez le tonique pour rafraîchir la peau et la préparer aux soins suivants."}</p>
               </div>
               <div className="routine-stage-card">
                 <div className="stage-header"><span className="stage-number">03</span><span className="stage-eyebrow">{isArabic ? "الخطوة 3" : "Étape 3"}</span></div>
-                <div className="stage-visual"><img src={product3.src} alt={isArabic ? "الخطوة 3: قناع الجل" : "Étape 3 : Masque gel" } loading="lazy" /></div>
+                <div className="stage-visual"><Image src={product3} alt={isArabic ? "الخطوة 3: قناع الجل" : "Étape 3 : Masque gel"} sizes="(max-width: 560px) 40vw, (max-width: 900px) 45vw, 30vw" /></div>
                 <h3 className="stage-title">{isArabic ? "تهدئة البشرة" : "Apaiser la peau"}</h3>
                 <p className="stage-desc">{isArabic ? "استخدمي قناع الجل عند الحاجة لمنح بشرتكِ إحساساً بالراحة والانتعاش." : "Utilisez le masque gel lorsque nécessaire pour apporter confort et fraîcheur à la peau."}</p>
               </div>
               <div className="routine-stage-card">
                 <div className="stage-header"><span className="stage-number">04</span><span className="stage-eyebrow">{isArabic ? "الخطوة 4" : "Étape 4"}</span></div>
-                <div className="stage-visual"><img src={product4.src} alt={isArabic ? "الخطوة 4: السيروم" : "Étape 4 : Sérum" } loading="lazy" /></div>
+                <div className="stage-visual"><Image src={product4} alt={isArabic ? "الخطوة 4: السيروم" : "Étape 4 : Sérum"} sizes="(max-width: 560px) 40vw, (max-width: 900px) 45vw, 30vw" /></div>
                 <h3 className="stage-title">{isArabic ? "تقوية الحاجز" : "Renforcer la barrière"}</h3>
                 <p className="stage-desc">{isArabic ? "ضعي الأمبول للمساعدة على دعم حاجز البشرة والحفاظ على ترطيبها." : "Appliquez l’ampoule pour aider à soutenir la barrière cutanée et préserver l’hydratation."}</p>
               </div>
               <div className="routine-stage-card">
                 <div className="stage-header"><span className="stage-number">05</span><span className="stage-eyebrow">{isArabic ? "الخطوة 5" : "Étape 5"}</span></div>
-                <div className="stage-visual"><img src={product5.src} alt={isArabic ? "الخطوة 5: كريم الترطيب" : "Étape 5 : Crème hydratante" } loading="lazy" /></div>
+                <div className="stage-visual"><Image src={product5} alt={isArabic ? "الخطوة 5: كريم الترطيب" : "Étape 5 : Crème hydratante"} sizes="(max-width: 560px) 40vw, (max-width: 900px) 45vw, 30vw" /></div>
                 <h3 className="stage-title">{isArabic ? "ترطيب عميق" : "Hydrater en profondeur"}</h3>
                 <p className="stage-desc">{isArabic ? "أنهي العناية بكريم الترطيب للمساعدة على إبقاء البشرة ناعمة ومريحة." : "Terminez avec la crème hydratante pour garder une peau souple et confortable."}</p>
               </div>
               <div className="routine-stage-card">
                 <div className="stage-header"><span className="stage-number">06</span><span className="stage-eyebrow">{isArabic ? "الخطوة 6" : "Étape 6"}</span></div>
-                <div className="stage-visual"><img src={product6.src} alt={isArabic ? "الخطوة 6: الحماية الشمسية" : "Étape 6 : Protection solaire" } loading="lazy" /></div>
+                <div className="stage-visual"><Image src={product6} alt={isArabic ? "الخطوة 6: الحماية الشمسية" : "Étape 6 : Protection solaire"} sizes="(max-width: 560px) 40vw, (max-width: 900px) 45vw, 30vw" /></div>
                 <h3 className="stage-title">{isArabic ? "حماية ولمسة نهائية" : "Protéger & sublimer"}</h3>
                 <p className="stage-desc">{isArabic ? "في الصباح، استخدمي واقي الشمس، وأضيفي هديتي فازلين للعناية بالشفاه والجسم." : "Le matin, appliquez la protection solaire. Complétez votre rituel avec les deux cadeaux Vaseline pour les lèvres et le corps."}</p>
               </div>
@@ -827,7 +826,7 @@ export default function LandingPage() {
           <div className="container promo-grid">
             <div className="promo-visual-wrap">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={offerBanner.src} alt="Boutique beauté Vinillia" loading="lazy" />
+              <Image src={offerBanner} alt="Boutique beauté Vinillia" sizes="(max-width: 768px) 100vw, 50vw" />
               <div className="promo-badge">
                 <Gift size={16} aria-hidden="true" />
                 <span>{tr("OFFRE PACK VINILLIA")}</span>
