@@ -245,6 +245,74 @@ export default function LandingPage() {
     }
   }, [language, isArabic]);
 
+  // Automatically move the six-step routine carousel on mobile, one product at a time.
+  useEffect(() => {
+    const track = document.querySelector<HTMLElement>(".routine-stages-six");
+    if (!track || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    const mobileQuery = window.matchMedia("(max-width: 768px)");
+    let timer: ReturnType<typeof setInterval> | undefined;
+    let resumeTimer: ReturnType<typeof setTimeout> | undefined;
+    let paused = false;
+    let index = 0;
+
+    const cards = () => Array.from(track.querySelectorAll<HTMLElement>(".routine-stage-card"));
+    const stop = () => {
+      if (timer) clearInterval(timer);
+      timer = undefined;
+    };
+    const start = () => {
+      stop();
+      if (!mobileQuery.matches || paused) return;
+      timer = setInterval(() => {
+        const items = cards();
+        if (items.length < 2) return;
+        index = (index + 1) % items.length;
+        if (index === 0) {
+          track.scrollTo({ left: 0, behavior: "smooth" });
+        } else {
+          track.scrollTo({ left: items[index].offsetLeft - items[0].offsetLeft, behavior: "smooth" });
+        }
+      }, 2800);
+    };
+    const pauseBriefly = () => {
+      paused = true;
+      stop();
+      if (resumeTimer) clearTimeout(resumeTimer);
+      resumeTimer = setTimeout(() => {
+        paused = false;
+        const items = cards();
+        const nearest = items.reduce((best, card, i) =>
+          Math.abs(card.offsetLeft - track.scrollLeft) < Math.abs(items[best].offsetLeft - track.scrollLeft) ? i : best, 0);
+        index = nearest;
+        start();
+      }, 5000);
+    };
+    const onMediaChange = () => {
+      if (!mobileQuery.matches) {
+        stop();
+        track.scrollTo({ left: 0, behavior: "auto" });
+      } else {
+        start();
+      }
+    };
+
+    track.addEventListener("touchstart", pauseBriefly, { passive: true });
+    track.addEventListener("pointerdown", pauseBriefly);
+    track.addEventListener("wheel", pauseBriefly, { passive: true });
+    mobileQuery.addEventListener("change", onMediaChange);
+    start();
+
+    return () => {
+      stop();
+      if (resumeTimer) clearTimeout(resumeTimer);
+      track.removeEventListener("touchstart", pauseBriefly);
+      track.removeEventListener("pointerdown", pauseBriefly);
+      track.removeEventListener("wheel", pauseBriefly);
+      mobileQuery.removeEventListener("change", onMediaChange);
+    };
+  }, []);
+
   // Hide floating mobile CTA when the order section is visible
   useEffect(() => {
     const orderSection = document.getElementById("commande");
