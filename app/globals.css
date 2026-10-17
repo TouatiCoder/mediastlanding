@@ -5465,3 +5465,44 @@ button,
     animation: none !important;
   }
 }
+
+
+/* Animated connector showing the routine journey from product 1 through 6 */
+@media (max-width: 768px) {
+  .routine-stages-six {
+    position: relative;
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-gold) var(--color-gold-light);
+  }
+
+  .routine-stages-six .routine-stage-card {
+    position: relative;
+  }
+
+  .routine-stages-six .routine-stage-card:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    z-index: 2;
+    top: 27px;
+    inset-inline-end: -12px;
+    width: 12px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--color-gold), rgba(190, 152, 94, .12));
+    transform-origin: right center;
+    animation: routine-connector-flow 1.4s ease-in-out infinite;
+  }
+
+  .routine-stages-six .routine-stage-card:nth-child(2)::after { animation-delay: .7s; }
+  .routine-stages-six .routine-stage-card:nth-child(3)::after { animation-delay: 1.4s; }
+  .routine-stages-six .routine-stage-card:nth-child(4)::after { animation-delay: 2.1s; }
+  .routine-stages-six .routine-stage-card:nth-child(5)::after { animation-delay: 2.8s; }
+}
+
+@keyframes routine-connector-flow {
+  0%, 100% { opacity: .25; }
+  50% { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .routine-stages-six .routine-stage-card::after { animation: none !important; }
+}
