@@ -5254,3 +5254,63 @@ button,
     font-size: .82rem;
   }
 }
+
+
+/* Arabic hero reassurance line: keep icon and delivery message aligned and readable */
+.hero-ar .hero-trust-note {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 9px;
+  width: 100%;
+  max-width: 100%;
+  margin-top: 2px;
+  text-align: right;
+  direction: rtl;
+  font-size: .88rem;
+  line-height: 1.8;
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
+.hero-ar .hero-trust-note svg {
+  display: block;
+  width: 17px;
+  height: 17px;
+  flex: 0 0 17px;
+  margin: 0;
+  color: var(--color-sage);
+}
+
+.hero-ar .hero-trust-note span {
+  display: block;
+  min-width: 0;
+  max-width: 100%;
+  overflow-wrap: normal;
+  word-break: normal;
+  text-wrap: pretty;
+}
+
+@media (max-width: 600px) {
+  .hero-ar .hero-trust-note {
+    align-items: flex-start;
+    gap: 7px;
+    font-size: .78rem;
+    line-height: 1.85;
+  }
+
+  .hero-ar .hero-trust-note svg {
+    width: 15px;
+    height: 15px;
+    flex-basis: 15px;
+    margin-top: .35em;
+  }
+}
+
+@media (max-width: 360px) {
+  .hero-ar .hero-trust-note {
+    font-size: .72rem;
+    line-height: 1.75;
+  }
+}
