@@ -138,7 +138,7 @@ const translations: Record<string, string> = {
 
   // Routine Section (3 STAGES)
   "LA ROUTINE VINILLIA": "روتين VINILLIA",
-  "Votre rituel en 3 étapes": "Votre rituel en 6 étapes",
+  "Votre rituel en 6 étapes": "روتينكِ في 6 خطوات بسيطة",
   "Une méthode simple et intuitive pour intégrer les soins de votre pack dans votre quotidien.": "طريقة عملية وسلسة لتطبيق منتجات باقتكِ والاستفادة الكاملة منها.",
   "Étape 01": "الخطوة 01",
   "Nettoyer & Préparer": "تنظيف وتهيئة البشرة",
@@ -689,7 +689,7 @@ export default function LandingPage() {
           <div className="container">
             <div className="section-header">
               <span className="section-eyebrow">{tr("LA ROUTINE VINILLIA")}</span>
-              <h2 className="section-title">{tr("Votre rituel en 3 étapes")}</h2>
+              <h2 className="section-title">{tr("Votre rituel en 6 étapes")}</h2>
               <p className="section-subtitle">
                 {tr("Une méthode simple et intuitive pour intégrer les soins de votre pack dans votre quotidien.")}
               </p>
