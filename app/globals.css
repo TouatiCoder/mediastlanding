@@ -6956,3 +6956,324 @@ button,
     left: auto;
   }
 }
+
+
+/* Reference-matched Vinillia routine: editorial heading, large cards, serpentine journey. */
+.routine-section {
+  background:
+    radial-gradient(ellipse at 50% 18%, rgba(255,255,255,.95) 0%, rgba(255,250,246,.8) 46%, rgba(250,235,224,.55) 100%),
+    #fff9f4;
+  padding: 64px 22px 70px;
+  isolation: isolate;
+}
+.routine-section .container { max-width: 1320px; width: min(100%, 1320px); }
+.routine-section .section-header { max-width: 1000px; margin: 0 auto 74px; text-align: center; }
+.routine-section .section-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 300px;
+  padding: 8px 26px;
+  margin: 0 auto 20px;
+  border: 1px solid rgba(125,16,42,.08);
+  border-radius: 999px;
+  color: #7d102a;
+  background: linear-gradient(90deg, rgba(255,235,223,.94), rgba(255,249,245,.98));
+  font-size: .85rem;
+  letter-spacing: .15em;
+  font-weight: 800;
+}
+.routine-section .section-header > .section-title {
+  max-width: 1100px;
+  margin: 0 auto 16px;
+  color: #790d27;
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: clamp(2.4rem, 5.8vw, 5rem);
+  line-height: 1.12;
+  font-weight: 700;
+  letter-spacing: -.035em;
+  white-space: normal !important;
+  text-wrap: balance;
+}
+.routine-section .section-subtitle {
+  max-width: 850px;
+  margin: 0 auto;
+  color: #555052;
+  font-size: clamp(1rem, 1.8vw, 1.48rem);
+  line-height: 1.6;
+}
+.routine-stages-six {
+  position: relative;
+  display: grid !important;
+  grid-template-columns: repeat(3,minmax(0,1fr)) !important;
+  grid-template-rows: auto auto;
+  gap: clamp(38px, 5vw, 70px) clamp(22px, 5.2vw, 72px) !important;
+  overflow: visible !important;
+  align-items: stretch;
+  isolation: isolate;
+  padding: 12px 0 0;
+}
+/* The path passes through the cards in reading order: 01→02→03, then 04→05→06. */
+.routine-stages-six .routine-stage-card {
+  min-width: 0 !important;
+  min-height: 400px;
+  height: auto !important;
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  text-align: center;
+  padding: clamp(18px,2vw,30px) clamp(15px,2.4vw,34px) 24px;
+  border: 1px solid rgba(151,94,70,.07);
+  border-radius: clamp(28px,3.4vw,46px);
+  background: linear-gradient(145deg,rgba(255,255,255,.99),rgba(255,253,251,.94));
+  box-shadow: 0 18px 40px rgba(146,78,50,.09), inset 0 1px 0 rgba(255,255,255,.9);
+  overflow: visible;
+  transition: transform .28s ease, box-shadow .28s ease;
+}
+.routine-stages-six .routine-stage-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 24px 50px rgba(146,78,50,.14);
+}
+.routine-stages-six .stage-header {
+  order: 0;
+  position: absolute;
+  z-index: 7;
+  top: -26px;
+  left: clamp(20px,3.4vw,48px);
+  right: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
+  margin: 0;
+}
+.routine-stages-six .stage-number {
+  position: relative;
+  inset: auto;
+  transform: none;
+  display: inline-flex;
+  width: clamp(58px,5.6vw,78px);
+  height: clamp(58px,5.6vw,78px);
+  flex: 0 0 clamp(58px,5.6vw,78px);
+  align-items: center;
+  justify-content: center;
+  border: 3px solid #fffaf6;
+  border-radius: 50%;
+  color: #fff;
+  background: radial-gradient(circle at 35% 28%,#a20b38 0%,#820b2c 58%,#62071d 100%);
+  box-shadow: 0 7px 18px rgba(112,10,39,.23);
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: clamp(1.5rem,2.6vw,2.2rem);
+  font-weight: 600;
+  line-height: 1;
+}
+.routine-stages-six .stage-eyebrow { display: none !important; }
+.routine-stages-six .stage-visual {
+  order: 1;
+  width: 100%;
+  height: clamp(190px,22vw,275px);
+  min-height: 0;
+  aspect-ratio: auto;
+  margin: 0 0 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  background: transparent;
+  overflow: hidden;
+}
+.routine-stages-six .stage-visual img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  padding: 0;
+  object-fit: contain;
+  object-position: center;
+  mix-blend-mode: multiply;
+}
+.routine-stages-six .stage-title {
+  order: 2;
+  margin: 0 0 9px;
+  color: #830f2e;
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: clamp(1.2rem,2.1vw,1.8rem);
+  font-weight: 700;
+  line-height: 1.3;
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+.routine-stages-six .stage-desc {
+  order: 3;
+  margin: 0 auto;
+  max-width: 36ch;
+  color: #555052;
+  font-size: clamp(.94rem,1.35vw,1.2rem);
+  line-height: 1.5;
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+/* Connector bars run behind the step bubbles and card corners. */
+@media (min-width: 901px) {
+  .routine-stages-six::before {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    top: 38%;
+    left: 4%;
+    right: 4%;
+    height: 0;
+    border-top: 5px solid #850d2e;
+    border-radius: 0 0 48px 0;
+    pointer-events: none;
+    opacity: .97;
+  }
+  .routine-stages-six .routine-stage-card:nth-child(1)::after,
+  .routine-stages-six .routine-stage-card:nth-child(2)::after,
+  .routine-stages-six .routine-stage-card:nth-child(4)::after,
+  .routine-stages-six .routine-stage-card:nth-child(5)::after {
+    content: "";
+    position: absolute;
+    z-index: 5;
+    top: -7px;
+    inset-inline-end: calc(clamp(22px, 5.2vw, 72px) * -1 - 3px);
+    width: clamp(22px, 5.2vw, 72px);
+    height: 5px;
+    background: linear-gradient(90deg,#7d102a 0%,#b40d40 42%,#d4af37 65%,#7d102a 100%);
+    box-shadow: 0 0 7px rgba(212,175,55,.55);
+  }
+  .routine-stages-six .routine-stage-card:nth-child(3)::before {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    top: 42%;
+    inset-inline-end: -28px;
+    width: 36px;
+    height: calc(100% + clamp(38px, 5vw, 70px) + 1px);
+    border-inline-end: 5px solid #850d2e;
+    border-bottom: 5px solid #850d2e;
+    border-bottom-right-radius: 42px;
+    pointer-events: none;
+  }
+  .routine-stages-six .routine-stage-card:nth-child(3)::after {
+    content: "⌄";
+    position: absolute;
+    z-index: 5;
+    inset-inline-end: -36px;
+    top: calc(100% + 15px);
+    color: #d4af37;
+    font-size: 2rem;
+    font-weight: 900;
+    text-shadow: 0 0 9px rgba(212,175,55,.8);
+    transform: rotate(0deg);
+  }
+  .routine-stages-six .routine-stage-card:nth-child(4)::before {
+    content: "";
+    position: absolute;
+    z-index: 1;
+    top: -42px;
+    inset-inline-start: -26px;
+    width: 32px;
+    height: 48px;
+    border-top: 5px solid #850d2e;
+    border-inline-start: 5px solid #850d2e;
+    border-top-left-radius: 36px;
+    pointer-events: none;
+  }
+  .routine-stages-six .routine-stage-card:nth-child(4)::after {
+    inset-inline-end: calc(clamp(22px, 5.2vw, 72px) * -1 - 3px);
+  }
+}
+/* Arabic heading and step cards share a right-to-left page but retain the visual journey. */
+.routine-section[dir="rtl"] .section-header,
+.arabic .routine-section .section-header { text-align: center; }
+.arabic .routine-stages-six .stage-header {
+  left: auto;
+  right: clamp(20px,3.4vw,48px);
+}
+@media (max-width: 900px) {
+  .routine-section { padding: 48px 15px 56px; }
+  .routine-section .section-header { margin-bottom: 52px; }
+  .routine-section .section-eyebrow { min-width: 0; max-width: 100%; font-size: .75rem; letter-spacing: .08em; }
+  .routine-section .section-header > .section-title { font-size: clamp(2rem,6.2vw,3.3rem); line-height: 1.2; }
+  .routine-section .section-subtitle { font-size: clamp(.9rem,2.3vw,1.12rem); }
+  .routine-stages-six {
+    grid-template-columns: repeat(2,minmax(0,1fr)) !important;
+    gap: 46px 16px !important;
+    padding-top: 12px;
+  }
+  .routine-stages-six .routine-stage-card {
+    min-height: 340px;
+    padding: 27px 14px 20px;
+    border-radius: 28px;
+  }
+  .routine-stages-six .stage-header { top: -21px; left: 16px; right: auto; }
+  .routine-stages-six .stage-number {
+    width: 54px; height: 54px; flex-basis: 54px;
+    font-size: 1.5rem;
+  }
+  .routine-stages-six .stage-visual { height: clamp(145px,29vw,205px); margin-bottom: 9px; }
+  .routine-stages-six .stage-title { font-size: clamp(1rem,2.5vw,1.4rem); }
+  .routine-stages-six .stage-desc { font-size: clamp(.8rem,1.9vw,1rem); line-height: 1.45; }
+  .routine-stages-six::before,
+  .routine-stages-six .routine-stage-card::before,
+  .routine-stages-six .routine-stage-card::after { display: none !important; }
+  .arabic .routine-stages-six .stage-header { left: auto; right: 16px; }
+}
+@media (max-width: 560px) {
+  .routine-section { padding: 38px 12px 44px; }
+  .routine-section .section-header { margin-bottom: 42px; }
+  .routine-stages-six { grid-template-columns: minmax(0,1fr) !important; gap: 34px !important; }
+  .routine-stages-six .routine-stage-card {
+    min-height: 0;
+    display: grid;
+    grid-template-columns: minmax(112px,40%) minmax(0,1fr);
+    grid-template-rows: auto 1fr;
+    column-gap: 14px;
+    padding: 23px 15px 20px;
+    border-radius: 24px;
+    text-align: start;
+  }
+  .routine-stages-six .stage-header {
+    position: absolute;
+    top: -17px;
+    left: 14px;
+    right: auto;
+  }
+  .routine-stages-six .stage-number { width: 46px; height: 46px; flex-basis: 46px; font-size: 1.25rem; }
+  .routine-stages-six .stage-visual {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+    align-self: center;
+    height: 150px;
+    margin: 0;
+  }
+  .routine-stages-six .stage-title {
+    grid-column: 2;
+    grid-row: 1;
+    align-self: end;
+    margin: 5px 0 8px;
+    text-align: start;
+    font-size: 1.08rem;
+  }
+  .routine-stages-six .stage-desc {
+    grid-column: 2;
+    grid-row: 2;
+    align-self: start;
+    margin: 0;
+    text-align: start;
+    font-size: .83rem;
+  }
+  .arabic .routine-stages-six .stage-header { left: auto; right: 14px; }
+  .arabic .routine-stages-six .stage-visual { grid-column: 2; }
+  .arabic .routine-stages-six .stage-title,
+  .arabic .routine-stages-six .stage-desc { grid-column: 1; text-align: right; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .routine-stages-six .routine-stage-card,
+  .routine-stages-six .routine-stage-card::before,
+  .routine-stages-six .routine-stage-card::after { transition: none !important; animation: none !important; }
+}
