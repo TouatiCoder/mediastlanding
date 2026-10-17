@@ -211,7 +211,11 @@ const translations: Record<string, string> = {
 export default function LandingPage() {
   const [language, setLanguage] = useState<"fr" | "ar">("fr");
   const isArabic = language === "ar";
-  const tr = (key: string): string => (isArabic ? translations[key] ?? key : key);
+  const toArabicDigits = (value: string): string => value.replace(/[0-9]/g, (digit) => "٠١٢٣٤٥٦٧٨٩"[Number(digit)]);
+  const tr = (key: string): string => {
+    const value = isArabic ? translations[key] ?? key : key;
+    return isArabic ? toArabicDigits(value) : value;
+  };
 
   const [menuOpen, setMenuOpen] = useState(false);
   const [sliderPosition, setSliderPosition] = useState(50);
@@ -935,7 +939,7 @@ export default function LandingPage() {
                   <div className="row-icon"><ShieldCheck size={20} /></div>
                   <div>
                     <strong>{tr("Pack 8 produits complets")}</strong>
-                    <p>{isArabic ? "6 منتجات أساسية بالإضافة إلى منتجين مجاناً من فازلين بسعر 1,400 درهم." : "6 soins visage indispensables + 2 soins Vaseline offerts au prix de 1 400 DH."}</p>
+                    <p>{isArabic ? toArabicDigits("6 منتجات أساسية بالإضافة إلى منتجين مجاناً من فازلين بسعر 1,400 درهم.") : "6 soins visage indispensables + 2 soins Vaseline offerts au prix de 1 400 DH."}</p>
                   </div>
                 </div>
               </div>
@@ -952,7 +956,7 @@ export default function LandingPage() {
               <div className="order-summary-box">
                 <div className="summary-left">
                   <strong>{tr("Pack Vinillia")}</strong>
-                  <span>{isArabic ? "الكمية : 1 باقة كاملة (8 منتجات)" : "Quantité : 1 pack complet (8 soins)"}</span>
+                  <span>{isArabic ? toArabicDigits("الكمية : 1 باقة كاملة (8 منتجات)") : "Quantité : 1 pack complet (8 soins)"}</span>
                 </div>
                 <div className="summary-right">
                   <strong>{PRICE_MAD.toLocaleString(isArabic ? "ar-MA" : "fr-FR")} {isArabic ? "درهم" : "DH"}</strong>
@@ -1140,7 +1144,7 @@ export default function LandingPage() {
       <div className="mobile-sticky-cta" id="mobileCta" aria-hidden="true">
         <div className="mobile-cta-info">
           <span className="mobile-pack-title">{tr("Le pack Vinillia")}</span>
-          <span className="mobile-pack-price">1 400 DH</span>
+          <span className="mobile-pack-price">{isArabic ? toArabicDigits("1 400 درهم") : "1 400 DH"}</span>
         </div>
         <a href="#commande" className="btn btn-gold mobile-cta-btn">
           <span>{tr("Commander")}</span>
