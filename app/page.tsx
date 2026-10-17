@@ -468,8 +468,8 @@ export default function LandingPage() {
 
               <div className="hero-action-row">
                 <div className="hero-price-tag">
-                  <span className="hero-price-value">{isArabic ? "1,400" : "1 400"}</span>
-                  <span className="hero-price-currency">{isArabic ? "درهم" : "DH"}</span>
+                  <span className="hero-price-value">{isArabic ? "1400 درهم" : "1 400 DH"}</span>
+                  {/* <span className="hero-price-currency">{isArabic ? "درهم" : "DH"}</span> */}
                 </div>
                 <a href="#commande" className="btn btn-gold hero-cta-btn">
                   <span>{isArabic ? "اطلبي الباقة الآن" : "Commander le pack"}</span>
