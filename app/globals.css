@@ -4467,3 +4467,60 @@ button,
 [dir="rtl"] .minimal-footer .minimal-footer-bottom {
   direction: ltr;
 }
+
+
+/* Keep the minimal footer logo, legal line and signature on one horizontal line */
+.minimal-footer .minimal-footer-inner {
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(12px, 2.2vw, 32px);
+}
+
+.minimal-footer .minimal-footer-bottom {
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(10px, 1.8vw, 26px);
+  width: auto;
+  min-width: 0;
+}
+
+.minimal-footer .minimal-footer-bottom p {
+  white-space: nowrap;
+  font-size: clamp(.68rem, .85vw, .9rem);
+}
+
+.minimal-footer .footer-logo img {
+  width: clamp(100px, 11vw, 150px);
+  max-width: none;
+}
+
+@media (max-width: 600px) {
+  .minimal-footer .minimal-footer-inner {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 10px;
+    padding-block: 16px;
+  }
+
+  .minimal-footer .minimal-footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+    width: auto;
+    text-align: left;
+  }
+
+  .minimal-footer .minimal-footer-bottom p {
+    white-space: normal;
+    font-size: clamp(.58rem, 2.2vw, .72rem);
+    line-height: 1.35;
+  }
+
+  .minimal-footer .footer-logo img {
+    width: clamp(76px, 22vw, 110px);
+  }
+}
