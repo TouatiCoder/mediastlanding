@@ -547,7 +547,7 @@ export default function LandingPage() {
           <div className="container">
             <div className="section-header">
               <span className="section-eyebrow">{tr("LA SÉLECTION VINILLIA")}</span>
-              <h2 className="section-title">{tr("Le pack beauté qui vous ressemble")}</h2>
+              <h2 className="section-title"><a className="pack-title-order-link" href="#commande">{tr("Le pack beauté qui vous ressemble")}</a></h2>
               <p className="section-subtitle">
                 {tr("Une sélection harmonieuse de soins pour nettoyer, équilibrer, nourrir et protéger votre peau au quotidien.")}
               </p>
