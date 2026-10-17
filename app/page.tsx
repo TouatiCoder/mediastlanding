@@ -547,7 +547,7 @@ export default function LandingPage() {
           <div className="container">
             <div className="section-header">
               <span className="section-eyebrow">{tr("LA SÉLECTION VINILLIA")}</span>
-              <h2 className="section-title"><a className="pack-title-order-link" href="#commande">{tr("Le pack beauté qui vous ressemble")}</a></h2>
+              <h2 className="section-title">{tr("Le pack beauté qui vous ressemble")}</h2>
               <p className="section-subtitle">
                 {tr("Une sélection harmonieuse de soins pour nettoyer, équilibrer, nourrir et protéger votre peau au quotidien.")}
               </p>
@@ -644,7 +644,8 @@ export default function LandingPage() {
                   gift: true,
                 },
               ].map((item) => (
-                <article className={`product-card ${item.gift ? "product-card-gift" : ""}`} key={item.id}>
+                <a className="product-card-link" href="#commande" key={item.id} aria-label={`${item.name} — ${tr("Commander le pack")}`}>
+                <article className={`product-card ${item.gift ? "product-card-gift" : ""}`}>
                   <div className="product-image-container">
                     {item.gift && <span className="gift-badge">{tr("OFFERT")}</span>}
                     {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -656,6 +657,7 @@ export default function LandingPage() {
                     <p className="product-description">{item.desc}</p>
                   </div>
                 </article>
+                </a>
               ))}
             </div>
 
