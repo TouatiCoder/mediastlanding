@@ -6906,3 +6906,22 @@ button,
 @media (prefers-reduced-motion: reduce) {
   .whatsapp-float { transition: none; }
 }
+
+
+/* Keep WhatsApp on the opposite side for Arabic; French stays on the right. */
+.whatsapp-float.whatsapp-float-rtl {
+  left: max(22px, env(safe-area-inset-left));
+  right: auto;
+}
+@media (max-width: 768px) {
+  .whatsapp-float.whatsapp-float-rtl {
+    left: 14px;
+    right: auto;
+  }
+}
+@media (max-width: 380px) {
+  .whatsapp-float.whatsapp-float-rtl {
+    left: 10px;
+    right: auto;
+  }
+}
