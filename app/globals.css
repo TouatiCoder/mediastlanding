@@ -5565,3 +5565,53 @@ button,
     transition: none !important;
   }
 }
+
+
+/* Clear routine journey connector on both desktop and mobile. */
+.routine-stages-six .routine-stage-card {
+  position: relative;
+}
+
+@media (min-width: 769px) {
+  .routine-stages-six {
+    column-gap: 30px;
+    row-gap: 30px;
+  }
+
+  .routine-stages-six .routine-stage-card:not(:nth-child(3n))::after {
+    content: "";
+    position: absolute;
+    z-index: 4;
+    top: 40px;
+    inset-inline-end: -31px;
+    width: 30px;
+    height: 4px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, var(--color-gold), rgba(190, 152, 94, .28));
+    opacity: .75;
+    pointer-events: none;
+  }
+
+  .routine-stages-six .routine-stage-card.is-routine-active:not(:nth-child(3n))::after {
+    opacity: 1;
+    background: linear-gradient(90deg, var(--color-burgundy), var(--color-gold));
+    box-shadow: 0 0 12px rgba(190, 152, 94, .75);
+    animation: routine-chart-line 1s ease-in-out infinite;
+  }
+}
+
+@media (max-width: 768px) {
+  .routine-stages-six .routine-stage-card:not(:last-child)::after {
+    inset-inline-end: -13px;
+    width: 14px;
+    height: 4px;
+    border-radius: 999px;
+    opacity: .65;
+    background: linear-gradient(90deg, var(--color-burgundy), var(--color-gold));
+  }
+
+  .routine-stages-six .routine-stage-card.is-routine-active:not(:last-child)::after {
+    opacity: 1;
+    box-shadow: 0 0 12px rgba(190, 152, 94, .85);
+  }
+}
