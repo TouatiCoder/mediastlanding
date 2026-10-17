@@ -5433,3 +5433,35 @@ button,
     gap: 10px;
   }
 }
+
+
+/* Sequential routine journey: highlight each product card from step 1 to step 6 */
+@keyframes routine-product-journey {
+  0%, 100% {
+    transform: translateY(0);
+    box-shadow: var(--shadow-sm);
+    border-color: var(--color-border);
+  }
+  8%, 16% {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 28px rgba(112, 43, 67, .16), 0 0 0 2px rgba(190, 152, 94, .28);
+    border-color: var(--color-gold);
+  }
+}
+
+.routine-stages-six .routine-stage-card {
+  animation: routine-product-journey 4.2s ease-in-out infinite;
+}
+
+.routine-stages-six .routine-stage-card:nth-child(1) { animation-delay: 0s; }
+.routine-stages-six .routine-stage-card:nth-child(2) { animation-delay: .7s; }
+.routine-stages-six .routine-stage-card:nth-child(3) { animation-delay: 1.4s; }
+.routine-stages-six .routine-stage-card:nth-child(4) { animation-delay: 2.1s; }
+.routine-stages-six .routine-stage-card:nth-child(5) { animation-delay: 2.8s; }
+.routine-stages-six .routine-stage-card:nth-child(6) { animation-delay: 3.5s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .routine-stages-six .routine-stage-card {
+    animation: none !important;
+  }
+}
