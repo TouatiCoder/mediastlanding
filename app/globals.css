@@ -5377,26 +5377,29 @@ button,
 }
 
 
-/* Keep the six-step routine heading on a single line, including on phones */
-.routine-section .section-title {
-  white-space: nowrap;
-  max-width: 100%;
-  width: 100%;
-  font-size: clamp(1.05rem, 3.2vw, var(--section-title-size, 2.5rem));
-  letter-spacing: -.02em;
+/* Force the complete routine title onto one line on every viewport */
+.routine-section .section-header > .section-title {
+  display: block;
+  width: max-content;
+  max-width: none;
+  white-space: nowrap !important;
   text-wrap: nowrap;
+  word-break: keep-all;
+  overflow-wrap: normal;
+  font-size: clamp(1rem, 3.2vw, 2.5rem);
+  letter-spacing: -.04em;
 }
 
 @media (max-width: 600px) {
-  .routine-section .section-title {
-    font-size: clamp(.95rem, 4.6vw, 1.35rem);
-    letter-spacing: -.035em;
+  .routine-section .section-header > .section-title {
+    font-size: clamp(.72rem, 4.1vw, 1.15rem);
+    letter-spacing: -.055em;
   }
 }
 
 @media (max-width: 360px) {
-  .routine-section .section-title {
-    font-size: .88rem;
-    letter-spacing: -.045em;
+  .routine-section .section-header > .section-title {
+    font-size: .68rem;
+    letter-spacing: -.06em;
   }
 }
