@@ -3611,3 +3611,206 @@ button,
     display: none;
   }
 }
+
+
+/* MOBILE TYPOGRAPHY TUNING — independent sizing for French and Arabic banner copy */
+@media (max-width: 768px) {
+  .hero-copy-col {
+    width: 46% !important;
+    max-width: 46% !important;
+    left: 3.5% !important;
+    right: auto !important;
+    top: 50% !important;
+    bottom: auto !important;
+    transform: translateY(-50%) !important;
+    padding: 0 !important;
+    gap: 0;
+  }
+
+  [dir="rtl"] .hero-copy-col {
+    left: auto !important;
+    right: 3.5% !important;
+    width: 46% !important;
+    max-width: 46% !important;
+    top: 50% !important;
+    bottom: auto !important;
+    transform: translateY(-50%) !important;
+    align-items: flex-end;
+    text-align: right;
+  }
+
+  .hero-eyebrow {
+    max-width: 100%;
+    font-size: clamp(0.42rem, 1.45vw, 0.68rem);
+    line-height: 1.2;
+    padding: clamp(3px, .65vw, 6px) clamp(5px, 1vw, 9px);
+    margin-bottom: clamp(4px, .8vw, 8px);
+    gap: 4px;
+    letter-spacing: .02em;
+  }
+
+  .hero-eyebrow svg {
+    width: clamp(10px, 1.8vw, 14px);
+    height: clamp(10px, 1.8vw, 14px);
+    flex: 0 0 auto;
+  }
+
+  .hero-title {
+    font-size: clamp(0.82rem, 3.15vw, 1.55rem);
+    line-height: 1.12;
+    margin-bottom: clamp(4px, .8vw, 8px);
+    letter-spacing: -.02em;
+    overflow-wrap: normal;
+    text-wrap: balance;
+  }
+
+  [dir="rtl"] .hero-title {
+    font-size: clamp(0.78rem, 3.05vw, 1.48rem);
+    line-height: 1.48;
+    letter-spacing: 0;
+    overflow-wrap: normal;
+    word-break: normal;
+    text-wrap: pretty;
+  }
+
+  .hero-description {
+    display: block;
+    font-size: clamp(0.48rem, 1.55vw, 0.78rem);
+    line-height: 1.3;
+    margin-bottom: clamp(4px, .7vw, 7px);
+  }
+
+  [dir="rtl"] .hero-description {
+    font-size: clamp(0.48rem, 1.6vw, 0.8rem);
+    line-height: 1.6;
+  }
+
+  .hero-badges {
+    gap: clamp(2px, .45vw, 5px);
+    margin-bottom: clamp(4px, .7vw, 7px);
+    flex-wrap: wrap;
+  }
+
+  .hero-badge {
+    font-size: clamp(0.4rem, 1.25vw, 0.63rem);
+    line-height: 1.15;
+    padding: clamp(2px, .45vw, 4px) clamp(3px, .65vw, 6px);
+    gap: 3px;
+    white-space: normal;
+  }
+
+  .hero-badge svg {
+    width: clamp(9px, 1.55vw, 13px);
+    height: clamp(9px, 1.55vw, 13px);
+    flex: 0 0 auto;
+  }
+
+  .hero-action-row {
+    gap: clamp(4px, .7vw, 8px);
+    flex-wrap: wrap;
+    margin-bottom: clamp(3px, .5vw, 5px);
+  }
+
+  .hero-price-value {
+    font-size: clamp(0.78rem, 2.9vw, 1.35rem);
+    line-height: 1.1;
+  }
+
+  .hero-price-currency {
+    font-size: clamp(0.44rem, 1.4vw, 0.7rem);
+  }
+
+  .hero-cta-btn {
+    font-size: clamp(0.43rem, 1.35vw, 0.7rem);
+    line-height: 1.15;
+    padding: clamp(4px, .7vw, 8px) clamp(5px, .9vw, 10px);
+    gap: 3px;
+    white-space: normal;
+  }
+
+  .hero-cta-btn svg {
+    width: clamp(10px, 1.7vw, 15px);
+    height: clamp(10px, 1.7vw, 15px);
+    flex: 0 0 auto;
+  }
+
+  .hero-trust-note {
+    display: flex;
+    gap: 4px;
+    font-size: clamp(0.4rem, 1.2vw, 0.62rem);
+    line-height: 1.2;
+  }
+
+  [dir="rtl"] .hero-trust-note {
+    line-height: 1.55;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-copy-col,
+  [dir="rtl"] .hero-copy-col {
+    width: 47% !important;
+    max-width: 47% !important;
+    padding: 0 !important;
+  }
+
+  .hero-title {
+    font-size: clamp(0.72rem, 3.2vw, 1rem);
+    line-height: 1.12;
+  }
+
+  [dir="rtl"] .hero-title {
+    font-size: clamp(0.7rem, 3.05vw, 0.98rem);
+    line-height: 1.45;
+  }
+
+  .hero-description,
+  [dir="rtl"] .hero-description {
+    font-size: clamp(0.42rem, 1.7vw, 0.58rem);
+    line-height: 1.25;
+  }
+
+  .hero-eyebrow {
+    font-size: clamp(0.38rem, 1.45vw, 0.5rem);
+  }
+
+  .hero-badge {
+    font-size: clamp(0.36rem, 1.25vw, 0.46rem);
+    padding: 2px 3px;
+  }
+
+  .hero-action-row {
+    gap: 4px;
+  }
+
+  .hero-cta-btn {
+    font-size: clamp(0.38rem, 1.35vw, 0.5rem);
+    padding: 4px 5px;
+  }
+
+  .hero-trust-note {
+    font-size: clamp(0.36rem, 1.1vw, 0.43rem);
+  }
+}
+
+@media (max-width: 360px) {
+  .hero-copy-col,
+  [dir="rtl"] .hero-copy-col {
+    width: 48% !important;
+    max-width: 48% !important;
+  }
+
+  .hero-title,
+  [dir="rtl"] .hero-title {
+    font-size: clamp(0.66rem, 3.1vw, 0.82rem);
+  }
+
+  .hero-description,
+  .hero-trust-note {
+    display: none;
+  }
+
+  .hero-badge:nth-child(3) {
+    display: none;
+  }
+}
