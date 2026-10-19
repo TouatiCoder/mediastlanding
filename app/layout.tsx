@@ -1,32 +1,38 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
+const title = "VINILLIA Beauty — La sélection beauté, 1 400 MAD";
+const description =
+  "Découvrez la sélection VINILLIA : 6 soins AXIS-Y et 2 cadeaux Vaseline pour 1 400 MAD. Commande simple et paiement à la livraison au Maroc.";
+
 export const metadata: Metadata = {
-  title: "Vinillia Beauty & Skincare — Pack Beauté",
-  description:
-    "Découvrez le pack Vinillia Beauty & Skincare : 8 produits, dont 2 offerts, à 1 400 DH. Paiement à la livraison au Maroc.",
-  applicationName: "Vinillia Beauty & Skincare",
+  title,
+  description,
+  applicationName: "VINILLIA Beauty",
   openGraph: {
-    title: "Vinillia Beauty & Skincare — Pack Beauté",
-    description:
-      "Huit produits beauté réunis dans un pack exclusif à 1 400 DH, dont deux produits offerts. Paiement à la livraison au Maroc.",
+    title,
+    description,
     type: "website",
     locale: "fr_MA",
+    siteName: "VINILLIA Beauty",
   },
+  twitter: {
+    card: "summary",
+    title,
+    description,
+  },
+  robots: { index: true, follow: true },
 };
 
 export const viewport: Viewport = {
-  themeColor: "#FFF9F6",
+  themeColor: "#f8f3ee",
   width: "device-width",
   initialScale: 1,
-  maximumScale: 5,
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{ children: React.ReactNode }>) {
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="fr" suppressHydrationWarning>
+    <html lang="fr" dir="ltr" suppressHydrationWarning>
       <body>{children}</body>
     </html>
   );

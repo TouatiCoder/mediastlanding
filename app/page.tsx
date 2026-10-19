@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, type FormEvent, type ReactNode } from "react";
+import { useEffect, useState, type FormEvent } from "react";
 import Image from "next/image";
 
 import franceFlag from "./france.png";
@@ -18,23 +18,7 @@ import product8 from "./imgprodu/8.jpg";
 import offerBanner from "./imgprodu/image.png";
 
 type IconProps = { size?: number; className?: string; "aria-hidden"?: boolean | "true" | "false" };
-type IconName =
-  | "ArrowRight"
-  | "ArrowLeft"
-  | "Check"
-  | "Gift"
-  | "Heart"
-  | "Menu"
-  | "Sparkles"
-  | "X"
-  | "ShieldCheck"
-  | "Truck"
-  | "RefreshCw"
-  | "Phone"
-  | "MapPin"
-  | "User"
-  | "Clock"
-  | "SlidersHorizontal";
+type IconName = "ArrowRight" | "ArrowLeft" | "Check" | "Gift" | "Heart" | "Menu" | "Sparkles" | "X" | "ShieldCheck" | "Truck" | "Phone" | "MapPin" | "User";
 
 function IconGlyph({ name, size = 20, className, ...props }: IconProps & { name: IconName }) {
   const common = { fill: "none", stroke: "currentColor", strokeWidth: 1.8, strokeLinecap: "round" as const, strokeLinejoin: "round" as const };
@@ -50,12 +34,9 @@ function IconGlyph({ name, size = 20, className, ...props }: IconProps & { name:
       {name === "X" && <><path {...common} d="m18 6-12 12" /><path {...common} d="m6 6 12 12" /></>}
       {name === "ShieldCheck" && <><path {...common} d="M12 22s8-4 8-11V5l-8-3-8 3v6c0 7 8 11 8 11Z" /><path {...common} d="m9 12 2 2 4-4" /></>}
       {name === "Truck" && <><path {...common} d="M3 6h11v12H3z" /><path {...common} d="M14 10h4l3 3v5h-7z" /><circle {...common} cx="7.5" cy="19" r="2" /><circle {...common} cx="17.5" cy="19" r="2" /></>}
-      {name === "RefreshCw" && <><path {...common} d="M20 7v5h-5" /><path {...common} d="M4 17v-5h5" /><path {...common} d="M5.6 9A7 7 0 0 1 17.5 6L20 12M4 12l2.5 6A7 7 0 0 0 18.4 15" /></>}
       {name === "Phone" && <path {...common} d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />}
       {name === "MapPin" && <><path {...common} d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" /><circle {...common} cx="12" cy="10" r="3" /></>}
       {name === "User" && <><path {...common} d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" /><circle {...common} cx="12" cy="7" r="4" /></>}
-      {name === "Clock" && <><circle {...common} cx="12" cy="12" r="10" /><path {...common} d="M12 6v6l4 2" /></>}
-      {name === "SlidersHorizontal" && <><path {...common} d="M21 4h-7m-4 0H3m18 8h-3m-4 0H3m18 8h-9m-4 0H3" /><circle {...common} cx="12" cy="4" r="2" /><circle {...common} cx="16" cy="12" r="2" /><circle {...common} cx="8" cy="20" r="2" /></>}
     </svg>
   );
 }
@@ -70,154 +51,60 @@ const Sparkles = (props: IconProps) => <IconGlyph name="Sparkles" {...props} />;
 const X = (props: IconProps) => <IconGlyph name="X" {...props} />;
 const ShieldCheck = (props: IconProps) => <IconGlyph name="ShieldCheck" {...props} />;
 const Truck = (props: IconProps) => <IconGlyph name="Truck" {...props} />;
-const RefreshCw = (props: IconProps) => <IconGlyph name="RefreshCw" {...props} />;
 const Phone = (props: IconProps) => <IconGlyph name="Phone" {...props} />;
 const MapPin = (props: IconProps) => <IconGlyph name="MapPin" {...props} />;
 const User = (props: IconProps) => <IconGlyph name="User" {...props} />;
 
 const PRICE_MAD = 1400;
 
-// Centralized bilingual translation dictionary
 const translations: Record<string, string> = {
-  // Announcement
   "VOTRE RITUEL BEAUTÉ, EN UN SEUL PACK · 2 PRODUITS OFFERTS": "روتين جمالك في باقة واحدة · منتجان هدية",
-  
-  // Header Navigation
   "Accueil": "الرئيسية",
   "Le pack": "الباقة",
   "La routine": "الروتين",
-  "Avant / Après": "قبل / بعد",
-  "Commander": "اطلبي",
   "Commander le pack": "اطلبي الباقة",
-  "Ouvrir le menu": "فتح القائمة",
-  "Fermer le menu": "إغلاق القائمة",
-
-  // Hero Section (Master prompt specifications)
   "OFFRE PACK VINILLIA": "عرض باقة VINILLIA",
   "Huit essentiels. Un seul rituel.": "8 منتجات أساسية، روتين واحد لجمالك",
   "Retrouvez 8 essentiels skincare dans un seul pack, avec 2 produits offerts.": "اكتشفي باقة العناية بالبشرة التي تضم 8 منتجات، منها منتجان هدية.",
-  "Sélection beauté": "اختيار مميز للعناية",
-  "2 produits offerts": "منتجان هدية",
-  "Commande facile": "طلب سهل",
   "1 400 DH": "1400 درهم",
-
-  // Hero badge & visuals
-  "8 PRODUITS · 2 OFFERTS": "8 منتجات · منتجان هدية",
-  "Bannière de la sélection Vinillia": "بانر باقة فينيليا للعناية بالبشرة",
-
-  // Value strip / Reassurance
-  "Paiement à la livraison": "الدفع عند الاستلام",
-  "Paiement en espèces à la réception": "أداء نقداً عند استلام الطرد",
   "8 produits complets": "8 منتجات متكاملة",
   "6 soins AXIS-Y + 2 cadeaux Vaseline": "6 مستحضرات AXIS-Y + هديتان من فازلين",
+  "Paiement à la livraison": "الدفع عند الاستلام",
+  "Paiement en espèces à la réception": "أداء نقداً عند استلام الطرد",
   "Commande express": "طلب سريع وسهل",
   "En quelques clics sans carte bancaire": "في ثوانٍ وبدون بطاقة بنكية",
-  "Confirmation par appel": "تأكيد هاتفي سريع",
-  "Notre équipe vous appelle sous 24h": "سيتصل بكِ فريقنا خلال 24 ساعة",
-
-  // Pack Section
   "LA SÉLECTION VINILLIA": "تشكيلة VINILLIA",
   "Le pack beauté qui vous ressemble": "باقة الجمال المتكاملة لروتينك",
   "Une sélection harmonieuse de soins pour nettoyer, équilibrer, nourrir et protéger votre peau au quotidien.": "تشكيلة متناسقة لتنظيف، توازن، ترطيب وحماية بشرتكِ يومياً.",
   "OFFERT": "هدية",
-  "Cadeau offert dans le pack": "هدية مجانية ضمن الباقة",
-  "Soin inclus dans le pack": "مستحضر ضمن باقة الجمال",
-  "8 produits dans votre pack": "8 منتجات في باقتكِ",
-  "6 soins sélectionnés + 2 soins offerts inclus.": "6 منتجات مختارة بعناية + منتجان هدية مجانية.",
-  "Les 2 produits Vaseline sont offerts": "منتجا فازلين مشمولان كهدية مجانية",
   "Commander mon pack": "أطلب باقتي الآن",
-
-  // Product types and names
-  "Nettoyant visage": "رغوة تنظيف الوجه",
-  "Tonique éclat": "تونر الإشراقة والنضارة",
-  "Masque gel apaisant": "قناع جل مهدئ للبشرة",
-  "Ampoule sérum barrière": "أمبول تقوية حاجز البشرة",
-  "Crème hydratante éclat": "كريم الترطيب والإشراقة",
-  "Protection solaire minérale": "واقي شمس معدني",
-  "Soin corps éclat": "لوشن إشراقة وترطيب الجسم",
-  "Baume à lèvres teinté": "مرطب شفاه بلمسة وردية",
-
-  // Routine Section (3 STAGES)
   "LA ROUTINE VINILLIA": "روتين VINILLIA",
   "Votre rituel en 6 étapes": "روتينكِ في 6 خطوات بسيطة",
-  "Une méthode simple et intuitive pour intégrer les soins de votre pack dans votre quotidien.": "طريقة عملية وسلسة لتطبيق منتجات باقتكِ والاستفادة الكاملة منها.",
-  "Étape 01": "الخطوة 01",
-  "Nettoyer & Préparer": "تنظيف وتهيئة البشرة",
-  "Étape 02": "الخطوة 02",
-  "Traiter & Hydrater": "عناية وترطيب عميق",
-  "Étape 03": "الخطوة 03",
-  "Protéger & Sublimer": "حماية ولمسة نضارة",
-
-  // Before / After Section
-  "RÉSULTATS & TEXTURES": "النتائج والتجربة",
-  "Votre peau, votre rituel": "بشرتكِ، عنايتكِ اليومية",
-  "Découvrez la progression visible d'un rituel régulier. Glissez pour comparer l'effet avant et après application.": "اكتشفي التحول الجميل لروتين العناية المنتظم. اسحبي للمقارنة بين قبل وبعد الاستخدام.",
-  "AVANT": "قبل",
-  "APRÈS": "بعد",
-  "Glissez pour comparer": "اسحبي للمقارنة",
-  "Visuels authentiques de routine — Résultats observés au fil d'une utilisation régulière.": "مساحة مخصصة لمتابعة تطور الروتين — تظهر النتائج مع الاستخدام المنتظم والمستمر.",
-
-  // Benefits / Highlights Section
+  "Découvrez les 6 étapes de votre nouvelle routine AXIS-Y pour une peau éclatante et en pleine santé.": "اكتشفي الخطوات الست لروتين AXIS-Y الجديد لبشرة نضرة وصحية.",
+  "Nettoyer en douceur": "تنظيف لطيف",
+  "Équilibrer et illuminer": "توازن وإشراق",
+  "Apaiser et réparer": "تهدئة وإصلاح",
+  "Nourrir intensément": "تغذية عميقة",
+  "Hydrater et unifier": "ترطيب وتوحيد",
+  "Protéger des UV": "حماية من الأشعة",
+  "ÉTAPE": "الخطوة",
   "OFFRE SPÉCIALE": "عرض استثنائي",
   "Pourquoi choisir le pack Vinillia ?": "لماذا تختارين باقة Vinillia؟",
-  "Une solution complète et avantageuse pensée pour simplifier votre routine beauté tout en réalisant une économie substantielle.": "حل متكامل صُمم لتبسيط روتينك اليومي مع توفير ملموس ومنتجات أصلية.",
-  "Rituel complet en 1 pack": "روتين كامل في باقة واحدة",
-  "Plus besoin de chercher des soins compatibles : les 8 formules agissent en parfaite synergie.": "لا داعي للبحث عن منتجات متوافقة: المنتجات الثمانية تعمل معاً بانسجام وتناغم.",
-  "2 soins iconiques offerts": "هديتان مميزتان مجاناً",
-  "Recevez la lotion Gluta-Hya et le soin pour lèvres Rosy Lips de Vaseline sans frais supplémentaires.": "احصلي على لوشن Gluta-Hya ومرطب الشفاه Rosy Lips من فازلين كهدية مجانية.",
-  "Paiement à la livraison au Maroc": "الدفع عند الاستلام بالمغرب",
-  "Vous ne payez rien en ligne : réglez votre commande directement au livreur à la réception de votre colis.": "لا تدفعي شيئاً عبر الإنترنت: أدي ثمن طلبكِ مباشرة عند استلام الطرد من الموزع.",
-  "Livraison soignée & confirmation rapide": "توصيل آمن وتأكيد سريع",
-  "Notre service client basé au Maroc vous contacte par téléphone pour valider votre adresse avant l'envoi.": "يتصل بكِ فريق خدمة العملاء لتأكيد العنوان وتفاصيل التوصيل قبل شحن الطرد.",
-  "Commander maintenant": "اطلبي الآن",
-
-  // Order Form
   "COMMANDE EXPRESS": "طلب سريع",
   "Recevez votre pack à domicile": "استلمي باقتكِ عند باب منزلكِ",
-  "Remplissez ce formulaire pour commander votre pack. Notre équipe vous appellera pour confirmer l'expédition.": "املئي النموذج لتأكيد طلبكِ. سيتصل بكِ فريقنا لتأكيد الشحن وتحديد موعد التسليم.",
-  "Pack Vinillia Beauty & Skincare": "باقة Vinillia للجمال والعناية",
-  "8 produits (dont 2 offerts)": "8 منتجات (منها منتجان هدية)",
-  "Paiement à la livraison (COD)": "الدفع عند الاستلام (COD)",
   "Nom complet *": "الاسم الكامل *",
   "Numéro de téléphone *": "رقم الهاتف *",
   "Adresse de livraison complète *": "عنوان التوصيل الكامل *",
-  "Ex. Salma El Amrani": "مثال: سلمى العمراني",
-  "Ex. 06 12 34 56 78 ou 07 00 00 00 00": "مثال: 06 12 34 56 78 أو 07 00 00 00 00",
-  "Ville, quartier, numéro de rue / appartement...": "المدينة، الحي، رقم الشارع / العمارة...",
-  "Vos informations personnelles sont strictement confidentielles et utilisées uniquement pour la livraison.": "معلوماتك الشخصية سرية تماماً وتُستخدم فقط لتوصيل وتأكيد طلبك.",
   "CONFIRMER MA COMMANDE": "تأكيد طلبي الآن",
-  "CONFIRMATION EN COURS…": "جارٍ تأكيد الطلب…",
-  "Veuillez saisir votre nom complet (au moins 3 caractères).": "يرجى إدخال اسمكِ الكامل (3 أحرف على الأقل).",
-  "Veuillez saisir un numéro de téléphone marocain valide (ex. 06 12 34 56 78).": "يرجى إدخال رقم هاتف مغربي صحيح (مثال: 06 12 34 56 78).",
-  "Veuillez saisir votre adresse complète de livraison (au moins 8 caractères).": "يرجى إدخال عنوان التوصيل المفصل (8 أحرف على الأقل).",
-  "Veuillez corriger les champs signalés avant de continuer.": "يرجى تصحيح الحقول المحددة قبل المتابعة.",
-  "Félicitations ! Votre commande a été enregistrée avec succès.": "تهانينا! تم تسجيل طلبكِ بنجاح.",
-  "Notre service client vous contactera sous peu par téléphone pour confirmer la livraison.": "سيتصل بكِ فريق خدمة العملاء قريباً عبر الهاتف لتأكيد موعد التوصيل.",
-  "Numéro de commande :": "رقم الطلب:",
-
-  // Footer & Legal
-  "Une sélection skincare premium pensée pour sublimer votre éclat naturel au quotidien.": "تشكيلة عناية راقية صُممت لإبراز إشراقتكِ وجمالكِ الطبيعي كل يوم.",
-  "Navigation": "روابط سريعة",
-  "Garanties": "ضماناتنا",
-  "Informations légales": "معلومات",
-  "Politique de confidentialité": "سياسة الخصوصية",
-  "Conditions de livraison": "شروط التوصيل",
-  "Service client Maroc": "خدمة العملاء بالمغرب",
-  "Tous droits réservés.": "جميع الحقوق محفوظة.",
-  "Le pack Vinillia": "باقة Vinillia",
-
-
 };
 
 export default function LandingPage() {
   const [language, setLanguage] = useState<"fr" | "ar">("fr");
   const isArabic = language === "ar";
-  // Keep Western/Latin digits (0-9) for the Moroccan Arabic storefront.
   const tr = (key: string): string => (isArabic ? translations[key] ?? key : key);
   const formattedPrice = isArabic ? String(PRICE_MAD) : PRICE_MAD.toLocaleString("fr-FR");
 
   const [menuOpen, setMenuOpen] = useState(false);
-  const [sliderPosition, setSliderPosition] = useState(50);
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
@@ -225,168 +112,39 @@ export default function LandingPage() {
   const [formState, setFormState] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [formMessage, setFormMessage] = useState("");
   const [orderRef, setOrderRef] = useState<string | null>(null);
-  const [year, setYear] = useState<number | null>(null);
 
-  // Initialize language from localStorage and update document attributes
   useEffect(() => {
     const savedLang = localStorage.getItem("vinillia_lang");
-    if (savedLang === "ar" || savedLang === "fr") {
-      setLanguage(savedLang);
-    }
-    setYear(new Date().getFullYear());
+    if (savedLang === "ar" || savedLang === "fr") setLanguage(savedLang);
   }, []);
 
   useEffect(() => {
     document.documentElement.lang = language;
     document.documentElement.dir = isArabic ? "rtl" : "ltr";
-    try {
-      localStorage.setItem("vinillia_lang", language);
-    } catch {
-      // ignore storage access issues
-    }
+    try { localStorage.setItem("vinillia_lang", language); } catch {}
   }, [language, isArabic]);
-
-  // Automatically move the six-step routine carousel on mobile, one product at a time.
-  useEffect(() => {
-    const track = document.querySelector<HTMLElement>(".routine-stages-six");
-    if (!track || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-
-    const mobileQuery = window.matchMedia("(max-width: 768px)");
-    let timer: ReturnType<typeof setInterval> | undefined;
-    let resumeTimer: ReturnType<typeof setTimeout> | undefined;
-    let paused = false;
-    let index = 0;
-
-    const cards = () => Array.from(track.querySelectorAll<HTMLElement>(".routine-stage-card"));
-    const syncActiveStep = (items: HTMLElement[], activeIndex: number) => {
-      items.forEach((card, i) => {
-        card.classList.toggle("is-routine-active", i === activeIndex);
-        card.querySelector(".stage-number")?.classList.toggle("is-routine-active", i === activeIndex);
-      });
-    };
-    const stop = () => {
-      if (timer) clearInterval(timer);
-      timer = undefined;
-    };
-    const moveTo = (nextIndex: number, smooth = true) => {
-      const items = cards();
-      if (!items.length) return;
-      index = (nextIndex + items.length) % items.length;
-      syncActiveStep(items, index);
-      const trackLeft = track.getBoundingClientRect().left;
-      const cardLeft = items[index].getBoundingClientRect().left;
-      const targetLeft = Math.max(0, track.scrollLeft + cardLeft - trackLeft);
-      track.scrollTo({ left: targetLeft, behavior: smooth ? "smooth" : "auto" });
-    };
-    const start = () => {
-      stop();
-      if (!mobileQuery.matches || paused) return;
-      const items = cards();
-      if (items.length) syncActiveStep(items, index);
-      timer = setInterval(() => {
-        if (cards().length < 2) return;
-        moveTo(index + 1);
-      }, 2800);
-    };
-    const pauseBriefly = () => {
-      paused = true;
-      stop();
-      if (resumeTimer) clearTimeout(resumeTimer);
-      resumeTimer = setTimeout(() => {
-        paused = false;
-        const items = cards();
-        if (items.length) {
-          const trackLeft = track.getBoundingClientRect().left;
-          index = items.reduce((best, card, i) =>
-            Math.abs(card.getBoundingClientRect().left - trackLeft) <
-            Math.abs(items[best].getBoundingClientRect().left - trackLeft) ? i : best, 0);
-          syncActiveStep(items, index);
-        }
-        start();
-      }, 5000);
-    };
-    const onMediaChange = () => {
-      if (!mobileQuery.matches) {
-        stop();
-        track.scrollTo({ left: 0, behavior: "auto" });
-      } else {
-        start();
-      }
-    };
-
-    track.addEventListener("touchstart", pauseBriefly, { passive: true });
-    track.addEventListener("pointerdown", pauseBriefly);
-    track.addEventListener("wheel", pauseBriefly, { passive: true });
-    mobileQuery.addEventListener("change", onMediaChange);
-    start();
-
-    return () => {
-      stop();
-      if (resumeTimer) clearTimeout(resumeTimer);
-      track.removeEventListener("touchstart", pauseBriefly);
-      track.removeEventListener("pointerdown", pauseBriefly);
-      track.removeEventListener("wheel", pauseBriefly);
-      mobileQuery.removeEventListener("change", onMediaChange);
-    };
-  }, []);
-
-  // Hide floating mobile CTA when the order section is visible
-  useEffect(() => {
-    const orderSection = document.getElementById("commande");
-    const mobileCta = document.getElementById("mobileCta");
-    if (!orderSection || !mobileCta || !("IntersectionObserver" in window)) return;
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            mobileCta.classList.add("hidden-cta");
-          } else {
-            mobileCta.classList.remove("hidden-cta");
-          }
-        });
-      },
-      { threshold: 0.15 }
-    );
-
-    observer.observe(orderSection);
-    return () => observer.disconnect();
-  }, []);
 
   function handleLanguageChange(nextLang: "fr" | "ar") {
     setLanguage(nextLang);
     setMenuOpen(false);
   }
 
-  function validateMoroccanPhone(val: string): boolean {
-    const normalized = val.replace(/[\s().-]/g, "");
-    return /^(\+212|00212|0)([5-7]\d{8})$/.test(normalized);
-  }
-
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setFormMessage("");
     setOrderRef(null);
-
     const nextErrors: typeof errors = {};
     const trimmedName = name.trim();
     const trimmedPhone = phone.trim();
     const trimmedAddress = address.trim();
 
-    if (trimmedName.length < 3) {
-      nextErrors.name = tr("Veuillez saisir votre nom complet (au moins 3 caractères).");
-    }
-
-    if (!validateMoroccanPhone(trimmedPhone)) {
+    if (trimmedName.length < 3) nextErrors.name = tr("Veuillez saisir votre nom complet (au moins 3 caractères).");
+    if (!/^(\+212|00212|0)([5-7]\d{8})$/.test(trimmedPhone.replace(/[\s().-]/g, ""))) {
       nextErrors.phone = tr("Veuillez saisir un numéro de téléphone marocain valide (ex. 06 12 34 56 78).");
     }
-
-    if (trimmedAddress.length < 8) {
-      nextErrors.address = tr("Veuillez saisir votre adresse complète de livraison (au moins 8 caractères).");
-    }
+    if (trimmedAddress.length < 8) nextErrors.address = tr("Veuillez saisir votre adresse complète de livraison (au moins 8 caractères).");
 
     setErrors(nextErrors);
-
     if (Object.keys(nextErrors).length > 0) {
       setFormState("error");
       setFormMessage(tr("Veuillez corriger les champs signalés avant de continuer."));
@@ -394,692 +152,283 @@ export default function LandingPage() {
     }
 
     setFormState("loading");
-
     try {
       const response = await fetch("/api/orders", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          fullName: trimmedName,
-          phone: trimmedPhone,
-          address: trimmedAddress,
-          productBundleId: "vinillia-beauty-pack",
-          quantity: 1,
-        }),
+        body: JSON.stringify({ fullName: trimmedName, phone: trimmedPhone, address: trimmedAddress, productBundleId: "vinillia-beauty-pack", quantity: 1 }),
       });
-
       const data = await response.json().catch(() => null);
-
-      if (!response.ok) {
-        throw new Error(data?.error || "Une erreur est survenue lors de l'envoi de votre commande.");
-      }
+      if (!response.ok) throw new Error(data?.error || "Erreur serveur.");
 
       setFormState("success");
       setOrderRef(data?.orderId || "VIN-CONFIRMED");
-      setFormMessage(
-        tr("Félicitations ! Votre commande a été enregistrée avec succès.") +
-          " " +
-          tr("Notre service client vous contactera sous peu par téléphone pour confirmer la livraison.")
-      );
-
-      setName("");
-      setPhone("");
-      setAddress("");
-      setErrors({});
-    } catch (err: unknown) {
+      setFormMessage(tr("Félicitations ! Votre commande a été enregistrée avec succès."));
+      setName(""); setPhone(""); setAddress(""); setErrors({});
+    } catch (err: any) {
       setFormState("error");
-      const errorObj = err as { message?: string };
-      setFormMessage(
-        errorObj?.message || "Le système de commande n'a pas pu traiter votre demande. Veuillez réessayer plus tard."
-      );
+      setFormMessage(err?.message || "Le système n'a pas pu traiter votre demande.");
     }
   }
 
+  const products = [
+    { id: "p1", name: "Sunday Morning Refreshing Cleansing Foam", brand: "AXIS-Y", type: "Nettoyant visage", image: product1, gift: false },
+    { id: "p2", name: "Dark Spot Correcting Glow Toner", brand: "AXIS-Y", type: "Tonique éclat", image: product2, gift: false },
+    { id: "p3", name: "New Skin Resolution Gel Mask", brand: "AXIS-Y", type: "Masque gel apaisant", image: product3, gift: false },
+    { id: "p4", name: "Artichoke Intensive Skin Barrier Ampoule", brand: "AXIS-Y", type: "Ampoule sérum", image: product4, gift: false },
+    { id: "p5", name: "Dark Spot Correcting Glow Cream", brand: "AXIS-Y", type: "Crème hydratante", image: product5, gift: false },
+    { id: "p6", name: "Complete No-Stress Physical Sunscreen", brand: "AXIS-Y", type: "Protection solaire", image: product6, gift: false },
+    { id: "p7", name: "Vaseline Gluta-Hya Serum Burst Lotion", brand: "Vaseline", type: "Soin corps", image: product7, gift: true },
+    { id: "p8", name: "Vaseline Lip Therapy Rosy Lips", brand: "Vaseline", type: "Baume lèvres", image: product8, gift: true },
+  ];
+
+  const routineSteps = [
+    { ...products[0], title: "Nettoyer en douceur", step: "01" },
+    { ...products[1], title: "Équilibrer et illuminer", step: "02" },
+    { ...products[2], title: "Apaiser et réparer", step: "03" },
+    { ...products[3], title: "Nourrir intensément", step: "04" },
+    { ...products[4], title: "Hydrater et unifier", step: "05" },
+    { ...products[5], title: "Protéger des UV", step: "06" },
+  ];
+
   return (
-    <div className={`page-shell ${isArabic ? "arabic" : ""}`} lang={language} dir={isArabic ? "rtl" : "ltr"}>
-      {/* Top promotional bar */}
-      <div className="announcement-bar" role="region" aria-label="Annonce promotionnelle">
-        <div className="container announcement-inner">
-          <Sparkles size={14} aria-hidden="true" />
-          <span>{tr("VOTRE RITUEL BEAUTÉ, EN UN SEUL PACK · 2 PRODUITS OFFERTS")}</span>
-          <Sparkles size={14} aria-hidden="true" />
-        </div>
+    <div className={`min-h-screen bg-[#FFF9F6] text-[#292326] ${isArabic ? "arabic" : ""}`} lang={language} dir={isArabic ? "rtl" : "ltr"}>
+      
+      {/* Announcement Bar */}
+      <div className="bg-[#702B43] text-white py-2.5 text-xs font-bold tracking-wider text-center flex justify-center items-center gap-2 relative z-50">
+        <Sparkles size={14} /> <span>{tr("VOTRE RITUEL BEAUTÉ, EN UN SEUL PACK · 2 PRODUITS OFFERTS")}</span> <Sparkles size={14} />
       </div>
 
-      {/* Main sticky navigation */}
-      <header className="site-header">
-        <div className="container nav">
-          <a href="#accueil" className="brand" aria-label="Vinillia Beauty & Skincare — Accueil" onClick={() => setMenuOpen(false)}>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img className="brand-logo" src="/vinillia-logo.svg" alt="Vinillia Beauty & Skincare" width={154} height={42} />
+      {/* Header */}
+      <header className="sticky top-0 z-50 glass-panel border-b border-[#ead9d9] transition-all">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+          <a href="#accueil" className="flex-shrink-0">
+            <img src="/vinillia-logo.svg" alt="Vinillia Beauty" className="h-8 w-auto" />
           </a>
-
-          <nav className={`nav-links ${menuOpen ? "open" : ""}`} id="navLinks" aria-label="Navigation principale">
-            <a href="#accueil" onClick={() => setMenuOpen(false)}>{tr("Accueil")}</a>
-            <a href="#pack" onClick={() => setMenuOpen(false)}>{tr("Le pack")}</a>
-            <a href="#routine" onClick={() => setMenuOpen(false)}>{tr("La routine")}</a>
-            {/* <a href="#resultats" onClick={() => setMenuOpen(false)}>{tr("Avant / Après")}</a> */}
-            <a className="mobile-nav-order" href="#commande" onClick={() => setMenuOpen(false)}>
-              {tr("Commander le pack")}
-            </a>
+          
+          <nav className="hidden md:flex gap-8 text-sm font-semibold text-[#81777a]">
+            <a href="#accueil" className="hover:text-[#702b43] transition-colors">{tr("Accueil")}</a>
+            <a href="#routine" className="hover:text-[#702b43] transition-colors">{tr("La routine")}</a>
+            <a href="#pack" className="hover:text-[#702b43] transition-colors">{tr("Le pack")}</a>
           </nav>
 
-          <div className="header-actions">
-            <div className="language-switch" role="group" aria-label="Choisir la langue">
-              <button
-                type="button"
-                className={!isArabic ? "active" : ""}
-                aria-pressed={!isArabic}
-                onClick={() => handleLanguageChange("fr")}
-                title="Passer en Français"
-              >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={franceFlag.src} alt="" aria-hidden="true" width={20} height={14} />
-                <span>FR</span>
+          <div className="flex items-center gap-4">
+            <div className="flex bg-white/50 rounded-full p-1 border border-[#ead9d9]">
+              <button onClick={() => handleLanguageChange("fr")} className={`px-3 py-1 rounded-full text-xs font-bold flex items-center gap-2 ${!isArabic ? 'bg-white shadow-sm text-[#702b43]' : 'text-[#81777a]'}`}>
+                <img src={franceFlag.src} alt="" className="w-4 h-3 rounded-[2px]" /> FR
               </button>
-              <span className="lang-divider" aria-hidden="true">|</span>
-              <button
-                type="button"
-                className={isArabic ? "active" : ""}
-                aria-pressed={isArabic}
-                onClick={() => handleLanguageChange("ar")}
-                title="التبديل إلى العربية"
-              >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={arabicFlag.src} alt="" aria-hidden="true" width={20} height={14} />
-                <span>AR</span>
+              <button onClick={() => handleLanguageChange("ar")} className={`px-3 py-1 rounded-full text-xs font-bold flex items-center gap-2 ${isArabic ? 'bg-white shadow-sm text-[#702b43]' : 'text-[#81777a]'}`}>
+                <img src={arabicFlag.src} alt="" className="w-4 h-3 rounded-[2px]" /> AR
               </button>
             </div>
-
-            <a href="#commande" className="btn btn-gold nav-cta">
-              <span>{isArabic ? "اطلبي الآن" : "Commander"}</span>
-              {isArabic ? <ArrowLeft size={15} aria-hidden="true" /> : <ArrowRight size={15} aria-hidden="true" />}
+            <a href="#commande" className="hidden md:flex btn-premium px-6 py-2.5 rounded-full text-sm font-bold items-center gap-2">
+              {tr("Commander le pack")} {isArabic ? <ArrowLeft size={16}/> : <ArrowRight size={16}/>}
             </a>
-
-            <button
-              className="menu-toggle"
-              type="button"
-              aria-label={menuOpen ? tr("Fermer le menu") : tr("Ouvrir le menu")}
-              aria-expanded={menuOpen}
-              aria-controls="navLinks"
-              onClick={() => setMenuOpen((open) => !open)}
-            >
-              {menuOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
           </div>
         </div>
       </header>
 
       <main>
-        {/* FULL-WIDTH HERO: keep editable copy and complete image in a unified composition */}
-        <section
-          className={`hero-section ${isArabic ? "hero-ar" : "hero-fr"}`}
-          id="accueil"
-          aria-label={isArabic ? "عرض باقة فينيليا للعناية بالبشرة" : "Offre pack beauté Vinillia"}
-        >
-          <div className="hero-container">
-            <div className="hero-copy-col">
-              <span className="hero-eyebrow">
-                <Gift size={16} aria-hidden="true" />
-                <span>{tr("OFFRE PACK VINILLIA")}</span>
-              </span>
+        {/* Hero Section - 100% Responsive AR/FR */}
+        <section id="accueil" className="relative w-full min-h-[90vh] md:min-h-[85vh] flex flex-col overflow-hidden">
+          
+          {/* Background Image Container */}
+          <div className="absolute inset-0 w-full h-full z-0">
+            <Image 
+              src={isArabic ? bannerAr : bannerFr} 
+              alt="Vinillia Banner" 
+              className="w-full h-full object-cover object-[15%_100%] md:object-[20%_center]" 
+              priority 
+            />
+            {/* 
+              Gradient Magique NADI:
+              - Mobile: Lfo9 byed bach tban lktaba, lta7t transparent bach ybano les produits.
+              - PC: AR (RTL) -> limn byed, lissar transparent. FR (LTR) -> lissar byed, limn transparent.
+            */}
+            <div className={`absolute inset-0 bg-gradient-to-b from-[#fff9f6]/95 via-[#fff9f6]/50 to-transparent ${isArabic ? 'md:bg-gradient-to-l md:from-[#fff9f6] md:via-[#fff9f6]/70 md:to-transparent' : 'md:bg-gradient-to-r md:from-[#fff9f6] md:via-[#fff9f6]/70 md:to-transparent'}`}></div>
+          </div>
 
-              <h1 className="hero-title">
-                {isArabic ? (
-                  <>8 منتجات أساسية،<br /><em>روتين واحد لجمالك</em></>
-                ) : (
-                  <>Huit essentiels.<br /><em>Un seul rituel.</em></>
-                )}
+          {/* Text Content over Image */}
+          <div className="relative z-10 w-full flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col justify-start md:justify-center pt-[10vh] md:pt-0 pb-10 text-start">
+            <div className="w-full md:w-3/5 lg:w-1/2 flex flex-col items-start drop-shadow-md">
+              
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/95 border border-[#ead9d9] shadow-sm text-[#702b43] text-[10px] md:text-xs font-bold uppercase tracking-widest mb-4">
+                <Gift size={14} /> {tr("OFFRE PACK VINILLIA")}
+              </div>
+              
+              <h1 className={`text-4xl sm:text-5xl lg:text-7xl text-[#702b43] font-serif-custom leading-[1.15] md:leading-[1.1] mb-3 md:mb-6 drop-shadow-sm ${isArabic ? 'font-extrabold' : ''}`}>
+                {isArabic ? <>8 منتجات أساسية،<br/><span className="text-[#c97f91]">روتين واحد لجمالك</span></> : <>Huit essentiels.<br/><em className="text-[#c97f91] not-italic">Un seul rituel.</em></>}
               </h1>
-
-              <p className="hero-description">
+              
+              <p className="text-[#4a3f43] font-bold text-sm sm:text-lg lg:text-xl max-w-md mb-6 md:mb-8 leading-relaxed drop-shadow-sm bg-white/30 backdrop-blur-[2px] p-2 rounded-xl md:bg-transparent md:backdrop-blur-none md:p-0">
                 {tr("Retrouvez 8 essentiels skincare dans un seul pack, avec 2 produits offerts.")}
               </p>
-
-              <div className="hero-badges">
-                <div className="hero-badge">
-                  <Heart size={16} aria-hidden="true" />
-                  <span>{tr("Sélection beauté")}</span>
+              
+              <div className="flex flex-wrap items-center gap-4 md:gap-6 mb-6">
+                <div className="flex flex-col bg-white/40 backdrop-blur-[2px] px-3 py-1 rounded-xl md:bg-transparent md:backdrop-blur-none md:px-0 md:py-0">
+                  <span className="text-3xl lg:text-5xl font-serif-custom font-bold text-[#702b43] drop-shadow-md">{formattedPrice} {isArabic ? "درهم" : "DH"}</span>
                 </div>
-                <div className="hero-badge hero-badge-gift">
-                  <Sparkles size={16} aria-hidden="true" />
-                  <span>{tr("2 produits offerts")}</span>
-                </div>
-                <div className="hero-badge">
-                  <Truck size={16} aria-hidden="true" />
-                  <span>{tr("Commande facile")}</span>
-                </div>
-              </div>
-
-              <div className="hero-action-row">
-                <div className="hero-price-tag">
-                  <span className="hero-price-value">{isArabic ? "1400 درهم" : "1 400 DH"}</span>
-                  {/* <span className="hero-price-currency">{isArabic ? "درهم" : "DH"}</span> */}
-                </div>
-                <a href="#commande" className="btn btn-gold hero-cta-btn">
-                  <span>{isArabic ? "اطلبي الباقة الآن" : "Commander le pack"}</span>
-                  {isArabic ? <ArrowLeft size={18} aria-hidden="true" /> : <ArrowRight size={18} aria-hidden="true" />}
+                <a href="#commande" className="btn-premium px-6 py-3 md:px-8 md:py-4 rounded-full text-sm md:text-base font-bold flex justify-center items-center gap-2 shadow-xl">
+                  {isArabic ? "اطلبي الباقة الآن" : "Commander le pack"} {isArabic ? <ArrowLeft size={18}/> : <ArrowRight size={18}/>}
                 </a>
               </div>
 
-              <div className="hero-trust-note">
-                <ShieldCheck size={16} aria-hidden="true" />
-                <span>{tr("Paiement à la livraison")} · {tr("Livraison soignée & confirmation rapide")}</span>
-              </div>
-            </div>
-
-            <div className="hero-visual-col">
-              <div className="hero-banner-frame">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <Image
-                  className="hero-banner-img"
-                  src={isArabic ? bannerAr : bannerFr}
-                  alt={tr("Bannière de la sélection Vinillia")}
-                  sizes="100vw"
-                  priority
-                />
-                <div className="hero-banner-stamp">
-                  <Sparkles size={14} aria-hidden="true" />
-                  <span>{tr("8 PRODUITS · 2 OFFERTS")}</span>
+              <div className="hidden sm:inline-flex glass-panel p-3 px-5 rounded-2xl shadow-xl items-center gap-3 mt-2 border-white/60">
+                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#c97f91] to-[#702b43] flex items-center justify-center text-white shadow-inner">
+                  <Sparkles size={16} />
+                </div>
+                <div className="text-start">
+                  <p className="text-[10px] font-bold text-[#81777a] uppercase">{tr("SÉLECTION")}</p>
+                  <p className="text-sm font-extrabold text-[#702b43]">8 Produits · 2 Offerts</p>
                 </div>
               </div>
+
             </div>
           </div>
         </section>
 
-
-        {/* VALUE REASSURANCE STRIP */}
-        <section className="reassurance-strip" aria-label="Garanties et avantages du pack">
-          <div className="container reassurance-grid">
-            <div className="reassurance-card">
-              <div className="reassurance-icon"><ShieldCheck size={24} aria-hidden="true" /></div>
-              <div className="reassurance-text">
-                <strong>{tr("8 produits complets")}</strong>
-                <small>{tr("6 soins AXIS-Y + 2 cadeaux Vaseline")}</small>
-              </div>
-            </div>
-
-            <div className="reassurance-card">
-              <div className="reassurance-icon"><Truck size={24} aria-hidden="true" /></div>
-              <div className="reassurance-text">
-                <strong>{tr("Paiement à la livraison")}</strong>
-                <small>{tr("Paiement en espèces à la réception")}</small>
-              </div>
-            </div>
-
-            <div className="reassurance-card">
-              <div className="reassurance-icon"><Check size={24} aria-hidden="true" /></div>
-              <div className="reassurance-text">
-                <strong>{tr("Commande express")}</strong>
-                <small>{tr("En quelques clics sans carte bancaire")}</small>
-              </div>
-            </div>
-
-            <div className="reassurance-card">
-              <div className="reassurance-icon"><Phone size={24} aria-hidden="true" /></div>
-              <div className="reassurance-text">
-                <strong>{tr("Confirmation par appel")}</strong>
-                <small>{tr("Notre équipe vous appelle sous 24h")}</small>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* PRODUCT PACK SECTION (8 products: 6 AXIS-Y + 2 Vaseline gifts) */}
-        <section className="section pack-section" id="pack">
-          <div className="container">
-            <div className="section-header">
-              <span className="section-eyebrow">{tr("LA SÉLECTION VINILLIA")}</span>
-              <h2 className="section-title">{tr("Le pack beauté qui vous ressemble")}</h2>
-              <p className="section-subtitle">
-                {tr("Une sélection harmonieuse de soins pour nettoyer, équilibrer, nourrir et protéger votre peau au quotidien.")}
-              </p>
-            </div>
-
-            <div className="products-grid">
+        {/* Value Reassurance */}
+        <section className="border-y border-[#ead9d9] bg-white py-8 relative z-10">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
               {[
-                {
-                  id: "p1",
-                  name: "Sunday Morning Refreshing Cleansing Foam",
-                  brand: "AXIS-Y",
-                  type: "Nettoyant visage",
-                  image: product1,
-                  desc: isArabic
-                    ? "ينظف المسام والشوائب بلطف مع الحفاظ على توازن وترطيب البشرة بفضل الشاي الأخضر وخلاصة البتولا."
-                    : "Nettoie en douceur les impuretés et l'excès de sébum grâce au bouleau et au thé vert sans tirailler.",
-                  gift: false,
-                },
-                {
-                  id: "p2",
-                  name: "Dark Spot Correcting Glow Toner",
-                  brand: "AXIS-Y",
-                  type: "Tonique éclat",
-                  image: product2,
-                  desc: isArabic
-                    ? "تونر مرطب ينعش البشرة ويساعد على توحيد لونها وتجهيزها لاستقبال باقي خطوات الروتين."
-                    : "Tonique illuminateur qui prépare la peau, parfait le nettoyage et apporte une première couche d'éclat.",
-                  gift: false,
-                },
-                {
-                  id: "p3",
-                  name: "New Skin Resolution Gel Mask",
-                  brand: "AXIS-Y",
-                  type: "Masque gel apaisant",
-                  image: product3,
-                  desc: isArabic
-                    ? "قناع جل غني بالسنتيلا والشاي الأخضر لتهدئة البشرة المتعبة وتجديد حيويتها ونضارتها."
-                    : "Masque gel rafraîchissant à la Centella Asiatica pour apaiser les irritations et revitaliser le teint.",
-                  gift: false,
-                },
-                {
-                  id: "p4",
-                  name: "Artichoke Intensive Skin Barrier Ampoule",
-                  brand: "AXIS-Y",
-                  type: "Ampoule sérum barrière",
-                  image: product4,
-                  desc: isArabic
-                    ? "أمبول مركّز بخلاصة الخرشوف لتقوية حاجز البشرة وترميمها بعمق لمنحها مرونة وصحة دائمة."
-                    : "Sérum intensif à l'artichaut formulé pour restaurer la barrière protectrice cutanée et sceller l'hydratation.",
-                  gift: false,
-                },
-                {
-                  id: "p5",
-                  name: "Dark Spot Correcting Glow Cream",
-                  brand: "AXIS-Y",
-                  type: "Crème hydratante éclat",
-                  image: product5,
-                  desc: isArabic
-                    ? "كريم ناعم يساعد على تفتيح مظهر البقع الداكنة وتغذية البشرة لتبدو مشرقة وصافية."
-                    : "Crème nourrissante à la texture soyeuse qui estompe l'apparence des taches et offre un fini lumineux.",
-                  gift: false,
-                },
-                {
-                  id: "p6",
-                  name: "Complete No-Stress Physical Sunscreen",
-                  brand: "AXIS-Y",
-                  type: "Protection solaire minérale",
-                  image: product6,
-                  desc: isArabic
-                    ? "واقي شمس معدني بعامل حماية +SPF 50 يحمي من الأشعة فوق البنفسجية دون ترك أي أثر أبيض."
-                    : "Écran minéral haute tolérance SPF 50+ PA++++ offrant une protection quotidienne fiable sans film blanc.",
-                  gift: false,
-                },
-                {
-                  id: "p7",
-                  name: "Vaseline Gluta-Hya Serum Burst Lotion",
-                  brand: "Vaseline",
-                  type: "Soin corps éclat",
-                  image: product7,
-                  desc: isArabic
-                    ? "لوشن سيروم مبتكر بقطرات الهيالورون والـ Gluta-Glow لنعومة وإشراقة استثنائية لكامل الجسم."
-                    : "Lotion sérum pour le corps ultra-légère à l'acide hyaluronique pour une peau douce, hydratée et radieuse.",
-                  gift: true,
-                },
-                {
-                  id: "p8",
-                  name: "Vaseline Lip Therapy Rosy Lips",
-                  brand: "Vaseline",
-                  type: "Baume à lèvres teinté",
-                  image: product8,
-                  desc: isArabic
-                    ? "بلسم شفاه مغذٍ يرطب الشفاه الجافة ويمنحها لوناً وردياً ناعماً مع لمسة لمعان طبيعية."
-                    : "Soin culte pour les lèvres qui répare durablement les lèvres sèches et laisse un voile rose délicat.",
-                  gift: true,
-                },
-              ].map((item) => (
-                <a className="product-card-link" href="#commande" key={item.id} aria-label={`${item.name} — ${tr("Commander le pack")}`}>
-                <article className={`product-card ${item.gift ? "product-card-gift" : ""}`}>
-                  <div className="product-image-container">
-                    {item.gift && <span className="gift-badge">{tr("OFFERT")}</span>}
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <Image src={item.image} alt={item.name} sizes="(max-width: 600px) 45vw, (max-width: 900px) 30vw, 22vw" />
+                { icon: ShieldCheck, title: "8 produits complets", desc: "6 soins AXIS-Y + 2 cadeaux" },
+                { icon: Truck, title: "Paiement à la livraison", desc: "En espèces à la réception" },
+                { icon: Check, title: "Commande express", desc: "Sans carte bancaire" },
+                { icon: Phone, title: "Confirmation par appel", desc: "Notre équipe vous appelle" }
+              ].map((item, idx) => (
+                <div key={idx} className="flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-full bg-[#f1f4f0] text-[#7e8c77] flex items-center justify-center flex-shrink-0">
+                    <item.icon size={22} />
                   </div>
-                  <div className="product-content">
-                    <span className="product-category">{tr(item.type)}</span>
-                    <h3 className="product-title">{item.name}</h3>
-                    <p className="product-description">{item.desc}</p>
+                  <div>
+                    <strong className="block text-sm text-[#292326] font-bold">{tr(item.title)}</strong>
+                    <span className="text-xs text-[#81777a]">{tr(item.desc)}</span>
                   </div>
-                </article>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* --- SECTION: LA ROUTINE (ÉTAPES 1 À 6) --- */}
+        <section id="routine" className="py-20 lg:py-32 bg-[#fff9f6] overflow-hidden border-b border-[#ead9d9]">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center max-w-3xl mx-auto mb-16">
+              <span className="text-[#c97f91] text-xs font-bold uppercase tracking-widest block mb-3">{tr("LA ROUTINE VINILLIA")}</span>
+              <h2 className="text-4xl md:text-5xl font-serif-custom text-[#702b43] font-bold mb-6">{tr("Votre rituel en 6 étapes")}</h2>
+              <p className="text-[#81777a] text-lg">{tr("Découvrez les 6 étapes de votre nouvelle routine AXIS-Y pour une peau éclatante et en pleine santé.")}</p>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-10">
+              {routineSteps.map((step, idx) => (
+                <div 
+                  key={step.id} 
+                  className="group relative bg-white rounded-[32px] p-6 lg:p-8 border border-[#ead9d9] shadow-sm hover:shadow-2xl hover:border-[#c97f91]/40 transition-all duration-500 hover:-translate-y-2 cursor-default overflow-hidden flex flex-col justify-between h-full"
+                >
+                  {/* Grand Numéro en Arrière-plan (Design créatif adaptatif LTR/RTL) */}
+                  <div className={`absolute -top-6 ${isArabic ? '-right-6' : '-left-6'} text-[140px] font-black text-[#fff4f5] opacity-80 z-0 select-none group-hover:scale-110 group-hover:text-[#fde2e6] transition-transform duration-700`}>
+                    {step.step}
+                  </div>
+
+                  {/* Contenu de l'Étape */}
+                  <div className="relative z-10 text-start">
+                    <div className="flex items-center gap-3 mb-6">
+                      <span className="w-8 h-8 rounded-full bg-[#702b43] text-white flex items-center justify-center text-sm font-bold shadow-md">
+                        {idx + 1}
+                      </span>
+                      <span className="text-[#c97f91] text-xs font-bold uppercase tracking-widest">{tr("ÉTAPE")} {idx + 1}</span>
+                    </div>
+
+                    <h3 className="text-[#292326] font-bold text-xl md:text-2xl mb-2 leading-tight group-hover:text-[#702b43] transition-colors">{tr(step.title)}</h3>
+                    <p className="text-[#81777a] text-sm font-medium mb-6 line-clamp-2">{step.name}</p>
+                  </div>
+
+                  {/* Image Produit avec Animation */}
+                  <div className="relative z-10 w-full aspect-square bg-[#fff9f6] rounded-2xl p-4 flex items-center justify-center shadow-inner mt-auto border border-[#f5efef]">
+                    <Image 
+                      src={step.image} 
+                      alt={step.name} 
+                      className="w-full h-full object-contain drop-shadow-md group-hover:scale-110 group-hover:drop-shadow-xl transition-all duration-500"
+                    />
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Product Pack Grid (Tous les produits + Cadeaux) */}
+        <section id="pack" className="py-20 lg:py-32 bg-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center max-w-2xl mx-auto mb-16">
+              <span className="text-[#c97f91] text-xs font-bold uppercase tracking-widest block mb-3">{tr("LA SÉLECTION VINILLIA")}</span>
+              <h2 className="text-4xl md:text-5xl font-serif-custom text-[#702b43] font-bold mb-4">{tr("Le pack beauté qui vous ressemble")}</h2>
+            </div>
+
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8 mb-16 text-start">
+              {products.map((item) => (
+                <a href="#commande" key={item.id} className="group block relative bg-[#fff9f6] rounded-[24px] p-4 md:p-6 border border-[#ead9d9] shadow-sm hover:shadow-float hover:border-[#c97f91]/30 transition-all duration-300">
+                  {item.gift && (
+                    <span className={`absolute top-4 ${isArabic ? 'right-4' : 'left-4'} z-10 bg-gradient-to-r from-[#c97f91] to-[#702b43] text-white text-[10px] md:text-xs font-bold px-3 py-1 rounded-full shadow-md`}>
+                      {tr("OFFERT")}
+                    </span>
+                  )}
+                  <div className={`aspect-square rounded-2xl mb-5 p-4 flex items-center justify-center overflow-hidden ${item.gift ? 'bg-[#fbf0f2]' : 'bg-white'}`}>
+                    <Image src={item.image} alt={item.name} className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500" />
+                  </div>
+                  <div>
+                    <span className="text-[#7e8c77] text-[10px] md:text-xs font-bold uppercase tracking-wide block mb-2">{tr(item.type)}</span>
+                    <h3 className="text-[#292326] font-bold text-sm md:text-base leading-snug">{item.name}</h3>
+                  </div>
                 </a>
               ))}
             </div>
-
-            {/* Pack summary card with pricing and direct CTA */}
-            <div className="pack-summary-bar">
-              <div className="pack-summary-info">
-                <span className="pack-summary-tag">{tr("8 produits dans votre pack")}</span>
-                <p className="pack-summary-text">{tr("6 soins sélectionnés + 2 soins offerts inclus.")}</p>
-                <small className="pack-summary-gift-note">
-                  <Gift size={14} aria-hidden="true" />
-                  <span>{tr("Les 2 produits Vaseline sont offerts")}</span>
-                </small>
-              </div>
-
-              <div className="pack-summary-cta">
-                <div className="pack-summary-price">
-                  <strong>{formattedPrice}</strong>
-                  <span>{isArabic ? "درهم" : "DH"}</span>
-                </div>
-                <a href="#commande" className="btn btn-gold">
-                  <span>{tr("Commander mon pack")}</span>
-                  {isArabic ? <ArrowLeft size={16} aria-hidden="true" /> : <ArrowRight size={16} aria-hidden="true" />}
-                </a>
-              </div>
-            </div>
           </div>
         </section>
 
-        {/* SKINCARE ROUTINE — THREE STAGES (As specifically mandated in prompt section 10) */}
-        <section className="section routine-section" id="routine">
-          <div className="container">
-            <div className="section-header">
-              <span className="section-eyebrow">{tr("LA ROUTINE VINILLIA")}</span>
-              <h2 className="section-title">{tr("Votre rituel en 6 étapes")}</h2>
-              <p className="section-subtitle">
-                {tr("Une méthode simple et intuitive pour intégrer les soins de votre pack dans votre quotidien.")}
-              </p>
-            </div>
-
-            <div className="routine-stages-grid routine-stages-six">
-              <div className="routine-stage-card">
-                <div className="stage-header"><span className="stage-number">01</span><span className="stage-eyebrow">{isArabic ? "الخطوة 1" : "Étape 1"}</span></div>
-                <div className="stage-visual"><Image src={product1} alt={isArabic ? "الخطوة 1: تنظيف الوجه" : "Étape 1 : Nettoyer le visage"} sizes="(max-width: 560px) 40vw, (max-width: 900px) 45vw, 30vw" /></div>
-                <h3 className="stage-title">{isArabic ? "تنظيف الوجه" : "Nettoyer le visage"}</h3>
-                <p className="stage-desc">{isArabic ? "نظفي بشرتكِ بلطف لإزالة الشوائب وتحضيرها لباقي الروتين." : "Nettoyez délicatement votre peau pour éliminer les impuretés et la préparer aux soins."}</p>
-              </div>
-              <div className="routine-stage-card">
-                <div className="stage-header"><span className="stage-number">02</span><span className="stage-eyebrow">{isArabic ? "الخطوة 2" : "Étape 2"}</span></div>
-                <div className="stage-visual"><Image src={product2} alt={isArabic ? "الخطوة 2: التونر" : "Étape 2 : Tonifier"} sizes="(max-width: 560px) 40vw, (max-width: 900px) 45vw, 30vw" /></div>
-                <h3 className="stage-title">{isArabic ? "توازن وإشراقة" : "Tonifier & illuminer"}</h3>
-                <p className="stage-desc">{isArabic ? "طبقي التونر للمساعدة على إنعاش البشرة وتحضيرها لامتصاص المنتجات التالية." : "Appliquez le tonique pour rafraîchir la peau et la préparer aux soins suivants."}</p>
-              </div>
-              <div className="routine-stage-card">
-                <div className="stage-header"><span className="stage-number">03</span><span className="stage-eyebrow">{isArabic ? "الخطوة 3" : "Étape 3"}</span></div>
-                <div className="stage-visual"><Image src={product3} alt={isArabic ? "الخطوة 3: قناع الجل" : "Étape 3 : Masque gel"} sizes="(max-width: 560px) 40vw, (max-width: 900px) 45vw, 30vw" /></div>
-                <h3 className="stage-title">{isArabic ? "تهدئة البشرة" : "Apaiser la peau"}</h3>
-                <p className="stage-desc">{isArabic ? "استخدمي قناع الجل عند الحاجة لمنح بشرتكِ إحساساً بالراحة والانتعاش." : "Utilisez le masque gel lorsque nécessaire pour apporter confort et fraîcheur à la peau."}</p>
-              </div>
-              <div className="routine-stage-card">
-                <div className="stage-header"><span className="stage-number">04</span><span className="stage-eyebrow">{isArabic ? "الخطوة 4" : "Étape 4"}</span></div>
-                <div className="stage-visual"><Image src={product4} alt={isArabic ? "الخطوة 4: السيروم" : "Étape 4 : Sérum"} sizes="(max-width: 560px) 40vw, (max-width: 900px) 45vw, 30vw" /></div>
-                <h3 className="stage-title">{isArabic ? "تقوية الحاجز" : "Renforcer la barrière"}</h3>
-                <p className="stage-desc">{isArabic ? "ضعي الأمبول للمساعدة على دعم حاجز البشرة والحفاظ على ترطيبها." : "Appliquez l’ampoule pour aider à soutenir la barrière cutanée et préserver l’hydratation."}</p>
-              </div>
-              <div className="routine-stage-card">
-                <div className="stage-header"><span className="stage-number">05</span><span className="stage-eyebrow">{isArabic ? "الخطوة 5" : "Étape 5"}</span></div>
-                <div className="stage-visual"><Image src={product5} alt={isArabic ? "الخطوة 5: كريم الترطيب" : "Étape 5 : Crème hydratante"} sizes="(max-width: 560px) 40vw, (max-width: 900px) 45vw, 30vw" /></div>
-                <h3 className="stage-title">{isArabic ? "ترطيب عميق" : "Hydrater en profondeur"}</h3>
-                <p className="stage-desc">{isArabic ? "أنهي العناية بكريم الترطيب للمساعدة على إبقاء البشرة ناعمة ومريحة." : "Terminez avec la crème hydratante pour garder une peau souple et confortable."}</p>
-              </div>
-              <div className="routine-stage-card">
-                <div className="stage-header"><span className="stage-number">06</span><span className="stage-eyebrow">{isArabic ? "الخطوة 6" : "Étape 6"}</span></div>
-                <div className="stage-visual"><Image src={product6} alt={isArabic ? "الخطوة 6: الحماية الشمسية" : "Étape 6 : Protection solaire"} sizes="(max-width: 560px) 40vw, (max-width: 900px) 45vw, 30vw" /></div>
-                <h3 className="stage-title">{isArabic ? "حماية ولمسة نهائية" : "Protéger & sublimer"}</h3>
-                <p className="stage-desc">{isArabic ? "في الصباح، استخدمي واقي الشمس، وأضيفي هديتي فازلين للعناية بالشفاه والجسم." : "Le matin, appliquez la protection solaire. Complétez votre rituel avec les deux cadeaux Vaseline pour les lèvres et le corps."}</p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* SPECIAL OFFER PROMO SECTION */}
-        <section className="section promo-offer-section" id="offre">
-          <div className="container promo-grid">
-            <div className="promo-visual-wrap">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <Image src={offerBanner} alt="Boutique beauté Vinillia" sizes="(max-width: 768px) 100vw, 50vw" />
-              <div className="promo-badge">
-                <Gift size={16} aria-hidden="true" />
-                <span>{tr("OFFRE PACK VINILLIA")}</span>
+        {/* Order Form Section */}
+        <section id="commande" className="py-20 lg:py-32 bg-[#fff9f6] border-t border-[#ead9d9]">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-16 items-start">
+            <div className="text-start">
+              <span className="text-[#c97f91] text-xs font-bold uppercase tracking-widest block mb-3">{tr("COMMANDE EXPRESS")}</span>
+              <h2 className="text-4xl md:text-5xl font-serif-custom text-[#702b43] font-bold mb-6">{tr("Recevez votre pack à domicile")}</h2>
+              <p className="text-[#81777a] text-lg mb-10">{tr("Remplissez ce formulaire pour commander votre pack. Notre équipe vous appellera pour confirmer l'expédition.")}</p>
+              
+              <div className="rounded-3xl overflow-hidden border border-[#ead9d9] shadow-soft bg-gradient-to-br from-[#fff9f6] to-white p-6 md:p-10 text-center">
+                <Image src={offerBanner} alt="Pack Vinillia" className="w-full h-auto rounded-xl mb-6 shadow-sm" />
+                <h3 className="font-bold text-[#702b43] text-xl mb-2">{tr("Pack Vinillia Beauty & Skincare")}</h3>
+                <p className="text-[#c97f91] font-semibold">{tr("8 produits complets")}</p>
+                <p className="text-3xl font-serif-custom font-bold text-[#702b43] mt-4">{formattedPrice} {isArabic ? "درهم" : "DH"}</p>
               </div>
             </div>
 
-            <div className="promo-content">
-              <span className="promo-eyebrow">{tr("OFFRE SPÉCIALE")}</span>
-              <h2 className="promo-title">{tr("Pourquoi choisir le pack Vinillia ?")}</h2>
-              <p className="promo-description">
-                {tr("Une solution complète et avantageuse pensée pour simplifier votre routine beauté tout en réalisant une économie substantielle.")}
-              </p>
-
-              <div className="promo-features-list">
-                <div className="promo-feature-item">
-                  <div className="feature-icon"><Check size={18} /></div>
-                  <div>
-                    <strong>{tr("Rituel complet en 1 pack")}</strong>
-                    <p>{tr("Plus besoin de chercher des soins compatibles : les 8 formules agissent en parfaite synergie.")}</p>
-                  </div>
+            <div className="bg-white rounded-[32px] p-6 md:p-10 shadow-float border border-[#ead9d9] text-start">
+              <h3 className="text-2xl font-bold text-[#702b43] mb-8">{tr("Vos coordonnées")}</h3>
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div>
+                  <label className="flex items-center gap-2 text-sm font-bold text-[#292326] mb-2"><User size={16} className="text-[#81777a]"/> {tr("Nom complet *")}</label>
+                  <input type="text" value={name} onChange={(e) => setName(e.target.value)} required className={`w-full bg-[#fcf8f8] border ${errors.name ? 'border-red-400' : 'border-[#ead9d9]'} rounded-2xl px-5 py-4 text-[#292326]`} />
+                  {errors.name && <p className="text-red-500 text-xs mt-2">{errors.name}</p>}
                 </div>
-
-                <div className="promo-feature-item">
-                  <div className="feature-icon"><Gift size={18} /></div>
-                  <div>
-                    <strong>{tr("2 soins iconiques offerts")}</strong>
-                    <p>{tr("Recevez la lotion Gluta-Hya et le soin pour lèvres Rosy Lips de Vaseline sans frais supplémentaires.")}</p>
-                  </div>
+                <div>
+                  <label className="flex items-center gap-2 text-sm font-bold text-[#292326] mb-2"><Phone size={16} className="text-[#81777a]"/> {tr("Numéro de téléphone *")}</label>
+                  <input type="tel" value={phone} onChange={(e) => setPhone(e.target.value)} required className={`w-full bg-[#fcf8f8] border ${errors.phone ? 'border-red-400' : 'border-[#ead9d9]'} rounded-2xl px-5 py-4 text-[#292326]`} dir="ltr" />
+                  {errors.phone && <p className="text-red-500 text-xs mt-2">{errors.phone}</p>}
                 </div>
-
-                <div className="promo-feature-item">
-                  <div className="feature-icon"><Truck size={18} /></div>
-                  <div>
-                    <strong>{tr("Paiement à la livraison au Maroc")}</strong>
-                    <p>{tr("Vous ne payez rien en ligne : réglez votre commande directement au livreur à la réception de votre colis.")}</p>
-                  </div>
+                <div>
+                  <label className="flex items-center gap-2 text-sm font-bold text-[#292326] mb-2"><MapPin size={16} className="text-[#81777a]"/> {tr("Adresse de livraison complète *")}</label>
+                  <textarea value={address} onChange={(e) => setAddress(e.target.value)} required rows={3} className={`w-full bg-[#fcf8f8] border ${errors.address ? 'border-red-400' : 'border-[#ead9d9]'} rounded-2xl px-5 py-4 text-[#292326] resize-none`}></textarea>
+                  {errors.address && <p className="text-red-500 text-xs mt-2">{errors.address}</p>}
                 </div>
-
-                <div className="promo-feature-item">
-                  <div className="feature-icon"><Phone size={18} /></div>
-                  <div>
-                    <strong>{tr("Livraison soignée & confirmation rapide")}</strong>
-                    <p>{tr("Notre service client basé au Maroc vous contacte par téléphone pour valider votre adresse avant l'envoi.")}</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="promo-footer-cta">
-                <div className="promo-price-block">
-                  <span className="promo-price-label">{isArabic ? "السعر الإجمالي للباقة" : "Prix du pack complet"}</span>
-                  <strong className="promo-price-amount">
-                    {formattedPrice} {isArabic ? "درهم" : "DH"}
-                  </strong>
-                </div>
-
-                <a href="#commande" className="btn btn-gold">
-                  <span>{tr("Commander maintenant")}</span>
-                  {isArabic ? <ArrowLeft size={16} aria-hidden="true" /> : <ArrowRight size={16} aria-hidden="true" />}
-                </a>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* ORDER FORM SECTION — CASH ON DELIVERY (Prompt Section 11) */}
-        <section className="section order-section" id="commande">
-          <div className="container order-layout">
-            {/* Left information column */}
-            <div className="order-intro-col">
-              <span className="section-eyebrow">{tr("COMMANDE EXPRESS")}</span>
-              <h2 className="section-title">{tr("Recevez votre pack à domicile")}</h2>
-              <p className="order-intro-text">
-                {tr("Remplissez ce formulaire pour commander votre pack. Notre équipe vous appellera pour confirmer l'expédition.")}
-              </p>
-
-              <div className="order-reassurance-cards">
-                <div className="reassurance-row">
-                  <div className="row-icon"><Truck size={20} /></div>
-                  <div>
-                    <strong>{tr("Paiement à la livraison (COD)")}</strong>
-                    <p>{isArabic ? "الدفع نقداً فقط عند الاستلام مع إمكانية فحص الطرد." : "Réglez en espèces à la livraison auprès du transporteur."}</p>
-                  </div>
-                </div>
-
-                <div className="reassurance-row">
-                  <div className="row-icon"><Phone size={20} /></div>
-                  <div>
-                    <strong>{tr("Confirmation par appel")}</strong>
-                    <p>{isArabic ? "سيتصل بكِ فريقنا هاتفياً قبل الشحن لتأكيد العنوان وموعد التسليم." : "Un appel de courtoisie confirme vos détails avant toute expédition."}</p>
-                  </div>
-                </div>
-
-                <div className="reassurance-row">
-                  <div className="row-icon"><ShieldCheck size={20} /></div>
-                  <div>
-                    <strong>{tr("Pack 8 produits complets")}</strong>
-                    <p>{isArabic ? "6 منتجات أساسية بالإضافة إلى منتجين مجاناً من فازلين بسعر 1400 درهم." : "6 soins visage indispensables + 2 soins Vaseline offerts au prix de 1 400 DH."}</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="order-pack-visual" aria-label={isArabic ? "صورة توضيحية لمحتويات باقة فينيليا" : "Aperçu visuel du pack Vinillia"}>
-                <img
-                  src={offerBanner.src}
-                  alt={isArabic ? "محتويات باقة Vinillia للعناية بالبشرة" : "Aperçu des produits du pack beauté Vinillia"}
-                  loading="eager"
-                />
-                <span className="order-pack-visual-caption">
-                  {isArabic ? "شوفي شنو داخل الباقة قبل تأكيد الطلب" : "Visualisez le contenu de votre pack avant de commander"}
-                </span>
-              </div>
-            </div>
-
-            {/* Right form card column */}
-            <div className="order-form-card">
-              <div className="form-card-header">
-                <h3>{tr("Pack Vinillia Beauty & Skincare")}</h3>
-                <span className="form-pack-subtitle">{tr("8 produits (dont 2 offerts)")}</span>
-              </div>
-
-              {/* Order price summary */}
-              <div className="order-summary-box">
-                <div className="summary-left">
-                  <strong>{tr("Pack Vinillia")}</strong>
-                  <span>{isArabic ? "الكمية: 1 باقة كاملة (8 منتجات)" : "Quantité : 1 pack complet (8 soins)"}</span>
-                </div>
-                <div className="summary-right">
-                  <strong>{formattedPrice} {isArabic ? "درهم" : "DH"}</strong>
-                  <small>{tr("Paiement à la livraison")}</small>
-                </div>
-              </div>
-
-              {/* Order submission form */}
-              <form onSubmit={handleSubmit} noValidate>
-                {/* Full name input */}
-                <div className={`form-group ${errors.name ? "has-error" : ""}`}>
-                  <label htmlFor="fullName">
-                    <User size={15} aria-hidden="true" />
-                    <span>{tr("Nom complet *")}</span>
-                  </label>
-                  <input
-                    id="fullName"
-                    name="fullName"
-                    type="text"
-                    autoComplete="name"
-                    placeholder={tr("Ex. Salma El Amrani")}
-                    value={name}
-                    onChange={(e) => {
-                      setName(e.target.value);
-                      if (errors.name) setErrors((prev) => ({ ...prev, name: undefined }));
-                    }}
-                    aria-invalid={Boolean(errors.name)}
-                    aria-describedby={errors.name ? "name-error" : undefined}
-                    required
-                  />
-                  {errors.name && <small className="error-text" id="name-error">{errors.name}</small>}
-                </div>
-
-                {/* Phone number input */}
-                <div className={`form-group ${errors.phone ? "has-error" : ""}`}>
-                  <label htmlFor="phone">
-                    <Phone size={15} aria-hidden="true" />
-                    <span>{tr("Numéro de téléphone *")}</span>
-                  </label>
-                  <input
-                    id="phone"
-                    name="phone"
-                    type="tel"
-                    autoComplete="tel"
-                    inputMode="tel"
-                    placeholder={tr("Ex. 06 12 34 56 78 ou 07 00 00 00 00")}
-                    value={phone}
-                    onChange={(e) => {
-                      setPhone(e.target.value);
-                      if (errors.phone) setErrors((prev) => ({ ...prev, phone: undefined }));
-                    }}
-                    aria-invalid={Boolean(errors.phone)}
-                    aria-describedby={errors.phone ? "phone-error" : undefined}
-                    required
-                  />
-                  {errors.phone && <small className="error-text" id="phone-error">{errors.phone}</small>}
-                </div>
-
-                {/* Delivery address textarea */}
-                <div className={`form-group ${errors.address ? "has-error" : ""}`}>
-                  <label htmlFor="address">
-                    <MapPin size={15} aria-hidden="true" />
-                    <span>{tr("Adresse de livraison complète *")}</span>
-                  </label>
-                  <textarea
-                    id="address"
-                    name="address"
-                    autoComplete="street-address"
-                    placeholder={tr("Ville, quartier, numéro de rue / appartement...")}
-                    value={address}
-                    onChange={(e) => {
-                      setAddress(e.target.value);
-                      if (errors.address) setErrors((prev) => ({ ...prev, address: undefined }));
-                    }}
-                    aria-invalid={Boolean(errors.address)}
-                    aria-describedby={errors.address ? "address-error" : undefined}
-                    rows={3}
-                    required
-                  />
-                  {errors.address && <small className="error-text" id="address-error">{errors.address}</small>}
-                </div>
-
-                <p className="form-privacy-note">
-                  <ShieldCheck size={14} aria-hidden="true" />
-                  <span>{tr("Vos informations personnelles sont strictement confidentielles et utilisées uniquement pour la livraison.")}</span>
-                </p>
-
-                <button
-                  type="submit"
-                  className="btn btn-gold form-submit-btn"
-                  disabled={formState === "loading"}
-                >
-                  {formState === "loading" ? (
-                    <>
-                      <span className="spinner" aria-hidden="true" />
-                      <span>{tr("CONFIRMATION EN COURS…")}</span>
-                    </>
-                  ) : (
-                    <>
-                      <span>{tr("CONFIRMER MA COMMANDE")}</span>
-                      {isArabic ? <ArrowLeft size={17} aria-hidden="true" /> : <ArrowRight size={17} aria-hidden="true" />}
-                    </>
-                  )}
+                
+                <button type="submit" disabled={formState === "loading"} className="w-full btn-premium py-4 rounded-2xl text-base font-bold flex justify-center items-center gap-3 mt-4">
+                  {formState === "loading" ? <span className="animate-pulse">{tr("CONFIRMATION EN COURS…")}</span> : <>{tr("CONFIRMER MA COMMANDE")} {isArabic ? <ArrowLeft size={20}/> : <ArrowRight size={20}/>}</>}
                 </button>
 
-                {/* Honest Feedback Box */}
                 {formMessage && (
-                  <div
-                    className={`form-alert ${formState === "success" ? "alert-success" : "alert-error"}`}
-                    role="alert"
-                    aria-live="polite"
-                  >
-                    {formState === "success" ? (
-                      <div>
-                        <div className="alert-head">
-                          <Check size={18} aria-hidden="true" />
-                          <strong>{tr("Félicitations ! Votre commande a été enregistrée avec succès.")}</strong>
-                        </div>
-                        <p>{tr("Notre service client vous contactera sous peu par téléphone pour confirmer la livraison.")}</p>
-                        {orderRef && (
-                          <div className="order-ref-badge">
-                            <span>{tr("Numéro de commande :")}</span> <strong>{orderRef}</strong>
-                          </div>
-                        )}
-                      </div>
-                    ) : (
-                      <p>{formMessage}</p>
-                    )}
+                  <div className={`p-4 rounded-2xl mt-4 text-sm font-medium border ${formState === 'success' ? 'bg-[#f1f4f0] border-[#7e8c77] text-[#4a5445]' : 'bg-red-50 border-red-200 text-red-700'}`}>
+                    {formMessage}
                   </div>
                 )}
               </form>
@@ -1088,45 +437,13 @@ export default function LandingPage() {
         </section>
       </main>
 
-      {/* MINIMAL FOOTER: logo + legal line + brand signature */}
-      <footer className="site-footer minimal-footer">
-        <div className="container minimal-footer-inner">
-          <a href="#accueil" className="brand footer-logo" aria-label="Vinillia Beauty & Skincare">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/vinillia-logo.svg" alt="Vinillia Beauty & Skincare" width={160} height={44} />
-          </a>
-          <div className="minimal-footer-bottom">
-            <p>© {year ?? 2026} Vinillia Beauty &amp; Skincare. Tous droits réservés.</p>
-            <p className="footer-signature">Vinillia · Moroccan Skincare Experience</p>
-          </div>
+      {/* Footer */}
+      <footer className="bg-[#292326] text-white py-12 text-center">
+        <div className="max-w-7xl mx-auto px-4">
+          <img src="/vinillia-logo.svg" alt="Vinillia" className="h-10 mx-auto mb-6 brightness-0 invert opacity-90" />
+          <p className="text-[#81777a] text-sm">© {new Date().getFullYear()} Vinillia Beauty & Skincare. Tous droits réservés.</p>
         </div>
       </footer>
-
-      {/* Floating WhatsApp customer support button */}
-      <a
-        className={`whatsapp-float ${isArabic ? "whatsapp-float-rtl" : "whatsapp-float-ltr"}`}
-        href={`https://wa.me/212612345678?text=${encodeURIComponent(isArabic ? "السلام عليكم، بغيت نطلب باقة Vinillia بثمن 1400 درهم. عافاكم عطوني معلومات أكثر." : "Bonjour, je souhaite commander le pack Vinillia à 1 400 DH. Pouvez-vous me donner plus d’informations ?")}`}
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label={isArabic ? "تواصل معنا عبر واتساب" : "Contactez-nous sur WhatsApp"}
-      >
-        <svg viewBox="0 0 32 32" width="27" height="27" aria-hidden="true" focusable="false">
-          <path fill="currentColor" d="M16.04 3.2A12.65 12.65 0 0 0 5.2 22.38L3.5 28.6l6.37-1.67A12.7 12.7 0 1 0 16.04 3.2Zm0 22.95c-1.92 0-3.8-.52-5.43-1.5l-.39-.23-3.78.99 1.01-3.68-.25-.4a10.22 10.22 0 1 1 8.84 4.82Zm5.61-7.66c-.31-.16-1.83-.9-2.11-1-.28-.1-.49-.16-.7.16-.21.31-.8 1-.98 1.2-.18.21-.36.23-.67.08-.31-.16-1.31-.48-2.5-1.53-.92-.82-1.54-1.83-1.72-2.14-.18-.31-.02-.48.14-.63.14-.14.31-.36.47-.54.16-.18.21-.31.31-.52.1-.21.05-.39-.03-.55-.08-.16-.7-1.68-.96-2.3-.25-.6-.51-.52-.7-.53h-.6c-.21 0-.55.08-.83.39-.28.31-1.09 1.06-1.09 2.58s1.12 2.99 1.27 3.2c.16.21 2.2 3.36 5.33 4.71.74.32 1.32.51 1.77.65.74.24 1.41.2 1.94.12.59-.09 1.83-.75 2.09-1.48.26-.73.26-1.36.18-1.49-.08-.13-.28-.21-.59-.37Z" />
-        </svg>
-        <span className="whatsapp-float-label">{isArabic ? "تواصل معنا" : "Besoin d’aide ?"}</span>
-      </a>
-
-      {/* FLOATING MOBILE CTA BAR */}
-      <div className="mobile-sticky-cta" id="mobileCta" aria-hidden="true">
-        <div className="mobile-cta-info">
-          <span className="mobile-pack-title">{tr("Le pack Vinillia")}</span>
-          <span className="mobile-pack-price">{isArabic ? "1400 درهم" : "1 400 DH"}</span>
-        </div>
-        <a href="#commande" className="btn btn-gold mobile-cta-btn">
-          <span>{tr("Commander")}</span>
-          {isArabic ? <ArrowLeft size={15} aria-hidden="true" /> : <ArrowRight size={15} aria-hidden="true" />}
-        </a>
-      </div>
     </div>
   );
 }
