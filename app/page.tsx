@@ -1,12 +1,14 @@
 "use client";
 
 import { useEffect, useState, type FormEvent } from "react";
-import Image from "next/image";
+import Image, { getImageProps } from "next/image";
 
 import franceFlag from "./france.png";
 import arabicFlag from "./flag.png";
 import bannerFr from "./banner fr.jpg";
 import bannerAr from "./banner ar.jpg";
+import banner1Mobile from "./banner1_mobile.png";
+import banner2Mobile from "./banner2_mobile.png";
 import product1 from "./imgprodu/1.jpg";
 import product2 from "./imgprodu/2.jpg";
 import product3 from "./imgprodu/3.jpg";
@@ -73,6 +75,9 @@ const translations: Record<string, string> = {
   "Paiement en espèces à la réception": "أداء نقداً عند استلام الطرد",
   "Commande express": "طلب سريع وسهل",
   "En quelques clics sans carte bancaire": "في ثوانٍ وبدون بطاقة بنكية",
+  "Sans carte bancaire": "بدون بطاقة بنكية",
+  "Confirmation par appel": "تأكيد عبر الاتصال",
+  "Notre équipe vous appelle": "فريقنا سيتصل بك",
   "LA SÉLECTION VINILLIA": "تشكيلة VINILLIA",
   "Le pack beauté qui vous ressemble": "باقة الجمال المتكاملة لروتينك",
   "Une sélection harmonieuse de soins pour nettoyer, équilibrer, nourrir et protéger votre peau au quotidien.": "تشكيلة متناسقة لتنظيف، توازن، ترطيب وحماية بشرتكِ يومياً.",
@@ -92,10 +97,21 @@ const translations: Record<string, string> = {
   "Pourquoi choisir le pack Vinillia ?": "لماذا تختارين باقة Vinillia؟",
   "COMMANDE EXPRESS": "طلب سريع",
   "Recevez votre pack à domicile": "استلمي باقتكِ عند باب منزلكِ",
+  "Remplissez ce formulaire pour commander votre pack. Notre équipe vous appellera pour confirmer l'expédition.": "املئي هذا النموذج لطلب باقتك. سيتصل بك فريقنا لتأكيد الإرسال.",
+  "Vos coordonnées": "بياناتك",
   "Nom complet *": "الاسم الكامل *",
   "Numéro de téléphone *": "رقم الهاتف *",
   "Adresse de livraison complète *": "عنوان التوصيل الكامل *",
   "CONFIRMER MA COMMANDE": "تأكيد طلبي الآن",
+  "CONFIRMATION EN COURS…": "جاري التأكيد…",
+  "SÉLECTION": "تشكيلة",
+  "Pack Vinillia Beauty & Skincare": "باقة Vinillia للجمال والعناية",
+  "Veuillez saisir votre nom complet (au moins 3 caractères).": "يرجى إدخال اسمك الكامل (3 أحرف على الأقل).",
+  "Veuillez saisir un numéro de téléphone marocain valide (ex. 06 12 34 56 78).": "يرجى إدخال رقم هاتف مغربي صحيح (مثال: 06 12 34 56 78).",
+  "Veuillez saisir votre adresse complète de livraison (au moins 8 caractères).": "يرجى إدخال عنوان التوصيل الكامل (8 أحرف على الأقل).",
+  "Veuillez corriger les champs signalés avant de continuer.": "يرجى تصحيح الحقول المحددة قبل المتابعة.",
+  "Félicitations ! Votre commande a été enregistrée avec succès.": "تهانينا! تم تسجيل طلبك بنجاح.",
+  "Produits": "منتجات",
 };
 
 export default function LandingPage() {
@@ -103,6 +119,15 @@ export default function LandingPage() {
   const isArabic = language === "ar";
   const tr = (key: string): string => (isArabic ? translations[key] ?? key : key);
   const formattedPrice = isArabic ? String(PRICE_MAD) : PRICE_MAD.toLocaleString("fr-FR");
+  const mobileHeroImage = isArabic ? banner2Mobile : banner1Mobile;
+  const mobileHeroSource = getImageProps({
+    src: mobileHeroImage,
+    alt: "",
+    width: mobileHeroImage.width,
+    height: mobileHeroImage.height,
+    sizes: "100vw",
+    quality: 75,
+  }).props;
 
   const [menuOpen, setMenuOpen] = useState(false);
   const [name, setName] = useState("");
@@ -193,19 +218,19 @@ export default function LandingPage() {
 
   return (
     <div className={`min-h-screen bg-[#FFF9F6] text-[#292326] ${isArabic ? "arabic" : ""}`} lang={language} dir={isArabic ? "rtl" : "ltr"}>
-      
-      {/* Announcement Bar */}
-      <div className="bg-[#702B43] text-white py-2.5 text-xs font-bold tracking-wider text-center flex justify-center items-center gap-2 relative z-50">
+
+      {/* Announcement Bar — z-40 حتى لا يتعارض مع الهيدر */}
+      <div className="announcement-bar bg-[#702B43] text-white py-2.5 text-xs font-bold tracking-wider text-center flex justify-center items-center gap-2 relative z-40">
         <Sparkles size={14} /> <span>{tr("VOTRE RITUEL BEAUTÉ, EN UN SEUL PACK · 2 PRODUITS OFFERTS")}</span> <Sparkles size={14} />
       </div>
 
-      {/* Header */}
+      {/* Header — z-50 أعلى من الـ announcement */}
       <header className="sticky top-0 z-50 glass-panel border-b border-[#ead9d9] transition-all">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
           <a href="#accueil" className="flex-shrink-0">
             <img src="/vinillia-logo.svg" alt="Vinillia Beauty" className="h-8 w-auto" />
           </a>
-          
+
           <nav className="hidden md:flex gap-8 text-sm font-semibold text-[#81777a]">
             <a href="#accueil" className="hover:text-[#702b43] transition-colors">{tr("Accueil")}</a>
             <a href="#routine" className="hover:text-[#702b43] transition-colors">{tr("La routine")}</a>
@@ -229,57 +254,66 @@ export default function LandingPage() {
       </header>
 
       <main>
-        {/* Hero Section - 100% Responsive AR/FR */}
-        <section id="accueil" className="relative w-full min-h-[90vh] md:min-h-[85vh] flex flex-col overflow-hidden">
-          
+        {/* ===== Hero Section ===== */}
+        <section id="accueil" className="landing-hero relative w-full min-h-[90vh] md:min-h-[85vh] flex flex-col overflow-hidden">
+
           {/* Background Image Container */}
-          <div className="absolute inset-0 w-full h-full z-0">
-            <Image 
-              src={isArabic ? bannerAr : bannerFr} 
-              alt="Vinillia Banner" 
-              className="w-full h-full object-cover object-[15%_100%] md:object-[20%_center]" 
-              priority 
-            />
-            {/* 
-              Gradient Magique NADI:
-              - Mobile: Lfo9 byed bach tban lktaba, lta7t transparent bach ybano les produits.
-              - PC: AR (RTL) -> limn byed, lissar transparent. FR (LTR) -> lissar byed, limn transparent.
-            */}
-            <div className={`absolute inset-0 bg-gradient-to-b from-[#fff9f6]/95 via-[#fff9f6]/50 to-transparent ${isArabic ? 'md:bg-gradient-to-l md:from-[#fff9f6] md:via-[#fff9f6]/70 md:to-transparent' : 'md:bg-gradient-to-r md:from-[#fff9f6] md:via-[#fff9f6]/70 md:to-transparent'}`}></div>
+          <div
+            className="landing-hero-art absolute inset-0 w-full h-full z-0"
+            style={{ "--hero-mobile-ratio": `${mobileHeroImage.width} / ${mobileHeroImage.height}` } as React.CSSProperties}
+          >
+            <picture className="landing-hero-picture absolute inset-0 block">
+              <source
+                media="(max-width: 767px)"
+                srcSet={mobileHeroSource.srcSet}
+                sizes={mobileHeroSource.sizes}
+              />
+              <Image
+                src={isArabic ? bannerAr : bannerFr}
+                alt={isArabic ? "حملة VINILLIA لمنتجات العناية من AXIS-Y وفازلين" : "Campagne VINILLIA présentant les soins AXIS-Y et Vaseline"}
+                className="landing-hero-image w-full h-full object-cover object-[15%_100%] md:object-[20%_center]"
+                sizes="100vw"
+                quality={75}
+                loading="eager"
+                fetchPriority="high"
+                fill
+              />
+            </picture>
+            <div className={`landing-hero-gradient absolute inset-0 bg-gradient-to-b from-[#fff9f6]/95 via-[#fff9f6]/50 to-transparent ${isArabic ? 'md:bg-gradient-to-l md:from-[#fff9f6] md:via-[#fff9f6]/70 md:to-transparent' : 'md:bg-gradient-to-r md:from-[#fff9f6] md:via-[#fff9f6]/70 md:to-transparent'}`}></div>
           </div>
 
           {/* Text Content over Image */}
-          <div className="relative z-10 w-full flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col justify-start md:justify-center pt-[10vh] md:pt-0 pb-10 text-start">
-            <div className="w-full md:w-3/5 lg:w-1/2 flex flex-col items-start drop-shadow-md">
-              
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/95 border border-[#ead9d9] shadow-sm text-[#702b43] text-[10px] md:text-xs font-bold uppercase tracking-widest mb-4">
+          <div className={`landing-hero-copy relative z-10 w-full flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col justify-start md:justify-center pt-[10vh] md:pt-0 pb-10 ${isArabic ? "items-start text-right" : "items-start text-start"}`}>
+            <div className={`w-full md:w-3/5 lg:w-1/2 flex flex-col drop-shadow-md ${isArabic ? "items-start text-right" : "items-start text-left"}`}>
+
+              <div className="inline-flex self-start items-center gap-2 px-4 py-2 rounded-full bg-white/95 border border-[#ead9d9] shadow-sm text-[#702b43] text-[10px] md:text-xs font-bold uppercase tracking-widest mb-4">
                 <Gift size={14} /> {tr("OFFRE PACK VINILLIA")}
               </div>
-              
-              <h1 className={`text-4xl sm:text-5xl lg:text-7xl text-[#702b43] font-serif-custom leading-[1.15] md:leading-[1.1] mb-3 md:mb-6 drop-shadow-sm ${isArabic ? 'font-extrabold' : ''}`}>
+
+              <h1 className={`w-full text-4xl sm:text-5xl lg:text-7xl text-[#702b43] font-serif-custom leading-[1.15] md:leading-[1.1] mb-3 md:mb-6 drop-shadow-sm ${isArabic ? 'font-extrabold text-right' : 'text-left'}`}>
                 {isArabic ? <>8 منتجات أساسية،<br/><span className="text-[#c97f91]">روتين واحد لجمالك</span></> : <>Huit essentiels.<br/><em className="text-[#c97f91] not-italic">Un seul rituel.</em></>}
               </h1>
-              
-              <p className="text-[#4a3f43] font-bold text-sm sm:text-lg lg:text-xl max-w-md mb-6 md:mb-8 leading-relaxed drop-shadow-sm bg-white/30 backdrop-blur-[2px] p-2 rounded-xl md:bg-transparent md:backdrop-blur-none md:p-0">
+
+              <p className={`text-[#4a3f43] font-bold text-sm sm:text-lg lg:text-xl max-w-md mb-6 md:mb-8 leading-relaxed drop-shadow-sm bg-white/30 backdrop-blur-[2px] p-2 rounded-xl md:bg-transparent md:backdrop-blur-none md:p-0 self-start ${isArabic ? "text-right" : "text-left"}`}>
                 {tr("Retrouvez 8 essentiels skincare dans un seul pack, avec 2 produits offerts.")}
               </p>
-              
-              <div className="flex flex-wrap items-center gap-4 md:gap-6 mb-6">
+
+              <div className="w-full flex flex-wrap items-center justify-start gap-4 md:gap-6 mb-6">
                 <div className="flex flex-col bg-white/40 backdrop-blur-[2px] px-3 py-1 rounded-xl md:bg-transparent md:backdrop-blur-none md:px-0 md:py-0">
-                  <span className="text-3xl lg:text-5xl font-serif-custom font-bold text-[#702b43] drop-shadow-md">{formattedPrice} {isArabic ? "درهم" : "DH"}</span>
+                  <span className="text-3xl lg:text-5xl font-serif-custom font-bold text-[#702b43] drop-shadow-md whitespace-nowrap">{formattedPrice} {isArabic ? "درهم" : "DH"}</span>
                 </div>
                 <a href="#commande" className="btn-premium px-6 py-3 md:px-8 md:py-4 rounded-full text-sm md:text-base font-bold flex justify-center items-center gap-2 shadow-xl">
                   {isArabic ? "اطلبي الباقة الآن" : "Commander le pack"} {isArabic ? <ArrowLeft size={18}/> : <ArrowRight size={18}/>}
                 </a>
               </div>
 
-              <div className="hidden sm:inline-flex glass-panel p-3 px-5 rounded-2xl shadow-xl items-center gap-3 mt-2 border-white/60">
+              <div className={`hidden sm:inline-flex glass-panel p-3 px-5 rounded-2xl shadow-xl items-center gap-3 mt-2 border-white/60 ${isArabic ? "self-start" : ""}`}>
                 <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#c97f91] to-[#702b43] flex items-center justify-center text-white shadow-inner">
                   <Sparkles size={16} />
                 </div>
-                <div className="text-start">
+                <div className={isArabic ? "text-right" : "text-start"}>
                   <p className="text-[10px] font-bold text-[#81777a] uppercase">{tr("SÉLECTION")}</p>
-                  <p className="text-sm font-extrabold text-[#702b43]">8 Produits · 2 Offerts</p>
+                  <p className="text-sm font-extrabold text-[#702b43] whitespace-nowrap">8 {tr("Produits")} · 2 {tr("OFFERT")}</p>
                 </div>
               </div>
 
@@ -292,12 +326,12 @@ export default function LandingPage() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
               {[
-                { icon: ShieldCheck, title: "8 produits complets", desc: "6 soins AXIS-Y + 2 cadeaux" },
-                { icon: Truck, title: "Paiement à la livraison", desc: "En espèces à la réception" },
+                { icon: ShieldCheck, title: "8 produits complets", desc: "6 soins AXIS-Y + 2 cadeaux Vaseline" },
+                { icon: Truck, title: "Paiement à la livraison", desc: "Paiement en espèces à la réception" },
                 { icon: Check, title: "Commande express", desc: "Sans carte bancaire" },
                 { icon: Phone, title: "Confirmation par appel", desc: "Notre équipe vous appelle" }
               ].map((item, idx) => (
-                <div key={idx} className="flex items-center gap-4">
+                <div key={idx} className={`flex items-center gap-4 ${isArabic ? "text-right" : ""}`}>
                   <div className="w-12 h-12 rounded-full bg-[#f1f4f0] text-[#7e8c77] flex items-center justify-center flex-shrink-0">
                     <item.icon size={22} />
                   </div>
@@ -311,7 +345,7 @@ export default function LandingPage() {
           </div>
         </section>
 
-        {/* --- SECTION: LA ROUTINE (ÉTAPES 1 À 6) --- */}
+        {/* --- SECTION: LA ROUTINE --- */}
         <section id="routine" className="py-20 lg:py-32 bg-[#fff9f6] overflow-hidden border-b border-[#ead9d9]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-3xl mx-auto mb-16">
@@ -322,17 +356,15 @@ export default function LandingPage() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-10">
               {routineSteps.map((step, idx) => (
-                <div 
-                  key={step.id} 
+                <div
+                  key={step.id}
                   className="group relative bg-white rounded-[32px] p-6 lg:p-8 border border-[#ead9d9] shadow-sm hover:shadow-2xl hover:border-[#c97f91]/40 transition-all duration-500 hover:-translate-y-2 cursor-default overflow-hidden flex flex-col justify-between h-full"
                 >
-                  {/* Grand Numéro en Arrière-plan (Design créatif adaptatif LTR/RTL) */}
                   <div className={`absolute -top-6 ${isArabic ? '-right-6' : '-left-6'} text-[140px] font-black text-[#fff4f5] opacity-80 z-0 select-none group-hover:scale-110 group-hover:text-[#fde2e6] transition-transform duration-700`}>
                     {step.step}
                   </div>
 
-                  {/* Contenu de l'Étape */}
-                  <div className="relative z-10 text-start">
+                  <div className={`relative z-10 ${isArabic ? "text-right" : "text-start"}`}>
                     <div className="flex items-center gap-3 mb-6">
                       <span className="w-8 h-8 rounded-full bg-[#702b43] text-white flex items-center justify-center text-sm font-bold shadow-md">
                         {idx + 1}
@@ -344,11 +376,10 @@ export default function LandingPage() {
                     <p className="text-[#81777a] text-sm font-medium mb-6 line-clamp-2">{step.name}</p>
                   </div>
 
-                  {/* Image Produit avec Animation */}
                   <div className="relative z-10 w-full aspect-square bg-[#fff9f6] rounded-2xl p-4 flex items-center justify-center shadow-inner mt-auto border border-[#f5efef]">
-                    <Image 
-                      src={step.image} 
-                      alt={step.name} 
+                    <Image
+                      src={step.image}
+                      alt={step.name}
                       className="w-full h-full object-contain drop-shadow-md group-hover:scale-110 group-hover:drop-shadow-xl transition-all duration-500"
                     />
                   </div>
@@ -358,7 +389,7 @@ export default function LandingPage() {
           </div>
         </section>
 
-        {/* Product Pack Grid (Tous les produits + Cadeaux) */}
+        {/* Product Pack Grid */}
         <section id="pack" className="py-20 lg:py-32 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-2xl mx-auto mb-16">
@@ -366,7 +397,7 @@ export default function LandingPage() {
               <h2 className="text-4xl md:text-5xl font-serif-custom text-[#702b43] font-bold mb-4">{tr("Le pack beauté qui vous ressemble")}</h2>
             </div>
 
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8 mb-16 text-start">
+            <div className={`grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8 mb-16 ${isArabic ? "text-right" : "text-start"}`}>
               {products.map((item) => (
                 <a href="#commande" key={item.id} className="group block relative bg-[#fff9f6] rounded-[24px] p-4 md:p-6 border border-[#ead9d9] shadow-sm hover:shadow-float hover:border-[#c97f91]/30 transition-all duration-300">
                   {item.gift && (
@@ -390,11 +421,11 @@ export default function LandingPage() {
         {/* Order Form Section */}
         <section id="commande" className="py-20 lg:py-32 bg-[#fff9f6] border-t border-[#ead9d9]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-16 items-start">
-            <div className="text-start">
+            <div className={isArabic ? "text-right" : "text-start"}>
               <span className="text-[#c97f91] text-xs font-bold uppercase tracking-widest block mb-3">{tr("COMMANDE EXPRESS")}</span>
               <h2 className="text-4xl md:text-5xl font-serif-custom text-[#702b43] font-bold mb-6">{tr("Recevez votre pack à domicile")}</h2>
               <p className="text-[#81777a] text-lg mb-10">{tr("Remplissez ce formulaire pour commander votre pack. Notre équipe vous appellera pour confirmer l'expédition.")}</p>
-              
+
               <div className="rounded-3xl overflow-hidden border border-[#ead9d9] shadow-soft bg-gradient-to-br from-[#fff9f6] to-white p-6 md:p-10 text-center">
                 <Image src={offerBanner} alt="Pack Vinillia" className="w-full h-auto rounded-xl mb-6 shadow-sm" />
                 <h3 className="font-bold text-[#702b43] text-xl mb-2">{tr("Pack Vinillia Beauty & Skincare")}</h3>
@@ -403,12 +434,12 @@ export default function LandingPage() {
               </div>
             </div>
 
-            <div className="bg-white rounded-[32px] p-6 md:p-10 shadow-float border border-[#ead9d9] text-start">
+            <div className={`bg-white rounded-[32px] p-6 md:p-10 shadow-float border border-[#ead9d9] ${isArabic ? "text-right" : "text-start"}`}>
               <h3 className="text-2xl font-bold text-[#702b43] mb-8">{tr("Vos coordonnées")}</h3>
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
                   <label className="flex items-center gap-2 text-sm font-bold text-[#292326] mb-2"><User size={16} className="text-[#81777a]"/> {tr("Nom complet *")}</label>
-                  <input type="text" value={name} onChange={(e) => setName(e.target.value)} required className={`w-full bg-[#fcf8f8] border ${errors.name ? 'border-red-400' : 'border-[#ead9d9]'} rounded-2xl px-5 py-4 text-[#292326]`} />
+                  <input type="text" value={name} onChange={(e) => setName(e.target.value)} required className={`w-full bg-[#fcf8f8] border ${errors.name ? 'border-red-400' : 'border-[#ead9d9]'} rounded-2xl px-5 py-4 text-[#292326] ${isArabic ? "text-right" : ""}`} />
                   {errors.name && <p className="text-red-500 text-xs mt-2">{errors.name}</p>}
                 </div>
                 <div>
@@ -418,10 +449,10 @@ export default function LandingPage() {
                 </div>
                 <div>
                   <label className="flex items-center gap-2 text-sm font-bold text-[#292326] mb-2"><MapPin size={16} className="text-[#81777a]"/> {tr("Adresse de livraison complète *")}</label>
-                  <textarea value={address} onChange={(e) => setAddress(e.target.value)} required rows={3} className={`w-full bg-[#fcf8f8] border ${errors.address ? 'border-red-400' : 'border-[#ead9d9]'} rounded-2xl px-5 py-4 text-[#292326] resize-none`}></textarea>
+                  <textarea value={address} onChange={(e) => setAddress(e.target.value)} required rows={3} className={`w-full bg-[#fcf8f8] border ${errors.address ? 'border-red-400' : 'border-[#ead9d9]'} rounded-2xl px-5 py-4 text-[#292326] resize-none ${isArabic ? "text-right" : ""}`}></textarea>
                   {errors.address && <p className="text-red-500 text-xs mt-2">{errors.address}</p>}
                 </div>
-                
+
                 <button type="submit" disabled={formState === "loading"} className="w-full btn-premium py-4 rounded-2xl text-base font-bold flex justify-center items-center gap-3 mt-4">
                   {formState === "loading" ? <span className="animate-pulse">{tr("CONFIRMATION EN COURS…")}</span> : <>{tr("CONFIRMER MA COMMANDE")} {isArabic ? <ArrowLeft size={20}/> : <ArrowRight size={20}/>}</>}
                 </button>
@@ -441,7 +472,11 @@ export default function LandingPage() {
       <footer className="bg-[#292326] text-white py-12 text-center">
         <div className="max-w-7xl mx-auto px-4">
           <img src="/vinillia-logo.svg" alt="Vinillia" className="h-10 mx-auto mb-6 brightness-0 invert opacity-90" />
-          <p className="text-[#81777a] text-sm">© {new Date().getFullYear()} Vinillia Beauty & Skincare. Tous droits réservés.</p>
+          <p className="text-[#81777a] text-sm">
+            {isArabic
+              ? `© ${new Date().getFullYear()} Vinillia Beauty & Skincare. جميع الحقوق محفوظة.`
+              : `© ${new Date().getFullYear()} Vinillia Beauty & Skincare. Tous droits réservés.`}
+          </p>
         </div>
       </footer>
     </div>
