@@ -1,12 +1,5 @@
-import type { Metadata } from "next";
-import LandingIndexPage from "./landing-index";
-
-export const metadata: Metadata = {
-  title: "VINILLIA | Landing Pages",
-  description: "Accédez aux landing pages VINILLIA et choisissez votre version.",
-  robots: { index: false, follow: false },
-};
+import LandingPage from "./landing_1/page";
 
 export default function HomePage() {
-  return <LandingIndexPage />;
+  return <LandingPage />;
 }
