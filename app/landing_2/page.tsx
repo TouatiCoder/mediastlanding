@@ -21,7 +21,7 @@ import product8 from "./assets/imgprodu/8.jpg";
 import offerBanner from "./assets/imgprodu/image.png";
 
 type IconProps = { size?: number; className?: string; "aria-hidden"?: boolean | "true" | "false" };
-type IconName = "ArrowRight" | "ArrowLeft" | "Check" | "Gift" | "Heart" | "Menu" | "Sparkles" | "X" | "ShieldCheck" | "Truck" | "Phone" | "MapPin" | "User";
+type IconName = "ArrowRight" | "ArrowLeft" | "Check" | "Gift" | "Menu" | "Sparkles" | "X" | "ShieldCheck" | "Truck" | "Phone" | "MapPin" | "User";
 
 function IconGlyph({ name, size = 20, className, ...props }: IconProps & { name: IconName }) {
   const common = { fill: "none", stroke: "currentColor", strokeWidth: 1.8, strokeLinecap: "round" as const, strokeLinejoin: "round" as const };
@@ -31,7 +31,6 @@ function IconGlyph({ name, size = 20, className, ...props }: IconProps & { name:
       {name === "ArrowLeft" && <><path {...common} d="M19 12H5" /><path {...common} d="m12 19-7-7 7-7" /></>}
       {name === "Check" && <path {...common} d="m5 12 4 4L19 6" />}
       {name === "Gift" && <><rect {...common} x="3" y="8" width="18" height="13" rx="2" /><path {...common} d="M12 8v13M2 12h20M12 8H7.5a2.5 2.5 0 1 1 2.4-3.2L12 8Zm0 0h4.5a2.5 2.5 0 1 0-2.4-3.2L12 8Z" /></>}
-      {name === "Heart" && <path {...common} d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1.1L12 21l7.8-7.5 1.1-1.1a5.5 5.5 0 0 0-.1-7.8Z" />}
       {name === "Menu" && <><path {...common} d="M4 6h16" /><path {...common} d="M4 12h16" /><path {...common} d="M4 18h16" /></>}
       {name === "Sparkles" && <><path {...common} d="m12 3 1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8L12 3Z" /><path {...common} d="m19 14 1.1 2.9L23 18l-2.9 1.1L19 22l-1.1-2.9L15 18l2.9-1.1L19 14Z" /><path {...common} d="m5 2 .8 2.2L8 5l-2.2.8L5 8l-.8-2.2L2 5l2.2-.8L5 2Z" /></>}
       {name === "X" && <><path {...common} d="m18 6-12 12" /><path {...common} d="m6 6 12 12" /></>}
@@ -48,7 +47,6 @@ const ArrowRight = (props: IconProps) => <IconGlyph name="ArrowRight" {...props}
 const ArrowLeft = (props: IconProps) => <IconGlyph name="ArrowLeft" {...props} />;
 const Check = (props: IconProps) => <IconGlyph name="Check" {...props} />;
 const Gift = (props: IconProps) => <IconGlyph name="Gift" {...props} />;
-const Heart = (props: IconProps) => <IconGlyph name="Heart" {...props} />;
 const Menu = (props: IconProps) => <IconGlyph name="Menu" {...props} />;
 const Sparkles = (props: IconProps) => <IconGlyph name="Sparkles" {...props} />;
 const X = (props: IconProps) => <IconGlyph name="X" {...props} />;
@@ -152,7 +150,6 @@ export default function LandingPage() {
   const [errors, setErrors] = useState<{ name?: string; phone?: string; address?: string }>({});
   const [formState, setFormState] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [formMessage, setFormMessage] = useState("");
-  const [orderRef, setOrderRef] = useState<string | null>(null);
 
   useEffect(() => {
     const savedLang = localStorage.getItem("vinillia_lang");
@@ -179,6 +176,7 @@ export default function LandingPage() {
     if (!menuOpen) return;
 
     const previousOverflow = document.body.style.overflow;
+    const menuTrigger = menuTriggerRef.current;
     document.body.style.overflow = "hidden";
     menuCloseRef.current?.focus();
 
@@ -208,7 +206,7 @@ export default function LandingPage() {
     return () => {
       document.removeEventListener("keydown", handleMenuKeyDown);
       document.body.style.overflow = previousOverflow;
-      menuTriggerRef.current?.focus({ preventScroll: true });
+      menuTrigger?.focus({ preventScroll: true });
     };
   }, [menuOpen]);
 
@@ -220,7 +218,6 @@ export default function LandingPage() {
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     setFormMessage("");
-    setOrderRef(null);
     const nextErrors: typeof errors = {};
     const trimmedName = name.trim();
     const trimmedPhone = phone.trim();
@@ -250,12 +247,11 @@ export default function LandingPage() {
       if (!response.ok) throw new Error(data?.error || "Erreur serveur.");
 
       setFormState("success");
-      setOrderRef(data?.orderId || "VIN-CONFIRMED");
       setFormMessage(tr("Félicitations ! Votre commande a été enregistrée avec succès."));
       setName(""); setPhone(""); setAddress(""); setErrors({});
-    } catch (err: any) {
+    } catch (err: unknown) {
       setFormState("error");
-      setFormMessage(err?.message || "Le système n'a pas pu traiter votre demande.");
+      setFormMessage(err instanceof Error ? err.message : "Une erreur est survenue. Veuillez réessayer.");
     }
   }
 
@@ -291,7 +287,7 @@ export default function LandingPage() {
       <header className="sticky top-0 z-50 glass-panel border-b border-[#ead9d9] transition-all">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
           <a href="#accueil" className="flex-shrink-0">
-            <img src="/landing_2/vinillia-logo.svg" alt="Vinillia Beauty" className="h-8 w-auto" />
+            <Image src="/landing_2/vinillia-logo.svg" alt="Vinillia Beauty" width={160} height={48} className="h-8 w-auto" />
           </a>
 
           <nav className="hidden md:flex gap-8 text-sm font-semibold text-[#81777a]">
@@ -303,10 +299,10 @@ export default function LandingPage() {
           <div className="flex items-center gap-4">
             <div className="hidden md:flex bg-white/50 rounded-full p-1 border border-[#ead9d9]">
               <button onClick={() => handleLanguageChange("fr")} className={`px-3 py-1 rounded-full text-xs font-bold flex items-center gap-2 ${!isArabic ? 'bg-white shadow-sm text-[#702b43]' : 'text-[#81777a]'}`}>
-                <img src={franceFlag.src} alt="" className="w-4 h-3 rounded-[2px]" /> FR
+                <Image src={franceFlag} alt="" width={16} height={12} className="w-4 h-3 rounded-[2px]" /> FR
               </button>
               <button onClick={() => handleLanguageChange("ar")} className={`px-3 py-1 rounded-full text-xs font-bold flex items-center gap-2 ${isArabic ? 'bg-white shadow-sm text-[#702b43]' : 'text-[#81777a]'}`}>
-                <img src={arabicFlag.src} alt="" className="w-4 h-3 rounded-[2px]" /> AR
+                <Image src={arabicFlag} alt="" width={16} height={12} className="w-4 h-3 rounded-[2px]" /> AR
               </button>
             </div>
             <a href="#commande" className="hidden md:flex btn-premium px-6 py-2.5 rounded-full text-sm font-bold items-center gap-2">
@@ -360,10 +356,10 @@ export default function LandingPage() {
               </nav>
               <div className="mobile-drawer-languages" aria-label={isArabic ? "اختيار اللغة" : "Choisir la langue"}>
                 <button type="button" aria-pressed={!isArabic} onClick={() => handleLanguageChange("fr")}>
-                  <img src={franceFlag.src} alt="" /> FR
+                  <Image src={franceFlag} alt="" width={16} height={12} /> FR
                 </button>
                 <button type="button" aria-pressed={isArabic} onClick={() => handleLanguageChange("ar")}>
-                  <img src={arabicFlag.src} alt="" /> AR
+                  <Image src={arabicFlag} alt="" width={16} height={12} /> AR
                 </button>
               </div>
               <a href="#commande" className="mobile-drawer-order btn-premium" onClick={() => setMenuOpen(false)}>
@@ -619,7 +615,7 @@ export default function LandingPage() {
       {/* Footer */}
       <footer className="bg-[#292326] text-white py-12 text-center">
         <div className="max-w-7xl mx-auto px-4">
-          <img src="/vinillia-logo.svg" alt="Vinillia" className="h-10 mx-auto mb-6 brightness-0 invert opacity-90" />
+          <Image src="/vinillia-logo.svg" alt="Vinillia" width={200} height={60} className="h-10 w-auto mx-auto mb-6 brightness-0 invert opacity-90" />
           <p className="text-[#81777a] text-sm">
             {isArabic
               ? `© ${new Date().getFullYear()} Vinillia Beauty & Skincare. جميع الحقوق محفوظة.`
