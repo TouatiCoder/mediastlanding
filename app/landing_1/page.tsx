@@ -139,6 +139,7 @@ export default function LandingPage() {
   }).props;
 
   const [menuOpen, setMenuOpen] = useState(false);
+  const [headerScrolled, setHeaderScrolled] = useState(false);
   const [selectedProductId, setSelectedProductId] = useState("p1");
   const menuTriggerRef = useRef<HTMLButtonElement>(null);
   const menuCloseRef = useRef<HTMLButtonElement>(null);
@@ -151,6 +152,13 @@ export default function LandingPage() {
   const [errors, setErrors] = useState<{ name?: string; phone?: string; address?: string }>({});
   const [formState, setFormState] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [formMessage, setFormMessage] = useState("");
+
+  useEffect(() => {
+    const updateHeader = () => setHeaderScrolled(window.scrollY > 12);
+    updateHeader();
+    window.addEventListener("scroll", updateHeader, { passive: true });
+    return () => window.removeEventListener("scroll", updateHeader);
+  }, []);
 
   useEffect(() => {
     const savedLang = localStorage.getItem("vinillia_lang");
@@ -286,7 +294,7 @@ export default function LandingPage() {
       </div>
 
       {/* Header — z-50 أعلى من الـ announcement */}
-      <header className="sticky top-0 z-50 glass-panel border-b border-[#ead9d9] transition-all">
+      <header className={`sticky top-0 z-50 -mb-20 transition-all duration-300 ${headerScrolled ? "glass-panel border-b border-[#ead9d9]" : "bg-transparent border-b border-transparent"}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
           <a href="#accueil" className="flex-shrink-0">
             <Image src="/landing_1/vinillia-logo.svg" alt="Vinillia Beauty" width={160} height={48} className="h-8 w-auto" />
@@ -403,7 +411,7 @@ export default function LandingPage() {
           </div>
 
           {/* Text Content over Image */}
-          <div className={`landing-hero-copy relative z-10 w-full flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col justify-start md:justify-center pt-[10vh] md:pt-0 pb-10 ${isArabic ? "items-start text-right" : "items-start text-start"}`}>
+          <div className={`landing-hero-copy relative z-10 w-full flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col justify-start md:justify-center pt-[10vh] md:pt-0 pb-10 ${isArabic ? "md:translate-y-16 items-start text-right" : "md:translate-y-12 items-start text-start"}`}>
             <div className={`w-full md:w-3/5 lg:w-1/2 flex flex-col drop-shadow-md ${isArabic ? "items-start text-right" : "items-start text-left"}`}>
 
               <div className="inline-flex self-start items-center gap-2 px-4 py-2 rounded-full bg-white/95 border border-[#ead9d9] shadow-sm text-[#702b43] text-[10px] md:text-xs font-bold uppercase tracking-widest mb-4">
