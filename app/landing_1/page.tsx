@@ -414,7 +414,7 @@ export default function LandingPage() {
           <div className={`landing-hero-copy relative z-10 w-full flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col justify-start md:justify-center pt-[10vh] md:pt-0 pb-10 ${isArabic ? "md:translate-y-16 items-start text-right" : "md:translate-y-12 items-start text-start"}`}>
             <div className={`w-full md:w-3/5 lg:w-1/2 flex flex-col drop-shadow-md ${isArabic ? "items-start text-right" : "items-start text-left"}`}>
 
-              <div className="inline-flex self-start items-center gap-2 px-4 py-2 rounded-full bg-white/95 border border-[#ead9d9] shadow-sm text-[#702b43] text-[10px] md:text-xs font-bold uppercase tracking-widest mb-4">
+              <div className="hero-offer-label inline-flex self-start items-center gap-2 px-4 py-2 rounded-full bg-white/95 border border-[#ead9d9] shadow-sm text-[#702b43] text-[10px] md:text-xs font-bold uppercase tracking-widest mb-4">
                 <Gift size={14} /> {tr("OFFRE PACK VINILLIA")}
               </div>
 
@@ -435,7 +435,7 @@ export default function LandingPage() {
                 </a>
               </div>
 
-              <div className={`hidden sm:inline-flex glass-panel p-3 px-5 rounded-2xl shadow-xl items-center gap-3 mt-2 border-white/60 ${isArabic ? "self-start" : ""}`}>
+              <div className={`hero-selection-card inline-flex glass-panel p-3 px-5 rounded-2xl shadow-xl items-center gap-3 mt-2 border border-white/60 ${isArabic ? "self-start" : ""}`}>
                 <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#c97f91] to-[#702b43] flex items-center justify-center text-white shadow-inner">
                   <Sparkles size={16} />
                 </div>

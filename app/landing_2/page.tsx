@@ -10,14 +10,15 @@ import bannerFr from "./assets/banner fr.jpg";
 import bannerAr from "./assets/banner ar.jpg";
 import banner1Mobile from "./assets/banner1_mobile.png";
 import banner2Mobile from "./assets/banner2_mobile.png";
-import product1 from "./assets/imgprodu/1.jpg";
-import product2 from "./assets/imgprodu/2.jpg";
-import product3 from "./assets/imgprodu/3.jpg";
-import product4 from "./assets/imgprodu/4.jpg";
-import product5 from "./assets/imgprodu/5.jpg";
-import product6 from "./assets/imgprodu/6.jpg";
-import product7 from "./assets/imgprodu/7.jpg";
-import product8 from "./assets/imgprodu/8.jpg";
+import product1 from "./assets/imgprodu/1.png";
+import product2 from "./assets/imgprodu/2.png";
+import product3 from "./assets/imgprodu/3.png";
+import product4 from "./assets/imgprodu/4.png";
+import product5 from "./assets/imgprodu/5.png";
+import product6 from "./assets/imgprodu/6.png";
+import product7 from "./assets/imgprodu/7.png";
+import product8 from "./assets/imgprodu/8.png";
+import product9 from "./assets/imgprodu/9.png";
 import offerBanner from "./assets/imgprodu/image.png";
 
 type IconProps = { size?: number; className?: string; "aria-hidden"?: boolean | "true" | "false" };
@@ -59,6 +60,10 @@ const User = (props: IconProps) => <IconGlyph name="User" {...props} />;
 const PRICE_MAD = 1400;
 
 const translations: Record<string, string> = {
+  "VOTRE RITUEL BEAUTÉ, EN UN SEUL PACK · 3 PRODUITS OFFERTS": "روتين جمالك في باقة واحدة · 3 منتجات هدية",
+  "Retrouvez 9 essentiels skincare dans un seul pack, avec 3 produits offerts.": "اكتشفي باقة العناية بالبشرة التي تضم 9 منتجات، منها 3 منتجات هدية.",
+  "9 produits complets": "9 منتجات متكاملة",
+  "6 soins AXIS-Y + 3 produits offerts": "6 منتجات AXIS-Y + 3 منتجات هدية",
   "VOTRE RITUEL BEAUTÉ, EN UN SEUL PACK · 2 PRODUITS OFFERTS": "روتين جمالك في باقة واحدة · منتجان هدية",
   "Accueil": "الرئيسية",
   "Le pack": "الباقة",
@@ -71,7 +76,7 @@ const translations: Record<string, string> = {
   "OFFRE PACK VINILLIA": "عرض باقة VINILLIA",
   "Huit essentiels. Un seul rituel.": "8 منتجات أساسية، روتين واحد لجمالك",
   "Retrouvez 8 essentiels skincare dans un seul pack, avec 2 produits offerts.": "اكتشفي باقة العناية بالبشرة التي تضم 8 منتجات، منها منتجان هدية.",
-  "1 400 DH": "1400 درهم",
+  "1600 DH": "1600درهم",
   "8 produits complets": "8 منتجات متكاملة",
   "6 soins AXIS-Y + 2 cadeaux Vaseline": "6 مستحضرات AXIS-Y + هديتان من فازلين",
   "Paiement à la livraison": "الدفع عند الاستلام",
@@ -138,6 +143,7 @@ export default function LandingPage() {
   }).props;
 
   const [menuOpen, setMenuOpen] = useState(false);
+  const [headerScrolled, setHeaderScrolled] = useState(false);
   const [selectedProductId, setSelectedProductId] = useState("p1");
   const menuTriggerRef = useRef<HTMLButtonElement>(null);
   const menuCloseRef = useRef<HTMLButtonElement>(null);
@@ -150,6 +156,13 @@ export default function LandingPage() {
   const [errors, setErrors] = useState<{ name?: string; phone?: string; address?: string }>({});
   const [formState, setFormState] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [formMessage, setFormMessage] = useState("");
+
+  useEffect(() => {
+    const updateHeader = () => setHeaderScrolled(window.scrollY > 12);
+    updateHeader();
+    window.addEventListener("scroll", updateHeader, { passive: true });
+    return () => window.removeEventListener("scroll", updateHeader);
+  }, []);
 
   useEffect(() => {
     const savedLang = localStorage.getItem("vinillia_lang");
@@ -264,6 +277,7 @@ export default function LandingPage() {
     { id: "p6", name: "Complete No-Stress Physical Sunscreen", brand: "AXIS-Y", type: "Protection solaire", image: product6, gift: false },
     { id: "p7", name: "Vaseline Gluta-Hya Serum Burst Lotion", brand: "Vaseline", type: "Soin corps", image: product7, gift: true },
     { id: "p8", name: "Vaseline Lip Therapy Rosy Lips", brand: "Vaseline", type: "Baume lèvres", image: product8, gift: true },
+    { id: "p9", name: "Keratin Care Smoothing Shampoo", brand: "Style Tree", type: "Shampooing lissant", image: product9, gift: true },
   ];
   const selectedProduct = products.find((item) => item.id === selectedProductId) ?? products[0];
 
@@ -280,11 +294,11 @@ export default function LandingPage() {
 
       {/* Announcement Bar — z-40 حتى لا يتعارض مع الهيدر */}
       <div className="announcement-bar bg-[#702B43] text-white py-2.5 text-xs font-bold tracking-wider text-center flex justify-center items-center gap-2 relative z-40">
-        <Sparkles size={14} /> <span>{tr("VOTRE RITUEL BEAUTÉ, EN UN SEUL PACK · 2 PRODUITS OFFERTS")}</span> <Sparkles size={14} />
+        <Sparkles size={14} /> <span>{tr("VOTRE RITUEL BEAUTÉ, EN UN SEUL PACK · 3 PRODUITS OFFERTS")}</span> <Sparkles size={14} />
       </div>
 
       {/* Header — z-50 أعلى من الـ announcement */}
-      <header className="sticky top-0 z-50 glass-panel border-b border-[#ead9d9] transition-all">
+      <header className={`sticky top-0 z-50 -mb-20 transition-all duration-300 ${headerScrolled ? "glass-panel border-b border-[#ead9d9]" : "bg-transparent border-b border-transparent"}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
           <a href="#accueil" className="flex-shrink-0">
             <Image src="/landing_2/vinillia-logo.svg" alt="Vinillia Beauty" width={160} height={48} className="h-8 w-auto" />
@@ -373,13 +387,18 @@ export default function LandingPage() {
 
       <main>
         {/* ===== Hero Section ===== */}
-        <section id="accueil" className="landing-hero relative w-full min-h-[90vh] md:min-h-[85vh] flex flex-col overflow-hidden">
+        <section id="accueil" className="landing-hero relative w-full min-h-[99vh] md:min-h-[100vh] flex flex-col overflow-hidden">
 
           {/* Background Image Container */}
           <div
             className="landing-hero-art absolute inset-0 w-full h-full z-0"
             style={{ "--hero-mobile-ratio": `${mobileHeroImage.width} / ${mobileHeroImage.height}` } as React.CSSProperties}
           >
+            <div
+              className="landing-hero-backdrop"
+              aria-hidden="true"
+              style={{ backgroundImage: `url("${(isArabic ? bannerAr : bannerFr).src}")` }}
+            />
             <picture className="landing-hero-picture absolute inset-0 block">
               <source
                 media="(max-width: 767px)"
@@ -389,7 +408,7 @@ export default function LandingPage() {
               <Image
                 src={isArabic ? bannerAr : bannerFr}
                 alt={isArabic ? "حملة VINILLIA لمنتجات العناية من AXIS-Y وفازلين" : "Campagne VINILLIA présentant les soins AXIS-Y et Vaseline"}
-                className="landing-hero-image w-full h-full object-cover object-[15%_100%] md:object-[20%_center]"
+                className="landing-hero-image w-full h-full object-cover md:object-contain object-[15%_100%] md:object-center"
                 sizes="100vw"
                 quality={75}
                 loading="eager"
@@ -401,19 +420,19 @@ export default function LandingPage() {
           </div>
 
           {/* Text Content over Image */}
-          <div className={`landing-hero-copy relative z-10 w-full flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col justify-start md:justify-center pt-[10vh] md:pt-0 pb-10 ${isArabic ? "items-start text-right" : "items-start text-start"}`}>
+          <div className={`landing-hero-copy relative z-10 w-full flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col justify-start md:justify-center pt-[10vh] md:pt-0 pb-10 ${isArabic ? "md:translate-y-16 items-start text-right" : "md:translate-y-12 items-start text-start"}`}>
             <div className={`w-full md:w-3/5 lg:w-1/2 flex flex-col drop-shadow-md ${isArabic ? "items-start text-right" : "items-start text-left"}`}>
 
-              <div className="inline-flex self-start items-center gap-2 px-4 py-2 rounded-full bg-white/95 border border-[#ead9d9] shadow-sm text-[#702b43] text-[10px] md:text-xs font-bold uppercase tracking-widest mb-4">
+              <div className="hero-offer-label inline-flex self-start items-center gap-2 px-4 py-2 rounded-full bg-white/95 border border-[#ead9d9] shadow-sm text-[#702b43] text-[10px] md:text-xs font-bold uppercase tracking-widest mb-4">
                 <Gift size={14} /> {tr("OFFRE PACK VINILLIA")}
               </div>
 
               <h1 className={`w-full text-4xl sm:text-5xl lg:text-7xl text-[#702b43] font-serif-custom leading-[1.15] md:leading-[1.1] mb-3 md:mb-6 drop-shadow-sm ${isArabic ? 'font-extrabold text-right' : 'text-left'}`}>
-                {isArabic ? <>8 منتجات أساسية،<br/><span className="text-[#c97f91]">روتين واحد لجمالك</span></> : <>Huit essentiels.<br/><em className="text-[#c97f91] not-italic">Un seul rituel.</em></>}
+                {isArabic ? <>9 منتجات أساسية،<br/><span className="text-[#c97f91]">روتين واحد لجمالك</span></> : <>Neuf essentiels.<br/><em className="text-[#c97f91] not-italic">Un seul rituel.</em></>}
               </h1>
 
               <p className={`text-[#4a3f43] font-bold text-sm sm:text-lg lg:text-xl max-w-md mb-6 md:mb-8 leading-relaxed drop-shadow-sm bg-white/30 backdrop-blur-[2px] p-2 rounded-xl md:bg-transparent md:backdrop-blur-none md:p-0 self-start ${isArabic ? "text-right" : "text-left"}`}>
-                {tr("Retrouvez 8 essentiels skincare dans un seul pack, avec 2 produits offerts.")}
+                {tr("Retrouvez 9 essentiels skincare dans un seul pack, avec 3 produits offerts.")}
               </p>
 
               <div className="hero-price-cta-row w-full flex flex-nowrap items-center justify-start gap-2 md:gap-6 mb-6">
@@ -425,13 +444,13 @@ export default function LandingPage() {
                 </a>
               </div>
 
-              <div className={`hidden sm:inline-flex glass-panel p-3 px-5 rounded-2xl shadow-xl items-center gap-3 mt-2 border-white/60 ${isArabic ? "self-start" : ""}`}>
+              <div className={`hero-selection-card inline-flex glass-panel p-3 px-5 rounded-2xl shadow-xl items-center gap-3 mt-2 border border-white/60 ${isArabic ? "self-start" : ""}`}>
                 <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#c97f91] to-[#702b43] flex items-center justify-center text-white shadow-inner">
                   <Sparkles size={16} />
                 </div>
                 <div className={isArabic ? "text-right" : "text-start"}>
                   <p className="text-[10px] font-bold text-[#81777a] uppercase">{tr("SÉLECTION")}</p>
-                  <p className="text-sm font-extrabold text-[#702b43] whitespace-nowrap">8 {tr("Produits")} · 2 {tr("OFFERT")}</p>
+                  <p className="text-sm font-extrabold text-[#702b43] whitespace-nowrap">9 {tr("Produits")} · 3 {tr("OFFERT")}</p>
                 </div>
               </div>
 
@@ -444,7 +463,7 @@ export default function LandingPage() {
           <div className="trust-strip max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="trust-strip-grid">
               {[
-                { icon: ShieldCheck, title: "8 produits complets", desc: "6 soins AXIS-Y + 2 cadeaux Vaseline" },
+                { icon: ShieldCheck, title: "9 produits complets", desc: "6 soins AXIS-Y + 3 produits offerts" },
                 { icon: Truck, title: "Paiement à la livraison", desc: "Paiement en espèces à la réception" },
                 { icon: Check, title: "Commande express", desc: "Sans carte bancaire" },
                 { icon: Phone, title: "Confirmation par appel", desc: "Notre équipe vous appelle" }
@@ -518,7 +537,7 @@ export default function LandingPage() {
             <div className={`product-showcase ${isArabic ? "product-showcase-rtl" : ""}`}>
               <div className={`product-showcase-main${selectedProduct.gift ? " product-gallery-gift" : ""}`}>
                 <div className={`product-showcase-visual${selectedProduct.gift ? " product-gallery-gift-image" : ""}`}>
-                  {selectedProduct.gift && <span className="product-gift-badge product-showcase-badge">{tr("OFFERT")}</span>}
+                  {selectedProduct.gift && selectedProduct.id !== "p9" && <span className="product-gift-badge product-showcase-badge">{tr("OFFERT")}</span>}
                   <Image
                     key={selectedProduct.id}
                     src={selectedProduct.image}
@@ -530,6 +549,7 @@ export default function LandingPage() {
                     className="product-showcase-image"
                   />
                 </div>
+                {selectedProduct.id === "p9" && <span className="product-gift-badge product-showcase-badge-below">{tr("OFFERT")}</span>}
                 <div className="product-showcase-details">
                   <span className="product-showcase-brand">{selectedProduct.brand} · {tr(selectedProduct.type)}</span>
                   <h3>{selectedProduct.name}</h3>
@@ -573,7 +593,7 @@ export default function LandingPage() {
               <div className="rounded-3xl overflow-hidden border border-[#ead9d9] shadow-soft bg-gradient-to-br from-[#fff9f6] to-white p-6 md:p-10 text-center">
                 <Image src={offerBanner} alt="Pack Vinillia" className="w-full h-auto rounded-xl mb-6 shadow-sm" />
                 <h3 className="font-bold text-[#702b43] text-xl mb-2">{tr("Pack Vinillia Beauty & Skincare")}</h3>
-                <p className="text-[#c97f91] font-semibold">{tr("8 produits complets")}</p>
+                <p className="text-[#c97f91] font-semibold">{tr("9 produits complets")}</p>
                 <p className="text-3xl font-serif-custom font-bold text-[#702b43] mt-4">{formattedPrice} {isArabic ? "درهم" : "DH"}</p>
               </div>
             </div>
@@ -616,7 +636,7 @@ export default function LandingPage() {
       <footer className="bg-[#292326] text-white py-12 text-center">
         <div className="max-w-7xl mx-auto px-4">
           <Image src="/vinillia-logo.svg" alt="Vinillia" width={200} height={60} className="h-10 w-auto mx-auto mb-6 brightness-0 invert opacity-90" />
-          <p className="text-[#81777a] text-sm">
+          <p className="w-full text-center text-[#81777a] text-sm">
             {isArabic
               ? `© ${new Date().getFullYear()} Vinillia Beauty & Skincare. جميع الحقوق محفوظة.`
               : `© ${new Date().getFullYear()} Vinillia Beauty & Skincare. Tous droits réservés.`}

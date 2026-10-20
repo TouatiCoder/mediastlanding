@@ -491,6 +491,21 @@ html[dir="rtl"] .mobile-drawer { animation-name: drawer-enter-rtl; }
 .shadow-float { box-shadow: 0 20px 60px -30px rgba(41, 35, 38, .35); }
 .shadow-soft { box-shadow: 0 10px 30px -20px rgba(41, 35, 38, .3); }
 
+@media (min-width: 768px) {
+  #accueil .landing-hero-backdrop {
+    position: absolute;
+    inset: -18px;
+    z-index: 0;
+    background-position: center;
+    background-size: cover;
+    filter: blur(18px) brightness(.82);
+    transform: scale(1.03);
+  }
+
+  #accueil .landing-hero-picture { z-index: 1; }
+  #accueil .landing-hero-gradient { z-index: 3; }
+}
+
 /* The mobile hero keeps the portrait image at its natural ratio. */
 @media (max-width: 767px) {
   header.sticky { display: block; visibility: visible; opacity: 1; }
@@ -498,6 +513,7 @@ html[dir="rtl"] .mobile-drawer { animation-name: drawer-enter-rtl; }
   #accueil.landing-hero {
     display: grid;
     grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto auto;
     align-items: stretch;
     min-height: 0;
     height: auto;
@@ -515,6 +531,7 @@ html[dir="rtl"] .mobile-drawer { animation-name: drawer-enter-rtl; }
     height: auto;
     aspect-ratio: var(--hero-mobile-ratio);
     overflow: hidden;
+    grid-row: 1;
   }
 
   #accueil .landing-hero-picture {
@@ -525,29 +542,30 @@ html[dir="rtl"] .mobile-drawer { animation-name: drawer-enter-rtl; }
     height: 100%;
   }
 
+  #accueil .landing-hero-backdrop { display: none; }
+
   #accueil .landing-hero-image {
     object-fit: contain;
     object-position: center;
   }
 
   #accueil .landing-hero-gradient {
-    display: block;
-    pointer-events: none;
-    background-image: linear-gradient(90deg, rgba(255, 249, 246, .94) 0%, rgba(255, 249, 246, .72) 43%, rgba(255, 249, 246, 0) 78%);
+    display: none;
   }
 
   #accueil .landing-hero-copy {
-    grid-area: 1 / 1;
+    grid-area: 2 / 1;
     order: 1;
-    align-self: end;
-    justify-self: start;
+    align-self: start;
+    justify-self: stretch;
     flex: none;
-    width: min(60%, 22rem);
+    width: 100%;
     max-width: none;
     min-width: 0;
-    margin-inline-start: 12px;
-    margin-inline-end: 0;
-    padding: 12px 8px;
+    margin-inline: 0;
+    padding: 20px 20px 28px;
+    background: var(--paper);
+    transform: none;
   }
 
   #accueil .landing-hero-copy h1 {
@@ -567,12 +585,18 @@ html[dir="rtl"] .mobile-drawer { animation-name: drawer-enter-rtl; }
     line-height: 1.6;
   }
 
-  #accueil .landing-hero-copy .inline-flex {
+  #accueil .landing-hero-copy .hero-offer-label {
     padding: 0;
     margin-bottom: 12px;
     border: 0;
     background: transparent;
     box-shadow: none;
+  }
+
+  #accueil .landing-hero-copy .hero-selection-card {
+    max-width: 100%;
+    margin-top: 0;
+    padding: 10px 12px;
   }
 
   #accueil .landing-hero-copy .text-3xl {
@@ -707,10 +731,9 @@ html[dir="rtl"] .footer-main > p { font-family: var(--arabic), var(--sans); font
   }
 
   html[dir="rtl"] #accueil .landing-hero-copy {
-    justify-self: start;
-    margin-inline-start: 12px;
-    margin-inline-end: 0;
-    padding-inline: 12px 8px;
+    justify-self: stretch;
+    margin-inline: 0;
+    padding: 20px 20px 28px;
     text-align: right;
   }
 
@@ -744,6 +767,7 @@ html[dir="rtl"] .footer-main > p { font-family: var(--arabic), var(--sans); font
 .product-showcase-image { width: 100%; height: 100%; object-fit: contain; animation: product-showcase-enter .3s ease both; }
 @keyframes product-showcase-enter { from { opacity: .45; transform: scale(.985); } to { opacity: 1; transform: scale(1); } }
 .product-showcase-badge { position: absolute; inset-block-start: 18px; inset-inline-start: 18px; z-index: 1; padding: 7px 11px; border-radius: 99px; font-size: 10px; font-weight: 700; }
+.product-showcase-badge-below { display: block; width: fit-content; margin: 12px auto 0; padding: 7px 12px; border-radius: 99px; font-size: 10px; font-weight: 700; }
 .product-showcase-details { padding: 23px clamp(18px, 3vw, 34px) 28px; border-block-start: 1px solid rgb(81 43 57 / 8%); }
 .product-showcase-brand { color: var(--sage); font-size: 10px; font-weight: 700; letter-spacing: .11em; text-transform: uppercase; }
 .product-showcase-details h3 { margin: 9px 0 0; color: var(--wine); font-family: var(--serif); font-size: clamp(21px, 2.5vw, 31px); font-weight: 500; line-height: 1.25; }
@@ -759,14 +783,6 @@ html[dir="rtl"] .footer-main > p { font-family: var(--arabic), var(--sans); font
 .product-thumb.is-gift { background: #fffaf0; }
 .product-thumb img { width: 100%; height: 100%; object-fit: contain; }
 .product-thumb-gift { position: absolute; inset-block-start: 5px; inset-inline-start: 5px; z-index: 1; padding: 3px 5px; border-radius: 99px; color: #fff; background: #a97926; font-size: 7px; font-weight: 700; }
-.product-thumb:nth-child(1) { grid-area: 1 / 1; }
-.product-thumb:nth-child(2) { grid-area: 1 / 2; }
-.product-thumb:nth-child(3) { grid-area: 2 / 1; }
-.product-thumb:nth-child(4) { grid-area: 2 / 2; }
-.product-thumb:nth-child(5) { grid-area: 3 / 1; }
-.product-thumb:nth-child(6) { grid-area: 3 / 2; }
-.product-thumb:nth-child(7) { grid-column: 3; grid-row: 1 / span 2; align-self: center; }
-.product-thumb:nth-child(8) { grid-column: 3; grid-row: 2 / span 2; align-self: center; }
 .product-showcase-rtl .product-showcase-details { text-align: right; }
 
 @media (max-width: 767px) {
