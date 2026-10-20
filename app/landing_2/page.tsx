@@ -57,13 +57,20 @@ const Phone = (props: IconProps) => <IconGlyph name="Phone" {...props} />;
 const MapPin = (props: IconProps) => <IconGlyph name="MapPin" {...props} />;
 const User = (props: IconProps) => <IconGlyph name="User" {...props} />;
 
-const PRICE_MAD = 1400;
+const PRICE_MAD = 1600;
 
 const translations: Record<string, string> = {
   "VOTRE RITUEL BEAUTÉ, EN UN SEUL PACK · 3 PRODUITS OFFERTS": "روتين جمالك في باقة واحدة · 3 منتجات هدية",
   "Retrouvez 9 essentiels skincare dans un seul pack, avec 3 produits offerts.": "اكتشفي باقة العناية بالبشرة التي تضم 9 منتجات، منها 3 منتجات هدية.",
   "9 produits complets": "9 منتجات متكاملة",
   "6 soins AXIS-Y + 3 produits offerts": "6 منتجات AXIS-Y + 3 منتجات هدية",
+  "6 soins Beauty of Joseon + 3 produits offerts": "6 منتجات Beauty of Joseon + 3 منتجات هدية",
+  "Huile nettoyante": "زيت منظف",
+  "Essence hydratante": "إيسونس مرطبة",
+  "Sérum éclat": "سيروم للنضارة",
+  "Sérum contour des yeux": "سيروم لمنطقة العينين",
+  "Crème hydratante": "كريم مرطب",
+  "Protection solaire SPF50+": "واقي شمس SPF50+",
   "VOTRE RITUEL BEAUTÉ, EN UN SEUL PACK · 2 PRODUITS OFFERTS": "روتين جمالك في باقة واحدة · منتجان هدية",
   "Accueil": "الرئيسية",
   "Le pack": "الباقة",
@@ -93,13 +100,13 @@ const translations: Record<string, string> = {
   "Commander mon pack": "أطلب باقتي الآن",
   "LA ROUTINE VINILLIA": "روتين VINILLIA",
   "Votre rituel en 6 étapes": "روتينكِ في 6 خطوات بسيطة",
-  "Découvrez les 6 étapes de votre nouvelle routine AXIS-Y pour une peau éclatante et en pleine santé.": "اكتشفي الخطوات الست لروتين AXIS-Y الجديد لبشرة نضرة وصحية.",
-  "Nettoyer en douceur": "تنظيف لطيف",
-  "Équilibrer et illuminer": "توازن وإشراق",
-  "Apaiser et réparer": "تهدئة وإصلاح",
-  "Nourrir intensément": "تغذية عميقة",
-  "Hydrater et unifier": "ترطيب وتوحيد",
-  "Protéger des UV": "حماية من الأشعة",
+  "Découvrez les 6 étapes de votre nouvelle routine Beauty of Joseon pour une peau éclatante et en pleine santé.": "اكتشفي الخطوات الست لروتين Beauty of Joseon الجديد لبشرة نضرة وصحية.",
+  "Ginseng Cleansing Oil": "تنظيف لطيف",
+  "Ginseng Essence Water": "توازن وإشراق",
+  "Revive Serum": "تهدئة وإصلاح",
+  "Revive Eye Serum": "تغذية عميقة",
+  "Dynasty Cream": "ترطيب وتوحيد",
+  "Relief Sun SPF50+ PA": "حماية من الأشعة",
   "ÉTAPE": "الخطوة",
   "OFFRE SPÉCIALE": "عرض استثنائي",
   "Pourquoi choisir le pack Vinillia ?": "لماذا تختارين باقة Vinillia؟",
@@ -269,25 +276,25 @@ export default function LandingPage() {
   }
 
   const products = [
-    { id: "p1", name: "Sunday Morning Refreshing Cleansing Foam", brand: "AXIS-Y", type: "Nettoyant visage", image: product1, gift: false },
-    { id: "p2", name: "Dark Spot Correcting Glow Toner", brand: "AXIS-Y", type: "Tonique éclat", image: product2, gift: false },
-    { id: "p3", name: "New Skin Resolution Gel Mask", brand: "AXIS-Y", type: "Masque gel apaisant", image: product3, gift: false },
-    { id: "p4", name: "Artichoke Intensive Skin Barrier Ampoule", brand: "AXIS-Y", type: "Ampoule sérum", image: product4, gift: false },
-    { id: "p5", name: "Dark Spot Correcting Glow Cream", brand: "AXIS-Y", type: "Crème hydratante", image: product5, gift: false },
-    { id: "p6", name: "Complete No-Stress Physical Sunscreen", brand: "AXIS-Y", type: "Protection solaire", image: product6, gift: false },
-    { id: "p7", name: "Vaseline Gluta-Hya Serum Burst Lotion", brand: "Vaseline", type: "Soin corps", image: product7, gift: true },
-    { id: "p8", name: "Vaseline Lip Therapy Rosy Lips", brand: "Vaseline", type: "Baume lèvres", image: product8, gift: true },
-    { id: "p9", name: "Keratin Care Smoothing Shampoo", brand: "Style Tree", type: "Shampooing lissant", image: product9, gift: true },
+    { id: "p1", name: "Ginseng Cleansing Oil", brand: "Beauty of Joseon", type: "Huile nettoyante", image: product1, gift: false },
+    { id: "p2", name: "Ginseng Essence Water", brand: "Beauty of Joseon", type: "Essence hydratante", image: product2, gift: false },
+    { id: "p3", name: "Revive Serum", brand: "Beauty of Joseon", type: "Sérum éclat", image: product3, gift: false },
+    { id: "p4", name: "Revive Eye Serum", brand: "Beauty of Joseon", type: "Sérum contour des yeux", image: product4, gift: false },
+    { id: "p5", name: "Dynasty Cream", brand: "Beauty of Joseon", type: "Crème hydratante", image: product5, gift: false },
+    { id: "p6", name: "Relief Sun SPF50+ PA", brand: "Beauty of Joseon", type: "Protection solaire SPF50+", image: product6, gift: false },
+    { id: "p7", name: "KERATIN COMPLEX Keratin Care Potent Repair Mask", brand: "Vaseline", type: "Soin corps", image: product7, gift: true },
+    { id: "p8", name: "KERATIN COMPLEX Keratin Care KERATIN Bond Sealing Serum", brand: "Vaseline", type: "Baume lèvres", image: product8, gift: true },
+    { id: "p9", name: "KERATIN COMPLEX Keratin Care Smoothing Shampoo", brand: "Style Tree", type: "Shampooing lissant", image: product9, gift: true },
   ];
   const selectedProduct = products.find((item) => item.id === selectedProductId) ?? products[0];
 
   const routineSteps = [
-    { ...products[0], title: "Nettoyer en douceur", step: "01" },
-    { ...products[1], title: "Équilibrer et illuminer", step: "02" },
-    { ...products[2], title: "Apaiser et réparer", step: "03" },
-    { ...products[3], title: "Nourrir intensément", step: "04" },
-    { ...products[4], title: "Hydrater et unifier", step: "05" },
-    { ...products[5], title: "Protéger des UV", step: "06" },
+    { ...products[0], title: "Ginseng Cleansing Oil", descriptionAr: "الزيت المنظف كيتستعمل الأول باش ينقي الوجه من الماكياج، واقي الشمس والشوائب.", descriptionFr: "L’huile nettoyante s’utilise en premier pour retirer le maquillage, la crème solaire et les impuretés.", step: "01" },
+    { ...products[1], title: "Ginseng Essence Water", descriptionAr: "الإيسونس كيرطب البشرة وكيعاونها تبقى ناعمة ومنتعشة.", descriptionFr: "L’essence hydrate la peau et l’aide à rester douce et fraîche.", step: "02" },
+    { ...products[2], title: "Revive Serum", descriptionAr: "السيروم كيساعد على الترطيب وتحسين مظهر البشرة وإعطائها النضارة.", descriptionFr: "Le sérum aide à hydrater la peau, à améliorer son apparence et à lui donner de l’éclat.", step: "03" },
+    { ...products[3], title: "Revive Eye Serum", descriptionAr: "سيروم العينين مخصص لمنطقة العين، وكيعاون على تحسين مظهر الخطوط الدقيقة. فيه Retinal، لذلك خاص الحذر فالبشرة الحساسة.", descriptionFr: "Ce sérum est conçu pour le contour des yeux et aide à améliorer l’apparence des ridules. Il contient du rétinal : prudence si votre peau est sensible.", step: "04" },
+    { ...products[4], title: "Dynasty Cream", descriptionAr: "الكريم المرطب كيرطب البشرة وكيعاون يحافظ على الرطوبة ديالها.", descriptionFr: "La crème hydrate la peau et aide à préserver son hydratation.", step: "05" },
+    { ...products[5], title: "Relief Sun SPF50+ PA", descriptionAr: "واقي الشمس آخر خطوة فالصباح، كيحمي البشرة من أشعة الشمس. كيتعاود كل ساعتين ملي كتكوني معرضة للشمس.", descriptionFr: "La crème solaire est la dernière étape du matin et protège la peau des rayons du soleil. Renouvelez l’application toutes les deux heures en cas d’exposition.", step: "06" },
   ];
   return (
     <div className={`min-h-screen bg-[#FFF9F6] text-[#292326] ${isArabic ? "arabic" : ""}`} lang={language} dir={isArabic ? "rtl" : "ltr"}>
@@ -444,15 +451,6 @@ export default function LandingPage() {
                 </a>
               </div>
 
-              <div className={`hero-selection-card inline-flex glass-panel p-3 px-5 rounded-2xl shadow-xl items-center gap-3 mt-2 border border-white/60 ${isArabic ? "self-start" : ""}`}>
-                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#c97f91] to-[#702b43] flex items-center justify-center text-white shadow-inner">
-                  <Sparkles size={16} />
-                </div>
-                <div className={isArabic ? "text-right" : "text-start"}>
-                  <p className="text-[10px] font-bold text-[#81777a] uppercase">{tr("SÉLECTION")}</p>
-                  <p className="text-sm font-extrabold text-[#702b43] whitespace-nowrap">9 {tr("Produits")} · 3 {tr("OFFERT")}</p>
-                </div>
-              </div>
 
             </div>
           </div>
@@ -463,7 +461,7 @@ export default function LandingPage() {
           <div className="trust-strip max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="trust-strip-grid">
               {[
-                { icon: ShieldCheck, title: "9 produits complets", desc: "6 soins AXIS-Y + 3 produits offerts" },
+                { icon: ShieldCheck, title: "9 produits complets", desc: "6 soins Beauty of Joseon + 3 produits offerts" },
                 { icon: Truck, title: "Paiement à la livraison", desc: "Paiement en espèces à la réception" },
                 { icon: Check, title: "Commande express", desc: "Sans carte bancaire" },
                 { icon: Phone, title: "Confirmation par appel", desc: "Notre équipe vous appelle" }
@@ -488,7 +486,7 @@ export default function LandingPage() {
             <div className="text-center max-w-3xl mx-auto mb-16">
               <span className="text-[#c97f91] text-xs font-bold uppercase tracking-widest block mb-3">{tr("LA ROUTINE VINILLIA")}</span>
               <h2 className="text-4xl md:text-5xl font-serif-custom text-[#702b43] font-bold mb-6">{tr("Votre rituel en 6 étapes")}</h2>
-              <p className="text-[#81777a] text-lg">{tr("Découvrez les 6 étapes de votre nouvelle routine AXIS-Y pour une peau éclatante et en pleine santé.")}</p>
+              <p className="text-[#81777a] text-lg">{tr("Découvrez les 6 étapes de votre nouvelle routine Beauty of Joseon pour une peau éclatante et en pleine santé.")}</p>
             </div>
 
             <div className="routine-grid">
@@ -510,7 +508,7 @@ export default function LandingPage() {
                     </div>
 
                     <h3 className="text-[#292326] font-bold text-xl md:text-2xl mb-2 leading-tight group-hover:text-[#702b43] transition-colors">{tr(step.title)}</h3>
-                    <p className="text-[#81777a] text-sm font-medium mb-6 line-clamp-2">{step.name}</p>
+                    <p className="text-[#81777a] text-sm font-medium mb-6">{isArabic ? step.descriptionAr : step.descriptionFr}</p>
                   </div>
 
                   <div className="relative z-10 w-full aspect-square bg-[#fff9f6] rounded-2xl p-4 flex items-center justify-center shadow-inner mt-auto border border-[#f5efef]">

@@ -511,27 +511,24 @@ html[dir="rtl"] .mobile-drawer { animation-name: drawer-enter-rtl; }
   header.sticky { display: block; visibility: visible; opacity: 1; }
 
   #accueil.landing-hero {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr);
-    grid-template-rows: auto auto;
-    align-items: stretch;
+    display: block;
+    container-type: inline-size;
     min-height: 0;
     height: auto;
-    overflow: visible;
+    min-height: 100vw;
+    aspect-ratio: auto;
+    overflow: hidden;
     background: var(--paper);
   }
 
   #accueil .landing-hero-art {
-    position: relative;
-    inset: auto;
-    grid-area: 1 / 1;
-    order: 0;
+    position: absolute;
+    inset: 0;
     flex: none;
     width: 100%;
-    height: auto;
-    aspect-ratio: var(--hero-mobile-ratio);
+    height: 100%;
+    aspect-ratio: auto;
     overflow: hidden;
-    grid-row: 1;
   }
 
   #accueil .landing-hero-picture {
@@ -550,27 +547,32 @@ html[dir="rtl"] .mobile-drawer { animation-name: drawer-enter-rtl; }
   }
 
   #accueil .landing-hero-gradient {
-    display: none;
+    display: block;
   }
 
   #accueil .landing-hero-copy {
-    grid-area: 2 / 1;
-    order: 1;
-    align-self: start;
-    justify-self: stretch;
-    flex: none;
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
     width: 100%;
-    max-width: none;
+    max-width: 100%;
     min-width: 0;
+    min-height: 100vw;
     margin-inline: 0;
-    padding: 20px 20px 28px;
-    background: var(--paper);
+    padding: 124px 20px 18px;
+    background: transparent;
     transform: none;
+  }
+
+  #accueil .landing-hero-copy > div {
+    width: min(100%, 82cqi);
+    max-width: 100%;
   }
 
   #accueil .landing-hero-copy h1 {
     margin-bottom: 10px;
-    font-size: clamp(21px, 6vw, 30px);
+    font-size: clamp(18px, 6.1cqi, 25px);
     line-height: 1.2;
   }
 
@@ -581,7 +583,7 @@ html[dir="rtl"] .mobile-drawer { animation-name: drawer-enter-rtl; }
     background: transparent;
     -webkit-backdrop-filter: none;
     backdrop-filter: none;
-    font-size: 12px;
+    font-size: clamp(10px, 3.2cqi, 12px);
     line-height: 1.6;
   }
 
@@ -609,8 +611,9 @@ html[dir="rtl"] .mobile-drawer { animation-name: drawer-enter-rtl; }
   }
 
   #accueil .landing-hero-copy .hero-price-cta-row {
-    width: max-content;
-    max-width: calc(100vw - 40px);
+    width: fit-content;
+    max-width: 100%;
+    flex-wrap: wrap;
     gap: 8px;
   }
 
@@ -733,17 +736,23 @@ html[dir="rtl"] .footer-main > p { font-family: var(--arabic), var(--sans); font
   html[dir="rtl"] #accueil .landing-hero-copy {
     justify-self: stretch;
     margin-inline: 0;
-    padding: 20px 20px 28px;
+    padding: 180px auto 18px;
     text-align: right;
   }
 
+  html[dir="rtl"] #accueil .landing-hero-copy > div {
+    width: min(100%, 78cqi);
+    margin-inline-start: 0;
+    margin-inline-end: auto;
+  }
+
   html[dir="rtl"] #accueil .landing-hero-copy h1 {
-    font-size: clamp(23px, 6.2vw, 32px);
+    font-size: clamp(18px, 6.1cqi, 25px);
     line-height: 1.5;
   }
 
   html[dir="rtl"] #accueil .landing-hero-copy p {
-    font-size: 12px;
+    font-size: clamp(10px, 3.2cqi, 12px);
     line-height: 1.8;
   }
 }

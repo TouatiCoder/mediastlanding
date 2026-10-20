@@ -435,15 +435,6 @@ export default function LandingPage() {
                 </a>
               </div>
 
-              <div className={`hero-selection-card inline-flex glass-panel p-3 px-5 rounded-2xl shadow-xl items-center gap-3 mt-2 border border-white/60 ${isArabic ? "self-start" : ""}`}>
-                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#c97f91] to-[#702b43] flex items-center justify-center text-white shadow-inner">
-                  <Sparkles size={16} />
-                </div>
-                <div className={isArabic ? "text-right" : "text-start"}>
-                  <p className="text-[10px] font-bold text-[#81777a] uppercase">{tr("SÉLECTION")}</p>
-                  <p className="text-sm font-extrabold text-[#702b43] whitespace-nowrap">8 {tr("Produits")} · 2 {tr("OFFERT")}</p>
-                </div>
-              </div>
 
             </div>
           </div>
