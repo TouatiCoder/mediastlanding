@@ -4,8 +4,8 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-import landingOnePreview from "./landing_1/assets/banner fr.jpg";
-import landingTwoPreview from "./landing_2/assets/banner fr.jpg";
+import landingOnePreview from "./landing_1/assets/banner fr.webp";
+import landingTwoPreview from "./landing_2/assets/banner fr.webp";
 import styles from "./home.module.css";
 
 type Language = "fr" | "ar";
