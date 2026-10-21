@@ -401,11 +401,6 @@ export default function LandingPage() {
             className="landing-hero-art absolute inset-0 w-full h-full z-0"
             style={{ "--hero-mobile-ratio": `${mobileHeroImage.width} / ${mobileHeroImage.height}` } as React.CSSProperties}
           >
-            <div
-              className="landing-hero-backdrop"
-              aria-hidden="true"
-              style={{ backgroundImage: `url("${(isArabic ? bannerAr : bannerFr).src}")` }}
-            />
             <picture className="landing-hero-picture absolute inset-0 block">
               <source
                 media="(max-width: 767px)"
@@ -415,7 +410,7 @@ export default function LandingPage() {
               <Image
                 src={isArabic ? bannerAr : bannerFr}
                 alt={isArabic ? "حملة VINILLIA لمنتجات العناية من AXIS-Y وفازلين" : "Campagne VINILLIA présentant les soins AXIS-Y et Vaseline"}
-                className="landing-hero-image w-full h-full object-cover md:object-contain object-[15%_100%] md:object-center"
+                className="landing-hero-image w-full h-full object-cover object-[15%_100%] md:object-center"
                 sizes="100vw"
                 quality={75}
                 loading="eager"
