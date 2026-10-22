@@ -255,9 +255,7 @@ export default function LandingPage() {
       const data = await response.json().catch(() => null);
       if (!response.ok) throw new Error(data?.error || "Erreur serveur.");
 
-      setFormState("success");
-      setFormMessage(tr("Félicitations ! Votre commande a été enregistrée avec succès."));
-      setName(""); setPhone(""); setAddress(""); setErrors({});
+      window.location.replace(`/landing_1/confirmation?lang=${language}`);
     } catch (err: unknown) {
       setFormState("error");
       setFormMessage(err instanceof Error ? err.message : "Une erreur est survenue. Veuillez réessayer.");
