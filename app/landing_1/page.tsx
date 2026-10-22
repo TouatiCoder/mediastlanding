@@ -553,7 +553,7 @@ export default function LandingPage() {
                       aria-pressed={selectedProduct.id === item.id}
                       aria-label={`${item.name}${item.gift ? ` · ${tr("OFFERT")}` : ""}`}
                     >
-                      {item.gift && <span className="product-thumb-gift">{tr("OFFERT")}</span>}
+                      {item.gift && <span className="product-thumb-gift"><Gift size={10} />{tr("OFFERT")}</span>}
                       <Image src={item.image} alt="" sizes="(max-width: 767px) 40vw, 150px" />
                     </button>
                   ))}

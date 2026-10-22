@@ -59,6 +59,30 @@ const User = (props: IconProps) => <IconGlyph name="User" {...props} />;
 
 const PRICE_MAD = 1600;
 
+const moroccanCities = [
+  { name: "Agadir", ar: "أكادير" }, { name: "Al Hoceima", ar: "الحسيمة" },
+  { name: "Beni Mellal", ar: "بني ملال" }, { name: "Casablanca", ar: "الدار البيضاء" },
+  { name: "Chefchaouen", ar: "شفشاون" }, { name: "Dakhla", ar: "الداخلة" },
+  { name: "El Jadida", ar: "الجديدة" }, { name: "Errachidia", ar: "الرشيدية" },
+  { name: "Essaouira", ar: "الصويرة" }, { name: "Fes", ar: "فاس" },
+  { name: "Guelmim", ar: "كلميم" }, { name: "Ifrane", ar: "إفران" },
+  { name: "Kenitra", ar: "القنيطرة" }, { name: "Khemisset", ar: "الخميسات" },
+  { name: "Khouribga", ar: "خريبكة" }, { name: "Laayoune", ar: "العيون" },
+  { name: "Larache", ar: "العرائش" }, { name: "Marrakech", ar: "مراكش" },
+  { name: "Meknes", ar: "مكناس" }, { name: "Mohammedia", ar: "المحمدية" },
+  { name: "Nador", ar: "الناظور" }, { name: "Ouarzazate", ar: "ورزازات" },
+  { name: "Oujda", ar: "وجدة" }, { name: "Rabat", ar: "الرباط" },
+  { name: "Safi", ar: "آسفي" }, { name: "Sale", ar: "سلا" },
+  { name: "Settat", ar: "سطات" }, { name: "Sidi Kacem", ar: "سيدي قاسم" },
+  { name: "Tangier", ar: "طنجة" }, { name: "Tantan", ar: "طانطان" },
+  { name: "Taroudant", ar: "تارودانت" }, { name: "Tetouan", ar: "تطوان" },
+  { name: "Tiznit", ar: "تزنيت" }, { name: "Taza", ar: "تازة" },
+];
+
+function normalizeCitySearch(value: string) {
+  return value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLocaleLowerCase().trim();
+}
+
 const translations: Record<string, string> = {
   "VOTRE RITUEL BEAUTÉ, EN UN SEUL PACK · 3 PRODUITS OFFERTS": "روتين جمالك في باقة واحدة · 3 منتجات هدية",
   "Retrouvez 9 essentiels skincare dans un seul pack, avec 3 produits offerts.": "اكتشفي باقة العناية بالبشرة التي تضم 9 منتجات، منها 3 منتجات هدية.",
@@ -127,6 +151,8 @@ const translations: Record<string, string> = {
   "Veuillez corriger les champs signalés avant de continuer.": "يرجى تصحيح الحقول المحددة قبل المتابعة.",
   "Félicitations ! Votre commande a été enregistrée avec succès.": "تهانينا! تم تسجيل طلبك بنجاح.",
   "Produits": "منتجات",
+  "CITY": "المدينة",
+  "Veuillez choisir votre ville dans la liste.": "يرجى اختيار مدينتك من اللائحة.",
 };
 
 export default function LandingPage() {
@@ -159,8 +185,10 @@ export default function LandingPage() {
   const [orderFormVisible, setOrderFormVisible] = useState(false);
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
-  const [address, setAddress] = useState("");
-  const [errors, setErrors] = useState<{ name?: string; phone?: string; address?: string }>({});
+  const [city, setCity] = useState("");
+  const [cityQuery, setCityQuery] = useState("");
+  const [cityListOpen, setCityListOpen] = useState(false);
+  const [errors, setErrors] = useState<{ name?: string; phone?: string; city?: string }>({});
   const [formState, setFormState] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [formMessage, setFormMessage] = useState("");
 
@@ -241,13 +269,13 @@ export default function LandingPage() {
     const nextErrors: typeof errors = {};
     const trimmedName = name.trim();
     const trimmedPhone = phone.trim();
-    const trimmedAddress = address.trim();
+    const trimmedCity = city.trim();
 
     if (trimmedName.length < 3) nextErrors.name = tr("Veuillez saisir votre nom complet (au moins 3 caractères).");
     if (!/^(\+212|00212|0)([5-7]\d{8})$/.test(trimmedPhone.replace(/[\s().-]/g, ""))) {
       nextErrors.phone = tr("Veuillez saisir un numéro de téléphone marocain valide (ex. 06 12 34 56 78).");
     }
-    if (trimmedAddress.length < 8) nextErrors.address = tr("Veuillez saisir votre adresse complète de livraison (au moins 8 caractères).");
+    if (!trimmedCity) nextErrors.city = tr("Veuillez choisir votre ville dans la liste.");
 
     setErrors(nextErrors);
     if (Object.keys(nextErrors).length > 0) {
@@ -261,14 +289,14 @@ export default function LandingPage() {
       const response = await fetch("/api/orders", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ fullName: trimmedName, phone: trimmedPhone, address: trimmedAddress, productBundleId: "vinillia-beauty-pack", quantity: 1 }),
+        body: JSON.stringify({ fullName: trimmedName, phone: trimmedPhone, address: `${trimmedCity}, Maroc`, productBundleId: "vinillia-beauty-pack", quantity: 1 }),
       });
       const data = await response.json().catch(() => null);
       if (!response.ok) throw new Error(data?.error || "Erreur serveur.");
 
       setFormState("success");
       setFormMessage(tr("Félicitations ! Votre commande a été enregistrée avec succès."));
-      setName(""); setPhone(""); setAddress(""); setErrors({});
+      setName(""); setPhone(""); setCity(""); setCityQuery(""); setErrors({});
     } catch (err: unknown) {
       setFormState("error");
       setFormMessage(err instanceof Error ? err.message : "Une erreur est survenue. Veuillez réessayer.");
@@ -289,12 +317,12 @@ export default function LandingPage() {
   const selectedProduct = products.find((item) => item.id === selectedProductId) ?? products[0];
 
   const routineSteps = [
-    { ...products[0], title: "Ginseng Cleansing Oil", descriptionAr: "الزيت المنظف كيتستعمل الأول باش ينقي الوجه من الماكياج، واقي الشمس والشوائب.", descriptionFr: "L’huile nettoyante s’utilise en premier pour retirer le maquillage, la crème solaire et les impuretés.", step: "01" },
-    { ...products[1], title: "Ginseng Essence Water", descriptionAr: "الإيسونس كيرطب البشرة وكيعاونها تبقى ناعمة ومنتعشة.", descriptionFr: "L’essence hydrate la peau et l’aide à rester douce et fraîche.", step: "02" },
-    { ...products[2], title: "Revive Serum", descriptionAr: "السيروم كيساعد على الترطيب وتحسين مظهر البشرة وإعطائها النضارة.", descriptionFr: "Le sérum aide à hydrater la peau, à améliorer son apparence et à lui donner de l’éclat.", step: "03" },
-    { ...products[3], title: "Revive Eye Serum", descriptionAr: "سيروم العينين مخصص لمنطقة العين، وكيعاون على تحسين مظهر الخطوط الدقيقة. فيه Retinal، لذلك خاص الحذر فالبشرة الحساسة.", descriptionFr: "Ce sérum est conçu pour le contour des yeux et aide à améliorer l’apparence des ridules. Il contient du rétinal : prudence si votre peau est sensible.", step: "04" },
-    { ...products[4], title: "Dynasty Cream", descriptionAr: "الكريم المرطب كيرطب البشرة وكيعاون يحافظ على الرطوبة ديالها.", descriptionFr: "La crème hydrate la peau et aide à préserver son hydratation.", step: "05" },
-    { ...products[5], title: "Relief Sun SPF50+ PA", descriptionAr: "واقي الشمس آخر خطوة فالصباح، كيحمي البشرة من أشعة الشمس. كيتعاود كل ساعتين ملي كتكوني معرضة للشمس.", descriptionFr: "La crème solaire est la dernière étape du matin et protège la peau des rayons du soleil. Renouvelez l’application toutes les deux heures en cas d’exposition.", step: "06" },
+    { ...products[0], title: "Ginseng Cleansing Oil", descriptionAr: "ينظف الماكياج والشوائب بفعالية.", descriptionFr: "Démaquille et nettoie efficacement.", step: "01" },
+    { ...products[1], title: "Ginseng Essence Water", descriptionAr: "يرطب البشرة ويجدد انتعاشها.", descriptionFr: "Hydrate, apaise et rafraîchit.", step: "02" },
+    { ...products[2], title: "Revive Serum", descriptionAr: "يرطب البشرة ويمنحها نضارة.", descriptionFr: "Hydrate et ravive l’éclat.", step: "03" },
+    { ...products[3], title: "Revive Eye Serum", descriptionAr: "Retinal: حذر للبشرة الحساسة.", descriptionFr: "Rétinal : prudence, peau sensible.", step: "04" },
+    { ...products[4], title: "Dynasty Cream", descriptionAr: "يرطب البشرة ويحافظ عليها.", descriptionFr: "Hydrate et protège l’hydratation.", step: "05" },
+    { ...products[5], title: "Relief Sun SPF50+ PA", descriptionAr: "يُعاد كل ساعتين للشمس.", descriptionFr: "Renouveler toutes deux heures.", step: "06" },
   ];
   return (
     <div className={`min-h-screen bg-[#FFF9F6] text-[#292326] ${isArabic ? "arabic" : ""}`} lang={language} dir={isArabic ? "rtl" : "ltr"}>
@@ -565,7 +593,7 @@ export default function LandingPage() {
                       aria-pressed={selectedProduct.id === item.id}
                       aria-label={`${item.name}${item.gift ? ` · ${tr("OFFERT")}` : ""}`}
                     >
-                      {item.gift && <span className="product-thumb-gift">{tr("OFFERT")}</span>}
+                      {item.gift && <span className="product-thumb-gift"><Gift size={10} />{tr("OFFERT")}</span>}
                       <Image src={item.image} alt="" sizes="(max-width: 767px) 40vw, 150px" />
                     </button>
                   ))}
@@ -604,10 +632,51 @@ export default function LandingPage() {
                   <input type="tel" value={phone} onChange={(e) => setPhone(e.target.value)} required className={`w-full bg-[#fcf8f8] border ${errors.phone ? 'border-red-400' : 'border-[#ead9d9]'} rounded-2xl px-5 py-4 text-[#292326]`} dir="ltr" />
                   {errors.phone && <p className="text-red-500 text-xs mt-2">{errors.phone}</p>}
                 </div>
-                <div>
-                  <label className="flex items-center gap-2 text-sm font-bold text-[#292326] mb-2"><MapPin size={16} className="text-[#81777a]"/> {tr("Adresse de livraison complète *")}</label>
-                  <textarea value={address} onChange={(e) => setAddress(e.target.value)} required rows={3} className={`w-full bg-[#fcf8f8] border ${errors.address ? 'border-red-400' : 'border-[#ead9d9]'} rounded-2xl px-5 py-4 text-[#292326] resize-none ${isArabic ? "text-right" : ""}`}></textarea>
-                  {errors.address && <p className="text-red-500 text-xs mt-2">{errors.address}</p>}
+                <div className="relative">
+                  <label htmlFor="order-city" className="flex items-center gap-2 text-sm font-bold text-[#292326] mb-2"><MapPin size={16} className="text-[#81777a]"/> {tr("CITY")}</label>
+                  <input
+                    id="order-city"
+                    type="text"
+                    role="combobox"
+                    aria-autocomplete="list"
+                    aria-expanded={cityListOpen}
+                    aria-controls="moroccan-city-options"
+                    aria-invalid={Boolean(errors.city)}
+                    autoComplete="off"
+                    value={cityQuery}
+                    onFocus={() => setCityListOpen(true)}
+                    onBlur={() => setCityListOpen(false)}
+                    onChange={(e) => {
+                      setCityQuery(e.target.value);
+                      setCity("");
+                      setErrors((current) => ({ ...current, city: undefined }));
+                      setCityListOpen(true);
+                    }}
+                    onKeyDown={(e) => { if (e.key === "Escape") setCityListOpen(false); }}
+                    placeholder={isArabic ? "ابحثي عن المدينة" : "Rechercher une ville"}
+                    className={`w-full bg-[#fcf8f8] border ${errors.city ? "border-red-400" : "border-[#ead9d9]"} rounded-2xl px-5 py-4 text-[#292326] ${isArabic ? "text-right" : ""}`}
+                  />
+                  {cityListOpen && (
+                    <ul id="moroccan-city-options" role="listbox" className="absolute z-20 mt-2 max-h-56 w-full overflow-y-auto rounded-2xl border border-[#ead9d9] bg-white p-2 shadow-lg">
+                      {moroccanCities
+                        .filter((item) => {
+                          const query = normalizeCitySearch(cityQuery);
+                          return !query || normalizeCitySearch(`${item.name} ${item.ar}`).includes(query);
+                        })
+                        .map((item) => (
+                          <li key={item.name} role="option" aria-selected={city === item.name}>
+                            <button type="button" onMouseDown={(e) => e.preventDefault()} onClick={() => { setCity(item.name); setCityQuery(isArabic ? item.ar : item.name); setCityListOpen(false); setErrors((current) => ({ ...current, city: undefined })); }} className="w-full rounded-xl px-4 py-3 text-start text-sm text-[#292326] hover:bg-[#fcf4f5]">
+                              {isArabic ? item.ar : item.name}
+                            </button>
+                          </li>
+                        ))}
+                      {moroccanCities.filter((item) => {
+                        const query = normalizeCitySearch(cityQuery);
+                        return !query || normalizeCitySearch(`${item.name} ${item.ar}`).includes(query);
+                      }).length === 0 && <li className="px-4 py-3 text-sm text-[#81777a]">{isArabic ? "ما لقيناش هاد المدينة" : "Aucune ville trouvée"}</li>}
+                    </ul>
+                  )}
+                  {errors.city && <p className="text-red-500 text-xs mt-2">{errors.city}</p>}
                 </div>
 
                 <button type="submit" disabled={formState === "loading"} className="w-full btn-premium py-4 rounded-2xl text-base font-bold flex justify-center items-center gap-3 mt-4">
