@@ -77,11 +77,101 @@ const moroccanCities = [
   { name: "Tangier", ar: "طنجة" }, { name: "Tantan", ar: "طانطان" },
   { name: "Taroudant", ar: "تارودانت" }, { name: "Tetouan", ar: "تطوان" },
   { name: "Tiznit", ar: "تزنيت" }, { name: "Taza", ar: "تازة" },
+  { name: "Ain Aouda", ar: "عين عودة" }, { name: "Ain Beni Mathar", ar: "عين بني مطهر" },
+  { name: "Ain Harrouda", ar: "عين حرودة" }, { name: "Ain Taoujdate", ar: "عين تاوجطات" },
+  { name: "Ait Melloul", ar: "أيت ملول" }, { name: "Ait Ourir", ar: "أيت أورير" },
+  { name: "Ait Baha", ar: "أيت باها" }, { name: "Ahfir", ar: "أحفير" },
+  { name: "Akhfennir", ar: "أخفنير" }, { name: "Aknoul", ar: "أكنول" },
+  { name: "Al Aroui", ar: "العروي" }, { name: "Amizmiz", ar: "أمزميز" },
+  { name: "Azemmour", ar: "أزمور" }, { name: "Azilal", ar: "أزيلال" },
+  { name: "Agdz", ar: "أكدز" }, { name: "Agourai", ar: "أكوراي" },
+  { name: "Assilah", ar: "أصيلة" }, { name: "Aoulouz", ar: "أولوز" },
+  { name: "Ben Ahmed", ar: "بن أحمد" }, { name: "Ben Guerir", ar: "بن جرير" },
+  { name: "Beni Ansar", ar: "بني أنصار" }, { name: "Beni Bouayach", ar: "بني بوعياش" },
+  { name: "Beni Chiker", ar: "بني شيكر" }, { name: "Beni Drar", ar: "بني درار" },
+  { name: "Berkane", ar: "بركان" }, { name: "Bhalil", ar: "بهاليل" },
+  { name: "Biougra", ar: "بيوكرى" }, { name: "Bouarfa", ar: "بوعرفة" },
+  { name: "Boujdour", ar: "بوجدور" }, { name: "Boulemane", ar: "بولمان" },
+  { name: "Boumalne Dades", ar: "بومالن دادس" }, { name: "Bouznika", ar: "بوزنيقة" },
+  { name: "Bouskoura", ar: "بوسكورة" }, { name: "Dar Gueddari", ar: "دار الكداري" },
+  { name: "Dcheira El Jihadia", ar: "الدشيرة الجهادية" }, { name: "Debdou", ar: "دبدو" },
+  { name: "Demnate", ar: "دمنات" }, { name: "Driouch", ar: "الدريوش" },
+  { name: "El Aioun Sidi Mellouk", ar: "العيون سيدي ملوك" }, { name: "El Borouj", ar: "البروج" },
+  { name: "El Gara", ar: "الكارة" }, { name: "El Hajeb", ar: "الحاجب" },
+  { name: "El Kelaa des Sraghna", ar: "قلعة السراغنة" }, { name: "El Ksiba", ar: "القصيبة" },
+  { name: "Erfoud", ar: "أرفود" }, { name: "Er-Rich", ar: "الريش" },
+  { name: "Es-Semara", ar: "السمارة" }, { name: "Figuig", ar: "فكيك" },
+  { name: "Fnideq", ar: "الفنيدق" }, { name: "Fkih Ben Salah", ar: "الفقيه بن صالح" },
+  { name: "Goulmima", ar: "كلميمة" }, { name: "Guercif", ar: "جرسيف" },
+  { name: "Had Kourt", ar: "حد كورت" }, { name: "Imzouren", ar: "إمزورن" },
+  { name: "Inezgane", ar: "إنزكان" }, { name: "Jerada", ar: "جرادة" },
+  { name: "Jorf El Melha", ar: "جرف الملحة" }, { name: "Kalaat M'Gouna", ar: "قلعة مكونة" },
+  { name: "Karia Ba Mohamed", ar: "قرية با محمد" }, { name: "Kasba Tadla", ar: "قصبة تادلة" },
+  { name: "Khenifra", ar: "خنيفرة" }, { name: "Ksar El Kebir", ar: "القصر الكبير" },
+  { name: "Lahraouyine", ar: "لهراويين" }, { name: "Lqliaa", ar: "القليعة" },
+  { name: "M'Diq", ar: "المضيق" }, { name: "Mechra Bel Ksiri", ar: "مشرع بلقصيري" },
+  { name: "Mehdia", ar: "المهدية" }, { name: "Mediouna", ar: "مديونة" },
+  { name: "Midar", ar: "ميضار" }, { name: "Midelt", ar: "ميدلت" },
+  { name: "Missour", ar: "ميسور" }, { name: "Moulay Driss Zerhoun", ar: "مولاي إدريس زرهون" },
+  { name: "Oulad Teima", ar: "أولاد تايمة" }, { name: "Oulad Berhil", ar: "أولاد برحيل" },
+  { name: "Oulad Ayad", ar: "أولاد عياد" }, { name: "Oued Zem", ar: "وادي زم" },
+  { name: "Oued Laou", ar: "واد لاو" }, { name: "Ouezzane", ar: "وزان" },
+  { name: "Ouislane", ar: "ويسلان" }, { name: "Rissani", ar: "الريصاني" },
+  { name: "Rommani", ar: "الرماني" }, { name: "Saidia", ar: "السعيدية" },
+  { name: "Sefrou", ar: "صفرو" }, { name: "Selouane", ar: "سلوان" },
+  { name: "Sidi Bennour", ar: "سيدي بنور" }, { name: "Sidi Ifni", ar: "سيدي إفني" },
+  { name: "Sidi Kacem", ar: "سيدي قاسم" }, { name: "Sidi Slimane", ar: "سيدي سليمان" },
+  { name: "Sidi Yahya El Gharb", ar: "سيدي يحيى الغرب" }, { name: "Skhirat", ar: "الصخيرات" },
+  { name: "Souk Sebt Oulad Nemma", ar: "سوق السبت أولاد النمة" }, { name: "Tafraout", ar: "تافراوت" },
+  { name: "Taliouine", ar: "تاليوين" }, { name: "Tamanar", ar: "تمنار" },
+  { name: "Tamesna", ar: "تamesna" }, { name: "Taourirt", ar: "تاوريرت" },
+  { name: "Targuist", ar: "تارجيست" }, { name: "Tata", ar: "طاطا" },
+  { name: "Temara", ar: "تمارة" }, { name: "Tiflet", ar: "تيفلت" },
+  { name: "Tinghir", ar: "تنغير" }, { name: "Tinejdad", ar: "تنجداد" },
+  { name: "Tiznit", ar: "تزنيت" }, { name: "Youssoufia", ar: "اليوسفية" },
+  { name: "Zagora", ar: "زاكورة" }, { name: "Zaio", ar: "زايو" },
+  { name: "Zemamra", ar: "الزمامرة" }, { name: "Tameslouht", ar: "تامنصورت" },
+  { name: "Sidi Taibi", ar: "سيدي الطيبي" }, { name: "Souk Larbaa", ar: "سوق الأربعاء الغرب" },
+  { name: "Tan-Tan", ar: "طانطان" }, { name: "Tarfaya", ar: "طرفاية" },
+  { name: "Tendrara", ar: "تندرارة" }, { name: "Témara", ar: "تمارة" },
+  { name: "Martil", ar: "مرتيل" }, { name: "Saiss", ar: "سايس" },
+  { name: "Sidi Rahal", ar: "سيدي رحال" }, { name: "Sidi Allal Tazi", ar: "سيدي علال التازي" },
+  { name: "Aourir", ar: "أورير" }, { name: "Oualidia", ar: "الواليدية" },
+  { name: "Bni Yakhlef", ar: "بني يخلف" }, { name: "Ain Atiq", ar: "عين عتيق" },
+  { name: "Dar Bouazza", ar: "دار بوعزة" }, { name: "Tamesna", ar: "تامسنا" },
+  { name: "Ait Iaaza", ar: "أيت إيَعزة" }, { name: "Akka", ar: "أقا" },
+  { name: "Aklim", ar: "أكليم" }, { name: "Arbaoua", ar: "العوامرة" },
+  { name: "Boudnib", ar: "بودنيب" }, { name: "Boumia", ar: "بومية" },
+  { name: "Chichaoua", ar: "شيشاوة" }, { name: "Dar Ould Zidouh", ar: "دار ولد زيدوح" },
+  { name: "El Mansouria", ar: "المنصورية" }, { name: "El Marsa", ar: "المرسى" },
+  { name: "El Ouatia", ar: "الوطية" }, { name: "Ghafsai", ar: "غفساي" },
+  { name: "Goulmima", ar: "كلميمة" }, { name: "Gourrama", ar: "كرامة" },
+  { name: "Guisser", ar: "گيسر" }, { name: "Had Oued Ifrane", ar: "حد واد إفران" },
+  { name: "Hattane", ar: "حطان" }, { name: "Jorf", ar: "الجرف" },
+  { name: "Jorf El Melha", ar: "جرف الملحة" }, { name: "Khemis Sahel", ar: "خميس الساحل" },
+  { name: "Khemisset", ar: "الخميسات" }, { name: "Ksar Sghir", ar: "القصر الصغير" },
+  { name: "Laattaouia", ar: "العطاوية" }, { name: "Lakhsas", ar: "الأخصاص" },
+  { name: "Lalla Mimouna", ar: "لالة ميمونة" }, { name: "Lalla Takerkoust", ar: "لالة تكركوست" },
+  { name: "Loulad", ar: "لولاد" }, { name: "M'Haya", ar: "المهاية" },
+  { name: "Massa", ar: "ماسة" }, { name: "Matmata", ar: "مطماطة" },
+  { name: "Oulad Abbou", ar: "أولاد عبو" }, { name: "Oulad Amrane", ar: "أولاد عمران" },
+  { name: "Oulad M'Barek", ar: "أولاد مبارك" }, { name: "Saba Aiyoun", ar: "سبع عيون" },
+  { name: "Sebt Gzoula", ar: "سبت جزولة" }, { name: "Skoura", ar: "سكورة" },
+  { name: "Smimou", ar: "سميمو" }, { name: "Soualem", ar: "السوالـم" },
+  { name: "Tighassaline", ar: "تيغسالين" }, { name: "Tissa", ar: "تيسة" },
+  { name: "Tinejdad", ar: "تنجداد" }, { name: "Tendrara", ar: "تندرارة" },
+  { name: "Zag", ar: "الزاك" }, { name: "Bni Hadifa", ar: "بني حذيفة" },
+  { name: "Bab Berred", ar: "باب برد" }, { name: "Bab Taza", ar: "باب تازة" },
+  { name: "Jemaat Shaim", ar: "جماعة سحيم" }, { name: "Ribate El Kheir", ar: "رباط الخير" },
+  { name: "Targuist", ar: "ترجيست" }, { name: "Tafraout", ar: "تافراوت" },
+  { name: "Moulay Bousselham", ar: "مولاي بوسلهام" }, { name: "Oulad Frej", ar: "أولاد فرج" },
 ];
 
 function normalizeCitySearch(value: string) {
   return value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLocaleLowerCase().trim();
 }
+
+const uniqueMoroccanCities = [...new Map(moroccanCities.map((city) => [normalizeCitySearch(city.name), city])).values()];
 
 const translations: Record<string, string> = {
   "VOTRE RITUEL BEAUTÉ, EN UN SEUL PACK · 3 PRODUITS OFFERTS": "روتين جمالك في باقة واحدة · 3 منتجات هدية",
@@ -151,7 +241,7 @@ const translations: Record<string, string> = {
   "Veuillez corriger les champs signalés avant de continuer.": "يرجى تصحيح الحقول المحددة قبل المتابعة.",
   "Félicitations ! Votre commande a été enregistrée avec succès.": "تهانينا! تم تسجيل طلبك بنجاح.",
   "Produits": "منتجات",
-  "CITY": "المدينة",
+  "Ville *": "المدينة *",
   "Veuillez choisir votre ville dans la liste.": "يرجى اختيار مدينتك من اللائحة.",
 };
 
@@ -268,11 +358,11 @@ export default function LandingPage() {
     setFormMessage("");
     const nextErrors: typeof errors = {};
     const trimmedName = name.trim();
-    const trimmedPhone = phone.trim();
+    const trimmedPhone = phone.replace(/\D/g, "");
     const trimmedCity = city.trim();
 
     if (trimmedName.length < 3) nextErrors.name = tr("Veuillez saisir votre nom complet (au moins 3 caractères).");
-    if (!/^(\+212|00212|0)([5-7]\d{8})$/.test(trimmedPhone.replace(/[\s().-]/g, ""))) {
+    if (!/^[5-7]\d{8}$/.test(trimmedPhone)) {
       nextErrors.phone = tr("Veuillez saisir un numéro de téléphone marocain valide (ex. 06 12 34 56 78).");
     }
     if (!trimmedCity) nextErrors.city = tr("Veuillez choisir votre ville dans la liste.");
@@ -289,7 +379,7 @@ export default function LandingPage() {
       const response = await fetch("/api/orders", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ fullName: trimmedName, phone: trimmedPhone, address: `${trimmedCity}, Maroc`, productBundleId: "vinillia-beauty-pack", quantity: 1 }),
+        body: JSON.stringify({ fullName: trimmedName, phone: `+212${trimmedPhone}`, address: `${trimmedCity}, Maroc`, productBundleId: "vinillia-beauty-pack", quantity: 1 }),
       });
       const data = await response.json().catch(() => null);
       if (!response.ok) throw new Error(data?.error || "Erreur serveur.");
@@ -629,14 +719,34 @@ export default function LandingPage() {
                 </div>
                 <div>
                   <label className="flex items-center gap-2 text-sm font-bold text-[#292326] mb-2"><Phone size={16} className="text-[#81777a]"/> {tr("Numéro de téléphone *")}</label>
-                  <input type="tel" value={phone} onChange={(e) => setPhone(e.target.value)} required className={`w-full bg-[#fcf8f8] border ${errors.phone ? 'border-red-400' : 'border-[#ead9d9]'} rounded-2xl px-5 py-4 text-[#292326]`} dir="ltr" />
+                  <div className={`flex w-full overflow-hidden rounded-2xl border bg-[#fcf8f8] ${errors.phone ? "border-red-400" : "border-[#ead9d9]"}`} dir="ltr">
+                    <span className="flex items-center border-e border-[#ead9d9] px-4 font-semibold text-[#292326]">+212</span>
+                    <input
+                      type="tel"
+                      inputMode="numeric"
+                      autoComplete="tel-national"
+                      value={phone}
+                      onChange={(e) => {
+                        let digits = e.target.value.replace(/\D/g, "");
+                        if (digits.startsWith("00212")) digits = digits.slice(5);
+                        else if (digits.startsWith("212")) digits = digits.slice(3);
+                        if (digits.startsWith("0")) digits = digits.slice(1);
+                        setPhone(digits.slice(0, 9));
+                        setErrors((current) => ({ ...current, phone: undefined }));
+                      }}
+                      required
+                      placeholder="6 12 34 56 78"
+                      className="min-w-0 flex-1 bg-transparent px-4 py-4 text-[#292326] outline-none"
+                    />
+                  </div>
                   {errors.phone && <p className="text-red-500 text-xs mt-2">{errors.phone}</p>}
                 </div>
                 <div className="relative">
-                  <label htmlFor="order-city" className="flex items-center gap-2 text-sm font-bold text-[#292326] mb-2"><MapPin size={16} className="text-[#81777a]"/> {tr("CITY")}</label>
+                  <label htmlFor="order-city" className="flex items-center gap-2 text-sm font-bold text-[#292326] mb-2"><MapPin size={16} className="text-[#81777a]"/> {tr("Ville *")}</label>
                   <input
                     id="order-city"
                     type="text"
+                    required
                     role="combobox"
                     aria-autocomplete="list"
                     aria-expanded={cityListOpen}
@@ -658,7 +768,7 @@ export default function LandingPage() {
                   />
                   {cityListOpen && (
                     <ul id="moroccan-city-options" role="listbox" className="absolute z-20 mt-2 max-h-56 w-full overflow-y-auto rounded-2xl border border-[#ead9d9] bg-white p-2 shadow-lg">
-                      {moroccanCities
+                      {uniqueMoroccanCities
                         .filter((item) => {
                           const query = normalizeCitySearch(cityQuery);
                           return !query || normalizeCitySearch(`${item.name} ${item.ar}`).includes(query);
@@ -670,7 +780,7 @@ export default function LandingPage() {
                             </button>
                           </li>
                         ))}
-                      {moroccanCities.filter((item) => {
+                      {uniqueMoroccanCities.filter((item) => {
                         const query = normalizeCitySearch(cityQuery);
                         return !query || normalizeCitySearch(`${item.name} ${item.ar}`).includes(query);
                       }).length === 0 && <li className="px-4 py-3 text-sm text-[#81777a]">{isArabic ? "ما لقيناش هاد المدينة" : "Aucune ville trouvée"}</li>}
