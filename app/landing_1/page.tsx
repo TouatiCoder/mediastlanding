@@ -19,7 +19,7 @@ import product6 from "./assets/imgprodu/6.webp";
 import product7 from "./assets/imgprodu/7.webp";
 import product8 from "./assets/imgprodu/8.webp";
 import offerBanner from "./assets/imgprodu/image.webp";
-import TrackingPixels from "./TrackingPixels";
+import TrackingPixels from "../TrackingPixels";
 
 type IconProps = { size?: number; className?: string; "aria-hidden"?: boolean | "true" | "false" };
 type IconName = "ArrowRight" | "ArrowLeft" | "Check" | "Gift" | "Menu" | "Sparkles" | "X" | "ShieldCheck" | "Truck" | "Phone" | "MapPin" | "User";
